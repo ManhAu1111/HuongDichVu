@@ -1083,6 +1083,10 @@ input::-ms-clear {
       .product-o__action-list > li > a:hover {
         background-color: #333333;
         color: #ffffff; }
+.product-o__action-list li a i {
+    color: #fff !important; /* màu mặc định */
+    transition: 0.3s;
+}
 
 .product-o__category {
   display: block;

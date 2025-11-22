@@ -24,13 +24,15 @@
 
                                     <span class="content-span-2 u-c-secondary">30% Off On Electronics</span>
 
-                                    <span class="content-span-3 u-c-secondary">Find electronics on best prices, Also Discover most selling products of electronics</span>
+                                    <span class="content-span-3 u-c-secondary">Find electronics on best prices, Also
+                                        Discover most selling products of electronics</span>
 
                                     <span class="content-span-4 u-c-secondary">Starting At
 
                                         <span class="u-c-brand">$1050.00</span></span>
 
-                                    <a class="shop-now-link btn--e-brand" href="{{ route('shop.side_v2') }}">SHOP NOW</a></div>
+                                    <a class="shop-now-link btn--e-brand" href="{{ route('shop.side_v2') }}">SHOP NOW</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -45,13 +47,15 @@
 
                                     <span class="content-span-2 u-c-white">10% Off On Electronics</span>
 
-                                    <span class="content-span-3 u-c-white">Find electronics on best prices, Also Discover most selling products of electronics</span>
+                                    <span class="content-span-3 u-c-white">Find electronics on best prices, Also Discover
+                                        most selling products of electronics</span>
 
                                     <span class="content-span-4 u-c-white">Starting At
 
                                         <span class="u-c-brand">$380.00</span></span>
 
-                                    <a class="shop-now-link btn--e-brand" href="{{ route('shop.side_v2') }}">SHOP NOW</a></div>
+                                    <a class="shop-now-link btn--e-brand" href="{{ route('shop.side_v2') }}">SHOP NOW</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -66,13 +70,15 @@
 
                                     <span class="content-span-2 u-c-secondary">10% Off On Electronics</span>
 
-                                    <span class="content-span-3 u-c-secondary">Find electronics on best prices, Also Discover most selling products of electronics</span>
+                                    <span class="content-span-3 u-c-secondary">Find electronics on best prices, Also
+                                        Discover most selling products of electronics</span>
 
                                     <span class="content-span-4 u-c-secondary">Starting At
 
                                         <span class="u-c-brand">$550.00</span></span>
 
-                                    <a class="shop-now-link btn--e-brand" href="{{ route('shop.side_v2') }}">SHOP NOW</a></div>
+                                    <a class="shop-now-link btn--e-brand" href="{{ route('shop.side_v2') }}">SHOP NOW</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -111,29 +117,41 @@
                             <a class="collection" href="{{ route('shop.side_v2') }}">
                                 <div class="aspect aspect--bg-grey aspect--square">
 
-                                    <img class="aspect__img collection__img" src="images/collection/coll-1.jpg" alt=""></div>
-                            </a></div>
+                                    <img class="aspect__img collection__img" src="images/collection/coll-1.jpg"
+                                        alt="">
+                                </div>
+                            </a>
+                        </div>
                         <div class="col-lg-7 col-md-7 u-s-m-b-30">
 
                             <a class="collection" href="{{ route('shop.side_v2') }}">
                                 <div class="aspect aspect--bg-grey aspect--1286-890">
 
-                                    <img class="aspect__img collection__img" src="images/collection/coll-2.jpg" alt=""></div>
-                            </a></div>
+                                    <img class="aspect__img collection__img" src="images/collection/coll-2.jpg"
+                                        alt="">
+                                </div>
+                            </a>
+                        </div>
                         <div class="col-lg-7 col-md-7 u-s-m-b-30">
 
                             <a class="collection" href="{{ route('shop.side_v2') }}">
                                 <div class="aspect aspect--bg-grey aspect--1286-890">
 
-                                    <img class="aspect__img collection__img" src="images/collection/coll-3.jpg" alt=""></div>
-                            </a></div>
+                                    <img class="aspect__img collection__img" src="images/collection/coll-3.jpg"
+                                        alt="">
+                                </div>
+                            </a>
+                        </div>
                         <div class="col-lg-5 col-md-5 u-s-m-b-30">
 
                             <a class="collection" href="{{ route('shop.side_v2') }}">
                                 <div class="aspect aspect--bg-grey aspect--square">
 
-                                    <img class="aspect__img collection__img" src="images/collection/coll-4.jpg" alt=""></div>
-                            </a></div>
+                                    <img class="aspect__img collection__img" src="images/collection/coll-4.jpg"
+                                        alt="">
+                                </div>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -171,19 +189,29 @@
                             <div class="filter-category-container">
                                 <div class="filter__category-wrapper">
 
-                                    <button class="btn filter__btn filter__btn--style-1 js-checked" type="button" data-filter="*">ALL</button></div>
+                                    <button class="btn filter__btn filter__btn--style-1 js-checked" type="button"
+                                        data-filter="*">ALL</button>
+                                </div>
                                 <div class="filter__category-wrapper">
 
-                                    <button class="btn filter__btn filter__btn--style-1" type="button" data-filter=".headphone">HEADPHONES</button></div>
+                                    <button class="btn filter__btn filter__btn--style-1" type="button"
+                                        data-filter=".headphone">HEADPHONES</button>
+                                </div>
                                 <div class="filter__category-wrapper">
 
-                                    <button class="btn filter__btn filter__btn--style-1" type="button" data-filter=".smartphone">SMARTPHONES</button></div>
+                                    <button class="btn filter__btn filter__btn--style-1" type="button"
+                                        data-filter=".smartphone">SMARTPHONES</button>
+                                </div>
                                 <div class="filter__category-wrapper">
 
-                                    <button class="btn filter__btn filter__btn--style-1" type="button" data-filter=".sportgadget">SPORT GADGETS</button></div>
+                                    <button class="btn filter__btn filter__btn--style-1" type="button"
+                                        data-filter=".sportgadget">SPORT GADGETS</button>
+                                </div>
                                 <div class="filter__category-wrapper">
 
-                                    <button class="btn filter__btn filter__btn--style-1" type="button" data-filter=".dslr">DSLR</button></div>
+                                    <button class="btn filter__btn filter__btn--style-1" type="button"
+                                        data-filter=".dslr">DSLR</button>
+                                </div>
                             </div>
                             <div class="filter__grid-wrapper u-s-m-t-30">
                                 <div class="row">
@@ -191,23 +219,38 @@
                                         <div class="product-o product-o--hover-on product-o--radius">
                                             <div class="product-o__wrap">
 
-                                                <a class="aspect aspect--bg-grey aspect--square u-d-block" href="{{ route('products.detail') }}">
+                                                <a class="aspect aspect--bg-grey aspect--square u-d-block"
+                                                    href="{{ route('products.detail') }}">
 
-                                                    <img class="aspect__img" src="images/product/electronic/product2.jpg" alt=""></a>
+                                                    <img class="aspect__img" src="images/product/electronic/product2.jpg"
+                                                        alt=""></a>
                                                 <div class="product-o__action-wrap">
                                                     <ul class="product-o__action-list">
                                                         <li>
 
-                                                            <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a></li>
+                                                            <a data-bs-toggle="modal" data-bs-target="#quick-look"
+                                                                data-tooltip="tooltip" data-placement="top"
+                                                                title="Quick View"><i class="fas fa-search-plus"></i></a>
+                                                        </li>
                                                         <li>
 
-                                                            <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="fas fa-plus-circle"></i></a></li>
+                                                            <a data-bs-toggle="modal" data-bs-target="#add-to-cart"
+                                                                data-tooltip="tooltip" data-placement="top"
+                                                                title="Add to Cart"><i class="fas fa-plus-circle"></i></a>
+                                                        </li>
                                                         <li>
 
-                                                            <a href="{{ route('login') }}" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="fas fa-heart"></i></a></li>
+                                                            <a href="{{ route('login') }}" data-tooltip="tooltip"
+                                                                data-placement="top" title="Add to Wishlist"><i
+                                                                    class="fas fa-heart"></i></a>
+                                                        </li>
                                                         <li>
 
-                                                            <a href="{{ route('login') }}" data-tooltip="tooltip" data-placement="top" title="Email me When the price drops"><i class="fas fa-envelope"></i></a></li>
+                                                            <a href="{{ route('login') }}" data-tooltip="tooltip"
+                                                                data-placement="top"
+                                                                title="Email me When the price drops"><i
+                                                                    class="fas fa-envelope"></i></a>
+                                                        </li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -219,9 +262,12 @@
                                             <span class="product-o__name">
 
                                                 <a href="{{ route('products.detail') }}">Red Wireless Headphone</a></span>
-                                            <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                                            <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i
+                                                    class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                    class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
 
-                                                <span class="product-o__review">(23)</span></div>
+                                                <span class="product-o__review">(23)</span>
+                                            </div>
 
                                             <span class="product-o__price">$125.00
 
@@ -232,23 +278,38 @@
                                         <div class="product-o product-o--hover-on product-o--radius">
                                             <div class="product-o__wrap">
 
-                                                <a class="aspect aspect--bg-grey aspect--square u-d-block" href="{{ route('products.detail') }}">
+                                                <a class="aspect aspect--bg-grey aspect--square u-d-block"
+                                                    href="{{ route('products.detail') }}">
 
-                                                    <img class="aspect__img" src="images/product/electronic/product3.jpg" alt=""></a>
+                                                    <img class="aspect__img" src="images/product/electronic/product3.jpg"
+                                                        alt=""></a>
                                                 <div class="product-o__action-wrap">
                                                     <ul class="product-o__action-list">
                                                         <li>
 
-                                                            <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a></li>
+                                                            <a data-bs-toggle="modal" data-bs-target="#quick-look"
+                                                                data-tooltip="tooltip" data-placement="top"
+                                                                title="Quick View"><i class="fas fa-search-plus"></i></a>
+                                                        </li>
                                                         <li>
 
-                                                            <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="fas fa-plus-circle"></i></a></li>
+                                                            <a data-bs-toggle="modal" data-bs-target="#add-to-cart"
+                                                                data-tooltip="tooltip" data-placement="top"
+                                                                title="Add to Cart"><i class="fas fa-plus-circle"></i></a>
+                                                        </li>
                                                         <li>
 
-                                                            <a href="{{ route('login') }}" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="fas fa-heart"></i></a></li>
+                                                            <a href="{{ route('login') }}" data-tooltip="tooltip"
+                                                                data-placement="top" title="Add to Wishlist"><i
+                                                                    class="fas fa-heart"></i></a>
+                                                        </li>
                                                         <li>
 
-                                                            <a href="{{ route('login') }}" data-tooltip="tooltip" data-placement="top" title="Email me When the price drops"><i class="fas fa-envelope"></i></a></li>
+                                                            <a href="{{ route('login') }}" data-tooltip="tooltip"
+                                                                data-placement="top"
+                                                                title="Email me When the price drops"><i
+                                                                    class="fas fa-envelope"></i></a>
+                                                        </li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -259,10 +320,14 @@
 
                                             <span class="product-o__name">
 
-                                                <a href="{{ route('products.detail') }}">Yellow Wireless Headphone</a></span>
-                                            <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+                                                <a href="{{ route('products.detail') }}">Yellow Wireless
+                                                    Headphone</a></span>
+                                            <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i
+                                                    class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i
+                                                    class="far fa-star"></i><i class="far fa-star"></i>
 
-                                                <span class="product-o__review">(23)</span></div>
+                                                <span class="product-o__review">(23)</span>
+                                            </div>
 
                                             <span class="product-o__price">$125.00
 
@@ -273,23 +338,38 @@
                                         <div class="product-o product-o--hover-on product-o--radius">
                                             <div class="product-o__wrap">
 
-                                                <a class="aspect aspect--bg-grey aspect--square u-d-block" href="{{ route('products.detail') }}">
+                                                <a class="aspect aspect--bg-grey aspect--square u-d-block"
+                                                    href="{{ route('products.detail') }}">
 
-                                                    <img class="aspect__img" src="images/product/electronic/product4.jpg" alt=""></a>
+                                                    <img class="aspect__img" src="images/product/electronic/product4.jpg"
+                                                        alt=""></a>
                                                 <div class="product-o__action-wrap">
                                                     <ul class="product-o__action-list">
                                                         <li>
 
-                                                            <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a></li>
+                                                            <a data-bs-toggle="modal" data-bs-target="#quick-look"
+                                                                data-tooltip="tooltip" data-placement="top"
+                                                                title="Quick View"><i class="fas fa-search-plus"></i></a>
+                                                        </li>
                                                         <li>
 
-                                                            <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="fas fa-plus-circle"></i></a></li>
+                                                            <a data-bs-toggle="modal" data-bs-target="#add-to-cart"
+                                                                data-tooltip="tooltip" data-placement="top"
+                                                                title="Add to Cart"><i class="fas fa-plus-circle"></i></a>
+                                                        </li>
                                                         <li>
 
-                                                            <a href="{{ route('login') }}" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="fas fa-heart"></i></a></li>
+                                                            <a href="{{ route('login') }}" data-tooltip="tooltip"
+                                                                data-placement="top" title="Add to Wishlist"><i
+                                                                    class="fas fa-heart"></i></a>
+                                                        </li>
                                                         <li>
 
-                                                            <a href="{{ route('login') }}" data-tooltip="tooltip" data-placement="top" title="Email me When the price drops"><i class="fas fa-envelope"></i></a></li>
+                                                            <a href="{{ route('login') }}" data-tooltip="tooltip"
+                                                                data-placement="top"
+                                                                title="Email me When the price drops"><i
+                                                                    class="fas fa-envelope"></i></a>
+                                                        </li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -300,10 +380,14 @@
 
                                             <span class="product-o__name">
 
-                                                <a href="{{ route('products.detail') }}">Hover Skateboard Scooter</a></span>
-                                            <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                                                <a href="{{ route('products.detail') }}">Hover Skateboard
+                                                    Scooter</a></span>
+                                            <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i
+                                                    class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                    class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
 
-                                                <span class="product-o__review">(23)</span></div>
+                                                <span class="product-o__review">(23)</span>
+                                            </div>
 
                                             <span class="product-o__price">$125.00
 
@@ -314,23 +398,38 @@
                                         <div class="product-o product-o--hover-on product-o--radius">
                                             <div class="product-o__wrap">
 
-                                                <a class="aspect aspect--bg-grey aspect--square u-d-block" href="{{ route('products.detail') }}">
+                                                <a class="aspect aspect--bg-grey aspect--square u-d-block"
+                                                    href="{{ route('products.detail') }}">
 
-                                                    <img class="aspect__img" src="images/product/electronic/product5.jpg" alt=""></a>
+                                                    <img class="aspect__img" src="images/product/electronic/product5.jpg"
+                                                        alt=""></a>
                                                 <div class="product-o__action-wrap">
                                                     <ul class="product-o__action-list">
                                                         <li>
 
-                                                            <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a></li>
+                                                            <a data-bs-toggle="modal" data-bs-target="#quick-look"
+                                                                data-tooltip="tooltip" data-placement="top"
+                                                                title="Quick View"><i class="fas fa-search-plus"></i></a>
+                                                        </li>
                                                         <li>
 
-                                                            <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="fas fa-plus-circle"></i></a></li>
+                                                            <a data-bs-toggle="modal" data-bs-target="#add-to-cart"
+                                                                data-tooltip="tooltip" data-placement="top"
+                                                                title="Add to Cart"><i class="fas fa-plus-circle"></i></a>
+                                                        </li>
                                                         <li>
 
-                                                            <a href="{{ route('login') }}" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="fas fa-heart"></i></a></li>
+                                                            <a href="{{ route('login') }}" data-tooltip="tooltip"
+                                                                data-placement="top" title="Add to Wishlist"><i
+                                                                    class="fas fa-heart"></i></a>
+                                                        </li>
                                                         <li>
 
-                                                            <a href="{{ route('login') }}" data-tooltip="tooltip" data-placement="top" title="Email me When the price drops"><i class="fas fa-envelope"></i></a></li>
+                                                            <a href="{{ route('login') }}" data-tooltip="tooltip"
+                                                                data-placement="top"
+                                                                title="Email me When the price drops"><i
+                                                                    class="fas fa-envelope"></i></a>
+                                                        </li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -341,10 +440,14 @@
 
                                             <span class="product-o__name">
 
-                                                <a href="{{ route('products.detail') }}">Hover Red Skateboard Scooter</a></span>
-                                            <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                                                <a href="{{ route('products.detail') }}">Hover Red Skateboard
+                                                    Scooter</a></span>
+                                            <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i
+                                                    class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                    class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
 
-                                                <span class="product-o__review">(23)</span></div>
+                                                <span class="product-o__review">(23)</span>
+                                            </div>
 
                                             <span class="product-o__price">$125.00
 
@@ -355,23 +458,38 @@
                                         <div class="product-o product-o--hover-on product-o--radius">
                                             <div class="product-o__wrap">
 
-                                                <a class="aspect aspect--bg-grey aspect--square u-d-block" href="{{ route('products.detail') }}">
+                                                <a class="aspect aspect--bg-grey aspect--square u-d-block"
+                                                    href="{{ route('products.detail') }}">
 
-                                                    <img class="aspect__img" src="images/product/electronic/product6.jpg" alt=""></a>
+                                                    <img class="aspect__img" src="images/product/electronic/product6.jpg"
+                                                        alt=""></a>
                                                 <div class="product-o__action-wrap">
                                                     <ul class="product-o__action-list">
                                                         <li>
 
-                                                            <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a></li>
+                                                            <a data-bs-toggle="modal" data-bs-target="#quick-look"
+                                                                data-tooltip="tooltip" data-placement="top"
+                                                                title="Quick View"><i class="fas fa-search-plus"></i></a>
+                                                        </li>
                                                         <li>
 
-                                                            <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="fas fa-plus-circle"></i></a></li>
+                                                            <a data-bs-toggle="modal" data-bs-target="#add-to-cart"
+                                                                data-tooltip="tooltip" data-placement="top"
+                                                                title="Add to Cart"><i class="fas fa-plus-circle"></i></a>
+                                                        </li>
                                                         <li>
 
-                                                            <a href="{{ route('login') }}" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="fas fa-heart"></i></a></li>
+                                                            <a href="{{ route('login') }}" data-tooltip="tooltip"
+                                                                data-placement="top" title="Add to Wishlist"><i
+                                                                    class="fas fa-heart"></i></a>
+                                                        </li>
                                                         <li>
 
-                                                            <a href="{{ route('login') }}" data-tooltip="tooltip" data-placement="top" title="Email me When the price drops"><i class="fas fa-envelope"></i></a></li>
+                                                            <a href="{{ route('login') }}" data-tooltip="tooltip"
+                                                                data-placement="top"
+                                                                title="Email me When the price drops"><i
+                                                                    class="fas fa-envelope"></i></a>
+                                                        </li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -383,9 +501,12 @@
                                             <span class="product-o__name">
 
                                                 <a href="{{ route('products.detail') }}">Canon DSLR Camera 4k</a></span>
-                                            <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                                            <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i
+                                                    class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                    class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
 
-                                                <span class="product-o__review">(23)</span></div>
+                                                <span class="product-o__review">(23)</span>
+                                            </div>
 
                                             <span class="product-o__price">$125.00
 
@@ -396,23 +517,36 @@
                                         <div class="product-o product-o--hover-on product-o--radius">
                                             <div class="product-o__wrap">
 
-                                                <a class="aspect aspect--bg-grey aspect--square u-d-block" href="{{ route('products.detail') }}">
+                                                <a class="aspect aspect--bg-grey aspect--square u-d-block"
+                                                    href="{{ route('products.detail') }}">
 
-                                                    <img class="aspect__img" src="images/product/electronic/product7.jpg" alt=""></a>
+                                                    <img class="aspect__img" src="images/product/electronic/product7.jpg"
+                                                        alt=""></a>
                                                 <div class="product-o__action-wrap">
                                                     <ul class="product-o__action-list">
                                                         <li>
 
-                                                            <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a></li>
+                                                            <a data-bs-toggle="modal" data-bs-target="#quick-look"
+                                                                data-tooltip="tooltip" data-placement="top"
+                                                                title="Quick View"><i class="fas fa-search-plus"></i></a>
+                                                        </li>
                                                         <li>
 
-                                                            <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="fas fa-plus-circle"></i></a></li>
+                                                            <a data-bs-toggle="modal" data-bs-target="#add-to-cart"
+                                                                data-tooltip="tooltip" data-placement="top"
+                                                                title="Add to Cart"><i class="fas fa-plus-circle"></i></a>
+                                                        </li>
+
+                                                        <a href="{{ route('login') }}" data-tooltip="tooltip"
+                                                            data-placement="top" title="Add to Wishlist"><i
+                                                                class="fas fa-heart"></i></a></li>
                                                         <li>
 
-                                                            <a href="{{ route('login') }}" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="fas fa-heart"></i></a></li>
-                                                        <li>
-
-                                                            <a href="{{ route('login') }}" data-tooltip="tooltip" data-placement="top" title="Email me When the price drops"><i class="fas fa-envelope"></i></a></li>
+                                                            <a href="{{ route('login') }}" data-tooltip="tooltip"
+                                                                data-placement="top"
+                                                                title="Email me When the price drops"><i
+                                                                    class="fas fa-envelope"></i></a>
+                                                        </li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -424,9 +558,12 @@
                                             <span class="product-o__name">
 
                                                 <a href="{{ route('products.detail') }}">Nikon DSLR Camera 4k</a></span>
-                                            <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                                            <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i
+                                                    class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                    class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
 
-                                                <span class="product-o__review">(23)</span></div>
+                                                <span class="product-o__review">(23)</span>
+                                            </div>
 
                                             <span class="product-o__price">$125.00
 
@@ -437,23 +574,38 @@
                                         <div class="product-o product-o--hover-on product-o--radius">
                                             <div class="product-o__wrap">
 
-                                                <a class="aspect aspect--bg-grey aspect--square u-d-block" href="{{ route('products.detail') }}">
+                                                <a class="aspect aspect--bg-grey aspect--square u-d-block"
+                                                    href="{{ route('products.detail') }}">
 
-                                                    <img class="aspect__img" src="images/product/electronic/product8.jpg" alt=""></a>
+                                                    <img class="aspect__img" src="images/product/electronic/product8.jpg"
+                                                        alt=""></a>
                                                 <div class="product-o__action-wrap">
                                                     <ul class="product-o__action-list">
                                                         <li>
 
-                                                            <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a></li>
+                                                            <a data-bs-toggle="modal" data-bs-target="#quick-look"
+                                                                data-tooltip="tooltip" data-placement="top"
+                                                                title="Quick View"><i class="fas fa-search-plus"></i></a>
+                                                        </li>
                                                         <li>
 
-                                                            <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="fas fa-plus-circle"></i></a></li>
+                                                            <a data-bs-toggle="modal" data-bs-target="#add-to-cart"
+                                                                data-tooltip="tooltip" data-placement="top"
+                                                                title="Add to Cart"><i class="fas fa-plus-circle"></i></a>
+                                                        </li>
                                                         <li>
 
-                                                            <a href="{{ route('login') }}" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="fas fa-heart"></i></a></li>
+                                                            <a href="{{ route('login') }}" data-tooltip="tooltip"
+                                                                data-placement="top" title="Add to Wishlist"><i
+                                                                    class="fas fa-heart"></i></a>
+                                                        </li>
                                                         <li>
 
-                                                            <a href="{{ route('login') }}" data-tooltip="tooltip" data-placement="top" title="Email me When the price drops"><i class="fas fa-envelope"></i></a></li>
+                                                            <a href="{{ route('login') }}" data-tooltip="tooltip"
+                                                                data-placement="top"
+                                                                title="Email me When the price drops"><i
+                                                                    class="fas fa-envelope"></i></a>
+                                                        </li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -465,9 +617,12 @@
                                             <span class="product-o__name">
 
                                                 <a href="{{ route('products.detail') }}">Smartphone RAM 4GB New</a></span>
-                                            <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                                            <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i
+                                                    class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                    class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
 
-                                                <span class="product-o__review">(23)</span></div>
+                                                <span class="product-o__review">(23)</span>
+                                            </div>
 
                                             <span class="product-o__price">$125.00
 
@@ -478,23 +633,38 @@
                                         <div class="product-o product-o--hover-on product-o--radius">
                                             <div class="product-o__wrap">
 
-                                                <a class="aspect aspect--bg-grey aspect--square u-d-block" href="{{ route('products.detail') }}">
+                                                <a class="aspect aspect--bg-grey aspect--square u-d-block"
+                                                    href="{{ route('products.detail') }}">
 
-                                                    <img class="aspect__img" src="images/product/electronic/product9.jpg" alt=""></a>
+                                                    <img class="aspect__img" src="images/product/electronic/product9.jpg"
+                                                        alt=""></a>
                                                 <div class="product-o__action-wrap">
                                                     <ul class="product-o__action-list">
                                                         <li>
 
-                                                            <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a></li>
+                                                            <a data-bs-toggle="modal" data-bs-target="#quick-look"
+                                                                data-tooltip="tooltip" data-placement="top"
+                                                                title="Quick View"><i class="fas fa-search-plus"></i></a>
+                                                        </li>
                                                         <li>
 
-                                                            <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="fas fa-plus-circle"></i></a></li>
+                                                            <a data-bs-toggle="modal" data-bs-target="#add-to-cart"
+                                                                data-tooltip="tooltip" data-placement="top"
+                                                                title="Add to Cart"><i class="fas fa-plus-circle"></i></a>
+                                                        </li>
                                                         <li>
 
-                                                            <a href="{{ route('login') }}" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="fas fa-heart"></i></a></li>
+                                                            <a href="{{ route('login') }}" data-tooltip="tooltip"
+                                                                data-placement="top" title="Add to Wishlist"><i
+                                                                    class="fas fa-heart"></i></a>
+                                                        </li>
                                                         <li>
 
-                                                            <a href="{{ route('login') }}" data-tooltip="tooltip" data-placement="top" title="Email me When the price drops"><i class="fas fa-envelope"></i></a></li>
+                                                            <a href="{{ route('login') }}" data-tooltip="tooltip"
+                                                                data-placement="top"
+                                                                title="Email me When the price drops"><i
+                                                                    class="fas fa-envelope"></i></a>
+                                                        </li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -506,9 +676,12 @@
                                             <span class="product-o__name">
 
                                                 <a href="{{ route('products.detail') }}">Smartphone RAM 8GB New</a></span>
-                                            <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                                            <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i
+                                                    class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                    class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
 
-                                                <span class="product-o__review">(23)</span></div>
+                                                <span class="product-o__review">(23)</span>
+                                            </div>
 
                                             <span class="product-o__price">$125.00
 
@@ -519,23 +692,38 @@
                                         <div class="product-o product-o--hover-on product-o--radius">
                                             <div class="product-o__wrap">
 
-                                                <a class="aspect aspect--bg-grey aspect--square u-d-block" href="{{ route('products.detail') }}">
+                                                <a class="aspect aspect--bg-grey aspect--square u-d-block"
+                                                    href="{{ route('products.detail') }}">
 
-                                                    <img class="aspect__img" src="images/product/electronic/product10.jpg" alt=""></a>
+                                                    <img class="aspect__img" src="images/product/electronic/product10.jpg"
+                                                        alt=""></a>
                                                 <div class="product-o__action-wrap">
                                                     <ul class="product-o__action-list">
                                                         <li>
 
-                                                            <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a></li>
+                                                            <a data-bs-toggle="modal" data-bs-target="#quick-look"
+                                                                data-tooltip="tooltip" data-placement="top"
+                                                                title="Quick View"><i class="fas fa-search-plus"></i></a>
+                                                        </li>
                                                         <li>
 
-                                                            <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="fas fa-plus-circle"></i></a></li>
+                                                            <a data-bs-toggle="modal" data-bs-target="#add-to-cart"
+                                                                data-tooltip="tooltip" data-placement="top"
+                                                                title="Add to Cart"><i class="fas fa-plus-circle"></i></a>
+                                                        </li>
                                                         <li>
 
-                                                            <a href="{{ route('login') }}" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="fas fa-heart"></i></a></li>
+                                                            <a href="{{ route('login') }}" data-tooltip="tooltip"
+                                                                data-placement="top" title="Add to Wishlist"><i
+                                                                    class="fas fa-heart"></i></a>
+                                                        </li>
                                                         <li>
 
-                                                            <a href="{{ route('login') }}" data-tooltip="tooltip" data-placement="top" title="Email me When the price drops"><i class="fas fa-envelope"></i></a></li>
+                                                            <a href="{{ route('login') }}" data-tooltip="tooltip"
+                                                                data-placement="top"
+                                                                title="Email me When the price drops"><i
+                                                                    class="fas fa-envelope"></i></a>
+                                                        </li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -546,10 +734,14 @@
 
                                             <span class="product-o__name">
 
-                                                <a href="{{ route('products.detail') }}">Smartphone RAM 16GB New</a></span>
-                                            <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                                                <a href="{{ route('products.detail') }}">Smartphone RAM 16GB
+                                                    New</a></span>
+                                            <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i
+                                                    class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                    class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
 
-                                                <span class="product-o__review">(23)</span></div>
+                                                <span class="product-o__review">(23)</span>
+                                            </div>
 
                                             <span class="product-o__price">$125.00
 
@@ -562,7 +754,8 @@
                         <div class="col-lg-12">
                             <div class="load-more">
 
-                                <button class="btn btn--e-brand" type="button">Load More</button></div>
+                                <button class="btn btn--e-brand" type="button">Load More</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -583,7 +776,8 @@
                             <div class="section__text-wrap">
                                 <h1 class="section__heading u-c-secondary u-s-m-b-12">DEAL OF THE DAY</h1>
 
-                                <span class="section__span u-c-silver">BUY DEAL OF THE DAY, HURRY UP! THESE NEW PRODUCTS WILL EXPIRE SOON.</span>
+                                <span class="section__span u-c-silver">BUY DEAL OF THE DAY, HURRY UP! THESE NEW PRODUCTS
+                                    WILL EXPIRE SOON.</span>
 
                                 <span class="section__span u-c-silver">ADD THESE ON YOUR CART.</span>
                             </div>
@@ -602,9 +796,11 @@
                             <div class="product-o product-o--radius product-o--hover-off u-h-100">
                                 <div class="product-o__wrap">
 
-                                    <a class="aspect aspect--bg-grey aspect--square u-d-block" href="{{ route('products.detail') }}">
+                                    <a class="aspect aspect--bg-grey aspect--square u-d-block"
+                                        href="{{ route('products.detail') }}">
 
-                                        <img class="aspect__img" src="images/product/electronic/product11.jpg" alt=""></a>
+                                        <img class="aspect__img" src="images/product/electronic/product11.jpg"
+                                            alt=""></a>
                                     <div class="product-o__special-count-wrap">
                                         <div class="countdown countdown--style-special" data-countdown="2020/05/01"></div>
                                     </div>
@@ -612,16 +808,28 @@
                                         <ul class="product-o__action-list">
                                             <li>
 
-                                                <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a></li>
+                                                <a data-bs-toggle="modal" data-bs-target="#quick-look"
+                                                    data-tooltip="tooltip" data-placement="top" title="Quick View"><i
+                                                        class="fas fa-search-plus"></i></a>
+                                            </li>
                                             <li>
 
-                                                <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="fas fa-plus-circle"></i></a></li>
+                                                <a data-bs-toggle="modal" data-bs-target="#add-to-cart"
+                                                    data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i
+                                                        class="fas fa-plus-circle"></i></a>
+                                            </li>
                                             <li>
 
-                                                <a href="{{ route('login') }}" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="fas fa-heart"></i></a></li>
+                                                <a href="{{ route('login') }}" data-tooltip="tooltip"
+                                                    data-placement="top" title="Add to Wishlist"><i
+                                                        class="fas fa-heart"></i></a>
+                                            </li>
                                             <li>
 
-                                                <a href="{{ route('login') }}" data-tooltip="tooltip" data-placement="top" title="Email me When the price drops"><i class="fas fa-envelope"></i></a></li>
+                                                <a href="{{ route('login') }}" data-tooltip="tooltip"
+                                                    data-placement="top" title="Email me When the price drops"><i
+                                                        class="fas fa-envelope"></i></a>
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -633,9 +841,12 @@
                                 <span class="product-o__name">
 
                                     <a href="{{ route('products.detail') }}">DJI Phantom Drone 4k</a></span>
-                                <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i
+                                        class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                        class="fas fa-star"></i>
 
-                                    <span class="product-o__review">(2)</span></div>
+                                    <span class="product-o__review">(2)</span>
+                                </div>
 
                                 <span class="product-o__price">$125.00
 
@@ -646,9 +857,11 @@
                             <div class="product-o product-o--radius product-o--hover-off u-h-100">
                                 <div class="product-o__wrap">
 
-                                    <a class="aspect aspect--bg-grey aspect--square u-d-block" href="{{ route('products.detail') }}">
+                                    <a class="aspect aspect--bg-grey aspect--square u-d-block"
+                                        href="{{ route('products.detail') }}">
 
-                                        <img class="aspect__img" src="images/product/electronic/product12.jpg" alt=""></a>
+                                        <img class="aspect__img" src="images/product/electronic/product12.jpg"
+                                            alt=""></a>
                                     <div class="product-o__special-count-wrap">
                                         <div class="countdown countdown--style-special" data-countdown="2020/05/01"></div>
                                     </div>
@@ -656,16 +869,28 @@
                                         <ul class="product-o__action-list">
                                             <li>
 
-                                                <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a></li>
+                                                <a data-bs-toggle="modal" data-bs-target="#quick-look"
+                                                    data-tooltip="tooltip" data-placement="top" title="Quick View"><i
+                                                        class="fas fa-search-plus"></i></a>
+                                            </li>
                                             <li>
 
-                                                <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="fas fa-plus-circle"></i></a></li>
+                                                <a data-bs-toggle="modal" data-bs-target="#add-to-cart"
+                                                    data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i
+                                                        class="fas fa-plus-circle"></i></a>
+                                            </li>
                                             <li>
 
-                                                <a href="{{ route('login') }}" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="fas fa-heart"></i></a></li>
+                                                <a href="{{ route('login') }}" data-tooltip="tooltip"
+                                                    data-placement="top" title="Add to Wishlist"><i
+                                                        class="fas fa-heart"></i></a>
+                                            </li>
                                             <li>
 
-                                                <a href="{{ route('login') }}" data-tooltip="tooltip" data-placement="top" title="Email me When the price drops"><i class="fas fa-envelope"></i></a></li>
+                                                <a href="{{ route('login') }}" data-tooltip="tooltip"
+                                                    data-placement="top" title="Email me When the price drops"><i
+                                                        class="fas fa-envelope"></i></a>
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -677,9 +902,12 @@
                                 <span class="product-o__name">
 
                                     <a href="{{ route('products.detail') }}">DJI Phantom Drone 2k</a></span>
-                                <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i
+                                        class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                        class="fas fa-star"></i>
 
-                                    <span class="product-o__review">(2)</span></div>
+                                    <span class="product-o__review">(2)</span>
+                                </div>
 
                                 <span class="product-o__price">$125.00
 
@@ -723,23 +951,37 @@
                                 <div class="product-o product-o--hover-on">
                                     <div class="product-o__wrap">
 
-                                        <a class="aspect aspect--bg-grey aspect--square u-d-block" href="{{ route('products.detail') }}">
+                                        <a class="aspect aspect--bg-grey aspect--square u-d-block"
+                                            href="{{ route('products.detail') }}">
 
-                                            <img class="aspect__img" src="images/product/electronic/product13.jpg" alt=""></a>
+                                            <img class="aspect__img" src="images/product/electronic/product13.jpg"
+                                                alt=""></a>
                                         <div class="product-o__action-wrap">
                                             <ul class="product-o__action-list">
                                                 <li>
 
-                                                    <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a></li>
+                                                    <a data-bs-toggle="modal" data-bs-target="#quick-look"
+                                                        data-tooltip="tooltip" data-placement="top" title="Quick View"><i
+                                                            class="fas fa-search-plus"></i></a>
+                                                </li>
                                                 <li>
 
-                                                    <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="fas fa-plus-circle"></i></a></li>
+                                                    <a data-bs-toggle="modal" data-bs-target="#add-to-cart"
+                                                        data-tooltip="tooltip" data-placement="top"
+                                                        title="Add to Cart"><i class="fas fa-plus-circle"></i></a>
+                                                </li>
                                                 <li>
 
-                                                    <a href="{{ route('login') }}" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="fas fa-heart"></i></a></li>
+                                                    <a href="{{ route('login') }}" data-tooltip="tooltip"
+                                                        data-placement="top" title="Add to Wishlist"><i
+                                                            class="fas fa-heart"></i></a>
+                                                </li>
                                                 <li>
 
-                                                    <a href="{{ route('login') }}" data-tooltip="tooltip" data-placement="top" title="Email me When the price drops"><i class="fas fa-envelope"></i></a></li>
+                                                    <a href="{{ route('login') }}" data-tooltip="tooltip"
+                                                        data-placement="top" title="Email me When the price drops"><i
+                                                            class="fas fa-envelope"></i></a>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
@@ -751,9 +993,12 @@
                                     <span class="product-o__name">
 
                                         <a href="{{ route('products.detail') }}">Nikon DSLR 4K Camera</a></span>
-                                    <div class="product-o__rating gl-rating-style"><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+                                    <div class="product-o__rating gl-rating-style"><i class="far fa-star"></i><i
+                                            class="far fa-star"></i><i class="far fa-star"></i><i
+                                            class="far fa-star"></i><i class="far fa-star"></i>
 
-                                        <span class="product-o__review">(0)</span></div>
+                                        <span class="product-o__review">(0)</span>
+                                    </div>
 
                                     <span class="product-o__price">$125.00
 
@@ -764,23 +1009,37 @@
                                 <div class="product-o product-o--hover-on">
                                     <div class="product-o__wrap">
 
-                                        <a class="aspect aspect--bg-grey aspect--square u-d-block" href="{{ route('products.detail') }}">
+                                        <a class="aspect aspect--bg-grey aspect--square u-d-block"
+                                            href="{{ route('products.detail') }}">
 
-                                            <img class="aspect__img" src="images/product/electronic/product14.jpg" alt=""></a>
+                                            <img class="aspect__img" src="images/product/electronic/product14.jpg"
+                                                alt=""></a>
                                         <div class="product-o__action-wrap">
                                             <ul class="product-o__action-list">
                                                 <li>
 
-                                                    <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a></li>
+                                                    <a data-bs-toggle="modal" data-bs-target="#quick-look"
+                                                        data-tooltip="tooltip" data-placement="top" title="Quick View"><i
+                                                            class="fas fa-search-plus"></i></a>
+                                                </li>
                                                 <li>
 
-                                                    <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="fas fa-plus-circle"></i></a></li>
+                                                    <a data-bs-toggle="modal" data-bs-target="#add-to-cart"
+                                                        data-tooltip="tooltip" data-placement="top"
+                                                        title="Add to Cart"><i class="fas fa-plus-circle"></i></a>
+                                                </li>
                                                 <li>
 
-                                                    <a href="{{ route('login') }}" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="fas fa-heart"></i></a></li>
+                                                    <a href="{{ route('login') }}" data-tooltip="tooltip"
+                                                        data-placement="top" title="Add to Wishlist"><i
+                                                            class="fas fa-heart"></i></a>
+                                                </li>
                                                 <li>
 
-                                                    <a href="{{ route('login') }}" data-tooltip="tooltip" data-placement="top" title="Email me When the price drops"><i class="fas fa-envelope"></i></a></li>
+                                                    <a href="{{ route('login') }}" data-tooltip="tooltip"
+                                                        data-placement="top" title="Email me When the price drops"><i
+                                                            class="fas fa-envelope"></i></a>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
@@ -792,9 +1051,12 @@
                                     <span class="product-o__name">
 
                                         <a href="{{ route('products.detail') }}">Nikon DSLR 2K Camera</a></span>
-                                    <div class="product-o__rating gl-rating-style"><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+                                    <div class="product-o__rating gl-rating-style"><i class="far fa-star"></i><i
+                                            class="far fa-star"></i><i class="far fa-star"></i><i
+                                            class="far fa-star"></i><i class="far fa-star"></i>
 
-                                        <span class="product-o__review">(0)</span></div>
+                                        <span class="product-o__review">(0)</span>
+                                    </div>
 
                                     <span class="product-o__price">$125.00
 
@@ -805,23 +1067,37 @@
                                 <div class="product-o product-o--hover-on">
                                     <div class="product-o__wrap">
 
-                                        <a class="aspect aspect--bg-grey aspect--square u-d-block" href="{{ route('products.detail') }}">
+                                        <a class="aspect aspect--bg-grey aspect--square u-d-block"
+                                            href="{{ route('products.detail') }}">
 
-                                            <img class="aspect__img" src="images/product/electronic/product15.jpg" alt=""></a>
+                                            <img class="aspect__img" src="images/product/electronic/product15.jpg"
+                                                alt=""></a>
                                         <div class="product-o__action-wrap">
                                             <ul class="product-o__action-list">
                                                 <li>
 
-                                                    <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a></li>
+                                                    <a data-bs-toggle="modal" data-bs-target="#quick-look"
+                                                        data-tooltip="tooltip" data-placement="top" title="Quick View"><i
+                                                            class="fas fa-search-plus"></i></a>
+                                                </li>
                                                 <li>
 
-                                                    <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="fas fa-plus-circle"></i></a></li>
+                                                    <a data-bs-toggle="modal" data-bs-target="#add-to-cart"
+                                                        data-tooltip="tooltip" data-placement="top"
+                                                        title="Add to Cart"><i class="fas fa-plus-circle"></i></a>
+                                                </li>
                                                 <li>
 
-                                                    <a href="{{ route('login') }}" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="fas fa-heart"></i></a></li>
+                                                    <a href="{{ route('login') }}" data-tooltip="tooltip"
+                                                        data-placement="top" title="Add to Wishlist"><i
+                                                            class="fas fa-heart"></i></a>
+                                                </li>
                                                 <li>
 
-                                                    <a href="{{ route('login') }}" data-tooltip="tooltip" data-placement="top" title="Email me When the price drops"><i class="fas fa-envelope"></i></a></li>
+                                                    <a href="{{ route('login') }}" data-tooltip="tooltip"
+                                                        data-placement="top" title="Email me When the price drops"><i
+                                                            class="fas fa-envelope"></i></a>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
@@ -833,9 +1109,12 @@
                                     <span class="product-o__name">
 
                                         <a href="{{ route('products.detail') }}">Sony DSLR 4K Camera</a></span>
-                                    <div class="product-o__rating gl-rating-style"><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+                                    <div class="product-o__rating gl-rating-style"><i class="far fa-star"></i><i
+                                            class="far fa-star"></i><i class="far fa-star"></i><i
+                                            class="far fa-star"></i><i class="far fa-star"></i>
 
-                                        <span class="product-o__review">(0)</span></div>
+                                        <span class="product-o__review">(0)</span>
+                                    </div>
 
                                     <span class="product-o__price">$125.00
 
@@ -846,23 +1125,37 @@
                                 <div class="product-o product-o--hover-on">
                                     <div class="product-o__wrap">
 
-                                        <a class="aspect aspect--bg-grey aspect--square u-d-block" href="{{ route('products.detail') }}">
+                                        <a class="aspect aspect--bg-grey aspect--square u-d-block"
+                                            href="{{ route('products.detail') }}">
 
-                                            <img class="aspect__img" src="images/product/electronic/product16.jpg" alt=""></a>
+                                            <img class="aspect__img" src="images/product/electronic/product16.jpg"
+                                                alt=""></a>
                                         <div class="product-o__action-wrap">
                                             <ul class="product-o__action-list">
                                                 <li>
 
-                                                    <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a></li>
+                                                    <a data-bs-toggle="modal" data-bs-target="#quick-look"
+                                                        data-tooltip="tooltip" data-placement="top" title="Quick View"><i
+                                                            class="fas fa-search-plus"></i></a>
+                                                </li>
                                                 <li>
 
-                                                    <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="fas fa-plus-circle"></i></a></li>
+                                                    <a data-bs-toggle="modal" data-bs-target="#add-to-cart"
+                                                        data-tooltip="tooltip" data-placement="top"
+                                                        title="Add to Cart"><i class="fas fa-plus-circle"></i></a>
+                                                </li>
                                                 <li>
 
-                                                    <a href="{{ route('login') }}" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="fas fa-heart"></i></a></li>
+                                                    <a href="{{ route('login') }}" data-tooltip="tooltip"
+                                                        data-placement="top" title="Add to Wishlist"><i
+                                                            class="fas fa-heart"></i></a>
+                                                </li>
                                                 <li>
 
-                                                    <a href="{{ route('login') }}" data-tooltip="tooltip" data-placement="top" title="Email me When the price drops"><i class="fas fa-envelope"></i></a></li>
+                                                    <a href="{{ route('login') }}" data-tooltip="tooltip"
+                                                        data-placement="top" title="Email me When the price drops"><i
+                                                            class="fas fa-envelope"></i></a>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
@@ -874,9 +1167,12 @@
                                     <span class="product-o__name">
 
                                         <a href="{{ route('products.detail') }}">Sony DSLR 2K Camera</a></span>
-                                    <div class="product-o__rating gl-rating-style"><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+                                    <div class="product-o__rating gl-rating-style"><i class="far fa-star"></i><i
+                                            class="far fa-star"></i><i class="far fa-star"></i><i
+                                            class="far fa-star"></i><i class="far fa-star"></i>
 
-                                        <span class="product-o__review">(0)</span></div>
+                                        <span class="product-o__review">(0)</span>
+                                    </div>
 
                                     <span class="product-o__price">$125.00
 
@@ -887,23 +1183,37 @@
                                 <div class="product-o product-o--hover-on">
                                     <div class="product-o__wrap">
 
-                                        <a class="aspect aspect--bg-grey aspect--square u-d-block" href="{{ route('products.detail') }}">
+                                        <a class="aspect aspect--bg-grey aspect--square u-d-block"
+                                            href="{{ route('products.detail') }}">
 
-                                            <img class="aspect__img" src="images/product/electronic/product17.jpg" alt=""></a>
+                                            <img class="aspect__img" src="images/product/electronic/product17.jpg"
+                                                alt=""></a>
                                         <div class="product-o__action-wrap">
                                             <ul class="product-o__action-list">
                                                 <li>
 
-                                                    <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a></li>
+                                                    <a data-bs-toggle="modal" data-bs-target="#quick-look"
+                                                        data-tooltip="tooltip" data-placement="top" title="Quick View"><i
+                                                            class="fas fa-search-plus"></i></a>
+                                                </li>
                                                 <li>
 
-                                                    <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="fas fa-plus-circle"></i></a></li>
+                                                    <a data-bs-toggle="modal" data-bs-target="#add-to-cart"
+                                                        data-tooltip="tooltip" data-placement="top"
+                                                        title="Add to Cart"><i class="fas fa-plus-circle"></i></a>
+                                                </li>
                                                 <li>
 
-                                                    <a href="{{ route('login') }}" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="fas fa-heart"></i></a></li>
+                                                    <a href="{{ route('login') }}" data-tooltip="tooltip"
+                                                        data-placement="top" title="Add to Wishlist"><i
+                                                            class="fas fa-heart"></i></a>
+                                                </li>
                                                 <li>
 
-                                                    <a href="{{ route('login') }}" data-tooltip="tooltip" data-placement="top" title="Email me When the price drops"><i class="fas fa-envelope"></i></a></li>
+                                                    <a href="{{ route('login') }}" data-tooltip="tooltip"
+                                                        data-placement="top" title="Email me When the price drops"><i
+                                                            class="fas fa-envelope"></i></a>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
@@ -915,9 +1225,12 @@
                                     <span class="product-o__name">
 
                                         <a href="{{ route('products.detail') }}">Canon DSLR 4K Camera</a></span>
-                                    <div class="product-o__rating gl-rating-style"><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+                                    <div class="product-o__rating gl-rating-style"><i class="far fa-star"></i><i
+                                            class="far fa-star"></i><i class="far fa-star"></i><i
+                                            class="far fa-star"></i><i class="far fa-star"></i>
 
-                                        <span class="product-o__review">(0)</span></div>
+                                        <span class="product-o__review">(0)</span>
+                                    </div>
 
                                     <span class="product-o__price">$125.00
 
@@ -928,23 +1241,37 @@
                                 <div class="product-o product-o--hover-on">
                                     <div class="product-o__wrap">
 
-                                        <a class="aspect aspect--bg-grey aspect--square u-d-block" href="{{ route('products.detail') }}">
+                                        <a class="aspect aspect--bg-grey aspect--square u-d-block"
+                                            href="{{ route('products.detail') }}">
 
-                                            <img class="aspect__img" src="images/product/electronic/product18.jpg" alt=""></a>
+                                            <img class="aspect__img" src="images/product/electronic/product18.jpg"
+                                                alt=""></a>
                                         <div class="product-o__action-wrap">
                                             <ul class="product-o__action-list">
                                                 <li>
 
-                                                    <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a></li>
+                                                    <a data-bs-toggle="modal" data-bs-target="#quick-look"
+                                                        data-tooltip="tooltip" data-placement="top" title="Quick View"><i
+                                                            class="fas fa-search-plus"></i></a>
+                                                </li>
                                                 <li>
 
-                                                    <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="fas fa-plus-circle"></i></a></li>
+                                                    <a data-bs-toggle="modal" data-bs-target="#add-to-cart"
+                                                        data-tooltip="tooltip" data-placement="top"
+                                                        title="Add to Cart"><i class="fas fa-plus-circle"></i></a>
+                                                </li>
                                                 <li>
 
-                                                    <a href="{{ route('login') }}" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="fas fa-heart"></i></a></li>
+                                                    <a href="{{ route('login') }}" data-tooltip="tooltip"
+                                                        data-placement="top" title="Add to Wishlist"><i
+                                                            class="fas fa-heart"></i></a>
+                                                </li>
                                                 <li>
 
-                                                    <a href="{{ route('login') }}" data-tooltip="tooltip" data-placement="top" title="Email me When the price drops"><i class="fas fa-envelope"></i></a></li>
+                                                    <a href="{{ route('login') }}" data-tooltip="tooltip"
+                                                        data-placement="top" title="Email me When the price drops"><i
+                                                            class="fas fa-envelope"></i></a>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
@@ -956,9 +1283,12 @@
                                     <span class="product-o__name">
 
                                         <a href="{{ route('products.detail') }}">Canon DSLR 2K Camera</a></span>
-                                    <div class="product-o__rating gl-rating-style"><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+                                    <div class="product-o__rating gl-rating-style"><i class="far fa-star"></i><i
+                                            class="far fa-star"></i><i class="far fa-star"></i><i
+                                            class="far fa-star"></i><i class="far fa-star"></i>
 
-                                        <span class="product-o__review">(0)</span></div>
+                                        <span class="product-o__review">(0)</span>
+                                    </div>
 
                                     <span class="product-o__price">$125.00
 
@@ -990,16 +1320,20 @@
 
                                     <span class="u-c-white">Global</span>
 
-                                    <span class="u-c-secondary">Offers</span></div>
+                                    <span class="u-c-secondary">Offers</span>
+                                </div>
                                 <div class="banner-bg__text-2">
 
                                     <span class="u-c-secondary">Official Launch</span>
 
-                                    <span class="u-c-white">Don't Miss!</span></div>
+                                    <span class="u-c-white">Don't Miss!</span>
+                                </div>
 
-                                <span class="banner-bg__text-block banner-bg__text-3 u-c-secondary">Enjoy Free Shipping when you buy 2 items and above!</span>
+                                <span class="banner-bg__text-block banner-bg__text-3 u-c-secondary">Enjoy Free Shipping
+                                    when you buy 2 items and above!</span>
 
-                                <a class="banner-bg__shop-now btn--e-secondary" href="{{ route('shop.side_v2') }}">Shop Now</a>
+                                <a class="banner-bg__shop-now btn--e-secondary" href="{{ route('shop.side_v2') }}">Shop
+                                    Now</a>
                             </div>
                         </div>
                     </div>
@@ -1038,23 +1372,37 @@
                             <div class="product-o product-o--hover-on u-h-100">
                                 <div class="product-o__wrap">
 
-                                    <a class="aspect aspect--bg-grey aspect--square u-d-block" href="{{ route('products.detail') }}">
+                                    <a class="aspect aspect--bg-grey aspect--square u-d-block"
+                                        href="{{ route('products.detail') }}">
 
-                                        <img class="aspect__img" src="images/product/electronic/product19.jpg" alt=""></a>
+                                        <img class="aspect__img" src="images/product/electronic/product19.jpg"
+                                            alt=""></a>
                                     <div class="product-o__action-wrap">
                                         <ul class="product-o__action-list">
                                             <li>
 
-                                                <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a></li>
+                                                <a data-bs-toggle="modal" data-bs-target="#quick-look"
+                                                    data-tooltip="tooltip" data-placement="top" title="Quick View"><i
+                                                        class="fas fa-search-plus"></i></a>
+                                            </li>
                                             <li>
 
-                                                <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="fas fa-plus-circle"></i></a></li>
+                                                <a data-bs-toggle="modal" data-bs-target="#add-to-cart"
+                                                    data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i
+                                                        class="fas fa-plus-circle"></i></a>
+                                            </li>
                                             <li>
 
-                                                <a href="{{ route('login') }}" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="fas fa-heart"></i></a></li>
+                                                <a href="{{ route('login') }}" data-tooltip="tooltip"
+                                                    data-placement="top" title="Add to Wishlist"><i
+                                                        class="fas fa-heart"></i></a>
+                                            </li>
                                             <li>
 
-                                                <a href="{{ route('login') }}" data-tooltip="tooltip" data-placement="top" title="Email me When the price drops"><i class="fas fa-envelope"></i></a></li>
+                                                <a href="{{ route('login') }}" data-tooltip="tooltip"
+                                                    data-placement="top" title="Email me When the price drops"><i
+                                                        class="fas fa-envelope"></i></a>
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -1066,9 +1414,12 @@
                                 <span class="product-o__name">
 
                                     <a href="{{ route('products.detail') }}">Tablet 14inch Screen</a></span>
-                                <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                                <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i
+                                        class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                        class="fas fa-star-half-alt"></i>
 
-                                    <span class="product-o__review">(23)</span></div>
+                                    <span class="product-o__review">(23)</span>
+                                </div>
 
                                 <span class="product-o__price">$125.00
 
@@ -1079,23 +1430,37 @@
                             <div class="product-o product-o--hover-on u-h-100">
                                 <div class="product-o__wrap">
 
-                                    <a class="aspect aspect--bg-grey aspect--square u-d-block" href="{{ route('products.detail') }}">
+                                    <a class="aspect aspect--bg-grey aspect--square u-d-block"
+                                        href="{{ route('products.detail') }}">
 
-                                        <img class="aspect__img" src="images/product/electronic/product20.jpg" alt=""></a>
+                                        <img class="aspect__img" src="images/product/electronic/product20.jpg"
+                                            alt=""></a>
                                     <div class="product-o__action-wrap">
                                         <ul class="product-o__action-list">
                                             <li>
 
-                                                <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a></li>
+                                                <a data-bs-toggle="modal" data-bs-target="#quick-look"
+                                                    data-tooltip="tooltip" data-placement="top" title="Quick View"><i
+                                                        class="fas fa-search-plus"></i></a>
+                                            </li>
                                             <li>
 
-                                                <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="fas fa-plus-circle"></i></a></li>
+                                                <a data-bs-toggle="modal" data-bs-target="#add-to-cart"
+                                                    data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i
+                                                        class="fas fa-plus-circle"></i></a>
+                                            </li>
                                             <li>
 
-                                                <a href="{{ route('login') }}" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="fas fa-heart"></i></a></li>
+                                                <a href="{{ route('login') }}" data-tooltip="tooltip"
+                                                    data-placement="top" title="Add to Wishlist"><i
+                                                        class="fas fa-heart"></i></a>
+                                            </li>
                                             <li>
 
-                                                <a href="{{ route('login') }}" data-tooltip="tooltip" data-placement="top" title="Email me When the price drops"><i class="fas fa-envelope"></i></a></li>
+                                                <a href="{{ route('login') }}" data-tooltip="tooltip"
+                                                    data-placement="top" title="Email me When the price drops"><i
+                                                        class="fas fa-envelope"></i></a>
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -1107,9 +1472,12 @@
                                 <span class="product-o__name">
 
                                     <a href="{{ route('products.detail') }}">Tablet 18inch Screen</a></span>
-                                <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                                <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i
+                                        class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                        class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
 
-                                    <span class="product-o__review">(23)</span></div>
+                                    <span class="product-o__review">(23)</span>
+                                </div>
 
                                 <span class="product-o__price">$125.00
 
@@ -1120,23 +1488,37 @@
                             <div class="product-o product-o--hover-on u-h-100">
                                 <div class="product-o__wrap">
 
-                                    <a class="aspect aspect--bg-grey aspect--square u-d-block" href="{{ route('products.detail') }}">
+                                    <a class="aspect aspect--bg-grey aspect--square u-d-block"
+                                        href="{{ route('products.detail') }}">
 
-                                        <img class="aspect__img" src="images/product/electronic/product21.jpg" alt=""></a>
+                                        <img class="aspect__img" src="images/product/electronic/product21.jpg"
+                                            alt=""></a>
                                     <div class="product-o__action-wrap">
                                         <ul class="product-o__action-list">
                                             <li>
 
-                                                <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a></li>
+                                                <a data-bs-toggle="modal" data-bs-target="#quick-look"
+                                                    data-tooltip="tooltip" data-placement="top" title="Quick View"><i
+                                                        class="fas fa-search-plus"></i></a>
+                                            </li>
                                             <li>
 
-                                                <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="fas fa-plus-circle"></i></a></li>
+                                                <a data-bs-toggle="modal" data-bs-target="#add-to-cart"
+                                                    data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i
+                                                        class="fas fa-plus-circle"></i></a>
+                                            </li>
                                             <li>
 
-                                                <a href="{{ route('login') }}" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="fas fa-heart"></i></a></li>
+                                                <a href="{{ route('login') }}" data-tooltip="tooltip"
+                                                    data-placement="top" title="Add to Wishlist"><i
+                                                        class="fas fa-heart"></i></a>
+                                            </li>
                                             <li>
 
-                                                <a href="{{ route('login') }}" data-tooltip="tooltip" data-placement="top" title="Email me When the price drops"><i class="fas fa-envelope"></i></a></li>
+                                                <a href="{{ route('login') }}" data-tooltip="tooltip"
+                                                    data-placement="top" title="Email me When the price drops"><i
+                                                        class="fas fa-envelope"></i></a>
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -1148,9 +1530,12 @@
                                 <span class="product-o__name">
 
                                     <a href="{{ route('products.detail') }}">Tablet 13inch Screen Ram 16GB</a></span>
-                                <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                                <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i
+                                        class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                        class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
 
-                                    <span class="product-o__review">(23)</span></div>
+                                    <span class="product-o__review">(23)</span>
+                                </div>
 
                                 <span class="product-o__price">$125.00
 
@@ -1161,23 +1546,37 @@
                             <div class="product-o product-o--hover-on u-h-100">
                                 <div class="product-o__wrap">
 
-                                    <a class="aspect aspect--bg-grey aspect--square u-d-block" href="{{ route('products.detail') }}">
+                                    <a class="aspect aspect--bg-grey aspect--square u-d-block"
+                                        href="{{ route('products.detail') }}">
 
-                                        <img class="aspect__img" src="images/product/electronic/product22.jpg" alt=""></a>
+                                        <img class="aspect__img" src="images/product/electronic/product22.jpg"
+                                            alt=""></a>
                                     <div class="product-o__action-wrap">
                                         <ul class="product-o__action-list">
                                             <li>
 
-                                                <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a></li>
+                                                <a data-bs-toggle="modal" data-bs-target="#quick-look"
+                                                    data-tooltip="tooltip" data-placement="top" title="Quick View"><i
+                                                        class="fas fa-search-plus"></i></a>
+                                            </li>
                                             <li>
 
-                                                <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="fas fa-plus-circle"></i></a></li>
+                                                <a data-bs-toggle="modal" data-bs-target="#add-to-cart"
+                                                    data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i
+                                                        class="fas fa-plus-circle"></i></a>
+                                            </li>
                                             <li>
 
-                                                <a href="{{ route('login') }}" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="fas fa-heart"></i></a></li>
+                                                <a href="{{ route('login') }}" data-tooltip="tooltip"
+                                                    data-placement="top" title="Add to Wishlist"><i
+                                                        class="fas fa-heart"></i></a>
+                                            </li>
                                             <li>
 
-                                                <a href="{{ route('login') }}" data-tooltip="tooltip" data-placement="top" title="Email me When the price drops"><i class="fas fa-envelope"></i></a></li>
+                                                <a href="{{ route('login') }}" data-tooltip="tooltip"
+                                                    data-placement="top" title="Email me When the price drops"><i
+                                                        class="fas fa-envelope"></i></a>
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -1189,9 +1588,12 @@
                                 <span class="product-o__name">
 
                                     <a href="{{ route('products.detail') }}">Tablet 12inch Screen Ram 16GB</a></span>
-                                <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                                <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i
+                                        class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                        class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
 
-                                    <span class="product-o__review">(23)</span></div>
+                                    <span class="product-o__review">(23)</span>
+                                </div>
 
                                 <span class="product-o__price">$125.00
 
@@ -1218,56 +1620,71 @@
                             <a class="promotion" href="{{ route('shop.side_v2') }}">
                                 <div class="aspect aspect--bg-grey aspect--square">
 
-                                    <img class="aspect__img promotion__img" src="images/promo/promo-img-1.jpg" alt=""></div>
+                                    <img class="aspect__img promotion__img" src="images/promo/promo-img-1.jpg"
+                                        alt="">
+                                </div>
                                 <div class="promotion__content">
                                     <div class="promotion__text-wrap">
                                         <div class="promotion__text-1">
 
-                                            <span class="u-c-secondary">ACCESSORIES FOR YOUR EVERYDAY</span></div>
+                                            <span class="u-c-secondary">ACCESSORIES FOR YOUR EVERYDAY</span>
+                                        </div>
                                         <div class="promotion__text-2">
 
                                             <span class="u-c-secondary">GET IN</span>
 
-                                            <span class="u-c-brand">TOUCH</span></div>
+                                            <span class="u-c-brand">TOUCH</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </a></div>
+                            </a>
+                        </div>
                         <div class="col-lg-4 col-md-4 col-sm-6 u-s-m-b-30">
 
                             <a class="promotion" href="{{ route('shop.side_v2') }}">
                                 <div class="aspect aspect--bg-grey aspect--square">
 
-                                    <img class="aspect__img promotion__img" src="images/promo/promo-img-2.jpg" alt=""></div>
+                                    <img class="aspect__img promotion__img" src="images/promo/promo-img-2.jpg"
+                                        alt="">
+                                </div>
                                 <div class="promotion__content">
                                     <div class="promotion__text-wrap">
                                         <div class="promotion__text-1">
 
                                             <span class="u-c-secondary">SMARTPHONE</span>
 
-                                            <span class="u-c-brand">2019</span></div>
+                                            <span class="u-c-brand">2019</span>
+                                        </div>
                                         <div class="promotion__text-2">
 
-                                            <span class="u-c-secondary">NEW ARRIVALS</span></div>
+                                            <span class="u-c-secondary">NEW ARRIVALS</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </a></div>
+                            </a>
+                        </div>
                         <div class="col-lg-4 col-md-4 col-sm-6 u-s-m-b-30">
 
                             <a class="promotion" href="{{ route('shop.side_v2') }}">
                                 <div class="aspect aspect--bg-grey aspect--square">
 
-                                    <img class="aspect__img promotion__img" src="images/promo/promo-img-3.jpg" alt=""></div>
+                                    <img class="aspect__img promotion__img" src="images/promo/promo-img-3.jpg"
+                                        alt="">
+                                </div>
                                 <div class="promotion__content">
                                     <div class="promotion__text-wrap">
                                         <div class="promotion__text-1">
 
-                                            <span class="u-c-secondary">DSLR FOR NEW GENERATION</span></div>
+                                            <span class="u-c-secondary">DSLR FOR NEW GENERATION</span>
+                                        </div>
                                         <div class="promotion__text-2">
 
-                                            <span class="u-c-brand">GET UP TO 10% OFF</span></div>
+                                            <span class="u-c-brand">GET UP TO 10% OFF</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </a></div>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1292,9 +1709,13 @@
                                         <div class="product-l">
                                             <div class="product-l__img-wrap">
 
-                                                <a class="aspect aspect--bg-grey aspect--square u-d-block product-l__link" href="{{ route('products.detail') }}">
+                                                <a class="aspect aspect--bg-grey aspect--square u-d-block product-l__link"
+                                                    href="{{ route('products.detail') }}">
 
-                                                    <img class="aspect__img" src="images/product/electronic/product23.jpg" alt=""></a></div>
+                                                    <img class="aspect__img"
+                                                        src="images/product/electronic/product23.jpg"
+                                                        alt=""></a>
+                                            </div>
                                             <div class="product-l__info-wrap">
 
                                                 <span class="product-l__category">
@@ -1303,18 +1724,24 @@
 
                                                 <span class="product-l__name">
 
-                                                    <a href="{{ route('products.detail') }}">Razor Gear 15 Ram 16GB</a></span>
+                                                    <a href="{{ route('products.detail') }}">Razor Gear 15 Ram
+                                                        16GB</a></span>
 
-                                                <span class="product-l__price">$125.00</span></div>
+                                                <span class="product-l__price">$125.00</span>
+                                            </div>
                                         </div>
                                     </li>
                                     <li class="column-product__item">
                                         <div class="product-l">
                                             <div class="product-l__img-wrap">
 
-                                                <a class="aspect aspect--bg-grey aspect--square u-d-block product-l__link" href="{{ route('products.detail') }}">
+                                                <a class="aspect aspect--bg-grey aspect--square u-d-block product-l__link"
+                                                    href="{{ route('products.detail') }}">
 
-                                                    <img class="aspect__img" src="images/product/electronic/product24.jpg" alt=""></a></div>
+                                                    <img class="aspect__img"
+                                                        src="images/product/electronic/product24.jpg"
+                                                        alt=""></a>
+                                            </div>
                                             <div class="product-l__info-wrap">
 
                                                 <span class="product-l__category">
@@ -1323,18 +1750,24 @@
 
                                                 <span class="product-l__name">
 
-                                                    <a href="{{ route('products.detail') }}">Razor Gear 13 Ram 16GB</a></span>
+                                                    <a href="{{ route('products.detail') }}">Razor Gear 13 Ram
+                                                        16GB</a></span>
 
-                                                <span class="product-l__price">$125.00</span></div>
+                                                <span class="product-l__price">$125.00</span>
+                                            </div>
                                         </div>
                                     </li>
                                     <li class="column-product__item">
                                         <div class="product-l">
                                             <div class="product-l__img-wrap">
 
-                                                <a class="aspect aspect--bg-grey aspect--square u-d-block product-l__link" href="{{ route('products.detail') }}">
+                                                <a class="aspect aspect--bg-grey aspect--square u-d-block product-l__link"
+                                                    href="{{ route('products.detail') }}">
 
-                                                    <img class="aspect__img" src="images/product/electronic/product25.jpg" alt=""></a></div>
+                                                    <img class="aspect__img"
+                                                        src="images/product/electronic/product25.jpg"
+                                                        alt=""></a>
+                                            </div>
                                             <div class="product-l__info-wrap">
 
                                                 <span class="product-l__category">
@@ -1343,9 +1776,11 @@
 
                                                 <span class="product-l__name">
 
-                                                    <a href="{{ route('products.detail') }}">Razor Gear 15 Ram 8GB</a></span>
+                                                    <a href="{{ route('products.detail') }}">Razor Gear 15 Ram
+                                                        8GB</a></span>
 
-                                                <span class="product-l__price">$125.00</span></div>
+                                                <span class="product-l__price">$125.00</span>
+                                            </div>
                                         </div>
                                     </li>
                                 </ul>
@@ -1360,9 +1795,13 @@
                                         <div class="product-l">
                                             <div class="product-l__img-wrap">
 
-                                                <a class="aspect aspect--bg-grey aspect--square u-d-block product-l__link" href="{{ route('products.detail') }}">
+                                                <a class="aspect aspect--bg-grey aspect--square u-d-block product-l__link"
+                                                    href="{{ route('products.detail') }}">
 
-                                                    <img class="aspect__img" src="images/product/electronic/product26.jpg" alt=""></a></div>
+                                                    <img class="aspect__img"
+                                                        src="images/product/electronic/product26.jpg"
+                                                        alt=""></a>
+                                            </div>
                                             <div class="product-l__info-wrap">
 
                                                 <span class="product-l__category">
@@ -1371,20 +1810,26 @@
 
                                                 <span class="product-l__name">
 
-                                                    <a href="{{ route('products.detail') }}">Razor Gear 10 Ram 16GB</a></span>
+                                                    <a href="{{ route('products.detail') }}">Razor Gear 10 Ram
+                                                        16GB</a></span>
 
                                                 <span class="product-l__price">$125.00
 
-                                                    <span class="product-l__discount">$160</span></span></div>
+                                                    <span class="product-l__discount">$160</span></span>
+                                            </div>
                                         </div>
                                     </li>
                                     <li class="column-product__item">
                                         <div class="product-l">
                                             <div class="product-l__img-wrap">
 
-                                                <a class="aspect aspect--bg-grey aspect--square u-d-block product-l__link" href="{{ route('products.detail') }}">
+                                                <a class="aspect aspect--bg-grey aspect--square u-d-block product-l__link"
+                                                    href="{{ route('products.detail') }}">
 
-                                                    <img class="aspect__img" src="images/product/electronic/product27.jpg" alt=""></a></div>
+                                                    <img class="aspect__img"
+                                                        src="images/product/electronic/product27.jpg"
+                                                        alt=""></a>
+                                            </div>
                                             <div class="product-l__info-wrap">
 
                                                 <span class="product-l__category">
@@ -1393,20 +1838,26 @@
 
                                                 <span class="product-l__name">
 
-                                                    <a href="{{ route('products.detail') }}">Razor Gear 15 Ram 8GB</a></span>
+                                                    <a href="{{ route('products.detail') }}">Razor Gear 15 Ram
+                                                        8GB</a></span>
 
                                                 <span class="product-l__price">$125.00
 
-                                                    <span class="product-l__discount">$160</span></span></div>
+                                                    <span class="product-l__discount">$160</span></span>
+                                            </div>
                                         </div>
                                     </li>
                                     <li class="column-product__item">
                                         <div class="product-l">
                                             <div class="product-l__img-wrap">
 
-                                                <a class="aspect aspect--bg-grey aspect--square u-d-block product-l__link" href="{{ route('products.detail') }}">
+                                                <a class="aspect aspect--bg-grey aspect--square u-d-block product-l__link"
+                                                    href="{{ route('products.detail') }}">
 
-                                                    <img class="aspect__img" src="images/product/electronic/product28.jpg" alt=""></a></div>
+                                                    <img class="aspect__img"
+                                                        src="images/product/electronic/product28.jpg"
+                                                        alt=""></a>
+                                            </div>
                                             <div class="product-l__info-wrap">
 
                                                 <span class="product-l__category">
@@ -1415,11 +1866,13 @@
 
                                                 <span class="product-l__name">
 
-                                                    <a href="{{ route('products.detail') }}">Razor Gear 15 Ultra Ram 16GB</a></span>
+                                                    <a href="{{ route('products.detail') }}">Razor Gear 15 Ultra Ram
+                                                        16GB</a></span>
 
                                                 <span class="product-l__price">$125.00
 
-                                                    <span class="product-l__discount">$160</span></span></div>
+                                                    <span class="product-l__discount">$160</span></span>
+                                            </div>
                                         </div>
                                     </li>
                                 </ul>
@@ -1434,11 +1887,18 @@
                                         <div class="product-l">
                                             <div class="product-l__img-wrap">
 
-                                                <a class="aspect aspect--bg-grey aspect--square u-d-block product-l__link" href="{{ route('products.detail') }}">
+                                                <a class="aspect aspect--bg-grey aspect--square u-d-block product-l__link"
+                                                    href="{{ route('products.detail') }}">
 
-                                                    <img class="aspect__img" src="images/product/electronic/product29.jpg" alt=""></a></div>
+                                                    <img class="aspect__img"
+                                                        src="images/product/electronic/product29.jpg"
+                                                        alt=""></a>
+                                            </div>
                                             <div class="product-l__info-wrap">
-                                                <div class="product-l__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></div>
+                                                <div class="product-l__rating gl-rating-style"><i
+                                                        class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                        class="fas fa-star"></i><i class="far fa-star"></i><i
+                                                        class="far fa-star"></i></div>
 
                                                 <span class="product-l__category">
 
@@ -1446,7 +1906,8 @@
 
                                                 <span class="product-l__name">
 
-                                                    <a href="{{ route('products.detail') }}">Razor Gear 20 Ultra Ram 16GB</a></span>
+                                                    <a href="{{ route('products.detail') }}">Razor Gear 20 Ultra Ram
+                                                        16GB</a></span>
 
                                                 <span class="product-l__price">$125.00</span>
                                             </div>
@@ -1456,11 +1917,18 @@
                                         <div class="product-l">
                                             <div class="product-l__img-wrap">
 
-                                                <a class="aspect aspect--bg-grey aspect--square u-d-block product-l__link" href="{{ route('products.detail') }}">
+                                                <a class="aspect aspect--bg-grey aspect--square u-d-block product-l__link"
+                                                    href="{{ route('products.detail') }}">
 
-                                                    <img class="aspect__img" src="images/product/electronic/product30.jpg" alt=""></a></div>
+                                                    <img class="aspect__img"
+                                                        src="images/product/electronic/product30.jpg"
+                                                        alt=""></a>
+                                            </div>
                                             <div class="product-l__info-wrap">
-                                                <div class="product-l__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></div>
+                                                <div class="product-l__rating gl-rating-style"><i
+                                                        class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                        class="fas fa-star"></i><i class="far fa-star"></i><i
+                                                        class="far fa-star"></i></div>
 
                                                 <span class="product-l__category">
 
@@ -1468,7 +1936,8 @@
 
                                                 <span class="product-l__name">
 
-                                                    <a href="{{ route('products.detail') }}">Razor Gear 11 Ultra Ram 16GB</a></span>
+                                                    <a href="{{ route('products.detail') }}">Razor Gear 11 Ultra Ram
+                                                        16GB</a></span>
 
                                                 <span class="product-l__price">$125.00</span>
                                             </div>
@@ -1478,11 +1947,18 @@
                                         <div class="product-l">
                                             <div class="product-l__img-wrap">
 
-                                                <a class="aspect aspect--bg-grey aspect--square u-d-block product-l__link" href="{{ route('products.detail') }}">
+                                                <a class="aspect aspect--bg-grey aspect--square u-d-block product-l__link"
+                                                    href="{{ route('products.detail') }}">
 
-                                                    <img class="aspect__img" src="images/product/electronic/product31.jpg" alt=""></a></div>
+                                                    <img class="aspect__img"
+                                                        src="images/product/electronic/product31.jpg"
+                                                        alt=""></a>
+                                            </div>
                                             <div class="product-l__info-wrap">
-                                                <div class="product-l__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></div>
+                                                <div class="product-l__rating gl-rating-style"><i
+                                                        class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                        class="fas fa-star"></i><i class="far fa-star"></i><i
+                                                        class="far fa-star"></i></div>
 
                                                 <span class="product-l__category">
 
@@ -1490,7 +1966,8 @@
 
                                                 <span class="product-l__name">
 
-                                                    <a href="{{ route('products.detail') }}">Razor Gear 10 Ultra Ram 16GB</a></span>
+                                                    <a href="{{ route('products.detail') }}">Razor Gear 10 Ultra Ram
+                                                        16GB</a></span>
 
                                                 <span class="product-l__price">$125.00</span>
                                             </div>
@@ -1521,7 +1998,9 @@
 
                                     <span class="service__info-text-1">Free Shipping</span>
 
-                                    <span class="service__info-text-2">Free shipping on all US order or order above $200</span></div>
+                                    <span class="service__info-text-2">Free shipping on all US order or order above
+                                        $200</span>
+                                </div>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6 u-s-m-b-30">
@@ -1531,7 +2010,9 @@
 
                                     <span class="service__info-text-1">Shop with Confidence</span>
 
-                                    <span class="service__info-text-2">Our Protection covers your purchase from click to delivery</span></div>
+                                    <span class="service__info-text-2">Our Protection covers your purchase from click to
+                                        delivery</span>
+                                </div>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6 u-s-m-b-30">
@@ -1541,7 +2022,9 @@
 
                                     <span class="service__info-text-1">24/7 Help Center</span>
 
-                                    <span class="service__info-text-2">Round-the-clock assistance for a smooth shopping experience</span></div>
+                                    <span class="service__info-text-2">Round-the-clock assistance for a smooth shopping
+                                        experience</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1582,7 +2065,8 @@
 
                                     <!--====== Image Code ======-->
 
-                                    <a class="aspect aspect--bg-grey aspect--1366-768 u-d-block" href="{{ route('blog.detail') }}">
+                                    <a class="aspect aspect--bg-grey aspect--1366-768 u-d-block"
+                                        href="{{ route('blog.detail') }}">
 
                                         <img class="aspect__img" src="images/blog/post-2.jpg" alt=""></a>
                                     <!--====== End - Image Code ======-->
@@ -1610,28 +2094,34 @@
 
                                             <span class="bp-mini__comment">
 
-                                                <a href="{{ route('blog.detail') }}"><i class="far fa-comments u-s-m-r-4"></i>
+                                                <a href="{{ route('blog.detail') }}"><i
+                                                        class="far fa-comments u-s-m-r-4"></i>
 
-                                                    <span>8</span></a></span></span></div>
+                                                    <span>8</span></a></span></span>
+                                    </div>
                                     <div class="bp-mini__category">
 
                                         <a>Learning</a>
 
                                         <a>News</a>
 
-                                        <a>Health</a></div>
+                                        <a>Health</a>
+                                    </div>
 
                                     <span class="bp-mini__h1">
 
-                                        <a href="{{ route('blog.detail') }}">Life is an extraordinary Adventure</a></span>
-                                    <p class="bp-mini__p">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                        <a href="{{ route('blog.detail') }}">Life is an extraordinary
+                                            Adventure</a></span>
+                                    <p class="bp-mini__p">Lorem Ipsum is simply dummy text of the printing and typesetting
+                                        industry.</p>
                                     <div class="blog-t-w">
 
                                         <a class="gl-tag btn--e-transparent-hover-brand-b-2">Travel</a>
 
                                         <a class="gl-tag btn--e-transparent-hover-brand-b-2">Culture</a>
 
-                                        <a class="gl-tag btn--e-transparent-hover-brand-b-2">Place</a></div>
+                                        <a class="gl-tag btn--e-transparent-hover-brand-b-2">Place</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1641,7 +2131,8 @@
 
                                     <!--====== Image Code ======-->
 
-                                    <a class="aspect aspect--bg-grey aspect--1366-768 u-d-block" href="{{ route('blog.detail') }}">
+                                    <a class="aspect aspect--bg-grey aspect--1366-768 u-d-block"
+                                        href="{{ route('blog.detail') }}">
 
                                         <img class="aspect__img" src="images/blog/post-12.jpg" alt=""></a>
                                     <!--====== End - Image Code ======-->
@@ -1669,28 +2160,33 @@
 
                                             <span class="bp-mini__comment">
 
-                                                <a href="{{ route('blog.detail') }}"><i class="far fa-comments u-s-m-r-4"></i>
+                                                <a href="{{ route('blog.detail') }}"><i
+                                                        class="far fa-comments u-s-m-r-4"></i>
 
-                                                    <span>8</span></a></span></span></div>
+                                                    <span>8</span></a></span></span>
+                                    </div>
                                     <div class="bp-mini__category">
 
                                         <a>Learning</a>
 
                                         <a>News</a>
 
-                                        <a>Health</a></div>
+                                        <a>Health</a>
+                                    </div>
 
                                     <span class="bp-mini__h1">
 
                                         <a href="{{ route('blog.detail') }}">Wait till its open</a></span>
-                                    <p class="bp-mini__p">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                    <p class="bp-mini__p">Lorem Ipsum is simply dummy text of the printing and typesetting
+                                        industry.</p>
                                     <div class="blog-t-w">
 
                                         <a class="gl-tag btn--e-transparent-hover-brand-b-2">Travel</a>
 
                                         <a class="gl-tag btn--e-transparent-hover-brand-b-2">Culture</a>
 
-                                        <a class="gl-tag btn--e-transparent-hover-brand-b-2">Place</a></div>
+                                        <a class="gl-tag btn--e-transparent-hover-brand-b-2">Place</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1700,7 +2196,8 @@
 
                                     <!--====== Image Code ======-->
 
-                                    <a class="aspect aspect--bg-grey aspect--1366-768 u-d-block" href="{{ route('blog.detail') }}">
+                                    <a class="aspect aspect--bg-grey aspect--1366-768 u-d-block"
+                                        href="{{ route('blog.detail') }}">
 
                                         <img class="aspect__img" src="images/blog/post-5.jpg" alt=""></a>
                                     <!--====== End - Image Code ======-->
@@ -1728,28 +2225,34 @@
 
                                             <span class="bp-mini__comment">
 
-                                                <a href="{{ route('blog.detail') }}"><i class="far fa-comments u-s-m-r-4"></i>
+                                                <a href="{{ route('blog.detail') }}"><i
+                                                        class="far fa-comments u-s-m-r-4"></i>
 
-                                                    <span>8</span></a></span></span></div>
+                                                    <span>8</span></a></span></span>
+                                    </div>
                                     <div class="bp-mini__category">
 
                                         <a>Learning</a>
 
                                         <a>News</a>
 
-                                        <a>Health</a></div>
+                                        <a>Health</a>
+                                    </div>
 
                                     <span class="bp-mini__h1">
 
-                                        <a href="{{ route('blog.detail') }}">Tell me difference between smoke and vape</a></span>
-                                    <p class="bp-mini__p">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                        <a href="{{ route('blog.detail') }}">Tell me difference between smoke and
+                                            vape</a></span>
+                                    <p class="bp-mini__p">Lorem Ipsum is simply dummy text of the printing and typesetting
+                                        industry.</p>
                                     <div class="blog-t-w">
 
                                         <a class="gl-tag btn--e-transparent-hover-brand-b-2">Travel</a>
 
                                         <a class="gl-tag btn--e-transparent-hover-brand-b-2">Culture</a>
 
-                                        <a class="gl-tag btn--e-transparent-hover-brand-b-2">Place</a></div>
+                                        <a class="gl-tag btn--e-transparent-hover-brand-b-2">Place</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1791,12 +2294,15 @@
                             <div class="testimonial">
                                 <div class="testimonial__img-wrap">
 
-                                    <img class="testimonial__img" src="images/about/test-1.jpg" alt=""></div>
+                                    <img class="testimonial__img" src="images/about/test-1.jpg" alt="">
+                                </div>
                                 <div class="testimonial__content-wrap">
 
                                     <span class="testimonial__double-quote"><i class="fas fa-quote-right"></i></span>
                                     <blockquote class="testimonial__block-quote">
-                                        <p>"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean."</p>
+                                        <p>"Far far away, behind the word mountains, far from the countries Vokalia and
+                                            Consonantia, there live the blind texts. Separated they live in Bookmarksgrove
+                                            right at the coast of the Semantics, a large language ocean."</p>
                                     </blockquote>
 
                                     <span class="testimonial__author">John D. / DVNTR Inc.</span>
@@ -1805,12 +2311,15 @@
                             <div class="testimonial">
                                 <div class="testimonial__img-wrap">
 
-                                    <img class="testimonial__img" src="images/about/test-2.jpg" alt=""></div>
+                                    <img class="testimonial__img" src="images/about/test-2.jpg" alt="">
+                                </div>
                                 <div class="testimonial__content-wrap">
 
                                     <span class="testimonial__double-quote"><i class="fas fa-quote-right"></i></span>
                                     <blockquote class="testimonial__block-quote">
-                                        <p>"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean."</p>
+                                        <p>"Far far away, behind the word mountains, far from the countries Vokalia and
+                                            Consonantia, there live the blind texts. Separated they live in Bookmarksgrove
+                                            right at the coast of the Semantics, a large language ocean."</p>
                                     </blockquote>
 
                                     <span class="testimonial__author">John D. / DVNTR Inc.</span>
@@ -1819,12 +2328,15 @@
                             <div class="testimonial">
                                 <div class="testimonial__img-wrap">
 
-                                    <img class="testimonial__img" src="images/about/test-3.jpg" alt=""></div>
+                                    <img class="testimonial__img" src="images/about/test-3.jpg" alt="">
+                                </div>
                                 <div class="testimonial__content-wrap">
 
                                     <span class="testimonial__double-quote"><i class="fas fa-quote-right"></i></span>
                                     <blockquote class="testimonial__block-quote">
-                                        <p>"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean."</p>
+                                        <p>"Far far away, behind the word mountains, far from the countries Vokalia and
+                                            Consonantia, there live the blind texts. Separated they live in Bookmarksgrove
+                                            right at the coast of the Semantics, a large language ocean."</p>
                                     </blockquote>
 
                                     <span class="testimonial__author">John D. / DVNTR Inc.</span>
@@ -1833,12 +2345,15 @@
                             <div class="testimonial">
                                 <div class="testimonial__img-wrap">
 
-                                    <img class="testimonial__img" src="images/about/test-4.jpg" alt=""></div>
+                                    <img class="testimonial__img" src="images/about/test-4.jpg" alt="">
+                                </div>
                                 <div class="testimonial__content-wrap">
 
                                     <span class="testimonial__double-quote"><i class="fas fa-quote-right"></i></span>
                                     <blockquote class="testimonial__block-quote">
-                                        <p>"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean."</p>
+                                        <p>"Far far away, behind the word mountains, far from the countries Vokalia and
+                                            Consonantia, there live the blind texts. Separated they live in Bookmarksgrove
+                                            right at the coast of the Semantics, a large language ocean."</p>
                                     </blockquote>
 
                                     <span class="testimonial__author">John D. / DVNTR Inc.</span>
@@ -1868,32 +2383,38 @@
 
                                 <a href="{{ route('shop.side_v2') }}">
 
-                                    <img src="images/brand/b1.png" alt=""></a></div>
+                                    <img src="images/brand/b1.png" alt=""></a>
+                            </div>
                             <div class="brand-slide">
 
                                 <a href="{{ route('shop.side_v2') }}">
 
-                                    <img src="images/brand/b2.png" alt=""></a></div>
+                                    <img src="images/brand/b2.png" alt=""></a>
+                            </div>
                             <div class="brand-slide">
 
                                 <a href="{{ route('shop.side_v2') }}">
 
-                                    <img src="images/brand/b3.png" alt=""></a></div>
+                                    <img src="images/brand/b3.png" alt=""></a>
+                            </div>
                             <div class="brand-slide">
 
                                 <a href="{{ route('shop.side_v2') }}">
 
-                                    <img src="images/brand/b4.png" alt=""></a></div>
+                                    <img src="images/brand/b4.png" alt=""></a>
+                            </div>
                             <div class="brand-slide">
 
                                 <a href="{{ route('shop.side_v2') }}">
 
-                                    <img src="images/brand/b5.png" alt=""></a></div>
+                                    <img src="images/brand/b5.png" alt=""></a>
+                            </div>
                             <div class="brand-slide">
 
                                 <a href="{{ route('shop.side_v2') }}">
 
-                                    <img src="images/brand/b6.png" alt=""></a></div>
+                                    <img src="images/brand/b6.png" alt=""></a>
+                            </div>
                         </div>
                     </div>
                     <!--====== End - Brand Slider ======-->
@@ -1915,7 +2436,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content modal--shadow">
 
-                <button class="btn dismiss-button fas fa-times" type="button" data-dismiss="modal"></button>
+                <button class="btn dismiss-button fas fa-times" type="button" data-bs-dismiss="modal"></button>
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-lg-5">
@@ -1925,16 +2446,20 @@
                                 <ul class="pd-breadcrumb__list">
                                     <li class="has-separator">
 
-                                        <a href="index.hml">Home</a></li>
+                                        <a href="index.hml">Home</a>
+                                    </li>
                                     <li class="has-separator">
 
-                                        <a href="{{ route('shop.side_v2') }}">Electronics</a></li>
+                                        <a href="{{ route('shop.side_v2') }}">Electronics</a>
+                                    </li>
                                     <li class="has-separator">
 
-                                        <a href="{{ route('shop.side_v2') }}">DSLR Cameras</a></li>
+                                        <a href="{{ route('shop.side_v2') }}">DSLR Cameras</a>
+                                    </li>
                                     <li class="is-marked">
 
-                                        <a href="{{ route('shop.side_v2') }}">Nikon Cameras</a></li>
+                                        <a href="{{ route('shop.side_v2') }}">Nikon Cameras</a>
+                                    </li>
                                 </ul>
                             </div>
                             <!--====== End - Product Breadcrumb ======-->
@@ -1946,38 +2471,58 @@
                                     <div id="js-product-detail-modal">
                                         <div>
 
-                                            <img class="u-img-fluid" src="images/product/product-d-1.jpg" alt=""></div>
+                                            <img class="u-img-fluid" src="images/product/product-d-1.jpg"
+                                                alt="">
+                                        </div>
                                         <div>
 
-                                            <img class="u-img-fluid" src="images/product/product-d-2.jpg" alt=""></div>
+                                            <img class="u-img-fluid" src="images/product/product-d-2.jpg"
+                                                alt="">
+                                        </div>
                                         <div>
 
-                                            <img class="u-img-fluid" src="images/product/product-d-3.jpg" alt=""></div>
+                                            <img class="u-img-fluid" src="images/product/product-d-3.jpg"
+                                                alt="">
+                                        </div>
                                         <div>
 
-                                            <img class="u-img-fluid" src="images/product/product-d-4.jpg" alt=""></div>
+                                            <img class="u-img-fluid" src="images/product/product-d-4.jpg"
+                                                alt="">
+                                        </div>
                                         <div>
 
-                                            <img class="u-img-fluid" src="images/product/product-d-5.jpg" alt=""></div>
+                                            <img class="u-img-fluid" src="images/product/product-d-5.jpg"
+                                                alt="">
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="u-s-m-t-15">
                                     <div id="js-product-detail-modal-thumbnail">
                                         <div>
 
-                                            <img class="u-img-fluid" src="images/product/product-d-1.jpg" alt=""></div>
+                                            <img class="u-img-fluid" src="images/product/product-d-1.jpg"
+                                                alt="">
+                                        </div>
                                         <div>
 
-                                            <img class="u-img-fluid" src="images/product/product-d-2.jpg" alt=""></div>
+                                            <img class="u-img-fluid" src="images/product/product-d-2.jpg"
+                                                alt="">
+                                        </div>
                                         <div>
 
-                                            <img class="u-img-fluid" src="images/product/product-d-3.jpg" alt=""></div>
+                                            <img class="u-img-fluid" src="images/product/product-d-3.jpg"
+                                                alt="">
+                                        </div>
                                         <div>
 
-                                            <img class="u-img-fluid" src="images/product/product-d-4.jpg" alt=""></div>
+                                            <img class="u-img-fluid" src="images/product/product-d-4.jpg"
+                                                alt="">
+                                        </div>
                                         <div>
 
-                                            <img class="u-img-fluid" src="images/product/product-d-5.jpg" alt=""></div>
+                                            <img class="u-img-fluid" src="images/product/product-d-5.jpg"
+                                                alt="">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -1989,31 +2534,42 @@
                             <div class="pd-detail">
                                 <div>
 
-                                    <span class="pd-detail__name">Nikon Camera 4k Lens Zoom Pro</span></div>
+                                    <span class="pd-detail__name">Nikon Camera 4k Lens Zoom Pro</span>
+                                </div>
                                 <div>
                                     <div class="pd-detail__inline">
 
                                         <span class="pd-detail__price">$6.99</span>
 
-                                        <span class="pd-detail__discount">(76% OFF)</span><del class="pd-detail__del">$28.97</del></div>
+                                        <span class="pd-detail__discount">(76% OFF)</span><del
+                                            class="pd-detail__del">$28.97</del>
+                                    </div>
                                 </div>
                                 <div class="u-s-m-b-15">
-                                    <div class="pd-detail__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                                    <div class="pd-detail__rating gl-rating-style"><i class="fas fa-star"></i><i
+                                            class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                            class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
 
                                         <span class="pd-detail__review u-s-m-l-4">
 
-                                            <a href="{{ route('products.detail') }}">23 Reviews</a></span></div>
+                                            <a href="{{ route('products.detail') }}">23 Reviews</a></span>
+                                    </div>
                                 </div>
                                 <div class="u-s-m-b-15">
                                     <div class="pd-detail__inline">
 
                                         <span class="pd-detail__stock">200 in stock</span>
 
-                                        <span class="pd-detail__left">Only 2 left</span></div>
+                                        <span class="pd-detail__left">Only 2 left</span>
+                                    </div>
                                 </div>
                                 <div class="u-s-m-b-15">
 
-                                    <span class="pd-detail__preview-desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</span></div>
+                                    <span class="pd-detail__preview-desc">Lorem Ipsum is simply dummy text of the printing
+                                        and typesetting industry. Lorem Ipsum has been the industry's standard dummy text
+                                        ever since the 1500s, when an unknown printer took a galley of type and scrambled it
+                                        to make a type specimen book.</span>
+                                </div>
                                 <div class="u-s-m-b-15">
                                     <div class="pd-detail__inline">
 
@@ -2021,7 +2577,8 @@
 
                                             <a href="{{ route('login') }}">Add to Wishlist</a>
 
-                                            <span class="pd-detail__click-count">(222)</span></span></div>
+                                            <span class="pd-detail__click-count">(222)</span></span>
+                                    </div>
                                 </div>
                                 <div class="u-s-m-b-15">
                                     <div class="pd-detail__inline">
@@ -2030,25 +2587,36 @@
 
                                             <a href="{{ route('login') }}">Email me When the price drops</a>
 
-                                            <span class="pd-detail__click-count">(20)</span></span></div>
+                                            <span class="pd-detail__click-count">(20)</span></span>
+                                    </div>
                                 </div>
                                 <div class="u-s-m-b-15">
                                     <ul class="pd-social-list">
                                         <li>
 
-                                            <a class="s-fb--color-hover" href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                            <a class="s-fb--color-hover" href="#"><i
+                                                    class="fab fa-facebook-f"></i></a>
+                                        </li>
                                         <li>
 
-                                            <a class="s-tw--color-hover" href="#"><i class="fab fa-twitter"></i></a></li>
+                                            <a class="s-tw--color-hover" href="#"><i
+                                                    class="fab fa-twitter"></i></a>
+                                        </li>
                                         <li>
 
-                                            <a class="s-insta--color-hover" href="#"><i class="fab fa-instagram"></i></a></li>
+                                            <a class="s-insta--color-hover" href="#"><i
+                                                    class="fab fa-instagram"></i></a>
+                                        </li>
                                         <li>
 
-                                            <a class="s-wa--color-hover" href="#"><i class="fab fa-whatsapp"></i></a></li>
+                                            <a class="s-wa--color-hover" href="#"><i
+                                                    class="fab fa-whatsapp"></i></a>
+                                        </li>
                                         <li>
 
-                                            <a class="s-gplus--color-hover" href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                                            <a class="s-gplus--color-hover" href="#"><i
+                                                    class="fab fa-google-plus-g"></i></a>
+                                        </li>
                                     </ul>
                                 </div>
                                 <div class="u-s-m-b-15">
@@ -2061,14 +2629,18 @@
 
                                                     <span class="input-counter__minus fas fa-minus"></span>
 
-                                                    <input class="input-counter__text input-counter--text-primary-style" type="text" value="1" data-min="1" data-max="1000">
+                                                    <input class="input-counter__text input-counter--text-primary-style"
+                                                        type="text" value="1" data-min="1"
+                                                        data-max="1000">
 
-                                                    <span class="input-counter__plus fas fa-plus"></span></div>
+                                                    <span class="input-counter__plus fas fa-plus"></span>
+                                                </div>
                                                 <!--====== End - Input Counter ======-->
                                             </div>
                                             <div class="u-s-m-b-15">
 
-                                                <button class="btn btn--e-brand-b-2" type="submit">Add to Cart</button></div>
+                                                <button class="btn btn--e-brand-b-2" type="submit">Add to Cart</button>
+                                            </div>
                                         </div>
                                     </form>
                                 </div>
@@ -2078,13 +2650,16 @@
                                     <ul class="pd-detail__policy-list">
                                         <li><i class="fas fa-check-circle u-s-m-r-8"></i>
 
-                                            <span>Buyer Protection.</span></li>
+                                            <span>Buyer Protection.</span>
+                                        </li>
                                         <li><i class="fas fa-check-circle u-s-m-r-8"></i>
 
-                                            <span>Full Refund if you don't receive your order.</span></li>
+                                            <span>Full Refund if you don't receive your order.</span>
+                                        </li>
                                         <li><i class="fas fa-check-circle u-s-m-r-8"></i>
 
-                                            <span>Returns accepted if product not as described.</span></li>
+                                            <span>Returns accepted if product not as described.</span>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -2103,24 +2678,28 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content modal-radius modal-shadow">
 
-                <button class="btn dismiss-button fas fa-times" type="button" data-dismiss="modal"></button>
+                <button class="btn dismiss-button fas fa-times" type="button" data-bs-dismiss="modal"></button>
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-lg-6 col-md-12">
                             <div class="success u-s-m-b-30">
                                 <div class="success__text-wrap"><i class="fas fa-check"></i>
 
-                                    <span>Item is added successfully!</span></div>
+                                    <span>Item is added successfully!</span>
+                                </div>
                                 <div class="success__img-wrap">
 
-                                    <img class="u-img-fluid" src="images/product/electronic/product1.jpg" alt=""></div>
+                                    <img class="u-img-fluid" src="images/product/electronic/product1.jpg"
+                                        alt="">
+                                </div>
                                 <div class="success__info-wrap">
 
                                     <span class="success__name">Beats Bomb Wireless Headphone</span>
 
                                     <span class="success__quantity">Quantity: 1</span>
 
-                                    <span class="success__price">$170.00</span></div>
+                                    <span class="success__price">$170.00</span>
+                                </div>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-12">
@@ -2129,11 +2708,15 @@
                                 <span class="s-option__text">1 item (s) in your cart</span>
                                 <div class="s-option__link-box">
 
-                                    <a class="s-option__link btn--e-white-brand-shadow" data-dismiss="modal">CONTINUE SHOPPING</a>
+                                    <a class="s-option__link btn--e-white-brand-shadow" data-dismiss="modal">CONTINUE
+                                        SHOPPING</a>
 
-                                    <a class="s-option__link btn--e-white-brand-shadow" href="{{ route('cart') }}">VIEW CART</a>
+                                    <a class="s-option__link btn--e-white-brand-shadow"
+                                        href="{{ route('cart') }}">VIEW CART</a>
 
-                                    <a class="s-option__link btn--e-brand-shadow" href="{{ route('checkout') }}">PROCEED TO CHECKOUT</a></div>
+                                    <a class="s-option__link btn--e-brand-shadow"
+                                        href="{{ route('checkout') }}">PROCEED TO CHECKOUT</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -2156,29 +2739,37 @@
 
                             <a class="new-l__img-wrap u-d-block" href="{{ route('shop.side_v2') }}">
 
-                                <img class="u-img-fluid u-d-block" src="images/newsletter/newsletter.jpg" alt=""></a></div>
+                                <img class="u-img-fluid u-d-block" src="images/newsletter/newsletter.jpg"
+                                    alt=""></a>
+                        </div>
                         <div class="col-lg-6 new-l__col-2">
                             <div class="new-l__section u-s-m-t-30">
                                 <div class="u-s-m-b-8 new-l--center">
                                     <h3 class="new-l__h3">Newsletter</h3>
                                 </div>
                                 <div class="u-s-m-b-30 new-l--center">
-                                    <p class="new-l__p1">Sign up for emails to get the scoop on new arrivals, special sales and more.</p>
+                                    <p class="new-l__p1">Sign up for emails to get the scoop on new arrivals, special
+                                        sales and more.</p>
                                 </div>
                                 <form class="new-l__form">
                                     <div class="u-s-m-b-15">
 
-                                        <input class="news-l__input" type="text" placeholder="E-mail Address"></div>
+                                        <input class="news-l__input" type="text" placeholder="E-mail Address">
+                                    </div>
                                     <div class="u-s-m-b-15">
 
-                                        <button class="btn btn--e-brand-b-2" type="submit">Sign up!</button></div>
+                                        <button class="btn btn--e-brand-b-2" type="submit">Sign up!</button>
+                                    </div>
                                 </form>
                                 <div class="u-s-m-b-15 new-l--center">
-                                    <p class="new-l__p2">By Signing up, you agree to receive Reshop offers,<br />promotions and other commercial messages. You may unsubscribe at any time.</p>
+                                    <p class="new-l__p2">By Signing up, you agree to receive Reshop
+                                        offers,<br />promotions and other commercial messages. You may unsubscribe at any
+                                        time.</p>
                                 </div>
                                 <div class="u-s-m-b-15 new-l--center">
 
-                                    <a class="new-l__link" data-dismiss="modal">No Thanks</a></div>
+                                    <a class="new-l__link" data-dismiss="modal">No Thanks</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -2186,11 +2777,10 @@
             </div>
         </div>
     </div>
-<!--====== End - Newsletter Subscribe Modal ======-->
-<!--====== End - Modal Section ======-->
+    <!--====== End - Newsletter Subscribe Modal ======-->
+    <!--====== End - Modal Section ======-->
 
     <!--====== End - App Content ======-->
     <!--====== End - Main App ======-->
 @endsection
 {{-- 4. Kết thúc phần nội dung --}}
-

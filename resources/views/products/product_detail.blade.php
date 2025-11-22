@@ -778,15 +778,15 @@
                                             <ul class="product-o__action-list">
                                                 <li>
 
-                                                    <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip"
-                                                        data-placement="top" title="Quick View"><i
+                                                    <a data-bs-toggle="modal" data-bs-target="#quick-look"
+                                                        data-tooltip="tooltip" data-placement="top" title="Quick View"><i
                                                             class="fas fa-search-plus"></i></a>
                                                 </li>
                                                 <li>
 
-                                                    <a data-modal="modal" data-modal-id="#add-to-cart"
-                                                        data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i
-                                                            class="fas fa-plus-circle"></i></a>
+                                                    <a data-bs-toggle="modal" data-bs-target="#add-to-cart"
+                                                        data-tooltip="tooltip" data-placement="top"
+                                                        title="Add to Cart"><i class="fas fa-plus-circle"></i></a>
                                                 </li>
                                                 <li>
 
@@ -835,15 +835,15 @@
                                             <ul class="product-o__action-list">
                                                 <li>
 
-                                                    <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip"
-                                                        data-placement="top" title="Quick View"><i
+                                                    <a data-bs-toggle="modal" data-bs-target="#quick-look"
+                                                        data-tooltip="tooltip" data-placement="top" title="Quick View"><i
                                                             class="fas fa-search-plus"></i></a>
                                                 </li>
                                                 <li>
 
-                                                    <a data-modal="modal" data-modal-id="#add-to-cart"
-                                                        data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i
-                                                            class="fas fa-plus-circle"></i></a>
+                                                    <a data-bs-toggle="modal" data-bs-target="#add-to-cart"
+                                                        data-tooltip="tooltip" data-placement="top"
+                                                        title="Add to Cart"><i class="fas fa-plus-circle"></i></a>
                                                 </li>
                                                 <li>
 
@@ -892,15 +892,15 @@
                                             <ul class="product-o__action-list">
                                                 <li>
 
-                                                    <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip"
-                                                        data-placement="top" title="Quick View"><i
+                                                    <a data-bs-toggle="modal" data-bs-target="#quick-look"
+                                                        data-tooltip="tooltip" data-placement="top" title="Quick View"><i
                                                             class="fas fa-search-plus"></i></a>
                                                 </li>
                                                 <li>
 
-                                                    <a data-modal="modal" data-modal-id="#add-to-cart"
-                                                        data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i
-                                                            class="fas fa-plus-circle"></i></a>
+                                                    <a data-bs-toggle="modal" data-bs-target="#add-to-cart"
+                                                        data-tooltip="tooltip" data-placement="top"
+                                                        title="Add to Cart"><i class="fas fa-plus-circle"></i></a>
                                                 </li>
                                                 <li>
 
@@ -949,15 +949,15 @@
                                             <ul class="product-o__action-list">
                                                 <li>
 
-                                                    <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip"
-                                                        data-placement="top" title="Quick View"><i
+                                                    <a data-bs-toggle="modal" data-bs-target="#quick-look"
+                                                        data-tooltip="tooltip" data-placement="top" title="Quick View"><i
                                                             class="fas fa-search-plus"></i></a>
                                                 </li>
                                                 <li>
 
-                                                    <a data-modal="modal" data-modal-id="#add-to-cart"
-                                                        data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i
-                                                            class="fas fa-plus-circle"></i></a>
+                                                    <a data-bs-toggle="modal" data-bs-target="#add-to-cart"
+                                                        data-tooltip="tooltip" data-placement="top"
+                                                        title="Add to Cart"><i class="fas fa-plus-circle"></i></a>
                                                 </li>
                                                 <li>
 
@@ -1006,15 +1006,15 @@
                                             <ul class="product-o__action-list">
                                                 <li>
 
-                                                    <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip"
-                                                        data-placement="top" title="Quick View"><i
+                                                    <a data-bs-toggle="modal" data-bs-target="#quick-look"
+                                                        data-tooltip="tooltip" data-placement="top" title="Quick View"><i
                                                             class="fas fa-search-plus"></i></a>
                                                 </li>
                                                 <li>
 
-                                                    <a data-modal="modal" data-modal-id="#add-to-cart"
-                                                        data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i
-                                                            class="fas fa-plus-circle"></i></a>
+                                                    <a data-bs-toggle="modal" data-bs-target="#add-to-cart"
+                                                        data-tooltip="tooltip" data-placement="top"
+                                                        title="Add to Cart"><i class="fas fa-plus-circle"></i></a>
                                                 </li>
                                                 <li>
 
@@ -1063,15 +1063,15 @@
                                             <ul class="product-o__action-list">
                                                 <li>
 
-                                                    <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip"
-                                                        data-placement="top" title="Quick View"><i
+                                                    <a data-bs-toggle="modal" data-bs-target="#quick-look"
+                                                        data-tooltip="tooltip" data-placement="top" title="Quick View"><i
                                                             class="fas fa-search-plus"></i></a>
                                                 </li>
                                                 <li>
 
-                                                    <a data-modal="modal" data-modal-id="#add-to-cart"
-                                                        data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i
-                                                            class="fas fa-plus-circle"></i></a>
+                                                    <a data-bs-toggle="modal" data-bs-target="#add-to-cart"
+                                                        data-tooltip="tooltip" data-placement="top"
+                                                        title="Add to Cart"><i class="fas fa-plus-circle"></i></a>
                                                 </li>
                                                 <li>
 
@@ -1125,7 +1125,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content modal--shadow">
 
-                <button class="btn dismiss-button fas fa-times" type="button" data-dismiss="modal"></button>
+                <button class="btn dismiss-button fas fa-times" type="button" data-bs-dismiss="modal"></button>
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-lg-5">
@@ -1352,7 +1352,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content modal-radius modal-shadow">
 
-                <button class="btn dismiss-button fas fa-times" type="button" data-dismiss="modal"></button>
+                <button class="btn dismiss-button fas fa-times" type="button" data-bs-dismiss="modal"></button>
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-lg-6 col-md-12">
