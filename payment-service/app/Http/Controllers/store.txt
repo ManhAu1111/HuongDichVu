@@ -1,0 +1,32 @@
+public function momoCallback(Request $request)
+    {
+        // 1. Lấy orderPublicId do bạn gửi sang MoMo lúc tạo thanh toán
+        $orderPublicId = $request->orderId; // hoặc param bạn truyền thêm vào extraData
+
+        // 2. Kiểm tra chữ ký MoMo ở đây (nếu cần)
+
+        // 3. Gửi sang ORDER-SERVICE
+        $callbackUrl = env('ORDER_SERVICE_URL', 'http://127.0.0.1:8003')
+            . "/api/orders/{$orderPublicId}/paid";
+
+        $client = new \GuzzleHttp\Client();
+
+        $client->post($callbackUrl, [
+            'headers' => [
+                'X-SERVICE-TOKEN' => env('SERVICE_SHARED_SECRET'), // shared secret
+                'Accept'          => 'application/json'
+            ],
+            'json' => [
+                'resultCode' => $request->resultCode,
+                'momoData'   => $request->all(),
+                'orderId'    => $orderPublicId
+            ]
+        ]);
+
+        // 4. Redirect về frontend sau khi thông báo order-service
+        if ($request->resultCode == 0) {
+            return redirect('http://127.0.0.1:8000/checkout?status=success');
+        }
+
+        return redirect('http://127.0.0.1:8000/checkout?status=failed');
+    }
