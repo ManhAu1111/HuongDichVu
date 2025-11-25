@@ -130,7 +130,7 @@
                                     <div class="dash__pad-2">
                                         <h1 class="dash__h1 u-s-m-b-14">Manage My Account</h1>
 
-                                        <span class="dash__text u-s-m-b-30">From your My Account Dashboard you have the
+                                        <span class="dash__text u-s-m-b-30">From  My Account Dashboard you have the
                                             ability to view a snapshot of your recent account activity and update your
                                             account information. Select a link below to view or edit information.</span>
                                         <div class="row">
