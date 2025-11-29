@@ -1,32 +1,25 @@
-{{-- 1. Kế thừa file layout chính --}}
+{{-- 1. Kế thừa layout --}}
 @extends('layouts.app')
 
-{{-- 2. Đặt tiêu đề riêng cho trang này (sẽ thay thế @yield('title')) --}}
-{{-- Trong thực tế, bạn sẽ dùng biến động: @section('title', $post->title) --}}
-@section('title', 'Ludus - Chi Tiết Bài Viết')
+{{-- 2. Title --}}
+@section('title', 'Giỏ Hàng')
 
-
-{{-- 3. Bắt đầu phần nội dung (sẽ thay thế @yield('content')) --}}
+{{-- 3. Nội dung trang --}}
 @section('content')
-
 <div class="app-content">
 
-    <!--====== Section 1 ======-->
+    <!--====== Breadcrumb ======-->
     <div class="u-s-p-y-60">
-
-        <!--====== Section Content ======-->
         <div class="section__content">
             <div class="container">
                 <div class="breadcrumb">
                     <div class="breadcrumb__wrap">
                         <ul class="breadcrumb__list">
                             <li class="has-separator">
-
-                                <a href="{{ route('shop.index') }}">Home</a>
+                                <a href="{{ route('shop.index') }}">Trang Chủ</a>
                             </li>
                             <li class="is-marked">
-
-                                <a href="{{ route('cart') }}">Cart</a>
+                                <a href="{{ route('cart') }}">Giỏ Hàng</a>
                             </li>
                         </ul>
                     </div>
@@ -34,336 +27,392 @@
             </div>
         </div>
     </div>
+    <!--====== End Breadcrumb ======-->
 
-    <!--====== End - Section 1 ======-->
 
-
-    <!--====== Section 2 ======-->
+    <!--====== Giỏ Hàng ======-->
     <div class="u-s-p-b-60">
 
-        <!--====== Section Intro ======-->
         <div class="section__intro u-s-m-b-60">
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="section__text-wrap">
-                            <h1 class="section__heading u-c-secondary">SHOPPING CART</h1>
-                        </div>
-                    </div>
-                </div>
+                <h1 class="section__heading u-c-secondary">GIỎ HÀNG</h1>
             </div>
         </div>
-        <!--====== End - Section Intro ======-->
 
-
-                <!--====== Section Content ======-->
-                <div class="section__content">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12 col-sm-12 u-s-m-b-30">
-                                <div class="table-responsive">
-                                    <table class="table-p">
-                                        <tbody>
-
-                                            <!--====== Row ======-->
-                                            <tr>
-                                                <td>
-                                                    <div class="table-p__box">
-                                                        <div class="table-p__img-wrap">
-
-                                                            <img class="u-img-fluid" src="images/product/electronic/product3.jpg" alt=""></div>
-                                                        <div class="table-p__info">
-
-                                                            <span class="table-p__name">
-
-                                                                <a href="product-detail.html">Yellow Wireless Headphone</a></span>
-
-                                                            <span class="table-p__category">
-
-                                                                <a href="shop-side-version-2.html">Electronics</a></span>
-                                                            <ul class="table-p__variant-list">
-                                                                <li>
-
-                                                                    <span>Size: 22</span></li>
-                                                                <li>
-
-                                                                    <span>Color: Red</span></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-
-                                                    <span class="table-p__price">$125.00</span></td>
-                                                <td>
-                                                    <div class="table-p__input-counter-wrap">
-
-                                                        <!--====== Input Counter ======-->
-                                                        <div class="input-counter">
-
-                                                            <span class="input-counter__minus fas fa-minus"></span>
-
-                                                            <input class="input-counter__text input-counter--text-primary-style" type="text" value="1" data-min="1" data-max="1000">
-
-                                                            <span class="input-counter__plus fas fa-plus"></span></div>
-                                                        <!--====== End - Input Counter ======-->
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="table-p__del-wrap">
-
-                                                        <a class="far fa-trash-alt table-p__delete-link" href="#"></a></div>
-                                                </td>
-                                            </tr>
-                                            <!--====== End - Row ======-->
-
-
-                                            <!--====== Row ======-->
-                                            <tr>
-                                                <td>
-                                                    <div class="table-p__box">
-                                                        <div class="table-p__img-wrap">
-
-                                                            <img class="u-img-fluid" src="images/product/women/product8.jpg" alt=""></div>
-                                                        <div class="table-p__info">
-
-                                                            <span class="table-p__name">
-
-                                                                <a href="product-detail.html">New Dress D Nice Elegant</a></span>
-
-                                                            <span class="table-p__category">
-
-                                                                <a href="shop-side-version-2.html">Women Clothing</a></span>
-                                                            <ul class="table-p__variant-list">
-                                                                <li>
-
-                                                                    <span>Size: 22</span></li>
-                                                                <li>
-
-                                                                    <span>Color: Red</span></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-
-                                                    <span class="table-p__price">$125.00</span></td>
-                                                <td>
-                                                    <div class="table-p__input-counter-wrap">
-
-                                                        <!--====== Input Counter ======-->
-                                                        <div class="input-counter">
-
-                                                            <span class="input-counter__minus fas fa-minus"></span>
-
-                                                            <input class="input-counter__text input-counter--text-primary-style" type="text" value="1" data-min="1" data-max="1000">
-
-                                                            <span class="input-counter__plus fas fa-plus"></span></div>
-                                                        <!--====== End - Input Counter ======-->
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="table-p__del-wrap">
-
-                                                        <a class="far fa-trash-alt table-p__delete-link" href="#"></a></div>
-                                                </td>
-                                            </tr>
-                                            <!--====== End - Row ======-->
-
-
-                                            <!--====== Row ======-->
-                                            <tr>
-                                                <td>
-                                                    <div class="table-p__box">
-                                                        <div class="table-p__img-wrap">
-
-                                                            <img class="u-img-fluid" src="images/product/men/product8.jpg" alt=""></div>
-                                                        <div class="table-p__info">
-
-                                                            <span class="table-p__name">
-
-                                                                <a href="product-detail.html">New Fashion D Nice Elegant</a></span>
-
-                                                            <span class="table-p__category">
-
-                                                                <a href="shop-side-version-2.html">Men Clothing</a></span>
-                                                            <ul class="table-p__variant-list">
-                                                                <li>
-
-                                                                    <span>Size: 22</span></li>
-                                                                <li>
-
-                                                                    <span>Color: Red</span></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-
-                                                    <span class="table-p__price">$125.00</span></td>
-                                                <td>
-                                                    <div class="table-p__input-counter-wrap">
-
-                                                        <!--====== Input Counter ======-->
-                                                        <div class="input-counter">
-
-                                                            <span class="input-counter__minus fas fa-minus"></span>
-
-                                                            <input class="input-counter__text input-counter--text-primary-style" type="text" value="1" data-min="1" data-max="1000">
-
-                                                            <span class="input-counter__plus fas fa-plus"></span></div>
-                                                        <!--====== End - Input Counter ======-->
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="table-p__del-wrap">
-
-                                                        <a class="far fa-trash-alt table-p__delete-link" href="#"></a></div>
-                                                </td>
-                                            </tr>
-                                            <!--====== End - Row ======-->
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="route-box">
-                                    <div class="route-box__g1">
-
-                                        <a class="route-box__link" href="shop-side-version-2.html"><i class="fas fa-long-arrow-alt-left"></i>
-
-                                            <span>CONTINUE SHOPPING</span></a></div>
-                                    <div class="route-box__g2">
-
-                                        <a class="route-box__link" href="cart.html"><i class="fas fa-trash"></i>
-
-                                            <span>CLEAR CART</span></a>
-
-                                        <a class="route-box__link" href="cart.html"><i class="fas fa-sync"></i>
-
-                                            <span>UPDATE CART</span></a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--====== End - Section Content ======-->
-    </div>
-    <!--====== End - Section 2 ======-->
-
-
-    <!--====== Section 3 ======-->
-    <div class="u-s-p-b-60">
-
-        <!--====== Section Content ======-->
         <div class="section__content">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 u-s-m-b-30">
-                        <form class="f-cart">
-                            <div class="row">
-                                <div class="col-lg-4 col-md-6 u-s-m-b-30">
-                                    <div class="f-cart__pad-box">
-                                        <h1 class="gl-h1">ESTIMATE SHIPPING AND TAXES</h1>
 
-                                        <span class="gl-text u-s-m-b-30">Enter your destination to get a shipping
-                                            estimate.</span>
-                                        <div class="u-s-m-b-30">
+                    <div class="col-lg-12 u-s-m-b-30">
+                        <div class="table-responsive">
+                            <table class="table-p">
+                                <tbody>
 
-                                            <!--====== Select Box ======-->
+                                    <!--====== SP 1 ======-->
+                                    <tr>
+                                        <td>
+                                            <div class="table-p__box">
+                                                <div class="table-p__img-wrap">
+                                                    <img class="u-img-fluid"
+                                                        src="images/product/electronic/product3.jpg" alt="">
+                                                </div>
 
-                                            <label class="gl-label" for="shipping-country">COUNTRY *</label><select
-                                                class="select-box select-box--primary-style" id="shipping-country">
-                                                <option selected value="">Choose Country</option>
-                                                <option value="uae">United Arab Emirate (UAE)</option>
-                                                <option value="uk">United Kingdom (UK)</option>
-                                                <option value="us">United States (US)</option>
-                                            </select>
-                                            <!--====== End - Select Box ======-->
-                                        </div>
-                                        <div class="u-s-m-b-30">
+                                                <div class="table-p__info" data-product-id="1" data-price="125"
+                                                    data-quantity="1" data-subtotal="125">
+                                                    <span class="table-p__name">
+                                                        <a href="product-detail.html">Tai nghe không dây màu vàng</a>
+                                                    </span>
+                                                    <span class="table-p__category">
+                                                        <a href="#">Điện tử</a>
+                                                    </span>
 
-                                            <!--====== Select Box ======-->
+                                                    <ul class="table-p__variant-list">
+                                                        <li><span>Kích thước: 22</span></li>
+                                                        <li><span>Màu sắc: Đỏ</span></li>
+                                                    </ul>
+                                                </div>
 
-                                            <label class="gl-label" for="shipping-state">STATE/PROVINCE *</label><select
-                                                class="select-box select-box--primary-style" id="shipping-state">
-                                                <option selected value="">Choose State/Province</option>
-                                                <option value="al">Alabama</option>
-                                                <option value="al">Alaska</option>
-                                                <option value="ny">New York</option>
-                                            </select>
-                                            <!--====== End - Select Box ======-->
-                                        </div>
-                                        <div class="u-s-m-b-30">
+                                            </div>
+                                        </td>
 
-                                            <label class="gl-label" for="shipping-zip">ZIP/POSTAL CODE *</label>
+                                        <td><span class="table-p__price">125.00$</span></td>
 
-                                            <input class="input-text input-text--primary-style" type="text"
-                                                id="shipping-zip" placeholder="Zip/Postal Code">
-                                        </div>
-                                        <div class="u-s-m-b-30">
+                                        <td>
+                                            <div class="table-p__input-counter-wrap">
+                                                <div class="input-counter">
+                                                    <span class="input-counter__minus fas fa-minus"></span>
+                                                    <input class="input-counter__text input-counter--text-primary-style"
+                                                        type="text" value="1" data-min="1" data-max="1000">
+                                                    <span class="input-counter__plus fas fa-plus"></span>
+                                                </div>
+                                            </div>
+                                        </td>
 
-                                            <a class="f-cart__ship-link btn--e-transparent-brand-b-2"
-                                                href="{{ route('cart') }}">CALCULATE SHIPPING</a>
-                                        </div>
+                                        <td>
+                                            <div class="table-p__del-wrap">
+                                                <a class="far fa-trash-alt table-p__delete-link" href="#"></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <!--====== End SP 1 ======-->
 
-                                        <span class="gl-text">Note: There are some countries where free shipping is
-                                            available otherwise our flat rate charges or country delivery charges will
-                                            be apply.</span>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6 u-s-m-b-30">
-                                    <div class="f-cart__pad-box">
-                                        <h1 class="gl-h1">NOTE</h1>
+                                    <!--====== SP 2 ======-->
+                                    <tr>
+                                        <td>
+                                            <div class="table-p__box">
+                                                <div class="table-p__img-wrap">
+                                                    <img class="u-img-fluid" src="images/product/women/product8.jpg"
+                                                        alt="">
+                                                </div>
 
-                                        <span class="gl-text u-s-m-b-30">Add Special Note About Your Product</span>
-                                        <div>
+                                                <div class="table-p__info" data-product-id="2" data-price="125"
+                                                    data-quantity="1" data-subtotal="125">
+                                                    <span class="table-p__name">
+                                                        <a href="#">Váy nữ đẹp – Elegant Dress</a>
+                                                    </span>
+                                                    <span class="table-p__category">
+                                                        <a href="#">Thời trang nữ</a>
+                                                    </span>
 
-                                            <label for="f-cart-note"></label><textarea
-                                                class="text-area text-area--primary-style" id="f-cart-note"></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6 u-s-m-b-30">
-                                    <div class="f-cart__pad-box">
-                                        <div class="u-s-m-b-30">
-                                            <table class="f-cart__table">
-                                                <tbody>
-                                                    <tr>
-                                                        <td>SHIPPING</td>
-                                                        <td>$4.00</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>TAX</td>
-                                                        <td>$0.00</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>SUBTOTAL</td>
-                                                        <td>$379.00</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>GRAND TOTAL</td>
-                                                        <td>$379.00</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <div>
-                                            <a href="{{ route('checkout') }}" class="btn btn--e-brand-b-2">
-                                                PROCEED TO CHECKOUT
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
+                                                    <ul class="table-p__variant-list">
+                                                        <li><span>Kích thước: 22</span></li>
+                                                        <li><span>Màu sắc: Đỏ</span></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                        <td><span class="table-p__price">125.00$</span></td>
+
+                                        <td>
+                                            <div class="table-p__input-counter-wrap">
+                                                <div class="input-counter">
+                                                    <span class="input-counter__minus fas fa-minus"></span>
+                                                    <input class="input-counter__text input-counter--text-primary-style"
+                                                        type="text" value="1" data-min="1" data-max="1000">
+                                                    <span class="input-counter__plus fas fa-plus"></span>
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                        <td>
+                                            <div class="table-p__del-wrap">
+                                                <a class="far fa-trash-alt table-p__delete-link" href="#"></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <!--====== End SP 2 ======-->
+
+                                    <!--====== SP 3 ======-->
+                                    <tr>
+                                        <td>
+                                            <div class="table-p__box">
+                                                <div class="table-p__img-wrap">
+                                                    <img class="u-img-fluid" src="images/product/men/product8.jpg"
+                                                        alt="">
+                                                </div>
+
+                                                <div class="table-p__info" data-product-id="3" data-price="125"
+                                                    data-quantity="1" data-subtotal="125">
+                                                    <span class="table-p__name">
+                                                        <a href="#">Áo thời trang nam – Elegant Fashion</a>
+                                                    </span>
+                                                    <span class="table-p__category">
+                                                        <a href="#">Thời trang nam</a>
+                                                    </span>
+
+                                                    <ul class="table-p__variant-list">
+                                                        <li><span>Kích thước: 22</span></li>
+                                                        <li><span>Màu sắc: Đỏ</span></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                        <td><span class="table-p__price">125.00$</span></td>
+
+                                        <td>
+                                            <div class="table-p__input-counter-wrap">
+                                                <div class="input-counter">
+                                                    <span class="input-counter__minus fas fa-minus"></span>
+                                                    <input class="input-counter__text input-counter--text-primary-style"
+                                                        type="text" value="1" data-min="1" data-max="1000">
+                                                    <span class="input-counter__plus fas fa-plus"></span>
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                        <td>
+                                            <div class="table-p__del-wrap">
+                                                <a class="far fa-trash-alt table-p__delete-link" href="#"></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <!--====== End SP 3 ======-->
+
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
+
+                    <!-- Các nút điều hướng -->
+                    <div class="col-lg-12">
+                        <div class="route-box">
+                            <div class="route-box__g1">
+                                <a class="route-box__link" href="{{ route('shop.index') }}">
+                                    <i class="fas fa-long-arrow-alt-left"></i>
+                                    <span>Tiếp tục mua hàng</span>
+                                </a>
+                            </div>
+
+                            <div class="route-box__g2">
+                                <a class="route-box__link" href="#">
+                                    <i class="fas fa-trash"></i>
+                                    <span>Xóa giỏ hàng</span>
+                                </a>
+
+                                <a class="route-box__link" href="#">
+                                    <i class="fas fa-sync"></i>
+                                    <span>Cập nhật giỏ hàng</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
-        <!--====== End - Section Content ======-->
+
     </div>
-    <!--====== End - Section 3 ======-->
+    <!--====== End Giỏ Hàng ======-->
+
+
+    <!--====== Ước tính phí + Ghi chú + Tổng ======-->
+    <div class="u-s-p-b-60">
+        <div class="section__content">
+            <div class="container">
+                <form class="f-cart">
+                    <div class="row">
+
+                        <!-- Ước tính phí -->
+                        <div class="col-lg-4 col-md-6 u-s-m-b-30">
+                            <div class="f-cart__pad-box">
+
+                                <h1 class="gl-h1">ƯỚC TÍNH PHÍ GIAO HÀNG</h1>
+                                <span class="gl-text u-s-m-b-30">
+                                    Nhập thông tin để hệ thống tính phí giao hàng.
+                                </span>
+
+                                <div class="u-s-m-b-30">
+                                    <label class="gl-label">Quốc gia *</label>
+                                    <span class="text-dark fw-bold">Việt Nam</span>
+                                </div>
+
+                                <div class="u-s-m-b-30">
+                                    <label class="gl-label">Tỉnh / Thành *</label>
+                                    <select id="province-select" class="select-box select-box--primary-style">
+                                        <option value="">Đang tải danh sách...</option>
+                                    </select>
+                                </div>
+
+                                <div class="u-s-m-b-30">
+                                    <label class="gl-label">Mã bưu điện *</label>
+                                    <input class="input-text input-text--primary-style" type="text"
+                                        placeholder="VD: 100000">
+                                </div>
+
+                                <div class="u-s-m-b-30">
+                                    <button type="button" id="btnCalculateShipping" class="btn btn--e-brand-b-2">
+                                        Tính phí giao hàng
+                                    </button>
+
+                                </div>
+
+                                <span class="gl-text">
+                                    * Một số khu vực có thể được miễn phí giao hàng tùy chính sách.
+                                </span>
+
+                            </div>
+                        </div>
+
+                        <!-- Ghi chú -->
+                        <div class="col-lg-4 col-md-6 u-s-m-b-30">
+                            <div class="f-cart__pad-box">
+                                <h1 class="gl-h1">GHI CHÚ ĐƠN HÀNG</h1>
+                                <span class="gl-text u-s-m-b-30">Thêm ghi chú cho đơn hàng của bạn</span>
+                                <textarea class="text-area text-area--primary-style"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Tổng tiền -->
+                        <div class="col-lg-4 col-md-6 u-s-m-b-30">
+                            <div class="f-cart__pad-box">
+
+                                <div class="u-s-m-b-30">
+                                    <table class="f-cart__table">
+                                        <tbody>
+                                            <tr>
+                                                <td>Phí giao hàng</td>
+                                                <td id="shipping-fee-display">0 đ</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tạm tính</td>
+                                                <td id="subtotal-display" data-value="0">0 đ</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tổng cộng</td>
+                                                <td id="grand-total-display">0 đ</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div>
+                                    <a href="{{ route('checkout') }}" class="btn btn--e-brand-b-2">
+                                        Tiến hành thanh toán
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--====== End Tổng ======-->
+
 </div>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+
+        const provinceSelect = document.getElementById("province-select");
+        const btnCheckout = document.getElementById("btnCheckout");
+        const btnCalculate = document.getElementById("btnCalculateShipping");
+        const shippingDisplay = document.getElementById("shipping-fee-display");
+        const subtotalEl = document.getElementById("subtotal-display");
+        const grandTotalEl = document.getElementById("grand-total-display");
+
+        // Debug ID nếu element không tồn tại
+        if (!provinceSelect) console.error("Không tìm thấy #province-select");
+        if (!btnCheckout) console.warn("Không tìm thấy #btnCheckout (OK nếu chưa cần checkout)");
+        if (!btnCalculate) console.error("Không tìm thấy #btnCalculateShipping");
+        if (!shippingDisplay) console.error("Không tìm thấy #shipping-fee-display");
+
+        // 1) Load danh sách tỉnh/thành từ API
+        fetch("https://provinces.open-api.vn/api/p/")
+            .then(response => response.json())
+            .then(data => {
+                provinceSelect.innerHTML = '<option value="">Chọn tỉnh/thành</option>';
+                data.forEach(p => {
+                    let opt = document.createElement("option");
+                    opt.value = p.code;
+                    opt.textContent = p.name;
+                    provinceSelect.appendChild(opt);
+                });
+            })
+            .catch(err => {
+                console.error("Lỗi khi load API tỉnh:", err);
+                provinceSelect.innerHTML = '<option value="">Không tải được danh sách tỉnh</option>';
+            });
+
+        // 2) Hàm gọi API tính phí giao hàng
+        function calculateShipping(provinceCode) {
+            return fetch("http://127.0.0.1:8002/api/calculate-shipping", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Accept": "application/json"
+                    },
+                    body: JSON.stringify({
+                        province_code: Number(provinceCode)
+                    })
+                })
+                .then(res => {
+                    if (!res.ok) return res.text().then(t => {
+                        throw new Error("Server error: " + t);
+                    });
+                    return res.json();
+                });
+        }
+
+        // 3) Event: Nhấn nút “Tính phí giao hàng”
+        btnCalculate.addEventListener("click", function() {
+            const provinceCode = provinceSelect.value;
+
+            if (!provinceCode) {
+                alert("Bạn phải chọn tỉnh/thành trước.");
+                return;
+            }
+
+            calculateShipping(provinceCode)
+                .then(data => {
+                    // Cập nhật phí ship
+                    shippingDisplay.innerText = new Intl.NumberFormat("vi-VN").format(data
+                        .shipping_fee) + " đ";
+
+                    // Cập nhật tổng tiền (nếu có subtotal)
+                    if (subtotalEl && grandTotalEl) {
+                        const subtotal = Number(subtotalEl.dataset.value ?? 0);
+                        const total = subtotal + data.shipping_fee;
+                        grandTotalEl.innerText = new Intl.NumberFormat("vi-VN").format(total) + " đ";
+                    }
+                })
+                .catch(err => {
+                    console.error("Lỗi API calculate-shipping:", err);
+                    alert("Không tính được phí giao hàng. Kiểm tra console hoặc backend.");
+                });
+        });
+
+        // 4) Event: Tự động tính lại khi đổi tỉnh (tùy chọn)
+        provinceSelect.addEventListener("change", function() {
+            // Không tính tự động nữa — chỉ đổi tỉnh thôi
+            console.log("Đã chọn tỉnh:", this.value);
+        });
+
+    });
+</script>
+
+
 @endsection
-{{-- 4. Kết thúc phần nội dung --}}

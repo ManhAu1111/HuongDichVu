@@ -22,7 +22,7 @@ Route::view('/blogMasonry', 'blog.blogMasonry')->name('blog.Masonry');
 |--------------------------------------------------------------------------
 */
 
-Route::view('/index', 'shop.index')->name('shop.index');
+Route::view('/', 'shop.index')->name('shop.index');
 Route::view('/index2', 'shop.index2')->name('shop.index2');
 Route::view('/index3', 'shop.index3')->name('shop.index3');
 Route::view('/shopGridFull', 'shop.shopGridFull')->name('shop.GridFull');
@@ -113,4 +113,3 @@ Route::view('/faq', 'faq')->name('faq');
 Route::view('/404', '404')->name('404');
 Route::view('/contact', 'contact')->name('contact');
 Route::view('/wishlist', 'wishlist')->name('wishlist');
-
