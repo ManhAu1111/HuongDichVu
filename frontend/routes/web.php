@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthProxyController;
 use Illuminate\Support\Facades\Cookie;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +23,7 @@ Route::view('/blogMasonry', 'blog.blogMasonry')->name('blog.Masonry');
 |--------------------------------------------------------------------------
 */
 
-Route::view('/index', 'shop.index')->name('shop.index');
+Route::get('/index', [ProductController::class, 'index'])->name('shop.index');
 Route::view('/index2', 'shop.index2')->name('shop.index2');
 Route::view('/index3', 'shop.index3')->name('shop.index3');
 Route::view('/shopGridFull', 'shop.shopGridFull')->name('shop.GridFull');
@@ -31,6 +32,7 @@ Route::view('/shopGridRight', 'shop.shopGridRight')->name('shop.GridRight');
 Route::view('/shopListFull', 'shop.shopListFull')->name('shop.ListFull');
 Route::view('/shopListLeft', 'shop.shopListLeft')->name('shop.ListLeft');
 Route::view('/shopListRight', 'shop.shopListRight')->name('shop.ListRight');
+Route::get('/category/{id}', [ProductController::class, 'byCategory'])->name('shop.category');
 
 /*
 |--------------------------------------------------------------------------
@@ -40,11 +42,10 @@ Route::view('/shopListRight', 'shop.shopListRight')->name('shop.ListRight');
 
 Route::view('/productDetailAffiliate', 'products.productDetailAffiliate')->name('products.DetailAffiliate');
 Route::view('/productDetailVariable', 'products.productDetailVariable')->name('products.DetailVariable');
-Route::view('/product_detail', 'products.product_detail')->name('products.detail');
+Route::get('/product/{id}', [ProductController::class, 'detail'])->name('products.detail');
 Route::view('/checkout', 'products.checkout')->name('checkout');
 Route::view('/cart', 'cart')->name('cart');
-Route::view('/shop_side_v2', 'shop.shop_side_v2')->name('shop.side_v2');
-
+Route::get('/shop_side_v2', [ProductController::class, 'shop'])->name('shop.side_v2');
 
 
 // Login page

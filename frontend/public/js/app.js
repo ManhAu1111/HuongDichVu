@@ -490,7 +490,7 @@
 
             // Init Lightgallery plugin
             $productDetailElement.lightGallery({
-                selector: '.pd-o-img-wrap',// lightgallery-core
+                selector: '.pd-o-img-wrap:not(.no-zoom)',// lightgallery-core
                 download: false,// lightgallery-core
                 thumbnail: false,// Thumbnails
                 autoplayControls: false,// Autoplay-plugin
@@ -689,139 +689,183 @@
     RESHOP.shopSideFilter();
 })(jQuery);
 
-// model-viewer.js
-let scene, camera, renderer, controls, loader, currentModel = null;
 
-/**
- * Khởi tạo viewer 3D bên trong container có id="model3D"
- */
-function initModelViewer() {
-    const container = document.getElementById("model3D");
-    if (!container) return console.error("Không tìm thấy #model3D!");
+document.addEventListener("DOMContentLoaded", function () {
 
-    // Tạo scene, camera, renderer
-    scene = new THREE.Scene();
-    camera = new THREE.PerspectiveCamera(60, container.clientWidth / container.clientHeight, 0.1, 1000);
-    renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    renderer.setSize(container.clientWidth, container.clientHeight);
-    renderer.setClearColor(0xf1f1f1, 1);
-    container.appendChild(renderer.domElement);
+    // lấy container grid
+    var grid = document.querySelector('.filter__grid');
 
-    // Ánh sáng
-    const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444, 1.2);
-    scene.add(hemiLight);
-    const dirLight = new THREE.DirectionalLight(0xffffff, 1);
-    dirLight.position.set(5, 10, 7.5);
-    scene.add(dirLight);
+    // nếu không có grid thì khỏi chạy
+    if (!grid) return;
 
-    // Camera & controls
-    camera.position.set(0, 1, 3);
-    controls = new THREE.OrbitControls(camera, renderer.domElement);
-    controls.enableDamping = true;
+    // init isotope
+    var iso = new Isotope(grid, {
+        itemSelector: '.filter__item',
+        layoutMode: 'fitRows'
+    });
 
-    // Loader
-    loader = new THREE.GLTFLoader();
+    // filter mặc định
+    let defaultBtn = document.querySelector(".filter__btn.js-checked");
+    let defaultFilter = defaultBtn ? defaultBtn.getAttribute("data-filter") : "*";
 
-    // Bắt đầu render
-    animate();
+    iso.arrange({
+        filter: defaultFilter
+    });
 
-    // Cập nhật khi thay đổi kích thước
-    window.addEventListener("resize", onWindowResize);
+    // event click
+    document.querySelectorAll(".filter__btn").forEach(function (btn) {
+        btn.addEventListener("click", function () {
 
-    // Lấy đường dẫn model từ data-model trong HTML
-    const defaultModel = container.parentElement.dataset.model;
-    if (defaultModel) loadModel(defaultModel);
+            let filter = btn.getAttribute("data-filter");
 
-    // Chặn click (ngăn gallery thay bằng ảnh)
-    document.querySelectorAll(".pd-o-img-wrap").forEach(item => {
-        if (item.querySelector("#model3D")) {
-            item.addEventListener("click", e => {
-                e.stopPropagation();
-                e.preventDefault();
+            document.querySelectorAll(".filter__btn").forEach(b => b.classList.remove("js-checked"));
+            btn.classList.add("js-checked");
+
+            iso.arrange({
+                filter: filter
             });
-        }
-    });
-
-    // Gọi resize lại sau khi init để chắc chắn render chính xác
-    onWindowResize();
-}
-
-/**
- * Load mô hình GLB
- */
-function loadModel(path) {
-    if (!loader) return;
-
-    if (currentModel) {
-        scene.remove(currentModel);
-        currentModel.traverse(obj => {
-            if (obj.geometry) obj.geometry.dispose();
-            if (obj.material) {
-                if (Array.isArray(obj.material)) obj.material.forEach(m => m.dispose());
-                else obj.material.dispose();
-            }
         });
-    }
-
-    loader.load(path, (gltf) => {
-        currentModel = gltf.scene;
-
-        // ⚙️ Tùy chỉnh scale/position riêng cho từng model
-        if (path.includes("ASSET.glb")) {
-            currentModel.scale.set(0.6, 0.6, 0.6);
-            currentModel.position.set(0, -1, 0);
-        } else if (path.includes("sofa")) {
-            currentModel.scale.set(0.8, 0.8, 0.8);
-            currentModel.position.set(0, -0.5, 0);
-        } else {
-            currentModel.scale.set(1, 1, 1);
-            currentModel.position.set(0, 0, 0);
-        }
-
-        scene.add(currentModel);
-
-        // Reset camera
-        camera.position.set(0, 1, 3);
-        controls.target.set(0, 0, 0);
-        controls.update();
-
-        // Ép render ngay khi model load xong
-        renderer.render(scene, camera);
-    }, undefined, (err) => {
-        console.error("Lỗi tải mô hình:", err);
     });
-}
 
-/**
- * Xử lý khi thay đổi kích thước khung
- */
-function onWindowResize() {
-    const container = document.getElementById("model3D");
-    if (!container || !camera || !renderer) return;
-    camera.aspect = container.clientWidth / container.clientHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(container.clientWidth, container.clientHeight);
-}
-
-/**
- * Vòng lặp render
- */
-function animate() {
-    requestAnimationFrame(animate);
-    if (controls) controls.update();
-    if (renderer && scene && camera) renderer.render(scene, camera);
-}
-
-// 🔧 Khởi tạo sau khi DOM sẵn sàng (đã sửa theo Cách 1)
-document.addEventListener("DOMContentLoaded", () => {
-    setTimeout(initModelViewer, 200); // Trì hoãn nhẹ để DOM render hoàn tất
 });
 
-// 🔒 Chặn mọi sự kiện click, zoom, popup trên khung mô hình 3D
-document.querySelectorAll('.pd-o-img-wrap.no-zoom, #model3D').forEach(el => {
-    el.addEventListener('click', (e) => {
-        e.stopPropagation(); // Ngăn lan lên parent
-        e.preventDefault();  // Ngăn plugin xử lý
-        return false;        // Ngăn luôn các thư viện cũ (jQuery)
-    });
-});
+
+
+
+
+// // model-viewer.js
+// let scene, camera, renderer, controls, loader, currentModel = null;
+
+// /**
+//  * Khởi tạo viewer 3D bên trong container có id="model3D"
+//  */
+// function initModelViewer() {
+//     const container = document.getElementById("model3D");
+//     if (!container) return console.error("Không tìm thấy #model3D!");
+
+//     // Tạo scene, camera, renderer
+//     scene = new THREE.Scene();
+//     camera = new THREE.PerspectiveCamera(60, container.clientWidth / container.clientHeight, 0.1, 1000);
+//     renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+//     renderer.setSize(container.clientWidth, container.clientHeight);
+//     renderer.setClearColor(0xf1f1f1, 1);
+//     container.appendChild(renderer.domElement);
+
+//     // Ánh sáng
+//     const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444, 1.2);
+//     scene.add(hemiLight);
+//     const dirLight = new THREE.DirectionalLight(0xffffff, 1);
+//     dirLight.position.set(5, 10, 7.5);
+//     scene.add(dirLight);
+
+//     // Camera & controls
+//     camera.position.set(0, 1, 3);
+//     controls = new THREE.OrbitControls(camera, renderer.domElement);
+//     controls.enableDamping = true;
+
+//     // Loader
+//     loader = new THREE.GLTFLoader();
+
+//     // Bắt đầu render
+//     animate();
+
+//     // Cập nhật khi thay đổi kích thước
+//     window.addEventListener("resize", onWindowResize);
+
+//     // Lấy đường dẫn model từ data-model trong HTML
+//     const defaultModel = container.parentElement.dataset.model;
+//     if (defaultModel) loadModel(defaultModel);
+
+//     // Chặn click (ngăn gallery thay bằng ảnh)
+//     document.querySelectorAll(".pd-o-img-wrap").forEach(item => {
+//         if (item.querySelector("#model3D")) {
+//             item.addEventListener("click", e => {
+//                 e.stopPropagation();
+//                 e.preventDefault();
+//             });
+//         }
+//     });
+
+//     // Gọi resize lại sau khi init để chắc chắn render chính xác
+//     onWindowResize();
+// }
+
+// /**
+//  * Load mô hình GLB
+//  */
+// function loadModel(path) {
+//     if (!loader) return;
+
+//     if (currentModel) {
+//         scene.remove(currentModel);
+//         currentModel.traverse(obj => {
+//             if (obj.geometry) obj.geometry.dispose();
+//             if (obj.material) {
+//                 if (Array.isArray(obj.material)) obj.material.forEach(m => m.dispose());
+//                 else obj.material.dispose();
+//             }
+//         });
+//     }
+
+//     loader.load(path, (gltf) => {
+//         currentModel = gltf.scene;
+
+//         // ⚙️ Tùy chỉnh scale/position riêng cho từng model
+//         if (path.includes("ASSET.glb")) {
+//             currentModel.scale.set(0.6, 0.6, 0.6);
+//             currentModel.position.set(0, -1, 0);
+//         } else if (path.includes("sofa")) {
+//             currentModel.scale.set(0.8, 0.8, 0.8);
+//             currentModel.position.set(0, -0.5, 0);
+//         } else {
+//             currentModel.scale.set(1, 1, 1);
+//             currentModel.position.set(0, 0, 0);
+//         }
+
+//         scene.add(currentModel);
+
+//         // Reset camera
+//         camera.position.set(0, 1, 3);
+//         controls.target.set(0, 0, 0);
+//         controls.update();
+
+//         // Ép render ngay khi model load xong
+//         renderer.render(scene, camera);
+//     }, undefined, (err) => {
+//         console.error("Lỗi tải mô hình:", err);
+//     });
+// }
+
+// /**
+//  * Xử lý khi thay đổi kích thước khung
+//  */
+// function onWindowResize() {
+//     const container = document.getElementById("model3D");
+//     if (!container || !camera || !renderer) return;
+//     camera.aspect = container.clientWidth / container.clientHeight;
+//     camera.updateProjectionMatrix();
+//     renderer.setSize(container.clientWidth, container.clientHeight);
+// }
+
+// /**
+//  * Vòng lặp render
+//  */
+// function animate() {
+//     requestAnimationFrame(animate);
+//     if (controls) controls.update();
+//     if (renderer && scene && camera) renderer.render(scene, camera);
+// }
+
+// // 🔧 Khởi tạo sau khi DOM sẵn sàng (đã sửa theo Cách 1)
+// document.addEventListener("DOMContentLoaded", () => {
+//     setTimeout(initModelViewer, 200); // Trì hoãn nhẹ để DOM render hoàn tất
+// });
+
+// // 🔒 Chặn mọi sự kiện click, zoom, popup trên khung mô hình 3D
+// document.querySelectorAll('.pd-o-img-wrap.no-zoom, #model3D').forEach(el => {
+//     el.addEventListener('click', (e) => {
+//         e.stopPropagation(); // Ngăn lan lên parent
+//         e.preventDefault();  // Ngăn plugin xử lý
+//         return false;        // Ngăn luôn các thư viện cũ (jQuery)
+//     });
+// });

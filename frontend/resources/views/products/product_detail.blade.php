@@ -44,58 +44,61 @@
                         <div class="pd u-s-m-b-30">
                             <div class="slider-fouc pd-wrap">
                                 <div id="pd-o-initiate">
-                                    <div class="pd-o-img-wrap no-zoom" data-model="uploads\model3d\4\office_chair_gaming_chair.glb">
-                                        <div id="model3D"
+                                    <div class="pd-o-img-wrap no-zoom">
+                                        <model-viewer src="{{ asset(str_replace('\\', '/', $product['model_url'])) }}"
+                                            alt="Model 3D {{ $product['name'] }}" auto-rotate camera-controls
+                                            shadow-intensity="1" exposure="1.0"
                                             style="width:100%; height:400px; background:#f1f1f1; border-radius:8px;">
+                                        </model-viewer>
+                                    </div>
+
+                                    @foreach ($images as $img)
+                                        <div class="pd-o-img-wrap"
+                                            data-src="{{ asset(str_replace('\\', '/', $img['image_url'])) }}">
+                                            <img class="u-img-fluid"
+                                                src="{{ asset(str_replace('\\', '/', $img['image_url'])) }}"
+                                                data-zoom-image="{{ asset(str_replace('\\', '/', $img['image_url'])) }}"
+                                                alt="">
                                         </div>
-                                    </div>
-                                    <div class="pd-o-img-wrap" data-src="images/product/product-d-2.jpg">
-
-                                        <img class="u-img-fluid" src="images/product/product-d-2.jpg"
-                                            data-zoom-image="images/product/product-d-2.jpg" alt="">
-                                    </div>
-                                    <div class="pd-o-img-wrap" data-src="images/product/product-d-3.jpg">
-
-                                        <img class="u-img-fluid" src="images/product/product-d-3.jpg"
-                                            data-zoom-image="images/product/product-d-3.jpg" alt="">
-                                    </div>
-                                    <div class="pd-o-img-wrap" data-src="images/product/product-d-4.jpg">
-
-                                        <img class="u-img-fluid" src="images/product/product-d-4.jpg"
-                                            data-zoom-image="images/product/product-d-4.jpg" alt="">
-                                    </div>
-                                    <div class="pd-o-img-wrap" data-src="images/product/product-d-5.jpg">
-
-                                        <img class="u-img-fluid" src="images/product/product-d-5.jpg"
-                                            data-zoom-image="images/product/product-d-5.jpg" alt="">
-                                    </div>
+                                    @endforeach
                                 </div>
-
                                 <span class="pd-text">Click for larger zoom</span>
                             </div>
                             <div class="u-s-m-t-15">
                                 <div class="slider-fouc">
                                     <div id="pd-o-thumbnail">
-                                        <div>
+                                        <div style="width:80px; height:80px; border-radius:6px; overflow:hidden; position:relative;">
+                                            <!-- CHẶN MỌI TƯƠNG TÁC -->
+                                            <div style="
+                                                position:absolute;
+                                                top:0;
+                                                left:0;
+                                                width:100%;
+                                                height:100%;
+                                                z-index:10;
+                                                cursor:default;
+                                            "></div>
 
-                                            <img class="u-img-fluid" src="images/product/product-d-1.jpg" alt="">
+                                            <model-viewer 
+                                                src="{{ asset(str_replace('\\', '/', $product['model_url'])) }}"
+                                                interaction-prompt="none"
+                                                disable-zoom
+                                                disable-pan
+                                                disable-tap
+                                                camera-controls
+                                                style="width:100%; height:100%; background:#f1f1f1;">
+                                            </model-viewer>
                                         </div>
-                                        <div>
 
-                                            <img class="u-img-fluid" src="images/product/product-d-2.jpg" alt="">
-                                        </div>
-                                        <div>
+                                        @foreach ($images as $img)
+                                            @php
+                                                $imgUrl = asset(str_replace('\\', '/', $img['image_url']));
+                                            @endphp
 
-                                            <img class="u-img-fluid" src="images/product/product-d-3.jpg" alt="">
-                                        </div>
-                                        <div>
-
-                                            <img class="u-img-fluid" src="images/product/product-d-4.jpg" alt="">
-                                        </div>
-                                        <div>
-
-                                            <img class="u-img-fluid" src="images/product/product-d-5.jpg" alt="">
-                                        </div>
+                                            <div>
+                                                <img class="u-img-fluid" src="{{ $imgUrl }}" alt="">
+                                            </div>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
@@ -108,41 +111,37 @@
                         <div class="pd-detail">
                             <div>
 
-                                <span class="pd-detail__name">Nikon Camera 4k Lens Zoom Pro</span>
+                                <span class="pd-detail__name">{{ $product['name'] }}</span>
                             </div>
                             <div>
                                 <div class="pd-detail__inline">
-
-                                    <span class="pd-detail__price">$6.99</span>
-
-                                    <span class="pd-detail__discount">(76% OFF)</span><del
-                                        class="pd-detail__del">$28.97</del>
+                                    {{-- xử lý lại giá trị hiển thị --}}
+                                    <span class="pd-detail__price">{{ number_format($product['price'], 0, ',', '.') }}
+                                        ₫</span>
                                 </div>
                             </div>
                             <div class="u-s-m-b-15">
-                                <div class="pd-detail__rating gl-rating-style"><i class="fas fa-star"></i><i
-                                        class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                        class="fas fa-star-half-alt"></i>
+                                <div class="pd-detail__rating gl-rating-style">
+
+                                    {!! \App\Helpers\RatingHelper::render($product['avg_rating']) !!}
 
                                     <span class="pd-detail__review u-s-m-l-4">
+                                        <a data-click-scroll="#view-review">
+                                            {{ $product['total_reviews'] }} Reviews
+                                        </a>
+                                    </span>
 
-                                        <a data-click-scroll="#view-review">23 Reviews</a></span>
                                 </div>
                             </div>
+
                             <div class="u-s-m-b-15">
                                 <div class="pd-detail__inline">
-
-                                    <span class="pd-detail__stock">200 in stock</span>
-
-                                    <span class="pd-detail__left">Only 2 left</span>
+                                    <span class="pd-detail__left"> còn {{ $product['quantity'] }} sản phẩm</span>
                                 </div>
                             </div>
                             <div class="u-s-m-b-15">
 
-                                <span class="pd-detail__preview-desc">Lorem Ipsum is simply dummy text of the printing and
-                                    typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since
-                                    the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
-                                    specimen book.</span>
+                                <span class="pd-detail__preview-desc">{{ $product['description'] }}</span>
                             </div>
                             <div class="u-s-m-b-15">
                                 <div class="pd-detail__inline">
@@ -184,7 +183,8 @@
                                     </li>
                                     <li>
 
-                                        <a class="s-gplus--color-hover" href="#"><i class="fab fa-google-plus-g"></i></a>
+                                        <a class="s-gplus--color-hover" href="#"><i
+                                                class="fab fa-google-plus-g"></i></a>
                                     </li>
                                 </ul>
                             </div>
@@ -199,7 +199,8 @@
                                                 <span class="input-counter__minus fas fa-minus"></span>
 
                                                 <input class="input-counter__text input-counter--text-primary-style"
-                                                    type="text" value="1" data-min="1" data-max="1000">
+                                                    type="text" value="1" data-min="1"
+                                                    data-max="{{ $product['quantity'] }}">
 
                                                 <span class="input-counter__plus fas fa-plus"></span>
                                             </div>
@@ -566,7 +567,8 @@
                                                                         <!--====== Radio Box ======-->
                                                                         <div class="radio-box">
 
-                                                                            <input type="radio" id="star-1" name="rating">
+                                                                            <input type="radio" id="star-1"
+                                                                                name="rating">
                                                                             <div
                                                                                 class="radio-box__state radio-box__state--primary">
 
@@ -581,7 +583,8 @@
                                                                         <!--====== Radio Box ======-->
                                                                         <div class="radio-box">
 
-                                                                            <input type="radio" id="star-1.5" name="rating">
+                                                                            <input type="radio" id="star-1.5"
+                                                                                name="rating">
                                                                             <div
                                                                                 class="radio-box__state radio-box__state--primary">
 
@@ -596,7 +599,8 @@
                                                                         <!--====== Radio Box ======-->
                                                                         <div class="radio-box">
 
-                                                                            <input type="radio" id="star-2" name="rating">
+                                                                            <input type="radio" id="star-2"
+                                                                                name="rating">
                                                                             <div
                                                                                 class="radio-box__state radio-box__state--primary">
 
@@ -611,7 +615,8 @@
                                                                         <!--====== Radio Box ======-->
                                                                         <div class="radio-box">
 
-                                                                            <input type="radio" id="star-2.5" name="rating">
+                                                                            <input type="radio" id="star-2.5"
+                                                                                name="rating">
                                                                             <div
                                                                                 class="radio-box__state radio-box__state--primary">
 
@@ -626,7 +631,8 @@
                                                                         <!--====== Radio Box ======-->
                                                                         <div class="radio-box">
 
-                                                                            <input type="radio" id="star-3" name="rating">
+                                                                            <input type="radio" id="star-3"
+                                                                                name="rating">
                                                                             <div
                                                                                 class="radio-box__state radio-box__state--primary">
 
@@ -641,7 +647,8 @@
                                                                         <!--====== Radio Box ======-->
                                                                         <div class="radio-box">
 
-                                                                            <input type="radio" id="star-3.5" name="rating">
+                                                                            <input type="radio" id="star-3.5"
+                                                                                name="rating">
                                                                             <div
                                                                                 class="radio-box__state radio-box__state--primary">
 
@@ -656,7 +663,8 @@
                                                                         <!--====== Radio Box ======-->
                                                                         <div class="radio-box">
 
-                                                                            <input type="radio" id="star-4" name="rating">
+                                                                            <input type="radio" id="star-4"
+                                                                                name="rating">
                                                                             <div
                                                                                 class="radio-box__state radio-box__state--primary">
 
@@ -671,7 +679,8 @@
                                                                         <!--====== Radio Box ======-->
                                                                         <div class="radio-box">
 
-                                                                            <input type="radio" id="star-4.5" name="rating">
+                                                                            <input type="radio" id="star-4.5"
+                                                                                name="rating">
                                                                             <div
                                                                                 class="radio-box__state radio-box__state--primary">
 
@@ -686,7 +695,8 @@
                                                                         <!--====== Radio Box ======-->
                                                                         <div class="radio-box">
 
-                                                                            <input type="radio" id="star-5" name="rating">
+                                                                            <input type="radio" id="star-5"
+                                                                                name="rating">
                                                                             <div
                                                                                 class="radio-box__state radio-box__state--primary">
 
@@ -705,23 +715,23 @@
                                                     <div class="u-s-m-b-15">
 
                                                         <label class="gl-label" for="reviewer-text">YOUR REVIEW
-                                                            *</label><textarea class="text-area text-area--primary-style"
-                                                            id="reviewer-text"></textarea>
+                                                            *</label>
+                                                        <textarea class="text-area text-area--primary-style" id="reviewer-text"></textarea>
                                                     </div>
                                                     <div>
                                                         <p class="u-s-m-b-30">
 
                                                             <label class="gl-label" for="reviewer-name">NAME *</label>
 
-                                                            <input class="input-text input-text--primary-style" type="text"
-                                                                id="reviewer-name">
+                                                            <input class="input-text input-text--primary-style"
+                                                                type="text" id="reviewer-name">
                                                         </p>
                                                         <p class="u-s-m-b-30">
 
                                                             <label class="gl-label" for="reviewer-email">EMAIL *</label>
 
-                                                            <input class="input-text input-text--primary-style" type="text"
-                                                                id="reviewer-email">
+                                                            <input class="input-text input-text--primary-style"
+                                                                type="text" id="reviewer-email">
                                                         </p>
                                                     </div>
                                                 </div>
@@ -759,354 +769,57 @@
             </div>
             <!--====== End - Section Intro ======-->
 
-
+            {{-- chưa hiển thị được slide sản phẩm --}}
             <!--====== Section Content ======-->
             <div class="section__content">
                 <div class="container">
                     <div class="slider-fouc">
                         <div class="owl-carousel product-slider" data-item="4">
-                            <div class="u-s-m-b-30">
-                                <div class="product-o product-o--hover-on">
-                                    <div class="product-o__wrap">
+                            @foreach ($latest as $p)
+                                <div class="u-s-m-b-30">
+                                    <div class="product-o product-o--hover-on">
+                                        <div class="product-o__wrap">
 
-                                        <a class="aspect aspect--bg-grey aspect--square u-d-block"
-                                            href="{{ route('products.detail') }}">
+                                            <a class="aspect aspect--bg-grey aspect--square u-d-block"
+                                                href="{{ route('products.detail', $p['id']) }}">
+                                                <img class="aspect__img" src="{{ asset($p['primary_image']) }}"
+                                                    alt="{{ $p['name'] }}">
+                                            </a>
 
-                                            <img class="aspect__img" src="images/product/electronic/product1.jpg"
-                                                alt=""></a>
-                                        <div class="product-o__action-wrap">
-                                            <ul class="product-o__action-list">
-                                                <li>
+                                            <div class="product-o__action-wrap">
+                                                <ul class="product-o__action-list">
+                                                    <li><a data-bs-toggle="modal" data-bs-target="#quick-look"><i
+                                                                class="fas fa-search-plus"></i></a></li>
+                                                    <li><a data-bs-toggle="modal" data-bs-target="#add-to-cart"><i
+                                                                class="fas fa-plus-circle"></i></a></li>
+                                                    <li><a href="{{ route('login') }}"><i class="fas fa-heart"></i></a>
+                                                    </li>
+                                                    <li><a href="{{ route('login') }}"><i
+                                                                class="fas fa-envelope"></i></a></li>
+                                                </ul>
+                                            </div>
 
-                                                    <a data-bs-toggle="modal" data-bs-target="#quick-look"
-                                                        data-tooltip="tooltip" data-placement="top" title="Quick View"><i
-                                                            class="fas fa-search-plus"></i></a>
-                                                </li>
-                                                <li>
-
-                                                    <a data-bs-toggle="modal" data-bs-target="#add-to-cart"
-                                                        data-tooltip="tooltip" data-placement="top"
-                                                        title="Add to Cart"><i class="fas fa-plus-circle"></i></a>
-                                                </li>
-                                                <li>
-
-                                                    <a href="{{ route('login') }}" data-tooltip="tooltip" data-placement="top"
-                                                        title="Add to Wishlist"><i class="fas fa-heart"></i></a>
-                                                </li>
-                                                <li>
-
-                                                    <a href="{{ route('login') }}" data-tooltip="tooltip" data-placement="top"
-                                                        title="Email me When the price drops"><i
-                                                            class="fas fa-envelope"></i></a>
-                                                </li>
-                                            </ul>
                                         </div>
-                                    </div>
 
-                                    <span class="product-o__category">
+                                        <span class="product-o__category">
+                                            <a
+                                                href="#">{{ $categories[$p['category_id']]['name'] ?? 'Danh mục' }}</a>
+                                        </span>
 
-                                        <a href="{{ route('shop.side_v2') }}">Electronics</a></span>
+                                        <span class="product-o__name">
+                                            <a href="{{ route('products.detail', $p['id']) }}">
+                                                {{ \Illuminate\Support\Str::limit($p['name'], 30, '...') }}</a>
+                                        </span>
 
-                                    <span class="product-o__name">
-
-                                        <a href="{{ route('products.detail') }}">Beats Bomb Wireless Headphone</a></span>
-                                    <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i
-                                            class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                            class="fas fa-star"></i>
-
-                                        <span class="product-o__review">(20)</span>
-                                    </div>
-
-                                    <span class="product-o__price">$125.00
-
-                                        <span class="product-o__discount">$160.00</span></span>
-                                </div>
-                            </div>
-                            <div class="u-s-m-b-30">
-                                <div class="product-o product-o--hover-on">
-                                    <div class="product-o__wrap">
-
-                                        <a class="aspect aspect--bg-grey aspect--square u-d-block"
-                                            href="{{ route('products.detail') }}">
-
-                                            <img class="aspect__img" src="images/product/electronic/product2.jpg"
-                                                alt=""></a>
-                                        <div class="product-o__action-wrap">
-                                            <ul class="product-o__action-list">
-                                                <li>
-
-                                                    <a data-bs-toggle="modal" data-bs-target="#quick-look"
-                                                        data-tooltip="tooltip" data-placement="top" title="Quick View"><i
-                                                            class="fas fa-search-plus"></i></a>
-                                                </li>
-                                                <li>
-
-                                                    <a data-bs-toggle="modal" data-bs-target="#add-to-cart"
-                                                        data-tooltip="tooltip" data-placement="top"
-                                                        title="Add to Cart"><i class="fas fa-plus-circle"></i></a>
-                                                </li>
-                                                <li>
-
-                                                    <a href="{{ route('login') }}" data-tooltip="tooltip" data-placement="top"
-                                                        title="Add to Wishlist"><i class="fas fa-heart"></i></a>
-                                                </li>
-                                                <li>
-
-                                                    <a href="{{ route('login') }}" data-tooltip="tooltip" data-placement="top"
-                                                        title="Email me When the price drops"><i
-                                                            class="fas fa-envelope"></i></a>
-                                                </li>
-                                            </ul>
+                                        <div class="product-o__rating gl-rating-style">
+                                            {!! \App\Helpers\RatingHelper::render($p['avg_rating']) !!}
+                                            <span class="product-o__review">({{ $p['total_reviews'] }})</span>
                                         </div>
+
+                                        <span class="product-o__price">{{ number_format($p['price']) }}đ</span>
                                     </div>
-
-                                    <span class="product-o__category">
-
-                                        <a href="{{ route('shop.side_v2') }}">Electronics</a></span>
-
-                                    <span class="product-o__name">
-
-                                        <a href="{{ route('products.detail') }}">Red Wireless Headphone</a></span>
-                                    <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i
-                                            class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                            class="fas fa-star"></i>
-
-                                        <span class="product-o__review">(20)</span>
-                                    </div>
-
-                                    <span class="product-o__price">$125.00
-
-                                        <span class="product-o__discount">$160.00</span></span>
                                 </div>
-                            </div>
-                            <div class="u-s-m-b-30">
-                                <div class="product-o product-o--hover-on">
-                                    <div class="product-o__wrap">
-
-                                        <a class="aspect aspect--bg-grey aspect--square u-d-block"
-                                            href="{{ route('products.detail') }}">
-
-                                            <img class="aspect__img" src="images/product/electronic/product3.jpg"
-                                                alt=""></a>
-                                        <div class="product-o__action-wrap">
-                                            <ul class="product-o__action-list">
-                                                <li>
-
-                                                    <a data-bs-toggle="modal" data-bs-target="#quick-look"
-                                                        data-tooltip="tooltip" data-placement="top" title="Quick View"><i
-                                                            class="fas fa-search-plus"></i></a>
-                                                </li>
-                                                <li>
-
-                                                    <a data-bs-toggle="modal" data-bs-target="#add-to-cart"
-                                                        data-tooltip="tooltip" data-placement="top"
-                                                        title="Add to Cart"><i class="fas fa-plus-circle"></i></a>
-                                                </li>
-                                                <li>
-
-                                                    <a href="{{ route('login') }}" data-tooltip="tooltip" data-placement="top"
-                                                        title="Add to Wishlist"><i class="fas fa-heart"></i></a>
-                                                </li>
-                                                <li>
-
-                                                    <a href="{{ route('login') }}" data-tooltip="tooltip" data-placement="top"
-                                                        title="Email me When the price drops"><i
-                                                            class="fas fa-envelope"></i></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                    <span class="product-o__category">
-
-                                        <a href="{{ route('shop.side_v2') }}">Electronics</a></span>
-
-                                    <span class="product-o__name">
-
-                                        <a href="{{ route('products.detail') }}">Yellow Wireless Headphone</a></span>
-                                    <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i
-                                            class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                            class="fas fa-star"></i>
-
-                                        <span class="product-o__review">(20)</span>
-                                    </div>
-
-                                    <span class="product-o__price">$125.00
-
-                                        <span class="product-o__discount">$160.00</span></span>
-                                </div>
-                            </div>
-                            <div class="u-s-m-b-30">
-                                <div class="product-o product-o--hover-on">
-                                    <div class="product-o__wrap">
-
-                                        <a class="aspect aspect--bg-grey aspect--square u-d-block"
-                                            href="{{ route('products.detail') }}">
-
-                                            <img class="aspect__img" src="images/product/electronic/product23.jpg"
-                                                alt=""></a>
-                                        <div class="product-o__action-wrap">
-                                            <ul class="product-o__action-list">
-                                                <li>
-
-                                                    <a data-bs-toggle="modal" data-bs-target="#quick-look"
-                                                        data-tooltip="tooltip" data-placement="top" title="Quick View"><i
-                                                            class="fas fa-search-plus"></i></a>
-                                                </li>
-                                                <li>
-
-                                                    <a data-bs-toggle="modal" data-bs-target="#add-to-cart"
-                                                        data-tooltip="tooltip" data-placement="top"
-                                                        title="Add to Cart"><i class="fas fa-plus-circle"></i></a>
-                                                </li>
-                                                <li>
-
-                                                    <a href="{{ route('login') }}" data-tooltip="tooltip" data-placement="top"
-                                                        title="Add to Wishlist"><i class="fas fa-heart"></i></a>
-                                                </li>
-                                                <li>
-
-                                                    <a href="{{ route('login') }}" data-tooltip="tooltip" data-placement="top"
-                                                        title="Email me When the price drops"><i
-                                                            class="fas fa-envelope"></i></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                    <span class="product-o__category">
-
-                                        <a href="{{ route('shop.side_v2') }}">Electronics</a></span>
-
-                                    <span class="product-o__name">
-
-                                        <a href="{{ route('products.detail') }}">Razor Gear Ultra Slim 8GB Ram</a></span>
-                                    <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i
-                                            class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                            class="fas fa-star"></i>
-
-                                        <span class="product-o__review">(20)</span>
-                                    </div>
-
-                                    <span class="product-o__price">$125.00
-
-                                        <span class="product-o__discount">$160.00</span></span>
-                                </div>
-                            </div>
-                            <div class="u-s-m-b-30">
-                                <div class="product-o product-o--hover-on">
-                                    <div class="product-o__wrap">
-
-                                        <a class="aspect aspect--bg-grey aspect--square u-d-block"
-                                            href="{{ route('products.detail') }}">
-
-                                            <img class="aspect__img" src="images/product/electronic/product26.jpg"
-                                                alt=""></a>
-                                        <div class="product-o__action-wrap">
-                                            <ul class="product-o__action-list">
-                                                <li>
-
-                                                    <a data-bs-toggle="modal" data-bs-target="#quick-look"
-                                                        data-tooltip="tooltip" data-placement="top" title="Quick View"><i
-                                                            class="fas fa-search-plus"></i></a>
-                                                </li>
-                                                <li>
-
-                                                    <a data-bs-toggle="modal" data-bs-target="#add-to-cart"
-                                                        data-tooltip="tooltip" data-placement="top"
-                                                        title="Add to Cart"><i class="fas fa-plus-circle"></i></a>
-                                                </li>
-                                                <li>
-
-                                                    <a href="{{ route('login') }}" data-tooltip="tooltip" data-placement="top"
-                                                        title="Add to Wishlist"><i class="fas fa-heart"></i></a>
-                                                </li>
-                                                <li>
-
-                                                    <a href="{{ route('login') }}" data-tooltip="tooltip" data-placement="top"
-                                                        title="Email me When the price drops"><i
-                                                            class="fas fa-envelope"></i></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                    <span class="product-o__category">
-
-                                        <a href="{{ route('shop.side_v2') }}">Electronics</a></span>
-
-                                    <span class="product-o__name">
-
-                                        <a href="{{ route('products.detail') }}">Razor Gear Ultra Slim 12GB Ram</a></span>
-                                    <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i
-                                            class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                            class="fas fa-star"></i>
-
-                                        <span class="product-o__review">(20)</span>
-                                    </div>
-
-                                    <span class="product-o__price">$125.00
-
-                                        <span class="product-o__discount">$160.00</span></span>
-                                </div>
-                            </div>
-                            <div class="u-s-m-b-30">
-                                <div class="product-o product-o--hover-on">
-                                    <div class="product-o__wrap">
-
-                                        <a class="aspect aspect--bg-grey aspect--square u-d-block"
-                                            href="{{ route('products.detail') }}">
-
-                                            <img class="aspect__img" src="images/product/electronic/product30.jpg"
-                                                alt=""></a>
-                                        <div class="product-o__action-wrap">
-                                            <ul class="product-o__action-list">
-                                                <li>
-
-                                                    <a data-bs-toggle="modal" data-bs-target="#quick-look"
-                                                        data-tooltip="tooltip" data-placement="top" title="Quick View"><i
-                                                            class="fas fa-search-plus"></i></a>
-                                                </li>
-                                                <li>
-
-                                                    <a data-bs-toggle="modal" data-bs-target="#add-to-cart"
-                                                        data-tooltip="tooltip" data-placement="top"
-                                                        title="Add to Cart"><i class="fas fa-plus-circle"></i></a>
-                                                </li>
-                                                <li>
-
-                                                    <a href="{{ route('login') }}" data-tooltip="tooltip" data-placement="top"
-                                                        title="Add to Wishlist"><i class="fas fa-heart"></i></a>
-                                                </li>
-                                                <li>
-
-                                                    <a href="{{ route('login') }}" data-tooltip="tooltip" data-placement="top"
-                                                        title="Email me When the price drops"><i
-                                                            class="fas fa-envelope"></i></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                    <span class="product-o__category">
-
-                                        <a href="{{ route('shop.side_v2') }}">Electronics</a></span>
-
-                                    <span class="product-o__name">
-
-                                        <a href="{{ route('products.detail') }}">Razor Gear Ultra Slim 16GB Ram</a></span>
-                                    <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i
-                                            class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                            class="fas fa-star"></i>
-
-                                        <span class="product-o__review">(20)</span>
-                                    </div>
-
-                                    <span class="product-o__price">$125.00
-
-                                        <span class="product-o__discount">$160.00</span></span>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -1226,12 +939,12 @@
                                 </div>
                                 <div class="u-s-m-b-15">
                                     <div class="pd-detail__rating gl-rating-style"><i class="fas fa-star"></i><i
-                                            class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                            class="fas fa-star-half-alt"></i>
+                                            class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                            class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
 
                                         <span class="pd-detail__review u-s-m-l-4">
 
-                                            <a href="{{ route('products.detail') }}">23 Reviews</a></span>
+                                            <a href="#">23 Reviews</a></span>
                                     </div>
                                 </div>
                                 <div class="u-s-m-b-15">
@@ -1273,19 +986,23 @@
                                     <ul class="pd-social-list">
                                         <li>
 
-                                            <a class="s-fb--color-hover" href="#"><i class="fab fa-facebook-f"></i></a>
+                                            <a class="s-fb--color-hover" href="#"><i
+                                                    class="fab fa-facebook-f"></i></a>
                                         </li>
                                         <li>
 
-                                            <a class="s-tw--color-hover" href="#"><i class="fab fa-twitter"></i></a>
+                                            <a class="s-tw--color-hover" href="#"><i
+                                                    class="fab fa-twitter"></i></a>
                                         </li>
                                         <li>
 
-                                            <a class="s-insta--color-hover" href="#"><i class="fab fa-instagram"></i></a>
+                                            <a class="s-insta--color-hover" href="#"><i
+                                                    class="fab fa-instagram"></i></a>
                                         </li>
                                         <li>
 
-                                            <a class="s-wa--color-hover" href="#"><i class="fab fa-whatsapp"></i></a>
+                                            <a class="s-wa--color-hover" href="#"><i
+                                                    class="fab fa-whatsapp"></i></a>
                                         </li>
                                         <li>
 
@@ -1384,9 +1101,11 @@
                                     <a class="s-option__link btn--e-white-brand-shadow" data-dismiss="modal">CONTINUE
                                         SHOPPING</a>
 
-                                    <a class="s-option__link btn--e-white-brand-shadow" href="{{ route('cart') }}">VIEW CART</a>
+                                    <a class="s-option__link btn--e-white-brand-shadow" href="{{ route('cart') }}">VIEW
+                                        CART</a>
 
-                                    <a class="s-option__link btn--e-brand-shadow" href="{{ route('checkout') }}">PROCEED TO
+                                    <a class="s-option__link btn--e-brand-shadow" href="{{ route('checkout') }}">PROCEED
+                                        TO
                                         CHECKOUT</a>
                                 </div>
                             </div>

@@ -836,20 +836,6 @@
                     <div class="col-lg-9 col-md-12">
                         <div class="shop-p">
                             <div class="shop-p__toolbar u-s-m-b-30">
-                                <div class="shop-p__meta-wrap u-s-m-b-60">
-
-                                    <span class="shop-p__meta-text-1">FOUND 18 RESULTS</span>
-                                    <div class="shop-p__meta-text-2">
-
-                                        <span>Related Searches:</span>
-
-                                        <a class="gl-tag btn--e-brand-shadow" href="#">men's clothing</a>
-
-                                        <a class="gl-tag btn--e-brand-shadow" href="#">mobiles & tablets</a>
-
-                                        <a class="gl-tag btn--e-brand-shadow" href="#">books & audible</a>
-                                    </div>
-                                </div>
                                 <div class="shop-p__tool-style">
                                     <div class="tool-style__group u-s-m-b-8">
 
@@ -884,7 +870,7 @@
                                             <div class="product-m__thumb">
 
                                                 <a class="aspect aspect--bg-grey aspect--square u-d-block"
-                                                    href="{{ route('products.detail') }}">
+                                                    href="#">
 
                                                     <img class="aspect__img" src="images/product/men/product6.jpg"
                                                         alt=""></a>
@@ -906,7 +892,7 @@
                                                 </div>
                                                 <div class="product-m__name">
 
-                                                    <a href="{{ route('products.detail') }}">New Fashion B Nice Elegant</a>
+                                                    <a href="#">New Fashion B Nice Elegant</a>
                                                 </div>
                                                 <div class="product-m__rating gl-rating-style"><i class="fas fa-star"></i><i
                                                         class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i
@@ -938,7 +924,7 @@
                                             <div class="product-m__thumb">
 
                                                 <a class="aspect aspect--bg-grey aspect--square u-d-block"
-                                                    href="{{ route('products.detail') }}">
+                                                    href="#">
 
                                                     <img class="aspect__img" src="images/product/women/product5.jpg"
                                                         alt=""></a>
@@ -960,7 +946,7 @@
                                                 </div>
                                                 <div class="product-m__name">
 
-                                                    <a href="{{ route('products.detail') }}">New Dress A Nice Elegant</a>
+                                                    <a href="#">New Dress A Nice Elegant</a>
                                                 </div>
                                                 <div class="product-m__rating gl-rating-style"><i class="fas fa-star"></i><i
                                                         class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i
@@ -992,7 +978,7 @@
                                             <div class="product-m__thumb">
 
                                                 <a class="aspect aspect--bg-grey aspect--square u-d-block"
-                                                    href="{{ route('products.detail') }}">
+                                                    href="#">
 
                                                     <img class="aspect__img" src="images/product/women/product6.jpg"
                                                         alt=""></a>
@@ -1014,7 +1000,7 @@
                                                 </div>
                                                 <div class="product-m__name">
 
-                                                    <a href="{{ route('products.detail') }}">New Dress B Nice Elegant</a>
+                                                    <a href="#">New Dress B Nice Elegant</a>
                                                 </div>
                                                 <div class="product-m__rating gl-rating-style"><i class="fas fa-star"></i><i
                                                         class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i
@@ -1046,7 +1032,7 @@
                                             <div class="product-m__thumb">
 
                                                 <a class="aspect aspect--bg-grey aspect--square u-d-block"
-                                                    href="{{ route('products.detail') }}">
+                                                    href="#">
 
                                                     <img class="aspect__img" src="images/product/women/product7.jpg"
                                                         alt=""></a>
@@ -1068,7 +1054,7 @@
                                                 </div>
                                                 <div class="product-m__name">
 
-                                                    <a href="{{ route('products.detail') }}">New Dress C Nice Elegant</a>
+                                                    <a href="#">New Dress C Nice Elegant</a>
                                                 </div>
                                                 <div class="product-m__rating gl-rating-style"><i class="fas fa-star"></i><i
                                                         class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i
@@ -1100,7 +1086,7 @@
                                             <div class="product-m__thumb">
 
                                                 <a class="aspect aspect--bg-grey aspect--square u-d-block"
-                                                    href="{{ route('products.detail') }}">
+                                                    href="#">
 
                                                     <img class="aspect__img" src="images/product/men/product9.jpg"
                                                         alt=""></a>
@@ -1122,7 +1108,7 @@
                                                 </div>
                                                 <div class="product-m__name">
 
-                                                    <a href="{{ route('products.detail') }}">New Fashion E Nice Elegant</a>
+                                                    <a href="#">New Fashion E Nice Elegant</a>
                                                 </div>
                                                 <div class="product-m__rating gl-rating-style"><i class="fas fa-star"></i><i
                                                         class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i
@@ -1154,7 +1140,7 @@
                                             <div class="product-m__thumb">
 
                                                 <a class="aspect aspect--bg-grey aspect--square u-d-block"
-                                                    href="{{ route('products.detail') }}">
+                                                    href="#">
 
                                                     <img class="aspect__img" src="images/product/men/product10.jpg"
                                                         alt=""></a>
@@ -1176,7 +1162,7 @@
                                                 </div>
                                                 <div class="product-m__name">
 
-                                                    <a href="{{ route('products.detail') }}">New Fashion F Nice Elegant</a>
+                                                    <a href="#">New Fashion F Nice Elegant</a>
                                                 </div>
                                                 <div class="product-m__rating gl-rating-style"><i class="fas fa-star"></i><i
                                                         class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i
@@ -1208,7 +1194,7 @@
                                             <div class="product-m__thumb">
 
                                                 <a class="aspect aspect--bg-grey aspect--square u-d-block"
-                                                    href="{{ route('products.detail') }}">
+                                                    href="#">
 
                                                     <img class="aspect__img" src="images/product/electronic/product2.jpg"
                                                         alt=""></a>
@@ -1230,7 +1216,7 @@
                                                 </div>
                                                 <div class="product-m__name">
 
-                                                    <a href="{{ route('products.detail') }}">Red Wireless Headphone</a>
+                                                    <a href="#">Red Wireless Headphone</a>
                                                 </div>
                                                 <div class="product-m__rating gl-rating-style"><i class="fas fa-star"></i><i
                                                         class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i
@@ -1262,7 +1248,7 @@
                                             <div class="product-m__thumb">
 
                                                 <a class="aspect aspect--bg-grey aspect--square u-d-block"
-                                                    href="{{ route('products.detail') }}">
+                                                    href="#">
 
                                                     <img class="aspect__img" src="images/product/electronic/product3.jpg"
                                                         alt=""></a>
@@ -1284,7 +1270,7 @@
                                                 </div>
                                                 <div class="product-m__name">
 
-                                                    <a href="{{ route('products.detail') }}">Yellow Wireless Headphone</a>
+                                                    <a href="#">Yellow Wireless Headphone</a>
                                                 </div>
                                                 <div class="product-m__rating gl-rating-style"><i class="fas fa-star"></i><i
                                                         class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i
@@ -1319,7 +1305,7 @@
                                             <div class="product-m__thumb">
 
                                                 <a class="aspect aspect--bg-grey aspect--square u-d-block"
-                                                    href="{{ route('products.detail') }}">
+                                                    href="#">
 
                                                     <img class="aspect__img" src="images/product/electronic/product4.jpg"
                                                         alt=""></a>
@@ -1341,7 +1327,7 @@
                                                 </div>
                                                 <div class="product-m__name">
 
-                                                    <a href="{{ route('products.detail') }}">Hover Skateboard Scooter</a>
+                                                    <a href="#">Hover Skateboard Scooter</a>
                                                 </div>
                                                 <div class="product-m__rating gl-rating-style"><i class="fas fa-star"></i><i
                                                         class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i
@@ -1376,7 +1362,7 @@
                                             <div class="product-m__thumb">
 
                                                 <a class="aspect aspect--bg-grey aspect--square u-d-block"
-                                                    href="{{ route('products.detail') }}">
+                                                    href="#">
 
                                                     <img class="aspect__img" src="images/product/electronic/product5.jpg"
                                                         alt=""></a>
@@ -1398,7 +1384,7 @@
                                                 </div>
                                                 <div class="product-m__name">
 
-                                                    <a href="{{ route('products.detail') }}">Hover Red Skateboard Scooter</a>
+                                                    <a href="#">Hover Red Skateboard Scooter</a>
                                                 </div>
                                                 <div class="product-m__rating gl-rating-style"><i class="fas fa-star"></i><i
                                                         class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i
@@ -1433,7 +1419,7 @@
                                             <div class="product-m__thumb">
 
                                                 <a class="aspect aspect--bg-grey aspect--square u-d-block"
-                                                    href="{{ route('products.detail') }}">
+                                                    href="#">
 
                                                     <img class="aspect__img" src="images/product/electronic/product6.jpg"
                                                         alt=""></a>
@@ -1455,7 +1441,7 @@
                                                 </div>
                                                 <div class="product-m__name">
 
-                                                    <a href="{{ route('products.detail') }}">Canon DSLR Camera 4k</a>
+                                                    <a href="#">Canon DSLR Camera 4k</a>
                                                 </div>
                                                 <div class="product-m__rating gl-rating-style"><i class="fas fa-star"></i><i
                                                         class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i
@@ -1490,7 +1476,7 @@
                                             <div class="product-m__thumb">
 
                                                 <a class="aspect aspect--bg-grey aspect--square u-d-block"
-                                                    href="{{ route('products.detail') }}">
+                                                    href="#">
 
                                                     <img class="aspect__img" src="images/product/electronic/product7.jpg"
                                                         alt=""></a>
@@ -1512,7 +1498,7 @@
                                                 </div>
                                                 <div class="product-m__name">
 
-                                                    <a href="{{ route('products.detail') }}">Nikon DSLR Camera 4k</a>
+                                                    <a href="#">Nikon DSLR Camera 4k</a>
                                                 </div>
                                                 <div class="product-m__rating gl-rating-style"><i class="fas fa-star"></i><i
                                                         class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i
@@ -1690,7 +1676,7 @@
 
                                         <span class="pd-detail__review u-s-m-l-4">
 
-                                            <a href="{{ route('products.detail') }}">23 Reviews</a></span>
+                                            <a href="#">23 Reviews</a></span>
                                     </div>
                                 </div>
                                 <div class="u-s-m-b-15">
