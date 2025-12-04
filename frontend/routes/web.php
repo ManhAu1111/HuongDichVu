@@ -115,3 +115,59 @@ Route::view('/404', '404')->name('404');
 Route::view('/contact', 'contact')->name('contact');
 Route::view('/wishlist', 'wishlist')->name('wishlist');
 
+
+/*
+|--------------------------------------------------------------------------
+| ADMIN PANEL (VIEW ONLY) - Protected Routes
+|--------------------------------------------------------------------------
+| Routes này chỉ dùng để hiển thị giao diện Blade files (dùng Route::view)
+|
+| Lưu ý: Vẫn nên bảo vệ bằng middleware (ví dụ: 'auth.admin') khi triển khai thực tế
+|--------------------------------------------------------------------------
+*/
+
+Route::prefix('admin')->name('admin.')->group(function () {
+    // 1. ADMIN DASHBOARD
+    Route::view('/', 'admin.dashboard.index')->name('dashboard');
+
+    // 2. QUẢN LÝ SẢN PHẨM
+    Route::prefix('products')->name('products.')->group(function () {
+        // GET /admin/products -> admin.products.index (Danh sách)
+        Route::view('/', 'admin.products.index')->name('index');
+
+        // GET /admin/products/create -> admin.products.create (Form thêm)
+        Route::view('/create', 'admin.products.create_edit')->name('create');
+
+        // GET /admin/products/1/edit -> admin.products.edit (Form sửa)
+        // Dùng một route GET đơn giản để mô phỏng trang sửa
+        Route::get('/{id}/edit', function ($id) {
+            return view('admin.products.create_edit', ['id' => $id]);
+        })->name('edit');
+    });
+
+    // 3. QUẢN LÝ ĐƠN HÀNG
+    Route::prefix('orders')->name('orders.')->group(function () {
+        // GET /admin/orders -> admin.orders.index (Danh sách)
+        Route::view('/', 'admin.orders.index')->name('index');
+
+        // GET /admin/orders/1 -> admin.orders.detail (Chi tiết)
+        Route::get('/{id}', function ($id) {
+            return view('admin.orders.detail', ['id' => $id]);
+        })->name('detail');
+    });
+
+    // 4. QUẢN LÝ NGƯỜI DÙNG
+    Route::prefix('users')->name('users.')->group(function () {
+        // GET /admin/users -> admin.users.index (Danh sách)
+        Route::view('/', 'admin.users.index')->name('index');
+    });
+
+    // 5. CÀI ĐẶT HỆ THỐNG
+    Route::view('/settings', 'admin.settings.index')->name('settings');
+
+    // 6. LOGOUT (Chỉ cần route name cho Sidebar)
+    // Tạm thời trỏ về trang đăng nhập admin
+    Route::post('/logout', function () {
+        return redirect()->route('login');
+    })->name('logout');
+});
