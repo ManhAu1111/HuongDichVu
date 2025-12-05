@@ -1027,19 +1027,17 @@
                                     <div class="mini-product-stat">
                                         <div class="mini-total">
 
-                                            <span class="subtotal-text">SUBTOTAL</span>
+                                            <span class="subtotal-text">TẠM TÍNH</span>
 
                                             <span class="subtotal-value">$16</span>
                                         </div>
                                         <div class="mini-action">
 
-                                            <a class="mini-link btn--e-brand-b-2" href="{{ route('checkout') }}">PROCEED
-                                                TO
-                                                CHECKOUT</a>
+                                            <a class="mini-link btn--e-brand-b-2" href="{{ route('checkout') }}">TIẾN
+                                                HÀNH THANH TOÁN</a>
 
                                             <a class="mini-link btn--e-transparent-secondary-b-2"
-                                                href="{{ route('cart') }}">VIEW
-                                                CART</a>
+                                                href="{{ route('cart') }}">XEM GIỎ HÀNG</a>
                                         </div>
                                     </div>
                                     <!--====== End - Mini Product Statistics ======-->

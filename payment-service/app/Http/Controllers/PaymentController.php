@@ -3,54 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+
 
 class PaymentController extends Controller
 {
-    // redirect to link momo payment
-    // public function momoPayment()
-    // {
-    //     $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
-
-    //     $partnerCode = env('MOMO_PARTNER_CODE');
-    //     $accessKey   = env('MOMO_ACCESS_KEY');
-    //     $secretKey   = env('MOMO_SECRET_KEY');
-
-    //     $orderId     = time();   // Mã đơn hàng
-    //     $orderInfo   = "Thanh toán đơn hàng #$orderId";
-    //     $amount      = "10000"; // Test 100.000 VND
-    //     $redirectUrl = env('MOMO_REDIRECT_URL');
-    //     $ipnUrl      = env('MOMO_IPN_URL');
-    //     $requestId   = time();
-
-    //     $requestType = "captureWallet";
-
-    //     $rawHash = "accessKey=$accessKey&amount=$amount&extraData=&ipnUrl=$ipnUrl&orderId=$orderId&orderInfo=$orderInfo&partnerCode=$partnerCode&redirectUrl=$redirectUrl&requestId=$requestId&requestType=$requestType";
-
-    //     $signature = hash_hmac("sha256", $rawHash, $secretKey);
-
-    //     $data = [
-    //         'partnerCode' => $partnerCode,
-    //         'partnerName' => "MoMo Payment",
-    //         'storeId'     => "MomoTestStore",
-    //         'requestId'   => $requestId,
-    //         'amount'      => $amount,
-    //         'orderId'     => $orderId,
-    //         'orderInfo'   => $orderInfo,
-    //         'redirectUrl' => $redirectUrl,
-    //         'ipnUrl'      => $ipnUrl,
-    //         'lang'        => 'vi',
-    //         'extraData'   => "",
-    //         'requestType' => $requestType,
-    //         'signature'   => $signature
-    //     ];
-
-    //     $result = $this->execPostRequest($endpoint, json_encode($data));
-
-    //     $jsonResult = json_decode($result, true);
-
-    //     return redirect($jsonResult['payUrl']);
-    // }
-
     // JSON request
     public function momoPayment(Request $request)
     {
@@ -60,9 +17,11 @@ class PaymentController extends Controller
         $accessKey   = env('MOMO_ACCESS_KEY');
         $secretKey   = env('MOMO_SECRET_KEY');
 
-        $orderId     = time();
-        $orderInfo   = "Thanh toán đơn hàng #$orderId";
-        $amount      = "1000";
+        // Lấy data từ frontend
+        //$orderId     = $request->order_id;
+        $orderId = "OD" . time();
+        $amount      = $request->amount;
+        $orderInfo   = "Thanh toán đơn hàng $orderId";
 
         $redirectUrl = env('MOMO_REDIRECT_URL');
         $ipnUrl      = env('MOMO_IPN_URL');
@@ -115,9 +74,24 @@ class PaymentController extends Controller
 
     public function momoCallback(Request $request)
     {
-        if ($request->resultCode == 0) {
-            return redirect('http://127.0.0.1:8000/checkout');
+        $orderId = $request->orderId;
+        $status  = $request->resultCode == 0 ? 'paid' : 'failed';
+
+        // Gọi sang order-service để update đơn hàng
+        try {
+            \Illuminate\Support\Facades\Http::post("http://127.0.0.1:8002/api/update-payment-status", [
+                'order_id' => $orderId,
+                'status'   => $status
+            ]);
+        } catch (\Exception $e) {
+            Log::error("Không gọi được order-service: " . $e->getMessage());
         }
-        return redirect('http://127.0.0.1:8000/checkout?status=failed');
+
+        // Redirect về UI
+        if ($status === 'paid') {
+            return redirect('http://127.0.0.1:8000/checkout?paid=true');
+        }
+
+        return redirect('http://127.0.0.1:8000/checkout?failed=true');
     }
 }

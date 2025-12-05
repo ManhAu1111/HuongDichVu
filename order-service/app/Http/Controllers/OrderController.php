@@ -38,7 +38,7 @@ class OrderController extends Controller
             'receiver_email' => $request->receiver_email,
 
             'street_address' => $request->street_address,
-            'city'           => $request->city,
+            'district_name'  => $request->district_name,
             'province_code'  => $request->province_code,
         ]);
 
@@ -73,5 +73,19 @@ class OrderController extends Controller
             Log::error('calculateShipping error: ' . $e->getMessage());
             return response()->json(['error' => 'Internal server error'], 500);
         }
+    }
+
+    public function updatePaymentStatus(Request $request)
+    {
+        $order = Order::where('public_id', $request->order_id)->first();
+
+        if (!$order) {
+            return response()->json(['error' => 'Order not found'], 404);
+        }
+
+        $order->status = $request->status;
+        $order->save();
+
+        return response()->json(['message' => 'Order status updated']);
     }
 }

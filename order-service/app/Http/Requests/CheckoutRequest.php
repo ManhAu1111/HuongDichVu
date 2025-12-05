@@ -42,4 +42,9 @@ class CheckoutRequest extends FormRequest
             // ... bạn có thể thêm message rõ hơn
         ];
     }
+
+    public function wantsJson()
+    {
+        return true;
+    }
 }

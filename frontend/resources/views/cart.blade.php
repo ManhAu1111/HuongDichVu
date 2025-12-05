@@ -47,7 +47,6 @@
                         <div class="table-responsive">
                             <table class="table-p">
                                 <tbody>
-
                                     <!--====== SP 1 ======-->
                                     <tr>
                                         <td>
