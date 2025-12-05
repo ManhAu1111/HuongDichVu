@@ -8,7 +8,7 @@
 @section('content')
 <div class="app-content">
 
-    <!--====== Breadcrumb ======-->
+    <!--====== Section 1 ======-->
     <div class="u-s-p-y-60">
         <div class="section__content">
             <div class="container">
@@ -323,95 +323,97 @@
     <!--====== End Tổng ======-->
 
 </div>
-<script>
+<<<<<<< HEAD <script>
     document.addEventListener("DOMContentLoaded", function() {
 
-        const provinceSelect = document.getElementById("province-select");
-        const btnCheckout = document.getElementById("btnCheckout");
-        const btnCalculate = document.getElementById("btnCalculateShipping");
-        const shippingDisplay = document.getElementById("shipping-fee-display");
-        const subtotalEl = document.getElementById("subtotal-display");
-        const grandTotalEl = document.getElementById("grand-total-display");
+    const provinceSelect = document.getElementById("province-select");
+    const btnCheckout = document.getElementById("btnCheckout");
+    const btnCalculate = document.getElementById("btnCalculateShipping");
+    const shippingDisplay = document.getElementById("shipping-fee-display");
+    const subtotalEl = document.getElementById("subtotal-display");
+    const grandTotalEl = document.getElementById("grand-total-display");
 
-        // Debug ID nếu element không tồn tại
-        if (!provinceSelect) console.error("Không tìm thấy #province-select");
-        if (!btnCheckout) console.warn("Không tìm thấy #btnCheckout (OK nếu chưa cần checkout)");
-        if (!btnCalculate) console.error("Không tìm thấy #btnCalculateShipping");
-        if (!shippingDisplay) console.error("Không tìm thấy #shipping-fee-display");
+    // Debug ID nếu element không tồn tại
+    if (!provinceSelect) console.error("Không tìm thấy #province-select");
+    if (!btnCheckout) console.warn("Không tìm thấy #btnCheckout (OK nếu chưa cần checkout)");
+    if (!btnCalculate) console.error("Không tìm thấy #btnCalculateShipping");
+    if (!shippingDisplay) console.error("Không tìm thấy #shipping-fee-display");
 
-        // 1) Load danh sách tỉnh/thành từ API
-        fetch("https://provinces.open-api.vn/api/p/")
-            .then(response => response.json())
-            .then(data => {
-                provinceSelect.innerHTML = '<option value="">Chọn tỉnh/thành</option>';
-                data.forEach(p => {
-                    let opt = document.createElement("option");
-                    opt.value = p.code;
-                    opt.textContent = p.name;
-                    provinceSelect.appendChild(opt);
-                });
-            })
-            .catch(err => {
-                console.error("Lỗi khi load API tỉnh:", err);
-                provinceSelect.innerHTML = '<option value="">Không tải được danh sách tỉnh</option>';
-            });
+    // 1) Load danh sách tỉnh/thành từ API
+    fetch("https://provinces.open-api.vn/api/p/")
+    .then(response => response.json())
+    .then(data => {
+    provinceSelect.innerHTML = '<option value="">Chọn tỉnh/thành</option>';
+    data.forEach(p => {
+    let opt = document.createElement("option");
+    opt.value = p.code;
+    opt.textContent = p.name;
+    provinceSelect.appendChild(opt);
+    });
+    })
+    .catch(err => {
+    console.error("Lỗi khi load API tỉnh:", err);
+    provinceSelect.innerHTML = '<option value="">Không tải được danh sách tỉnh</option>';
+    });
 
-        // 2) Hàm gọi API tính phí giao hàng
-        function calculateShipping(provinceCode) {
-            return fetch("http://127.0.0.1:8002/api/calculate-shipping", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Accept": "application/json"
-                    },
-                    body: JSON.stringify({
-                        province_code: Number(provinceCode)
-                    })
-                })
-                .then(res => {
-                    if (!res.ok) return res.text().then(t => {
-                        throw new Error("Server error: " + t);
-                    });
-                    return res.json();
-                });
-        }
+    // 2) Hàm gọi API tính phí giao hàng
+    function calculateShipping(provinceCode) {
+    return fetch("http://127.0.0.1:8002/api/calculate-shipping", {
+    method: "POST",
+    headers: {
+    "Content-Type": "application/json",
+    "Accept": "application/json"
+    },
+    body: JSON.stringify({
+    province_code: Number(provinceCode)
+    })
+    })
+    .then(res => {
+    if (!res.ok) return res.text().then(t => {
+    throw new Error("Server error: " + t);
+    });
+    return res.json();
+    });
+    }
 
-        // 3) Event: Nhấn nút “Tính phí giao hàng”
-        btnCalculate.addEventListener("click", function() {
-            const provinceCode = provinceSelect.value;
+    // 3) Event: Nhấn nút “Tính phí giao hàng”
+    btnCalculate.addEventListener("click", function() {
+    const provinceCode = provinceSelect.value;
 
-            if (!provinceCode) {
-                alert("Bạn phải chọn tỉnh/thành trước.");
-                return;
-            }
+    if (!provinceCode) {
+    alert("Bạn phải chọn tỉnh/thành trước.");
+    return;
+    }
 
-            calculateShipping(provinceCode)
-                .then(data => {
-                    // Cập nhật phí ship
-                    shippingDisplay.innerText = new Intl.NumberFormat("vi-VN").format(data
-                        .shipping_fee) + " đ";
+    calculateShipping(provinceCode)
+    .then(data => {
+    // Cập nhật phí ship
+    shippingDisplay.innerText = new Intl.NumberFormat("vi-VN").format(data
+    .shipping_fee) + " đ";
 
-                    // Cập nhật tổng tiền (nếu có subtotal)
-                    if (subtotalEl && grandTotalEl) {
-                        const subtotal = Number(subtotalEl.dataset.value ?? 0);
-                        const total = subtotal + data.shipping_fee;
-                        grandTotalEl.innerText = new Intl.NumberFormat("vi-VN").format(total) + " đ";
-                    }
-                })
-                .catch(err => {
-                    console.error("Lỗi API calculate-shipping:", err);
-                    alert("Không tính được phí giao hàng. Kiểm tra console hoặc backend.");
-                });
-        });
+    // Cập nhật tổng tiền (nếu có subtotal)
+    if (subtotalEl && grandTotalEl) {
+    const subtotal = Number(subtotalEl.dataset.value ?? 0);
+    const total = subtotal + data.shipping_fee;
+    grandTotalEl.innerText = new Intl.NumberFormat("vi-VN").format(total) + " đ";
+    }
+    })
+    .catch(err => {
+    console.error("Lỗi API calculate-shipping:", err);
+    alert("Không tính được phí giao hàng. Kiểm tra console hoặc backend.");
+    });
+    });
 
-        // 4) Event: Tự động tính lại khi đổi tỉnh (tùy chọn)
-        provinceSelect.addEventListener("change", function() {
-            // Không tính tự động nữa — chỉ đổi tỉnh thôi
-            console.log("Đã chọn tỉnh:", this.value);
-        });
+    // 4) Event: Tự động tính lại khi đổi tỉnh (tùy chọn)
+    provinceSelect.addEventListener("change", function() {
+    // Không tính tự động nữa — chỉ đổi tỉnh thôi
+    console.log("Đã chọn tỉnh:", this.value);
+    });
 
     });
-</script>
+    </script>
 
 
-@endsection
+    @endsection
+
+    {{-- 4. Kết thúc phần nội dung --}}

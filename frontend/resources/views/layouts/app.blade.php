@@ -18,9 +18,10 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
     <!--====== three.js ======-->
-    <script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r140/build/three.min.js"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r140/build/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r140/examples/js/controls/OrbitControls.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r140/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r140/examples/js/loaders/GLTFLoader.js"></script> --}}
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
     {{-- Nếu KHÔNG dùng Laravel Mix, giữ nguyên dòng sau --}}
     {{-- <link rel="stylesheet" href="{{ asset('css/app.css') }}"> --}}
 </head>
@@ -51,13 +52,14 @@
     <script src="https://www.google-analytics.com/analytics.js" async defer></script>
 
     <!--====== Vendor Js ======-->
-    <script src="js/vendor.js"></script>
+    <script src="{{ asset('js/vendor.js') }}"></script>
 
     <!--====== jQuery Shopnav plugin ======-->
-    <script src="js/jquery.shopnav.js"></script>
+    <script src="{{ asset('js/jquery.shopnav.js') }}"></script>
 
     <!--====== App ======-->
-    <script src="js/app.js"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
 
     <noscript>
         <div class="app-setting">
