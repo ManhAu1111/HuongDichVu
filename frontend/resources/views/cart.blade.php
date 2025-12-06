@@ -6,6 +6,15 @@
 
 {{-- 3. Nội dung trang --}}
 @section('content')
+
+<script>
+    @php
+    echo 'window.APP_USER_ID = '.json_encode($userId).
+    ';';
+    @endphp
+</script>
+
+
 <div class="app-content">
 
     <!--====== Section 1 ======-->
@@ -47,149 +56,72 @@
                         <div class="table-responsive">
                             <table class="table-p">
                                 <tbody>
-                                    <!--====== SP 1 ======-->
+                                    @if(count($cartItems) === 0)
+                                    <tr>
+                                        <td colspan="4" class="text-center py-5">
+                                            GIỎ HÀNG TRỐNG
+                                        </td>
+                                    </tr>
+                                    @else
+                                    @foreach($cartItems as $item)
                                     <tr>
                                         <td>
                                             <div class="table-p__box">
                                                 <div class="table-p__img-wrap">
-                                                    <img class="u-img-fluid"
-                                                        src="images/product/electronic/product3.jpg" alt="">
+                                                    <img class="u-img-fluid" src="{{ asset($item['primary_image']) }}"
+                                                        alt="{{ $item['product_name'] }}">
                                                 </div>
 
-                                                <div class="table-p__info" data-product-id="1" data-price="125"
-                                                    data-quantity="1" data-subtotal="125">
+                                                <div class="table-p__info" data-product-id="{{ $item['product_id'] }}"
+                                                    data-price="{{ $item['price'] }}"
+                                                    data-quantity="{{ $item['quantity'] }}"
+                                                    data-subtotal="{{ $item['price'] * $item['quantity'] }}">
+
                                                     <span class="table-p__name">
-                                                        <a href="product-detail.html">Tai nghe không dây màu vàng</a>
+                                                        <a href="{{ route('products.detail', $item['product_id']) }}">
+                                                            {{ $item['product_name'] }}
+                                                        </a>
                                                     </span>
+
                                                     <span class="table-p__category">
-                                                        <a href="#">Điện tử</a>
+                                                        <a href="#">
+                                                            {{ $item['category_name'] ?? 'Danh mục' }}
+                                                        </a>
                                                     </span>
-
-                                                    <ul class="table-p__variant-list">
-                                                        <li><span>Kích thước: 22</span></li>
-                                                        <li><span>Màu sắc: Đỏ</span></li>
-                                                    </ul>
                                                 </div>
-
                                             </div>
                                         </td>
 
-                                        <td><span class="table-p__price">125.00$</span></td>
+                                        <td><span class="table-p__price">{{ number_format($item['subtotal']) }} đ</span>
+                                        </td>
 
                                         <td>
                                             <div class="table-p__input-counter-wrap">
                                                 <div class="input-counter">
-                                                    <span class="input-counter__minus fas fa-minus"></span>
+                                                    <span class="input-counter__minus fas fa-minus"
+                                                        data-action="decrease" data-id="{{ $item['id'] }}"></span>
+
                                                     <input class="input-counter__text input-counter--text-primary-style"
-                                                        type="text" value="1" data-min="1" data-max="1000">
-                                                    <span class="input-counter__plus fas fa-plus"></span>
+                                                        type="text" value="{{ $item['quantity'] }}" data-min="1"
+                                                        data-max="1000" data-id="{{ $item['id'] }}">
+
+                                                    <span class="input-counter__plus fas fa-plus" data-action="increase"
+                                                        data-id="{{ $item['id'] }}"></span>
                                                 </div>
                                             </div>
                                         </td>
 
                                         <td>
                                             <div class="table-p__del-wrap">
-                                                <a class="far fa-trash-alt table-p__delete-link" href="#"></a>
+                                                <a class="far fa-trash-alt table-p__delete-link" data-action="remove"
+                                                    data-id="{{ $item['id'] }}"></a>
                                             </div>
                                         </td>
                                     </tr>
-                                    <!--====== End SP 1 ======-->
-
-                                    <!--====== SP 2 ======-->
-                                    <tr>
-                                        <td>
-                                            <div class="table-p__box">
-                                                <div class="table-p__img-wrap">
-                                                    <img class="u-img-fluid" src="images/product/women/product8.jpg"
-                                                        alt="">
-                                                </div>
-
-                                                <div class="table-p__info" data-product-id="2" data-price="125"
-                                                    data-quantity="1" data-subtotal="125">
-                                                    <span class="table-p__name">
-                                                        <a href="#">Váy nữ đẹp – Elegant Dress</a>
-                                                    </span>
-                                                    <span class="table-p__category">
-                                                        <a href="#">Thời trang nữ</a>
-                                                    </span>
-
-                                                    <ul class="table-p__variant-list">
-                                                        <li><span>Kích thước: 22</span></li>
-                                                        <li><span>Màu sắc: Đỏ</span></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </td>
-
-                                        <td><span class="table-p__price">125.00$</span></td>
-
-                                        <td>
-                                            <div class="table-p__input-counter-wrap">
-                                                <div class="input-counter">
-                                                    <span class="input-counter__minus fas fa-minus"></span>
-                                                    <input class="input-counter__text input-counter--text-primary-style"
-                                                        type="text" value="1" data-min="1" data-max="1000">
-                                                    <span class="input-counter__plus fas fa-plus"></span>
-                                                </div>
-                                            </div>
-                                        </td>
-
-                                        <td>
-                                            <div class="table-p__del-wrap">
-                                                <a class="far fa-trash-alt table-p__delete-link" href="#"></a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <!--====== End SP 2 ======-->
-
-                                    <!--====== SP 3 ======-->
-                                    <tr>
-                                        <td>
-                                            <div class="table-p__box">
-                                                <div class="table-p__img-wrap">
-                                                    <img class="u-img-fluid" src="images/product/men/product8.jpg"
-                                                        alt="">
-                                                </div>
-
-                                                <div class="table-p__info" data-product-id="3" data-price="125"
-                                                    data-quantity="1" data-subtotal="125">
-                                                    <span class="table-p__name">
-                                                        <a href="#">Áo thời trang nam – Elegant Fashion</a>
-                                                    </span>
-                                                    <span class="table-p__category">
-                                                        <a href="#">Thời trang nam</a>
-                                                    </span>
-
-                                                    <ul class="table-p__variant-list">
-                                                        <li><span>Kích thước: 22</span></li>
-                                                        <li><span>Màu sắc: Đỏ</span></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </td>
-
-                                        <td><span class="table-p__price">125.00$</span></td>
-
-                                        <td>
-                                            <div class="table-p__input-counter-wrap">
-                                                <div class="input-counter">
-                                                    <span class="input-counter__minus fas fa-minus"></span>
-                                                    <input class="input-counter__text input-counter--text-primary-style"
-                                                        type="text" value="1" data-min="1" data-max="1000">
-                                                    <span class="input-counter__plus fas fa-plus"></span>
-                                                </div>
-                                            </div>
-                                        </td>
-
-                                        <td>
-                                            <div class="table-p__del-wrap">
-                                                <a class="far fa-trash-alt table-p__delete-link" href="#"></a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <!--====== End SP 3 ======-->
-
+                                    @endforeach
+                                    @endif
                                 </tbody>
+
                             </table>
                         </div>
                     </div>
@@ -198,22 +130,23 @@
                     <div class="col-lg-12">
                         <div class="route-box">
                             <div class="route-box__g1">
-                                <a class="route-box__link" href="{{ route('shop.index') }}">
+                                <a class="route-box__link" href="{{ route('shop.side_v2') }}">
                                     <i class="fas fa-long-arrow-alt-left"></i>
                                     <span>Tiếp tục mua hàng</span>
                                 </a>
                             </div>
 
                             <div class="route-box__g2">
-                                <a class="route-box__link" href="#">
+                                <a href="#" class="route-box__link js-clear-cart" data-user-id="{{ $userId }}">
                                     <i class="fas fa-trash"></i>
                                     <span>Xóa giỏ hàng</span>
                                 </a>
 
-                                <a class="route-box__link" href="#">
+                                <a href="#" class="route-box__link js-sync-cart" data-user-id="{{ $userId }}">
                                     <i class="fas fa-sync"></i>
                                     <span>Cập nhật giỏ hàng</span>
                                 </a>
+
                             </div>
                         </div>
                     </div>
@@ -254,11 +187,11 @@
                                     </select>
                                 </div>
 
-                                <div class="u-s-m-b-30">
+                                <!-- <div class="u-s-m-b-30">
                                     <label class="gl-label">Mã bưu điện *</label>
                                     <input class="input-text input-text--primary-style" type="text"
                                         placeholder="VD: 100000">
-                                </div>
+                                </div> -->
 
                                 <div class="u-s-m-b-30">
                                     <button type="button" id="btnCalculateShipping" class="btn btn--e-brand-b-2">
@@ -294,9 +227,15 @@
                                                 <td>Phí giao hàng</td>
                                                 <td id="shipping-fee-display">0 đ</td>
                                             </tr>
+                                            @php
+                                            $subtotal = array_sum(array_column($cartItems, 'subtotal'));
+                                            @endphp
+
                                             <tr>
                                                 <td>Tạm tính</td>
-                                                <td id="subtotal-display" data-value="0">0 đ</td>
+                                                <td id="subtotal-display" data-value="{{ $subtotal }}">
+                                                    {{ number_format($subtotal) }} đ
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td>Tổng cộng</td>
@@ -323,97 +262,189 @@
     <!--====== End Tổng ======-->
 
 </div>
-<<<<<<< HEAD <script>
+<!-- Xử lý phí ship -->
+<script>
     document.addEventListener("DOMContentLoaded", function() {
 
-    const provinceSelect = document.getElementById("province-select");
-    const btnCheckout = document.getElementById("btnCheckout");
-    const btnCalculate = document.getElementById("btnCalculateShipping");
-    const shippingDisplay = document.getElementById("shipping-fee-display");
-    const subtotalEl = document.getElementById("subtotal-display");
-    const grandTotalEl = document.getElementById("grand-total-display");
+        // ===========================
+        // 0) USER ID
+        // ===========================
+        const USER_ID = window.APP_USER_ID;
+        const API_CART = "http://127.0.0.1:8002/api/cart";
 
-    // Debug ID nếu element không tồn tại
-    if (!provinceSelect) console.error("Không tìm thấy #province-select");
-    if (!btnCheckout) console.warn("Không tìm thấy #btnCheckout (OK nếu chưa cần checkout)");
-    if (!btnCalculate) console.error("Không tìm thấy #btnCalculateShipping");
-    if (!shippingDisplay) console.error("Không tìm thấy #shipping-fee-display");
+        // ============================================================
+        // 1) PHÍ SHIP
+        // ============================================================
 
-    // 1) Load danh sách tỉnh/thành từ API
-    fetch("https://provinces.open-api.vn/api/p/")
-    .then(response => response.json())
-    .then(data => {
-    provinceSelect.innerHTML = '<option value="">Chọn tỉnh/thành</option>';
-    data.forEach(p => {
-    let opt = document.createElement("option");
-    opt.value = p.code;
-    opt.textContent = p.name;
-    provinceSelect.appendChild(opt);
+        const provinceSelect = document.getElementById("province-select");
+        const btnCalculate = document.getElementById("btnCalculateShipping");
+        const shippingDisplay = document.getElementById("shipping-fee-display");
+        const subtotalEl = document.getElementById("subtotal-display");
+        const grandTotalEl = document.getElementById("grand-total-display");
+
+        // Load danh sách tỉnh/thành
+        if (provinceSelect) {
+            fetch("https://provinces.open-api.vn/api/p/")
+                .then(res => res.json())
+                .then(data => {
+                    provinceSelect.innerHTML = '<option value="">Chọn tỉnh/thành</option>';
+                    data.forEach(p => {
+                        let opt = document.createElement("option");
+                        opt.value = p.code;
+                        opt.textContent = p.name;
+                        provinceSelect.appendChild(opt);
+                    });
+                });
+        }
+
+        // Gọi API tính phí ship
+        function calculateShipping(provinceCode) {
+            return fetch("http://127.0.0.1:8002/api/calculate-shipping", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    province_code: Number(provinceCode)
+                })
+            }).then(res => res.json());
+        }
+
+        // Nút tính phí vận chuyển (ra luôn tổng cộng)
+        btnCalculate?.addEventListener("click", function() {
+            const provinceCode = provinceSelect.value;
+            if (!provinceCode) return alert("Bạn phải chọn tỉnh/thành.");
+
+            calculateShipping(provinceCode)
+                .then(data => {
+
+                    const shippingFee = Number(data.shipping_fee);
+                    const subtotal = Number(subtotalEl.dataset.value);
+
+                    shippingDisplay.innerText =
+                        new Intl.NumberFormat("vi-VN").format(shippingFee) + " đ";
+
+                    const total = subtotal + shippingFee;
+
+                    grandTotalEl.innerText =
+                        new Intl.NumberFormat("vi-VN").format(total) + " đ";
+                });
+        });
+
+
+
+        // ============================================================
+        // 2) GIỎ HÀNG — UPDATE, DELETE
+        // ============================================================
+
+        // Reset mọi event listener bị double
+        document.querySelectorAll(
+            '.input-counter__plus, .input-counter__minus, .table-p__delete-link, .js-clear-cart, #btnSyncCart'
+        ).forEach(btn => btn?.replaceWith(btn.cloneNode(true)));
+
+        // Xóa từng sản phẩm
+        document.querySelectorAll('.table-p__delete-link').forEach(btn => {
+            btn.addEventListener("click", function() {
+
+                fetch(`${API_CART}/${this.dataset.id}`, {
+                        method: "DELETE"
+                    })
+                    .then(res => res.json())
+                    .then(() => location.reload());
+            });
+        });
+
+        // Hàm cập nhật số lượng
+        function updateQuantity(itemId, action) {
+            let input = document.querySelector(`input[data-id="${itemId}"]`);
+            let qty = Number(input.value);
+
+            if (action === "increase") qty++;
+            if (action === "decrease" && qty > 1) qty--;
+
+            input.value = qty;
+
+            fetch(`${API_CART}/update`, {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        item_id: itemId,
+                        quantity: qty
+                    })
+                })
+                .then(res => res.json())
+                .then(() => location.reload());
+        }
+
+        document.querySelectorAll('.input-counter__plus').forEach(btn => {
+            btn.addEventListener("click", () =>
+                updateQuantity(btn.dataset.id, "increase")
+            );
+        });
+
+        document.querySelectorAll('.input-counter__minus').forEach(btn => {
+            btn.addEventListener("click", () =>
+                updateQuantity(btn.dataset.id, "decrease")
+            );
+        });
+
+
+        // ============================================================
+        // 3) XÓA TOÀN BỘ GIỎ HÀNG
+        // ============================================================
+
+        const clearCartBtn = document.querySelector(".js-clear-cart");
+
+        clearCartBtn?.addEventListener("click", function(e) {
+            e.preventDefault();
+
+            if (!confirm("Bạn chắc chắn muốn xóa toàn bộ giỏ hàng?")) return;
+
+            fetch(`${API_CART}/clear-all`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        user_id: USER_ID
+                    })
+                })
+                .then(res => res.json())
+                .then(() => location.reload());
+        });
+
+
+        // ============================================================
+        // 4) SYNC GIỎ HÀNG
+        // ============================================================
+
+        const btnSyncCart = document.getElementById("btnSyncCart");
+
+        btnSyncCart?.addEventListener("click", function(e) {
+            e.preventDefault();
+
+            fetch(`${API_CART}/sync`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        user_id: USER_ID
+                    })
+                })
+                .then(res => res.json())
+                .then(() => {
+                    alert("Giỏ hàng đã được cập nhật.");
+                    location.reload();
+                });
+        });
+
     });
-    })
-    .catch(err => {
-    console.error("Lỗi khi load API tỉnh:", err);
-    provinceSelect.innerHTML = '<option value="">Không tải được danh sách tỉnh</option>';
-    });
-
-    // 2) Hàm gọi API tính phí giao hàng
-    function calculateShipping(provinceCode) {
-    return fetch("http://127.0.0.1:8002/api/calculate-shipping", {
-    method: "POST",
-    headers: {
-    "Content-Type": "application/json",
-    "Accept": "application/json"
-    },
-    body: JSON.stringify({
-    province_code: Number(provinceCode)
-    })
-    })
-    .then(res => {
-    if (!res.ok) return res.text().then(t => {
-    throw new Error("Server error: " + t);
-    });
-    return res.json();
-    });
-    }
-
-    // 3) Event: Nhấn nút “Tính phí giao hàng”
-    btnCalculate.addEventListener("click", function() {
-    const provinceCode = provinceSelect.value;
-
-    if (!provinceCode) {
-    alert("Bạn phải chọn tỉnh/thành trước.");
-    return;
-    }
-
-    calculateShipping(provinceCode)
-    .then(data => {
-    // Cập nhật phí ship
-    shippingDisplay.innerText = new Intl.NumberFormat("vi-VN").format(data
-    .shipping_fee) + " đ";
-
-    // Cập nhật tổng tiền (nếu có subtotal)
-    if (subtotalEl && grandTotalEl) {
-    const subtotal = Number(subtotalEl.dataset.value ?? 0);
-    const total = subtotal + data.shipping_fee;
-    grandTotalEl.innerText = new Intl.NumberFormat("vi-VN").format(total) + " đ";
-    }
-    })
-    .catch(err => {
-    console.error("Lỗi API calculate-shipping:", err);
-    alert("Không tính được phí giao hàng. Kiểm tra console hoặc backend.");
-    });
-    });
-
-    // 4) Event: Tự động tính lại khi đổi tỉnh (tùy chọn)
-    provinceSelect.addEventListener("change", function() {
-    // Không tính tự động nữa — chỉ đổi tỉnh thôi
-    console.log("Đã chọn tỉnh:", this.value);
-    });
-
-    });
-    </script>
+</script>
 
 
-    @endsection
+@endsection
 
-    {{-- 4. Kết thúc phần nội dung --}}
+{{-- 4. Kết thúc phần nội dung --}}

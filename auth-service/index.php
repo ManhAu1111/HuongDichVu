@@ -85,4 +85,9 @@ if ($uri === "/verify" && $method === "GET") {
     exit;
 }
 
+if ($uri === '/api/me' && $method === 'GET') {
+    (new AuthController())->me();
+}
+
+
 echo json_encode(["status" => "Auth service running"]);

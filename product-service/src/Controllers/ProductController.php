@@ -5,15 +5,18 @@ namespace App\Controllers;
 use App\Database;
 use PDO;
 
-class ProductController {
+class ProductController
+{
 
     private $db;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->db = (new Database())->connect();
     }
 
-    public function getAllProducts() {
+    public function getAllProducts()
+    {
         $db = (new \App\Database())->connect();
 
         $stmt = $db->prepare("
@@ -39,14 +42,16 @@ class ProductController {
     }
 
 
-    public function getProductById($id) {
+    public function getProductById($id)
+    {
         $sql = "SELECT * FROM products WHERE id = ?";
         $stmt = $this->db->prepare($sql);
         $stmt->execute([$id]);
         return $stmt->fetch(PDO::FETCH_ASSOC) ?: ["error" => "Product not found"];
     }
 
-    public function createProduct($data) {
+    public function createProduct($data)
+    {
         $sql = "INSERT INTO products (name, price, image, description, category_id)
                 VALUES (?, ?, ?, ?, ?)";
 
@@ -62,7 +67,8 @@ class ProductController {
         return ["ok" => true, "message" => "Product created"];
     }
 
-    public function updateProduct($id, $data) {
+    public function updateProduct($id, $data)
+    {
         $sql = "UPDATE products 
                 SET name=?, price=?, image=?, description=?, category_id=?
                 WHERE id=?";
@@ -80,7 +86,8 @@ class ProductController {
         return ["ok" => true, "message" => "Product updated"];
     }
 
-    public function deleteProduct($id) {
+    public function deleteProduct($id)
+    {
         $sql = "DELETE FROM products WHERE id=?";
         $stmt = $this->db->prepare($sql);
         $stmt->execute([$id]);
@@ -88,7 +95,8 @@ class ProductController {
         return ["ok" => true, "message" => "Product deleted"];
     }
 
-    public function getProductsByCategoryId($categoryId) {
+    public function getProductsByCategoryId($categoryId)
+    {
         $sql = "SELECT * FROM products WHERE category_id = ?";
         $stmt = $this->db->prepare($sql);
         $stmt->execute([$categoryId]);
@@ -254,8 +262,4 @@ class ProductController {
             "last_page" => ceil($total / $limit)
         ];
     }
-
-
-
-    
 }

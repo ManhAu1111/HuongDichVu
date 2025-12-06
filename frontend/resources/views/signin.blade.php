@@ -70,50 +70,50 @@
 </div>
 
 <script>
-document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function() {
 
-    const form = document.getElementById("loginForm");
-    const msg = document.getElementById("login-msg");
+        const form = document.getElementById("loginForm");
+        const msg = document.getElementById("login-msg");
 
-    form.addEventListener("submit", async function(e) {
-        e.preventDefault();
+        form.addEventListener("submit", async function(e) {
+            e.preventDefault();
 
-        const email = document.getElementById("login-email").value.trim();
-        const password = document.getElementById("login-password").value.trim();
+            const email = document.getElementById("login-email").value.trim();
+            const password = document.getElementById("login-password").value.trim();
 
-        msg.innerHTML = "Đang đăng nhập...";
+            msg.innerHTML = "Đang đăng nhập...";
 
-        try {
-            const res = await fetch("http://127.0.0.1:8001/login", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    email,
-                    password
-                }),
-            });
+            try {
+                const res = await fetch("http://127.0.0.1:8001/login", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        email,
+                        password
+                    }),
+                });
 
-            const data = await res.json();
+                const data = await res.json();
 
-            if (!data.ok) {
-                msg.innerHTML = `<p style='color:red'>${data.message}</p>`;
-                return;
+                if (!data.ok) {
+                    msg.innerHTML = `<p style='color:red'>${data.message}</p>`;
+                    return;
+                }
+
+                // Lưu token vào cookie
+                document.cookie = "auth_token=" + data.token + "; path=/;";
+
+                // Điều hướng sau khi login thành công
+                window.location.href = "/dashboard";
+
+            } catch (err) {
+                msg.innerHTML = "<p style='color:red'>Lỗi kết nối tới Auth-service</p>";
             }
+        });
 
-            // Lưu token vào cookie
-            document.cookie = "auth_token=" + data.token + "; path=/;";
-
-            // Điều hướng sau khi login thành công
-            window.location.href = "/";
-
-        } catch (err) {
-            msg.innerHTML = "<p style='color:red'>Lỗi kết nối tới Auth-service</p>";
-        }
     });
-
-});
 </script>
 
 

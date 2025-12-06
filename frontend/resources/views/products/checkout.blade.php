@@ -177,68 +177,12 @@
 
                                             <a class="o-card__del far fa-trash-alt"></a>
                                         </div>
-                                        <img class="u-img-fluid" src="images/product/women/product8.jpg" alt="">
                                     </div>
-                                    <div class="o-card__info-wrap">
 
-                                        <span class="o-card__name">
-
-                                            <a href="#">New Dress D Nice
-                                                Elegant</a></span>
-
-                                        <span class="o-card__quantity">Quantity x 1</span>
-
-                                        <span class="o-card__price">$150.00</span>
-                                    </div>
                                 </div>
 
-                                <a class="o-card__del far fa-trash-alt"></a>
                             </div>
-                            <div class="o-card">
-                                <div class="o-card__flex">
-                                    <div class="o-card__img-wrap">
 
-                                        <img class="u-img-fluid" src="images/product/men/product8.jpg" alt="">
-                                    </div>
-                                    <div class="o-card__info-wrap">
-
-                                        <span class="o-card__name">
-
-                                            <a href="#">New Fashion D Nice
-                                                Elegant</a></span>
-
-                                        <span class="o-card__quantity">Quantity x 1</span>
-
-                                        <span class="o-card__price">$150.00</span>
-                                    </div>
-                                </div>
-
-                                <a class="o-card__del far fa-trash-alt"></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="o-summary__section u-s-m-b-30">
-                        <div class="o-summary__box">
-                            <h1 class="checkout-f__h1">SHIPPING & BILLING</h1>
-                            <div class="ship-b">
-
-                                <span class="ship-b__text">Ship to:</span>
-                                <div class="ship-b__box u-s-m-b-10">
-                                    <p class="ship-b__p">4247 Ashford Drive Virginia VA-20006 USA (+0)
-                                        900901904</p>
-
-                                    <a class="ship-b__edit btn--e-transparent-platinum-b-2" data-modal="modal"
-                                        data-modal-id="#edit-ship-address">Edit</a>
-                                </div>
-                                <div class="ship-b__box">
-
-                                    <span class="ship-b__text">Bill to default billing address</span>
-
-                                    <a class="ship-b__edit btn--e-transparent-platinum-b-2" data-modal="modal"
-                                        data-modal-id="#edit-ship-address">Edit</a>
-                                </div>
-                            </div>
-                            >>>>>>> 60e251195fac672f8798ee99b70cf5f20834bf6d
                         </div>
                     </div>
 
@@ -250,10 +194,6 @@
                                     <tr>
                                         <td>PHÍ GIAO HÀNG</td>
                                         <td id="shipping-fee-display" data-value="0">0 đ</td>
-                                    </tr>
-                                    <tr>
-                                        <td>THUẾ</td>
-                                        <td id="tax-display" data-value="0">0 đ</td>
                                     </tr>
                                     <tr>
                                         <td>TẠM TÍNH</td>
@@ -345,9 +285,6 @@
 <script>
     document.addEventListener("DOMContentLoaded", function() {
 
-        // ===========================
-        // ELEMENTS
-        // ===========================
         const provinceSelect = document.getElementById('province-select');
         const districtSelect = document.getElementById('district-select');
         const btnSaveDelivery = document.getElementById('btnSaveDelivery');
@@ -360,7 +297,7 @@
         districtSelect.disabled = true;
 
         // ===========================
-        // 1) Load PROVINCES
+        // Load PROVINCES
         // ===========================
         fetch("https://provinces.open-api.vn/api/p/")
             .then(r => r.json())
@@ -374,9 +311,7 @@
                 });
             });
 
-        // ===========================
-        // Load DISTRICTS khi chọn tỉnh
-        // ===========================
+        // Load DISTRICTS
         provinceSelect.addEventListener("change", function() {
             const provinceCode = this.value;
 
@@ -398,13 +333,10 @@
                 });
         });
 
-        // ===========================
-        // Helpers
-        // ===========================
         const fmt = v => new Intl.NumberFormat("vi-VN").format(v) + " đ";
 
         // ===========================
-        // 1) Đọc user_id từ JWT
+        // JWT
         // ===========================
         function getCookie(name) {
             const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
@@ -414,6 +346,7 @@
         function getUserIdFromJWT() {
             const token = getCookie("auth_token");
             if (!token) return null;
+
             try {
                 const payload = JSON.parse(atob(token.split(".")[1]));
                 return payload.sub;
@@ -423,18 +356,16 @@
         }
 
         // ===========================
-        // Tính subtotal
+        // SUBTOTAL
         // ===========================
         function computeSubtotalFromDOM() {
             let subtotal = 0;
 
             document.querySelectorAll(".o-card").forEach(card => {
-                const priceEl = card.querySelector(".o-card__price");
-                const qtyEl = card.querySelector(".o-card__quantity");
-
-                let price = parseInt(priceEl.textContent.replace(/[^0-9]/g, "")) || 0;
-                let qtyMatch = qtyEl.textContent.match(/x\s*([0-9]+)/i);
-                let qty = qtyMatch ? parseInt(qtyMatch[1]) : 1;
+                const price = parseInt(card.querySelector(".o-card__price").textContent.replace(/[^0-9]/g,
+                    "")) || 0;
+                const qty = parseInt(card.querySelector(".o-card__quantity").textContent.match(
+                    /x\s*([0-9]+)/)[1]);
 
                 subtotal += price * qty;
             });
@@ -449,6 +380,7 @@
             const subtotal = Number(subtotalEl.dataset.value || 0);
             const ship = Number(shippingDisplay.dataset.value || 0);
             const tax = Number(taxDisplay.dataset.value || 0);
+
             grandTotalEl.innerText = fmt(subtotal + ship + tax);
         }
 
@@ -469,15 +401,9 @@
             }).then(res => res.json());
         }
 
-        // ===========================
-        // 2) Lưu phí giao hàng
-        // ===========================
         btnSaveDelivery.addEventListener("click", function() {
             const provinceCode = provinceSelect.value;
-            if (!provinceCode) {
-                alert("Vui lòng chọn tỉnh.");
-                return;
-            }
+            if (!provinceCode) return alert("Vui lòng chọn tỉnh.");
 
             calculateShipping(provinceCode)
                 .then(data => {
@@ -490,24 +416,17 @@
         });
 
         // ===========================
-        // 3) Đặt hàng
+        // SUBMIT CHECKOUT
         // ===========================
         formCheckout.addEventListener("submit", async function(e) {
             e.preventDefault();
 
             const paymentMethod = document.querySelector('input[name="payment"]:checked');
-            if (!paymentMethod) {
-                alert("Vui lòng chọn phương thức thanh toán.");
-                return;
-            }
+            if (!paymentMethod) return alert("Vui lòng chọn phương thức thanh toán.");
 
-            const agree = document.getElementById("term-and-condition").checked;
-            if (!agree) {
-                alert("Bạn phải đồng ý điều khoản.");
-                return;
-            }
+            if (!document.getElementById("term-and-condition").checked)
+                return alert("Bạn phải đồng ý điều khoản.");
 
-            // Lấy thông tin giao hàng
             const receiver_name = document.getElementById("receiver_name").value.trim();
             const receiver_phone = document.getElementById("receiver_phone").value.trim();
             const receiver_email = document.getElementById("receiver_email").value.trim();
@@ -515,18 +434,15 @@
             const district_code = districtSelect.value;
             const province_code = provinceSelect.value;
 
-            if (!receiver_name || !receiver_phone || !receiver_email ||
-                !street_address || !district_code || !province_code) {
-                alert("Vui lòng nhập đầy đủ thông tin giao hàng.");
-                return;
+            if (!receiver_name || !receiver_phone || !receiver_email || !street_address || !
+                district_code || !province_code) {
+                return alert("Vui lòng nhập đầy đủ thông tin giao hàng.");
             }
 
-            // Build items
             const items = [];
             document.querySelectorAll(".o-card").forEach(card => {
                 items.push({
-                    product_id: card.dataset.productId ? Number(card.dataset
-                        .productId) : null,
+                    product_id: Number(card.dataset.productId),
                     product_name: card.querySelector(".o-card__name a").textContent
                         .trim(),
                     price: parseInt(card.querySelector(".o-card__price").textContent
@@ -536,15 +452,10 @@
                 });
             });
 
-            // Đọc user ID từ JWT
             const userId = getUserIdFromJWT();
-            if (!userId) {
-                alert("Bạn phải đăng nhập trước khi đặt hàng!");
-                return;
-            }
+            if (!userId) return alert("Bạn phải đăng nhập trước khi đặt hàng!");
 
-            // Payload gửi order-service
-            const payloadOrder = {
+            const payloadBase = {
                 user_id: userId,
                 receiver_name,
                 receiver_phone,
@@ -552,8 +463,9 @@
                 street_address,
                 district_name: districtSelect.options[districtSelect.selectedIndex].textContent,
                 province_code: Number(province_code),
-                payment_method: paymentMethod.value,
-                items
+                items,
+                shipping_fee: Number(shippingDisplay.dataset.value || 0),
+                amount: Number(grandTotalEl.innerText.replace(/[^0-9]/g, ""))
             };
 
             // ===========================
@@ -565,7 +477,10 @@
                     headers: {
                         "Content-Type": "application/json"
                     },
-                    body: JSON.stringify(payloadOrder)
+                    body: JSON.stringify({
+                        ...payloadBase,
+                        payment_method: "cod"
+                    })
                 });
 
                 const data = await res.json();
@@ -574,48 +489,34 @@
             }
 
             // ===========================
-            // MOMO PAYMENT
+            // MOMO FLOW (CHUẨN)
             // ===========================
             if (paymentMethod.value === "momo") {
-
-                const checkoutRes = await fetch("http://127.0.0.1:8002/api/checkout", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Accept": "application/json"
-                    },
-                    body: JSON.stringify(payloadOrder)
-                });
-
-                const orderData = await checkoutRes.json();
-                const orderId = orderData.order_id;
-                const amount = orderData.total;
-
                 const momoRes = await fetch("http://127.0.0.1:8004/api/momo/create", {
                     method: "POST",
                     headers: {
-                        "Content-Type": "application/json",
-                        "Accept": "application/json"
+                        "Content-Type": "application/json"
                     },
-                    body: JSON.stringify({
-                        order_id: orderId,
-                        amount: amount
-                    })
+                    body: JSON.stringify(payloadBase)
                 });
 
                 const momoData = await momoRes.json();
 
                 if (!momoData.payUrl) {
                     alert("Không nhận được payUrl từ MoMo.");
+                    console.error(momoData);
                     return;
                 }
 
+                // Redirect sang MoMo
                 window.location.href = momoData.payUrl;
             }
+
         });
 
     });
 </script>
+
 
 
 <!--====== End - Shipping Address Add Modal ======-->

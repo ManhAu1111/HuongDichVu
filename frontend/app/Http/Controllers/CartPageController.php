@@ -1,7 +1,4 @@
-php -S 127.0.0.1:8003 -t . index.php
-
-CartpageController 
-"<?php
+<?php
 
 namespace App\Http\Controllers;
 
@@ -23,6 +20,7 @@ class CartPageController extends Controller
         try {
             $parts = explode('.', $token);
             if (count($parts) < 2) return null;
+
             $payload = json_decode(base64_decode($parts[1]), true);
             return $payload['sub'] ?? null;
         } catch (\Exception $e) {
@@ -38,19 +36,21 @@ class CartPageController extends Controller
             return redirect('/signin')->with('error', 'Bạn cần đăng nhập để xem giỏ hàng');
         }
 
+        // GỌI ORDER SERVICE
         $response = Http::get('http://127.0.0.1:8002/api/cart', [
             'user_id' => $userId
         ]);
 
         if (!$response->ok()) {
-            // log lỗi để debug (storage/logs/laravel.log)
             Log::error('Cart API error', ['resp' => $response->body()]);
             return back()->with('error', 'Không thể tải giỏ hàng');
         }
 
         $cartItems = $response->json()['items'] ?? [];
 
-        return view('cart', compact('cartItems'));
+        return view('cart', [
+            'cartItems' => $cartItems,
+            'userId'    => $userId
+        ]);
     }
 }
-"
