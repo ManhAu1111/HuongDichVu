@@ -177,3 +177,4 @@ Route::prefix('admin')->name('admin.')->group(function () {
         return redirect()->route('login');
     })->name('logout');
 });
+

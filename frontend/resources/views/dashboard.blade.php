@@ -51,7 +51,7 @@
                             <div class="dash__box dash__box--bg-white dash__box--shadow u-s-m-b-30">
                                 <div class="dash__pad-1">
 
-                                    <span class="dash__text u-s-m-b-16">Hello, John Doe</span>
+                                    <span id="user-greeting" class="dash__text u-s-m-b-16">Hello...</span>
                                     <ul class="dash__f-list">
                                         <li>
 
@@ -333,3 +333,40 @@
 <!--====== End - Modal Section ======-->
 @endsection
 {{-- 4. Kết thúc phần nội dung --}}
+<script>
+document.addEventListener("DOMContentLoaded", async function() {
+
+    // Lấy token từ cookie
+    function getCookie(name) {
+        const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+        return match ? match[2] : null;
+    }
+
+    const token = getCookie("auth_token");
+    const greeting = document.getElementById("user-greeting");
+
+    if (!token) {
+        greeting.innerHTML = "Hello, Guest";
+        return;
+    }
+
+    try {
+        const res = await fetch("http://127.0.0.1:8001/me", {
+            method: "GET",
+            headers: {
+                "Authorization": "Bearer " + token
+            }
+        });
+
+        const data = await res.json();
+
+        if (data.ok && data.data.fullname) {
+            greeting.innerHTML = `Hello, ${data.data.fullname}`;
+        } else {
+            greeting.innerHTML = "Hello, User";
+        }
+    } catch (err) {
+        greeting.innerHTML = "Hello, User";
+    }
+});
+</script>

@@ -2,8 +2,6 @@
 <div class="dash__box dash__box--bg-white dash__box--shadow u-s-m-b-30">
     <div class="dash__pad-1">
 
-        <span class="dash__text u-s-m-b-16">Chào mừng, Admin Name</span>
-
         <ul class="dash__f-list">
             <li>
                 {{-- Dùng Route::is để check và áp dụng class dash-active --}}
