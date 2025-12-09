@@ -23,6 +23,7 @@ class Order extends Model
         'street_address',
         'district_name',
         'province_code',
+        'shipping_fee',
     ];
 
 
