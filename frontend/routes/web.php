@@ -47,7 +47,6 @@ Route::view('/productDetailAffiliate', 'products.productDetailAffiliate')->name(
 Route::view('/productDetailVariable', 'products.productDetailVariable')->name('products.DetailVariable');
 Route::get('/product/{id}', [ProductController::class, 'detail'])->name('products.detail');
 Route::view('/checkout', 'products.checkout')->name('checkout');
-// Route::view('/cart', 'cart')->name('cart');
 Route::get('/shop_side_v2', [ProductController::class, 'shop'])->name('shop.side_v2');
 Route::get('/cart', [CartPageController::class, 'index'])->name('cart');
 
@@ -96,7 +95,10 @@ Route::view('/dash_track_order', 'dash.dash_track_order')->name('dash.track_orde
 Route::view('/dash_my_order', 'dash.dash_my_order')->name('dash.my_order');
 Route::view('/dash_payment_option', 'dash.dash_payment_option')->name('dash.payment_option');
 Route::view('/dash_cancellation', 'dash.dash_cancellation')->name('dash.cancellation');
-Route::view('/dashManageOrder', 'dash.dashManageOrder')->name('dash.ManageOrder');
+// Route::view('/dashManageOrder', 'dash.dashManageOrder')->name('dash.ManageOrder');
+Route::get('/dashManageOrder/{public_id}', function ($public_id) {
+    return view('dash.dashManageOrder', compact('public_id'));
+})->name('dash.ManageOrder');
 
 /*
 |--------------------------------------------------------------------------
