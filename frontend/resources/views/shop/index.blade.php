@@ -247,10 +247,7 @@
 
                                             <div class="product-o__action-wrap">
                                                 <ul class="product-o__action-list">
-                                                    <li><a data-bs-toggle="modal" data-bs-target="#quick-look"><i
-                                                                class="fas fa-search-plus"></i></a></li>
-                                                    <li><a data-bs-toggle="modal" data-bs-target="#add-to-cart"><i
-                                                                class="fas fa-plus-circle"></i></a></li>
+
                                                     <li><a href="{{ route('login') }}"><i class="fas fa-heart"></i></a>
                                                     </li>
                                                     <li><a href="{{ route('login') }}"><i
@@ -339,16 +336,7 @@
     </div>
     <div class="product-o__action-wrap">
         <ul class="product-o__action-list">
-            <li>
 
-                <a data-bs-toggle="modal" data-bs-target="#quick-look" data-tooltip="tooltip" data-placement="top"
-                    title="Quick View"><i class="fas fa-search-plus"></i></a>
-            </li>
-            <li>
-
-                <a data-bs-toggle="modal" data-bs-target="#add-to-cart" data-tooltip="tooltip" data-placement="top"
-                    title="Add to Cart"><i class="fas fa-plus-circle"></i></a>
-            </li>
             <li>
 
                 <a href="{{ route('login') }}" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i
@@ -393,16 +381,7 @@
             </div>
             <div class="product-o__action-wrap">
                 <ul class="product-o__action-list">
-                    <li>
 
-                        <a data-bs-toggle="modal" data-bs-target="#quick-look" data-tooltip="tooltip"
-                            data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a>
-                    </li>
-                    <li>
-
-                        <a data-bs-toggle="modal" data-bs-target="#add-to-cart" data-tooltip="tooltip"
-                            data-placement="top" title="Add to Cart"><i class="fas fa-plus-circle"></i></a>
-                    </li>
                     <li>
 
                         <a href="{{ route('login') }}" data-tooltip="tooltip" data-placement="top"
@@ -480,10 +459,7 @@
 
                                 <div class="product-o__action-wrap">
                                     <ul class="product-o__action-list">
-                                        <li><a data-bs-toggle="modal" data-bs-target="#quick-look"><i
-                                                    class="fas fa-search-plus"></i></a></li>
-                                        <li><a data-bs-toggle="modal" data-bs-target="#add-to-cart"><i
-                                                    class="fas fa-plus-circle"></i></a></li>
+
                                         <li><a href="{{ route('login') }}"><i class="fas fa-heart"></i></a>
                                         </li>
                                         <li><a href="{{ route('login') }}"><i class="fas fa-envelope"></i></a></li>
@@ -596,14 +572,7 @@
 
                             <div class="product-o__action-wrap">
                                 <ul class="product-o__action-list">
-                                    <li>
-                                        <a data-bs-toggle="modal" data-bs-target="#quick-look" title="Quick View"><i
-                                                class="fas fa-search-plus"></i></a>
-                                    </li>
-                                    <li>
-                                        <a data-bs-toggle="modal" data-bs-target="#add-to-cart" title="Add to Cart"><i
-                                                class="fas fa-plus-circle"></i></a>
-                                    </li>
+
                                     <li>
                                         <a href="{{ route('login') }}" title="Add to Wishlist">
                                             <i class="fas fa-heart"></i>
