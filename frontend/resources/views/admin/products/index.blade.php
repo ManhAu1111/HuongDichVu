@@ -1,27 +1,27 @@
-{{-- resources/views/admin/products/index.blade.php --}}
+{{-- resources/views/admin/products/index.blade.php (Phiên bản Cuối cùng) --}}
 @extends('admin.layouts.admin_app')
 
 @section('admin_title', 'Quản Lý Sản Phẩm')
 
 @section('admin_content')
 
-<div class="dash__box dash__box--shadow dash__box--radius dash__box--bg-white u-s-m-b-30">
-    <div class="dash__pad-2">
-        <h1 class="dash__h1 u-s-m-b-14 u-c-secondary">Danh Sách Sản Phẩm</h1>
+    <div class="dash__box dash__box--shadow dash__box--radius dash__box--bg-white u-s-m-b-30">
+        <div class="dash__pad-2">
+            <h1 class="dash__h1 u-s-m-b-14 u-c-secondary">Danh Sách Sản Phẩm</h1>
 
-        <div class="u-s-m-b-30 d-flex justify-content-between align-items-center">
-            <a href="{{ route('admin.products.create') }}" class="btn btn--e-brand-b-2">
-                <i class="fas fa-plus u-s-m-r-6"></i> Thêm Sản Phẩm
-            </a>
-
-            <form class="main-form" method="GET" style="width: 50%;">
-                <label for="admin-product-search"></label>
-                <input class="input-text input-text--border-radius input-text--style-1"
-                       type="text" id="admin-product-search" name="search"
-                       value="{{ request('search') }}" placeholder="Tìm kiếm theo tên...">
-                <button class="btn btn--icon fas fa-search main-search-button" type="submit"></button>
-            </form>
-        </div>
+            <div class="u-s-m-b-30 d-flex justify-content-between align-items-center">
+                {{-- Nút này giờ chỉ dùng JS để mở form THÊM MỚI --}}
+                <a href="#" id="create-product-btn" class="btn btn--e-brand-b-2">
+                    <i class="fas fa-plus u-s-m-r-6"></i> Thêm Sản Phẩm
+                </a>
+                <form class="main-form" method="GET" style="width: 50%;">
+                    <label for="admin-product-search"></label>
+                    <input class="input-text input-text--border-radius input-text--style-1" type="text"
+                        id="admin-product-search" name="search" value="{{ request('search') }}"
+                        placeholder="Tìm kiếm theo tên...">
+                    <button class="btn btn--icon fas fa-search main-search-button" type="submit"></button>
+                </form>
+            </div>
 
             {{-- 1. KHU VỰT MODAL (ẨN BAN ĐẦU) --}}
             <div id="product-form-container" style="display: none;">
@@ -29,52 +29,37 @@
                 {{-- CSS Modal và Grid Form --}}
                 <style>
                     .modal-overlay {
-                        position: fixed;
-                        top: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 100%;
+                        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
                         background-color: rgba(0, 0, 0, 0.7);
-                        z-index: 1000;
-                        overflow: auto;
-                        padding: 20px;
+                        z-index: 1000; overflow: auto; padding: 20px;
                         display: flex;
                         justify-content: center;
                         align-items: center;
                     }
-
                     .modal-content {
                         background-color: #fefefe;
-                        padding: 20px;
-                        border: 1px solid #888;
-                        width: 95%;
-                        max-width: 800px;
+                        padding: 20px; border: 1px solid #888;
+                        width: 95%; max-width: 800px;
                         border-radius: 8px;
                         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
                     }
-
                     .form-grid-layout {
                         display: grid;
                         grid-template-columns: repeat(2, 1fr);
                         gap: 20px;
                     }
-
                     /* THAY ĐỔI QUAN TRỌNG: Kéo giãn và Đồng bộ chiều cao */
                     .form-grid-layout .input-text,
                     .form-grid-layout .select-box,
                     .form-grid-layout .text-area {
                         width: 100%;
                         box-sizing: border-box;
-                        height: 40px;
-                        /* Chiều cao cố định */
+                        height: 40px; /* Chiều cao cố định */
                         padding: 8px 15px;
                     }
-
                     .form-grid-layout .text-area {
-                        height: 120px;
-                        /* Giữ textarea cao hơn */
+                        height: 120px; /* Giữ textarea cao hơn */
                     }
-
                     .form-grid-layout .select-box {
                         appearance: none;
                         -webkit-appearance: none;
@@ -84,7 +69,6 @@
                         background-position: right 15px center;
                         background-size: 10px;
                     }
-
                     .form-grid-full-span {
                         grid-column: 1 / -1;
                     }
@@ -101,7 +85,6 @@
                         cursor: pointer;
                         background-color: #fff;
                     }
-
                     .custom-file-text {
                         flex-grow: 1;
                         padding: 0 10px;
@@ -111,7 +94,6 @@
                         color: #6c757d;
                         font-size: 14px;
                     }
-
                     .custom-file-button {
                         background-color: #adb5bd;
                         color: white;
@@ -124,11 +106,9 @@
                         cursor: pointer;
                         transition: background-color 0.2s;
                     }
-
                     .custom-file-button:hover {
                         background-color: #6c757d;
                     }
-
                     /* FOOTER STYLES */
                     .modal-footer-flex {
                         display: flex;
@@ -137,7 +117,6 @@
                         padding-top: 20px;
                         border-top: 1px solid #eee;
                     }
-
                     .btn--e-dark-outline {
                         background-color: #f8f9fa;
                         color: #6c757d;
@@ -151,7 +130,6 @@
                         font-weight: 700;
                         transition: background-color 0.2s;
                     }
-
                     .btn--e-dark-outline:hover {
                         background-color: #e2e6ea;
                     }
@@ -216,36 +194,30 @@
 
                                             {{-- Vùng 1: TẢI LÊN ẢNH CHÍNH --}}
                                             <div class="u-s-m-b-0">
-                                                <label class="gl-label" for="product-image-file">TẢI LÊN ẢNH CHÍNH (Chọn
-                                                    File)</label>
+                                                <label class="gl-label" for="product-image-file">TẢI LÊN ẢNH CHÍNH (Chọn File)</label>
                                                 {{-- Ẩn input file mặc định --}}
                                                 <input class="input-text input-text--primary-style" type="file"
-                                                    id="product-image-file" name="image_file" accept="image/jpeg,image/png"
-                                                    style="display: none;">
+                                                    id="product-image-file" name="image_file" accept="image/jpeg,image/png" style="display: none;">
                                                 <input type="hidden" name="current_image_url" id="current_image_url">
 
                                                 {{-- Giao diện custom upload --}}
                                                 <label for="product-image-file" class="custom-file-upload-wrapper">
-                                                    <span class="custom-file-text" id="image-file-name">Chưa có tệp nào được
-                                                        chọn</span>
+                                                    <span class="custom-file-text" id="image-file-name">Chưa có tệp nào được chọn</span>
                                                     <span class="custom-file-button">Chọn tệp</span>
                                                 </label>
                                             </div>
 
                                             {{-- Vùng 2: TẢI LÊN MODEL 3D --}}
                                             <div class="u-s-m-b-0">
-                                                <label class="gl-label" for="product-model-file">TẢI LÊN MODEL 3D (Chọn File
-                                                    .glb/.gltf)</label>
+                                                <label class="gl-label" for="product-model-file">TẢI LÊN MODEL 3D (Chọn File .glb/.gltf)</label>
                                                 {{-- Ẩn input file mặc định --}}
                                                 <input class="input-text input-text--primary-style" type="file"
-                                                    id="product-model-file" name="model_file" accept=".glb,.gltf"
-                                                    style="display: none;">
+                                                    id="product-model-file" name="model_file" accept=".glb,.gltf" style="display: none;">
                                                 <input type="hidden" name="current_model_url" id="current_model_url">
 
                                                 {{-- Giao diện custom upload --}}
                                                 <label for="product-model-file" class="custom-file-upload-wrapper">
-                                                    <span class="custom-file-text" id="model-file-name">Chưa có tệp nào được
-                                                        chọn</span>
+                                                    <span class="custom-file-text" id="model-file-name">Chưa có tệp nào được chọn</span>
                                                     <span class="custom-file-button">Chọn tệp</span>
                                                 </label>
                                             </div>
@@ -293,50 +265,39 @@
                                 <th>Tên Sản Phẩm</th>
                                 <th>Giá</th>
                                 <th>Kho hàng</th>
-                                <th>Danh mục</th>
+                                <th>Trạng thái</th>
                                 <th>Hành động</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- Dữ liệu mẫu ID 1 --}}
+                            {{-- Dữ liệu mẫu --}}
                             <tr>
                                 <td>1</td>
-                                <td>
-                                    <div class="dash__table-img-wrap"><img class="u-img-fluid"
-                                            src="{{ asset('images/product/electronic/product3.jpg') }}" alt=""></div>
-                                </td>
+                                <td><div class="dash__table-img-wrap"><img class="u-img-fluid" src="{{ asset('images/product/electronic/product3.jpg') }}" alt=""></div></td>
                                 <td>Yellow Wireless Headphone</td>
-                                <td>5.000.000vnđ</td>
+                                <td>$125.00</td>
                                 <td>50</td>
-                                {{-- <--- ĐÃ SỬA: Thay trạng thái bằng Danh mục mẫu --}} <td><span
-                                        class="gl-label u-c-secondary">Điện tử</span></td>
-                                    <td>
-                                        <div class="dash__link dash__link--brand">
-                                            <a href="#" class="edit-product-btn" data-product-id="1"
-                                                data-fetch-url="{{ route('admin.products.getData', 1) }}">SỬA</a> |
-                                            <a href="#" onclick="confirm('Xác nhận xóa sản phẩm này?')">XÓA</a>
-                                        </div>
-                                    </td>
+                                <td><span class="gl-label u-c-brand">Active</span></td>
+                                <td>
+                                    <div class="dash__link dash__link--brand">
+                                        <a href="#" class="edit-product-btn" data-product-id="1" data-fetch-url="{{ route('admin.products.getData', 1) }}">SỬA</a> |
+                                        <a href="#" onclick="confirm('Xác nhận xóa sản phẩm này?')">XÓA</a>
+                                    </div>
+                                </td>
                             </tr>
-                            {{-- Dữ liệu mẫu ID 2 --}}
                             <tr>
                                 <td>2</td>
-                                <td>
-                                    <div class="dash__table-img-wrap"><img class="u-img-fluid"
-                                            src="{{ asset('images/product/electronic/product2.jpg') }}" alt=""></div>
-                                </td>
+                                <td><div class="dash__table-img-wrap"><img class="u-img-fluid" src="{{ asset('images/product/electronic/product2.jpg') }}" alt=""></div></td>
                                 <td>Premium Monitor</td>
-                                <td>499.000vnđ</td>
+                                <td>$499.00</td>
                                 <td>15</td>
-                                {{-- <--- ĐÃ SỬA: Thay trạng thái bằng Danh mục mẫu --}} <td><span
-                                        class="gl-label u-c-secondary">Nội thất</span></td>
-                                    <td>
-                                        <div class="dash__link dash__link--brand">
-                                            <a href="#" class="edit-product-btn" data-product-id="2"
-                                                data-fetch-url="{{ route('admin.products.getData', 2) }}">SỬA</a> |
-                                            <a href="#" onclick="confirm('Xác nhận xóa sản phẩm này?')">XÓA</a>
-                                        </div>
-                                    </td>
+                                <td><span class="gl-label u-c-secondary">Draft</span></td>
+                                <td>
+                                    <div class="dash__link dash__link--brand">
+                                        <a href="#" class="edit-product-btn" data-product-id="2" data-fetch-url="{{ route('admin.products.getData', 2) }}">SỬA</a> |
+                                        <a href="#" onclick="confirm('Xác nhận xóa sản phẩm này?')">XÓA</a>
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -478,7 +439,7 @@
                 const currentUrlInput = document.getElementById(item.urlId);
 
                 if (input && nameSpan) {
-                    input.addEventListener('change', function () {
+                    input.addEventListener('change', function() {
                         if (this.files.length > 0) {
                             nameSpan.textContent = this.files[0].name;
                         } else if (currentUrlInput && currentUrlInput.value) {
