@@ -161,4 +161,3 @@ echo json_encode([
     "endpoint" => $uri,
     "method"   => $method,
 ], JSON_UNESCAPED_UNICODE);
-

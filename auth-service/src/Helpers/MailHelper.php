@@ -79,7 +79,7 @@ class MailHelper
             $mail->Subject = "Xác thực tài khoản của bạn";
             $mail->Body = $html;
             $mail->Body = $html;
-
+            
             $mail->send();
         } catch (Exception $e) {
             error_log("Mail error: " . $mail->ErrorInfo);

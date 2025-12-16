@@ -34,10 +34,10 @@ Bootstrap / TailwindCSS
 khởi chạy dự án
 ## 🚀 Khởi chạy dự án
 
-| Service           | Lệnh chạy                                                         |
-|------------------|------------------------------------------------------------------|
-| **Frontend**      | `php artisan serve --host=127.0.0.1 --port=8000`                 |
-| **Auth Service**  | `php -S 127.0.0.1:8001`                                          |
-| **Payment Service** | `php artisan serve --port=8004`                               |
-| **Product Service** | `php -S 127.0.0.1:8003 -t . index.php`                        |
-| **Order Service** | `php artisan serve --port=8002`                                  |
+| Service              | Lệnh chạy                                                    |
+|----------------------|--------------------------------------------------------------|
+| **Frontend**         | `php artisan serve --host=127.0.0.1 --port=8000`             |
+| **Auth Service**     | `php -S 127.0.0.1:8001`                                      |
+| **Payment Service**  | `php artisan serve --port=8004`                              |
+| **Product Service**  | `php -S 127.0.0.1:8003 -t . index.php`                       |
+| **Order Service**    | `php artisan serve --port=8002`                              |
