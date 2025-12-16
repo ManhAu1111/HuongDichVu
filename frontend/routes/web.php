@@ -133,7 +133,7 @@ Route::view('/wishlist', 'wishlist')->name('wishlist');
 |--------------------------------------------------------------------------
 */
 
-Route::prefix('admin')->name('admin.')->group(function () {
+Route::prefix('admin')->name('admin.')->middleware('auth.admin')->group(function () {
     // 1. ADMIN DASHBOARD
     Route::view('/', 'admin.dashboard.index')->name('dashboard');
 
@@ -149,6 +149,21 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // Dùng một route GET đơn giản để mô phỏng trang sửa
         Route::get('/{id}/edit', function ($id) {
             return view('admin.products.create_edit', ['id' => $id]);
+        })->name('edit');
+    });
+
+    // 2.5. QUẢN LÝ DANH MỤC SẢN PHẨM
+    Route::prefix('categories')->name('categories.')->group(function () {
+        // GET /admin/categories -> admin.categories.index (Danh sách)
+        Route::view('/', 'admin.categories.index')->name('index');
+
+        // GET /admin/categories/create -> admin.categories.create (Form thêm)
+        Route::view('/create', 'admin.categories.create_edit')->name('create');
+
+        // GET /admin/categories/1/edit -> admin.categories.edit (Form sửa)
+        // Dùng một route GET đơn giản để mô phỏng trang sửa
+        Route::get('/{id}/edit', function ($id) {
+            return view('admin.categories.create_edit', ['id' => $id]);
         })->name('edit');
     });
 

@@ -43,16 +43,30 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $categories = Http::get("$this->api/categories")->json();
-        $products   = Http::get("$this->api/products")->json();
-        $latest     = Http::get("$this->api/products/latest")->json();
-        $featured   = Http::get("$this->api/products/top-rated")->json();
+        $categoriesResponse = Http::get("$this->api/categories");
+        $productsResponse   = Http::get("$this->api/products");
+        $latestResponse     = Http::get("$this->api/products/latest");
+        $featuredResponse   = Http::get("$this->api/products/top-rated");
+
+        // *************** BẮT ĐẦU: Xử lý an toàn ***************
+        $categories = $categoriesResponse->ok() ? $categoriesResponse->json() : [];
+        $products   = $productsResponse->ok() ? $productsResponse->json() : [];
+        $latest     = $latestResponse->ok() ? $latestResponse->json() : [];
+        $featured   = $featuredResponse->ok() ? $featuredResponse->json() : [];
 
         $productsByCate = [];
-        foreach ($categories as $cate) {
-            $productsByCate[$cate['id']] =
-                Http::get("$this->api/products/category/{$cate['id']}/limit/4")->json();
+
+        // CHỈ LẶP KHI $categories là một mảng và không rỗng
+        if (is_array($categories) && count($categories) > 0) {
+            foreach ($categories as $cate) {
+                // Kiểm tra xem $cate có phải là mảng hợp lệ (để có 'id')
+                if (is_array($cate) && isset($cate['id'])) {
+                    $productsByCate[$cate['id']] =
+                        Http::get("$this->api/products/category/{$cate['id']}/limit/4")->json();
+                }
+            }
         }
+        // *************** KẾT THÚC: Xử lý an toàn ***************
 
         return view('shop.index', compact('categories', 'products', 'latest', 'featured', 'productsByCate'));
     }
