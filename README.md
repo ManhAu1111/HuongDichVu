@@ -41,11 +41,3 @@ The source code is provided **for demonstration purposes only** and is not inten
 
 ---
 
-## 👤 Author
-
-**Khai (BQKhaiIT)**  
-Laravel Developer  
-
-If you are a recruiter or developer reviewing this project and would like to discuss the implementation details, feel free to reach out.
-
----
