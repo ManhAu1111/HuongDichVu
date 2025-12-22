@@ -1,12 +1,15 @@
 <?php
+
 namespace App\Models;
 
 use App\Core\Database;
 use PDO;
 
-class Review {
+class Review
+{
 
-    public static function create($data) {
+    public static function create($data)
+    {
         $db = Database::connect();
 
         $stmt = $db->prepare("
@@ -24,7 +27,8 @@ class Review {
     }
 
     // UPDATED: sort + ép kiểu rating
-    public static function getByProduct($productId, $sort = 'newest') {
+    public static function getByProduct($productId, $sort = 'newest')
+    {
         $db = Database::connect();
 
         $orderBy = $sort === 'best'
@@ -46,26 +50,37 @@ class Review {
                 'user_name'  => $r['user_name'],
                 'rating'     => (float)$r['rating'], // ⭐ FIX
                 'comment'    => $r['comment'],
-                'created_at'=> $r['created_at']
+                'created_at' => $r['created_at']
             ];
         }, $rows);
     }
 
-    public static function stats($productId) {
+    public static function stats($productId)
+    {
         $db = Database::connect();
 
         $stmt = $db->prepare("
-            SELECT COUNT(*) total, AVG(rating) avg_rating
-            FROM reviews
-            WHERE product_id = ?
-        ");
+        SELECT 
+            COUNT(*) AS total,
+            IFNULL(ROUND(AVG(rating), 1), 0) AS avg_rating
+        FROM reviews
+        WHERE product_id = ?
+    ");
+
         $stmt->execute([$productId]);
 
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return [
+            'total' => (int) $row['total'],
+            'avg_rating' => (float) $row['avg_rating']
+        ];
     }
 
+
     // UPDATED: check reviewed
-    public static function exists($productId, $userId) {
+    public static function exists($productId, $userId)
+    {
         $db = Database::connect();
 
         $stmt = $db->prepare("

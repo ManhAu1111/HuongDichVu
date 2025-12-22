@@ -175,7 +175,14 @@ if ($method === 'POST' && $uri === '/api/products/restore-stock') {
     exit;
 }
 
-
+// PUT /products/{id}/rating
+if (preg_match("#^/products/(\d+)/rating$#", $uri, $matches) && $method === "PUT") {
+    $data = json_decode(file_get_contents('php://input'), true);
+    echo json_encode(
+        $product->updateRating((int)$matches[1], $data)
+    );
+    exit;
+}
 
 
 // Mặc định

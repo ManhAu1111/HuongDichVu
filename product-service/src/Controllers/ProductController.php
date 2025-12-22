@@ -364,4 +364,20 @@ class ProductController
 
         return $products;
     }
+    public function updateRating($id, $data)
+    {
+        $stmt = $this->db->prepare("
+        UPDATE products
+        SET avg_rating = ?, total_reviews = ?
+        WHERE id = ?
+    ");
+
+        $stmt->execute([
+            $data['avg_rating'],
+            $data['total_reviews'],
+            $id
+        ]);
+
+        return ['ok' => true];
+    }
 }

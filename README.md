@@ -42,3 +42,6 @@ khởi chạy dự án
 | **Product Service** | `php -S 127.0.0.1:8003 -t . index.php`                        |
 | **Order Service** | `php artisan serve --port=8002`                                  |
 | **Wishlist Service**| `php artisan serve --port=8005`                                |
+| **Review Service**| `php -S 127.0.0.1:8006 -t public`                                |
+| **Admin Service**| `php artisan serve --port=8007`                                |
+
