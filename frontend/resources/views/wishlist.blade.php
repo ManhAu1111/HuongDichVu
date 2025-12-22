@@ -4,6 +4,9 @@
 @section('title', 'Ludus - Wishlist')
 
 @section('content')
+    @php
+        $wishlistItems = $wishlistItems ?? [];
+    @endphp
     <div class="app-content">
 
         <!--====== Breadcrumb ======-->
@@ -37,25 +40,79 @@
             <div class="section__content">
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-12">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
 
-                            {{-- Wishlist items render ở đây --}}
-                            <div id="wishlist-container"></div>
+                            @if (count($wishlistItems) === 0)
+                                <div class="text-center u-s-p-y-60">
+                                    <h4>Wishlist is empty</h4>
+                                </div>
+                            @else
+                                @foreach ($wishlistItems as $item)
+                                    <div class="w-r u-s-m-b-30">
+                                        <div class="w-r__container">
+                                            <div class="w-r__wrap-1">
+                                                <div class="w-r__img-wrap">
+                                                    <img class="u-img-fluid"
+                                                        src="{{ config('services.product.image_url') }}/{{ $item['primary_image'] }}">
+                                                </div>
+
+                                                <div class="w-r__info">
+                                                    <span class="w-r__name">
+                                                        <a href="{{ route('products.detail', $item['id']) }}">
+                                                            {{ $item['name'] }}
+                                                        </a>
+                                                    </span>
+
+                                                    <span class="w-r__category">
+                                                        Category ID: {{ $item['category_id'] }}
+                                                    </span>
+
+                                                    <span class="w-r__price">
+                                                        {{ number_format((float) $item['price']) }}đ
+                                                    </span>
+                                                </div>
+                                            </div>
+
+                                            <div class="w-r__wrap-2">
+                                                <a class="w-r__link btn--e-brand-b-2 add-to-cart"
+                                                    data-product-id="{{ $item['id'] }}">
+                                                    ADD TO CART
+                                                </a>
+
+                                                <a class="w-r__link btn--e-transparent-platinum-b-2"
+                                                    href="{{ route('products.detail', $item['id']) }}">
+                                                    VIEW
+                                                </a>
+
+                                                <a class="w-r__link btn--e-transparent-platinum-b-2 remove-wishlist"
+                                                    data-product-id="{{ $item['id'] }}">
+                                                    REMOVE
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @endif
+                            <!--====== End - Wishlist Product ======-->
 
                         </div>
 
                         <div class="col-lg-12">
                             <div class="route-box">
                                 <div class="route-box__g">
-                                    <a class="route-box__link" href="{{ route('shop.side_v2') }}">
-                                        <i class="fas fa-long-arrow-alt-left"></i>
-                                        <span>CONTINUE SHOPPING</span>
-                                    </a>
+
+                                    <a class="route-box__link" href="{{ route('shop.side_v2') }}"><i
+                                            class="fas fa-long-arrow-alt-left"></i>
+
+                                        <span>CONTINUE SHOPPING</span></a>
                                 </div>
-                                <a class="route-box__link" href="#" id="clear-wishlist-btn">
-                                    <i class="fas fa-trash"></i>
-                                    <span>CLEAR WISHLIST</span>
-                                </a>
+                                <button type="button"
+        class="route-box__link clear-wishlist"
+        style="background:none;border:none">
+    <i class="fas fa-trash"></i>
+    <span>CLEAR WISHLIST</span>
+</button>
+
                             </div>
                         </div>
 
@@ -71,26 +128,13 @@
     <script>
         const API_WISHLIST = 'http://127.0.0.1:8003/wishlist';
 
-        function getCookie(name) {
-            const match = document.cookie.match(new RegExp("(^| )" + name + "=([^;]+)"));
-            return match ? match[2] : null;
-        }
+                                    <span>Item is added successfully!</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-12">
+                            <div class="s-option">
 
-        const TOKEN = getCookie('auth_token');
-
-        document.addEventListener('DOMContentLoaded', loadWishlist);
-
-        async function loadWishlist() {
-            if (!TOKEN) {
-                window.location.href = "{{ route('login') }}";
-                return;
-            }
-
-            const res = await fetch(API_WISHLIST, {
-                headers: {
-                    'Authorization': 'Bearer ' + TOKEN
-                }
-            });
 
             const json = await res.json();
 
@@ -99,7 +143,9 @@
                 return;
             }
 
-            const container = document.getElementById('wishlist-container');
+                                    <a class="s-option__link btn--e-white-brand-shadow" href="{{ route('cart') }}">VIEW
+                                        CART</a>
+
 
             container.innerHTML = json.data.map(item => `
         <div class="w-r u-s-m-b-30">
@@ -117,54 +163,103 @@
                 </div>
             </div>
         </div>
-    `).join('');
-        }
+    </div>
+@endsection
+{{-- 4. Kết thúc phần nội dung --}}
+@push('scripts')
+<script>
+document.addEventListener("DOMContentLoaded", function () {
 
-        document.getElementById('clear-wishlist-btn')?.addEventListener('click', async function(e) {
-            e.preventDefault();
+    function getCookie(name) {
+        const match = document.cookie.match(new RegExp("(^| )" + name + "=([^;]+)"));
+        return match ? match[2] : null;
+    }
 
-            if (!confirm('Bạn có chắc muốn xoá toàn bộ wishlist không?')) return;
+    const token = getCookie("auth_token");
 
-            const TOKEN = getCookie('auth_token');
-            if (!TOKEN) {
-                window.location.href = "{{ route('login') }}";
+    document.querySelectorAll(".remove-wishlist").forEach(btn => {
+        btn.addEventListener("click", async function (e) {
+            e.preventDefault(); // 🔥 QUAN TRỌNG
+
+            if (!token) {
+                window.location.href = "/signin";
                 return;
             }
 
+            const productId = this.dataset.productId;
+
             try {
-                // 1. Lấy toàn bộ wishlist
-                const res = await fetch(API_WISHLIST, {
+                const res = await fetch(`http://127.0.0.1:8005/api/wishlist/${productId}`, {
+                    method: "DELETE",
                     headers: {
-                        'Authorization': 'Bearer ' + TOKEN
+                        "Authorization": "Bearer " + token
                     }
                 });
 
-                const json = await res.json();
-                if (!json.data || json.data.length === 0) {
-                    window.location.href = "{{ route('empty.Wishlist') }}";
+                if (!res.ok) {
+                    alert("Không thể xoá sản phẩm khỏi wishlist!");
                     return;
                 }
 
-                // 2. Xoá từng item
-                await Promise.all(
-                    json.data.map(item =>
-                        fetch(`${API_WISHLIST}/${item.product_id}`, {
-                            method: 'DELETE',
-                            headers: {
-                                'Authorization': 'Bearer ' + TOKEN
-                            }
-                        })
-                    )
-                );
+                // ✅ Xoá UI ngay, không reload
+                const item = this.closest(".w-r");
+                if (item) item.remove();
 
-                // 3. Redirect sang empty wishlist
-                window.location.href = "{{ route('empty.Wishlist') }}";
+                // Nếu hết sản phẩm → reload để hiện "Wishlist is empty"
+                if (document.querySelectorAll(".w-r").length === 0) {
+                    location.reload();
+                }
 
             } catch (err) {
-                console.error(err);
-                alert('Không thể xoá wishlist, thử lại sau!');
+                console.error("Remove wishlist error:", err);
+                alert("Có lỗi xảy ra, thử lại sau!");
             }
         });
-    </script>
+    });
 
-@endsection
+});
+</script>
+@endpush
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    function getCookie(name) {
+        const match = document.cookie.match(new RegExp("(^| )" + name + "=([^;]+)"));
+        return match ? match[2] : null;
+    }
+
+    const token = getCookie("auth_token");
+    const btn = document.querySelector(".clear-wishlist");
+
+    if (!btn) return;
+
+    btn.addEventListener("click", async function (e) {
+        e.preventDefault();
+
+        if (!token) {
+            window.location.href = "/signin";
+            return;
+        }
+
+        if (!confirm("Bạn có chắc muốn xoá toàn bộ wishlist?")) return;
+
+        const res = await fetch("http://127.0.0.1:8005/api/wishlist", {
+            method: "DELETE",
+            headers: {
+                "Authorization": "Bearer " + token
+            }
+        });
+
+        if (!res.ok) {
+            console.error("Clear wishlist failed:", res.status);
+            alert("Không thể xoá wishlist!");
+            return;
+        }
+
+        location.reload();
+    });
+});
+</script>
+
+

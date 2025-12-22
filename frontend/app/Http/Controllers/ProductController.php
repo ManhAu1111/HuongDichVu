@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Log;
 
 class ProductController extends Controller
 {
@@ -54,6 +55,10 @@ class ProductController extends Controller
         $latest     = $latestResponse->ok() ? $latestResponse->json() : [];
         $featured   = $featuredResponse->ok() ? $featuredResponse->json() : [];
 
+        Log::info('CATEGORIES RAW', [
+            'categories' => $categories,
+            'type' => gettype($categories)
+        ]);
         $productsByCate = [];
 
         // CHỈ LẶP KHI $categories là một mảng và không rỗng

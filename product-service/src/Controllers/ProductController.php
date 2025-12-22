@@ -328,4 +328,57 @@ class ProductController
             return ["error" => $e->getMessage()];
         }
     }
+    // ===============================
+    // BULK PRODUCTS (for Wishlist)
+    // ===============================
+    public function getProductsByIds(array $ids)
+    {
+        if (empty($ids)) {
+            return [];
+        }
+
+        // Tạo placeholders ?,?,?
+        $placeholders = implode(',', array_fill(0, count($ids), '?'));
+
+        $sql = "
+        SELECT p.*,
+            (
+                SELECT image_url
+                FROM product_images
+                WHERE product_id = p.id AND is_primary = 1
+                LIMIT 1
+            ) AS primary_image
+        FROM products p
+        WHERE p.id IN ($placeholders)
+    ";
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute($ids);
+        $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($products as &$p) {
+            if ($p['primary_image']) {
+                $p['primary_image'] = str_replace("\\", "/", $p['primary_image']);
+            }
+        }
+
+        return $products;
+    }
+    public function updateRating($id, $data)
+    {
+        $stmt = $this->db->prepare("
+        UPDATE products
+        SET avg_rating = ?, total_reviews = ?
+        WHERE id = ?
+    ");
+
+        $stmt->execute([
+            $data['avg_rating'],
+            $data['total_reviews'],
+            $id
+        ]);
+
+        return ['ok' => true];
+    }
 }
+
