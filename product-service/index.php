@@ -42,7 +42,7 @@ use App\Controllers\ReviewController;
 $product = new ProductController();
 $category = new CategoryController();
 $image = new ProductImageController();
-$review = new ReviewController();
+$controller = new ProductController();
 
 $uri = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
 $method = $_SERVER["REQUEST_METHOD"];
@@ -55,6 +55,18 @@ $wishlist = new WishlistController();
 // GET /products → list
 if ($uri === "/products" && $method === "GET") {
     echo json_encode($product->getAllProducts());
+    exit;
+}
+/**
+ * BULK PRODUCTS – cho Wishlist service
+ */
+if ($uri === '/products/bulk' && $method === 'POST') {
+    $data = json_decode(file_get_contents('php://input'), true);
+    $ids  = $data['ids'] ?? [];
+
+    echo json_encode(
+        $controller->getProductsByIds($ids)
+    );
     exit;
 }
 
@@ -190,26 +202,11 @@ if (preg_match('#^/products/(\d+)/reviews$#', $uri, $m) && $method === 'GET') {
     exit;
 }
 
-// POST review
-if (preg_match('#^/products/(\d+)/reviews$#', $uri, $m) && $method === 'POST') {
-    echo json_encode($review->store((int)$m[1]));
-    exit;
-}
-// POST /products/{id}/reviews
-if (preg_match("#^/products/(\d+)/reviews$#", $uri, $matches) && $method === "POST") {
-    $userId = \App\Helpers\AuthHelper::getUserIdFromToken();
-    if (!$userId) {
-        echo json_encode(["ok" => false, "message" => "Unauthorized"]);
-        exit;
-    }
-
-    $data = json_decode(file_get_contents("php://input"), true);
+// PUT /products/{id}/rating
+if (preg_match("#^/products/(\d+)/rating$#", $uri, $matches) && $method === "PUT") {
+    $data = json_decode(file_get_contents('php://input'), true);
     echo json_encode(
-        (new \App\Controllers\ReviewController())->store(
-            (int)$matches[1],
-            $userId,
-            $data
-        )
+        $product->updateRating((int)$matches[1], $data)
     );
     exit;
 }

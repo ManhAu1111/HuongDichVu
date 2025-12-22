@@ -158,37 +158,10 @@
                                                     </div>
 
                                                 </div>
-                                                <div class="product-m__content">
-                                                    <div class="product-m__category">
-                                                        <a href="#">
-                                                            {{ $categories[$p['category_id'] - 1]['name'] ?? 'Category' }}
-                                                        </a>
-                                                    </div>
-                                                    <div class="product-m__name">
-                                                        <a href="{{ route('products.detail', $p['id']) }}">
-                                                            {{ \Illuminate\Support\Str::limit($p['name'], 30, '...') }}
-                                                        </a>
-                                                    </div>
-                                                    <div class="product-m__rating gl-rating-style">
-                                                        {!! \App\Helpers\RatingHelper::render($p['avg_rating']) !!}
-                                                        <span class="product-m__review">({{ $p['total_reviews'] }})</span>
-                                                    </div>
-
-                                                    <div class="product-m__price">
-                                                        {{ number_format($p['price']) }}đ
-                                                    </div>
-                                                    <div class="product-m__hover">
-                                                        <div class="product-m__preview-description">
-
-                                                            <span>{{ $p['description'] ?? '' }}</span>
-                                                        </div>
-                                                        <div class="product-m__wishlist">
-                                                            <a href="#" class="wishlist-btn far fa-heart"
-                                                                data-product-id="{{ $p['id'] }}"
-                                                                data-tooltip="tooltip" title="Add to Wishlist">
-                                                            </a>
-                                                        </div>
-                                                    </div>
+                                                <div class="product-m__wishlist">
+                                                    <a class="far fa-heart wishlist-btn" href="#"
+                                                        data-product-id="{{ $p['id'] }}" data-tooltip="tooltip"
+                                                        title="Add to Wishlist"></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -235,39 +208,18 @@
         </div>
         <!--====== End - Section 1 ======-->
     </div>
-    <!--====== End - App Content ======-->
-    <!--====== Quick Look Modal ======-->
-    <div class="modal fade" id="quick-look">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content modal--shadow">
+    <!--====== End - Section 1 ======-->
+</div>
+<!--====== End - App Content ======-->
+<!--====== Quick Look Modal ======-->
+<div class="modal fade" id="quick-look">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content modal--shadow">
 
-                <button class="btn dismiss-button fas fa-times" type="button" data-dismiss="modal"></button>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-lg-5">
-
-                            <!--====== Product Breadcrumb ======-->
-                            <div class="pd-breadcrumb u-s-m-b-30">
-                                <ul class="pd-breadcrumb__list">
-                                    <li class="has-separator">
-
-                                        <a href="index.hml">Home</a>
-                                    </li>
-                                    <li class="has-separator">
-
-                                        <a href="{{ route('shop.side_v2') }}">Electronics</a>
-                                    </li>
-                                    <li class="has-separator">
-
-                                        <a href="{{ route('shop.side_v2') }}">DSLR Cameras</a>
-                                    </li>
-                                    <li class="is-marked">
-
-                                        <a href="{{ route('shop.side_v2') }}">Nikon Cameras</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!--====== End - Product Breadcrumb ======-->
+            <button class="btn dismiss-button fas fa-times" type="button" data-dismiss="modal"></button>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-5">
 
 
                             <!--====== Product Detail ======-->
@@ -639,49 +591,108 @@
                 }
             });
 
-            // ============================
-            //  CLICK ❤️
-            // ============================
-            document.querySelectorAll(".wishlist-btn").forEach(btn => {
-                btn.addEventListener("click", async function(e) {
-                    e.preventDefault();
+    });
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
 
-                    const productId = Number(this.dataset.productId);
+        function getCookie(name) {
+            const match = document.cookie.match(new RegExp("(^| )" + name + "=([^;]+)"));
+            return match ? match[2] : null;
+        }
 
-                    // ADD
-                    if (!wishlistSet.has(productId)) {
-                        await fetch(`${API_WISHLIST}/${productId}`, {
+        const token = getCookie("auth_token");
+
+        document.querySelectorAll(".wishlist-btn").forEach(btn => {
+            btn.addEventListener("click", async function(e) {
+                e.preventDefault();
+
+                if (!token) {
+                    window.location.href = "/signin";
+                    return;
+                }
+
+                const productId = this.dataset.productId;
+                const isActive = this.classList.contains("fas");
+
+                try {
+                    if (!isActive) {
+                        // ADD TO WISHLIST
+                        await fetch("http://127.0.0.1:8005/api/wishlist", {
                             method: "POST",
                             headers: {
-                                "Authorization": "Bearer " + TOKEN
-                            }
+                                "Content-Type": "application/json",
+                                "Authorization": "Bearer " + token
+                            },
+                            body: JSON.stringify({
+                                product_id: productId
+                            })
                         });
 
-                        wishlistSet.add(productId);
                         this.classList.remove("far");
-                        this.classList.add("fas", "text-danger");
-                    }
-                    // REMOVE
-                    else {
-                        await fetch(`${API_WISHLIST}/${productId}`, {
+                        this.classList.add("fas", "u-c-brand"); // tim đỏ
+                    } else {
+                        // REMOVE FROM WISHLIST
+                        await fetch(`http://127.0.0.1:8005/api/wishlist/${productId}`, {
                             method: "DELETE",
                             headers: {
-                                "Authorization": "Bearer " + TOKEN
+                                "Authorization": "Bearer " + token
                             }
                         });
 
-                        wishlistSet.delete(productId);
-                        this.classList.remove("fas", "text-danger");
+                        this.classList.remove("fas", "u-c-brand");
                         this.classList.add("far");
                     }
-                });
+
+                } catch (err) {
+                    console.error("Wishlist error:", err);
+                    alert("Có lỗi xảy ra, thử lại sau!");
+                }
+            });
+        });
+
+    });
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", async function() {
+
+        function getCookie(name) {
+            const match = document.cookie.match(new RegExp("(^| )" + name + "=([^;]+)"));
+            return match ? match[2] : null;
+        }
+
+        const token = getCookie("auth_token");
+        if (!token) return; // chưa login → tim rỗng là đúng
+
+        try {
+            const res = await fetch("http://127.0.0.1:8005/api/wishlist", {
+                headers: {
+                    "Authorization": "Bearer " + token
+                }
             });
 
-        });
-    </script>
+            if (!res.ok) return;
 
+            const wishlistItems = await res.json();
 
+            // lấy danh sách product_id đã wishlist
+            const wishlistIds = wishlistItems.map(item => Number(item.id));
 
+            // set tim đỏ tương ứng
+            document.querySelectorAll(".wishlist-btn").forEach(btn => {
+                const pid = Number(btn.dataset.productId);
+
+                if (wishlistIds.includes(pid)) {
+                    btn.classList.remove("far");
+                    btn.classList.add("fas", "u-c-brand");
+                }
+            });
+
+        } catch (err) {
+            console.error("Load wishlist state failed:", err);
+        }
+    });
+</script>
 
 @endsection
 {{-- 4. Kết thúc phần nội dung --}}

@@ -5,6 +5,8 @@ use App\Http\Controllers\AuthProxyController;
 use Illuminate\Support\Facades\Cookie;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartPageController;
+use Illuminate\Support\Facades\Http;
+use App\Http\Controllers\WishlistController;
 
 
 
@@ -119,9 +121,19 @@ Route::view('/about', 'about')->name('about');
 Route::view('/faq', 'faq')->name('faq');
 Route::view('/404', '404')->name('404');
 Route::view('/contact', 'contact')->name('contact');
-Route::view('/wishlist', 'wishlist')->name('wishlist');
 
+Route::delete('/wishlist/remove/{productId}', function ($productId) {
+    $userId = auth()->id();
 
+    Http::delete("http://127.0.0.1:8004/wishlist", [
+        'user_id' => $userId,
+        'product_id' => $productId
+    ]);
+
+    return response()->noContent();
+});
+Route::get('/wishlist', [WishlistController::class, 'index'])
+    ->name('wishlist');
 
 /*
 |--------------------------------------------------------------------------

@@ -22,13 +22,21 @@ class RatingHelper
 
     public static function render($rating)
     {
+        // ===== FIX CỐT LÕI =====
+        if ($rating === null || $rating === '' || !is_numeric($rating)) {
+            $rating = 0;
+        }
+
+        $rating = (float) $rating;
+
+        // ===== Normalize =====
         $rating = self::normalize($rating);
 
         $full = floor($rating);
         $half = ($rating - $full == 0.5) ? 1 : 0;
         $empty = 5 - $full - $half;
 
-        $html = "";
+        $html = '';
 
         for ($i = 0; $i < $full; $i++) {
             $html .= '<i class="fas fa-star"></i>';
