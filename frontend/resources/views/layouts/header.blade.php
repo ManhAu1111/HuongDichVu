@@ -1,3 +1,10 @@
+<script>
+    @php
+    echo "window.APP_USER_ID = ".json_encode($globalUserId).
+    ";";
+    @endphp
+</script>
+
 <header class="header--style-1 header--box-shadow">
     <!--====== Nav 1 ======-->
     <nav class="primary-nav primary-nav-wrapper--border">
@@ -10,17 +17,17 @@
 
                 <a class="main-logo" href="{{ route('shop.index') }}">
 
-                    <img src="images/logo/logo-1.png" alt=""></a>
+                    <img src="{{ asset('images/logo/logo-1.png') }}" alt=""></a>
                 <!--====== End - Main Logo ======-->
 
 
                 <!--====== Search Form ======-->
-                <form class="main-form">
-
+                <form class="main-form" method="GET" action="{{ route('shop.side_v2') }}">
                     <label for="main-search"></label>
 
-                    <input class="input-text input-text--border-radius input-text--style-1" type="text"
-                        id="main-search" placeholder="Search">
+
+                    <input class="input-text input-text--border-radius input-text--style-1" type="text" id="main-search"
+                        name="search" value="{{ request('search') }}" placeholder="Search">
 
                     <button class="btn btn--icon fas fa-search main-search-button" type="submit"></button>
                 </form>
@@ -365,7 +372,7 @@
                                                         <a class="u-d-block" href="{{ route('shop.side_v2') }}">
 
                                                             <img class="u-img-fluid u-d-block"
-                                                                src="images/banners/banner-mega-1.jpg"
+                                                                src={{ asset('images/banners/banner-mega-1.jpg') }}
                                                                 alt=""></a>
                                                     </div>
                                                 </div>
@@ -375,7 +382,7 @@
                                                         <a class="u-d-block" href="{{ route('shop.side_v2') }}">
 
                                                             <img class="u-img-fluid u-d-block"
-                                                                src="images/banners/banner-mega-2.jpg"
+                                                                src={{ asset('images/banners/banner-mega-2.jpg') }}
                                                                 alt=""></a>
                                                     </div>
                                                 </div>
@@ -535,7 +542,7 @@
                                                         <a class="u-d-block" href="{{ route('shop.side_v2') }}">
 
                                                             <img class="u-img-fluid u-d-block"
-                                                                src="images/banners/banner-mega-3.jpg"
+                                                                src="{{ asset('images/banners/banner-mega-3.jpg') }}"
                                                                 alt=""></a>
                                                     </div>
                                                 </div>
@@ -545,7 +552,7 @@
                                                         <a class="u-d-block" href="{{ route('shop.side_v2') }}">
 
                                                             <img class="u-img-fluid u-d-block"
-                                                                src="images/banners/banner-mega-4.jpg"
+                                                                src="{{ asset('images/banners/banner-mega-4.jpg') }}"
                                                                 alt=""></a>
                                                     </div>
                                                 </div>
@@ -566,7 +573,7 @@
                                                         <a class="u-d-block" href="{{ route('shop.side_v2') }}">
 
                                                             <img class="u-img-fluid u-d-block"
-                                                                src="images/banners/banner-mega-5.jpg"
+                                                                src="{{ asset('images/banners/banner-mega-5.jpg') }}"
                                                                 alt=""></a>
                                                     </div>
                                                 </div>
@@ -576,7 +583,7 @@
                                                         <a class="u-d-block" href="{{ route('shop.side_v2') }}">
 
                                                             <img class="u-img-fluid u-d-block"
-                                                                src="images/banners/banner-mega-6.jpg"
+                                                                src="{{ asset('images/banners/banner-mega-6.jpg') }}"
                                                                 alt=""></a>
                                                     </div>
                                                 </div>
@@ -586,7 +593,7 @@
                                                         <a class="u-d-block" href="{{ route('shop.side_v2') }}">
 
                                                             <img class="u-img-fluid u-d-block"
-                                                                src="images/banners/banner-mega-7.jpg"
+                                                                src="{{ asset('images/banners/banner-mega-7.jpg') }}"
                                                                 alt=""></a>
                                                     </div>
                                                 </div>
@@ -752,7 +759,7 @@
                                                         <a class="u-d-block" href="{{ route('shop.side_v2') }}">
 
                                                             <img class="u-img-fluid u-d-block"
-                                                                src="images/banners/banner-mega-8.jpg"
+                                                                src="{{ asset('images/banners/banner-mega-8.jpg') }}"
                                                                 alt=""></a>
                                                     </div>
                                                 </div>
@@ -762,7 +769,7 @@
                                                         <a class="u-d-block" href="{{ route('shop.side_v2') }}">
 
                                                             <img class="u-img-fluid u-d-block"
-                                                                src="images/banners/banner-mega-9.jpg"
+                                                                src="{{ asset('images/banners/banner-mega-9.jpg') }}"
                                                                 alt=""></a>
                                                     </div>
                                                 </div>
@@ -898,167 +905,24 @@
                                 <span class="js-menu-toggle"></span>
                                 <div class="mini-cart">
 
-                                    <!--====== Mini Product Container ======-->
-                                    <div class="mini-product-container gl-scroll u-s-m-b-15">
-
-                                        <!--====== Card for mini cart ======-->
-                                        <div class="card-mini-product">
-                                            <div class="mini-product">
-                                                <div class="mini-product__image-wrapper">
-
-                                                    <a class="mini-product__link"
-                                                        href="{{ route('products.detail') }}">
-
-                                                        <img class="u-img-fluid"
-                                                            src="images/product/electronic/product3.jpg"
-                                                            alt=""></a>
-                                                </div>
-                                                <div class="mini-product__info-wrapper">
-
-                                                    <span class="mini-product__category">
-
-                                                        <a href="{{ route('shop.side_v2') }}">Electronics</a></span>
-
-                                                    <span class="mini-product__name">
-
-                                                        <a href="{{ route('products.detail') }}">Yellow Wireless
-                                                            Headphone</a></span>
-
-                                                    <span class="mini-product__quantity">1 x</span>
-
-                                                    <span class="mini-product__price">$8</span>
-                                                </div>
-                                            </div>
-
-                                            <a class="mini-product__delete-link far fa-trash-alt"></a>
-                                        </div>
-                                        <!--====== End - Card for mini cart ======-->
-
-
-                                        <!--====== Card for mini cart ======-->
-                                        <div class="card-mini-product">
-                                            <div class="mini-product">
-                                                <div class="mini-product__image-wrapper">
-
-                                                    <a class="mini-product__link"
-                                                        href="{{ route('products.detail') }}">
-
-                                                        <img class="u-img-fluid"
-                                                            src="images/product/electronic/product18.jpg"
-                                                            alt=""></a>
-                                                </div>
-                                                <div class="mini-product__info-wrapper">
-
-                                                    <span class="mini-product__category">
-
-                                                        <a href="{{ route('shop.side_v2') }}">Electronics</a></span>
-
-                                                    <span class="mini-product__name">
-
-                                                        <a href="{{ route('products.detail') }}">Nikon DSLR Camera
-                                                            4k</a></span>
-
-                                                    <span class="mini-product__quantity">1 x</span>
-
-                                                    <span class="mini-product__price">$8</span>
-                                                </div>
-                                            </div>
-
-                                            <a class="mini-product__delete-link far fa-trash-alt"></a>
-                                        </div>
-                                        <!--====== End - Card for mini cart ======-->
-
-
-                                        <!--====== Card for mini cart ======-->
-                                        <div class="card-mini-product">
-                                            <div class="mini-product">
-                                                <div class="mini-product__image-wrapper">
-
-                                                    <a class="mini-product__link"
-                                                        href="{{ route('products.detail') }}">
-
-                                                        <img class="u-img-fluid"
-                                                            src="images/product/women/product8.jpg"
-                                                            alt=""></a>
-                                                </div>
-                                                <div class="mini-product__info-wrapper">
-
-                                                    <span class="mini-product__category">
-
-                                                        <a href="{{ route('shop.side_v2') }}">Women
-                                                            Clothing</a></span>
-
-                                                    <span class="mini-product__name">
-
-                                                        <a href="{{ route('products.detail') }}">New Dress D Nice
-                                                            Elegant</a></span>
-
-                                                    <span class="mini-product__quantity">1 x</span>
-
-                                                    <span class="mini-product__price">$8</span>
-                                                </div>
-                                            </div>
-
-                                            <a class="mini-product__delete-link far fa-trash-alt"></a>
-                                        </div>
-                                        <!--====== End - Card for mini cart ======-->
-
-
-                                        <!--====== Card for mini cart ======-->
-                                        <div class="card-mini-product">
-                                            <div class="mini-product">
-                                                <div class="mini-product__image-wrapper">
-
-                                                    <a class="mini-product__link"
-                                                        href="{{ route('products.detail') }}">
-
-                                                        <img class="u-img-fluid" src="images/product/men/product8.jpg"
-                                                            alt=""></a>
-                                                </div>
-                                                <div class="mini-product__info-wrapper">
-
-                                                    <span class="mini-product__category">
-
-                                                        <a href="{{ route('shop.side_v2') }}">Men Clothing</a></span>
-
-                                                    <span class="mini-product__name">
-
-                                                        <a href="{{ route('products.detail') }}">New Fashion D Nice
-                                                            Elegant</a></span>
-
-                                                    <span class="mini-product__quantity">1 x</span>
-
-                                                    <span class="mini-product__price">$8</span>
-                                                </div>
-                                            </div>
-
-                                            <a class="mini-product__delete-link far fa-trash-alt"></a>
-                                        </div>
-                                        <!--====== End - Card for mini cart ======-->
+                                    <div class="mini-product-container gl-scroll u-s-m-b-15" id="mini-cart-list">
+                                        <!-- JS sẽ tự render -->
                                     </div>
-                                    <!--====== End - Mini Product Container ======-->
 
-
-                                    <!--====== Mini Product Statistics ======-->
                                     <div class="mini-product-stat">
                                         <div class="mini-total">
-
-                                            <span class="subtotal-text">SUBTOTAL</span>
-
-                                            <span class="subtotal-value">$16</span>
+                                            <span class="subtotal-text">TẠM TÍNH</span>
+                                            <span class="subtotal-value" id="mini-cart-subtotal">0 đ</span>
                                         </div>
+
                                         <div class="mini-action">
-
-                                            <a class="mini-link btn--e-brand-b-2"
-                                                href="{{ route('checkout') }}">PROCEED TO
-                                                CHECKOUT</a>
-
+                                            <a class="mini-link btn--e-brand-b-2" href="{{ route('checkout') }}">TIẾN
+                                                HÀNH THANH TOÁN</a>
                                             <a class="mini-link btn--e-transparent-secondary-b-2"
-                                                href="{{ route('cart') }}">VIEW
-                                                CART</a>
+                                                href="{{ route('cart') }}">XEM GIỎ HÀNG</a>
                                         </div>
                                     </div>
-                                    <!--====== End - Mini Product Statistics ======-->
+
                                 </div>
                                 <!--====== End - Dropdown ======-->
                             </li>
@@ -1074,3 +938,106 @@
     </nav>
     <!--====== End - Nav 2 ======-->
 </header>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+
+        const USER_ID = window.APP_USER_ID;
+        if (!USER_ID) return;
+
+        const API_CART = "http://127.0.0.1:8002/api/cart";
+
+        const listEl = document.getElementById("mini-cart-list");
+        const subtotalEl = document.getElementById("mini-cart-subtotal");
+        const badgeEls = document.querySelectorAll(".total-item-round");
+
+        // =====================================
+        // Fix URL ảnh tuyệt đối (chống 404 ở /product/*)
+        // =====================================
+        function fixImageUrl(path) {
+            if (!path) return "";
+
+            // Nếu API đã trả URL đầy đủ → giữ nguyên
+            if (path.startsWith("http")) return path;
+
+            // Xóa mọi dấu "/" dư đầu đường dẫn
+            path = path.replace(/^\/+/, "");
+
+            // Ép thành URL tuyệt đối
+            return "http://127.0.0.1:8000/" + path;
+        }
+
+        // =====================================
+        // Hàm load dropdown cart
+        // =====================================
+        window.loadMiniCart = function loadMiniCart() {
+            fetch(`${API_CART}?user_id=${USER_ID}`)
+                .then(res => res.json())
+                .then(data => {
+
+                    const items = data.items ?? [];
+                    let subtotal = 0;
+
+                    if (listEl) listEl.innerHTML = "";
+
+                    items.forEach(item => {
+
+                        subtotal += Number(item.subtotal);
+
+                        const imageUrl = fixImageUrl(item.primary_image);
+
+                        if (listEl) {
+                            listEl.innerHTML += `
+                        <div class="card-mini-product">
+                            <div class="mini-product">
+                                <div class="mini-product__image-wrapper">
+                                    <a class="mini-product__link" href="/product/${item.product_id}">
+                                        <img class="u-img-fluid" src="${imageUrl}" alt="">
+                                    </a>
+                                </div>
+
+                                <div class="mini-product__info-wrapper">
+                                    <span class="mini-product__name">
+                                        <a href="/product/${item.product_id}">
+                                            ${item.product_name}
+                                        </a>
+                                    </span>
+
+                                    <span class="mini-product__quantity">${item.quantity} x</span>
+                                    <span class="mini-product__price">${item.price.toLocaleString('vi-VN')} đ</span>
+                                </div>
+                            </div>
+
+                            <a class="mini-product__delete-link far fa-trash-alt" data-id="${item.id}"></a>
+                        </div>`;
+                        }
+                    });
+
+                    // Cập nhật tạm tính
+                    if (subtotalEl) {
+                        subtotalEl.innerText = subtotal.toLocaleString("vi-VN") + " đ";
+                    }
+
+                    // Cập nhật badge ALL vị trí
+                    badgeEls.forEach(badge => badge.innerText = items.length);
+
+                    // Xóa sản phẩm dropdown
+                    document.querySelectorAll(".mini-product__delete-link").forEach(btn => {
+                        btn.addEventListener("click", () => {
+
+                            fetch(`${API_CART}/${btn.dataset.id}`, {
+                                    method: "DELETE"
+                                })
+                                .then(() => {
+                                    loadMiniCart(); // reload dropdown
+                                    //location.reload(); // reload cả trang
+                                });
+                        });
+                    });
+
+                });
+        }
+
+        loadMiniCart(); // chạy lần đầu
+    });
+</script>

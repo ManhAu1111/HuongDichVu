@@ -8,6 +8,9 @@
 
 {{-- 3. Bắt đầu phần nội dung (sẽ thay thế @yield('content')) --}}
 @section('content')
+    @php
+        $wishlistItems = $wishlistItems ?? [];
+    @endphp
     <div class="app-content">
 
         <!--====== Section 1 ======-->
@@ -60,117 +63,57 @@
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12">
 
-                            <!--====== Wishlist Product ======-->
-                            <div class="w-r u-s-m-b-30">
-                                <div class="w-r__container">
-                                    <div class="w-r__wrap-1">
-                                        <div class="w-r__img-wrap">
-
-                                            <img class="u-img-fluid" src="images/product/electronic/product3.jpg" alt="">
-                                        </div>
-                                        <div class="w-r__info">
-
-                                            <span class="w-r__name">
-
-                                                <a href="{{ route('products.detail') }}">Yellow Wireless Headphone</a></span>
-
-                                            <span class="w-r__category">
-
-                                                <a href="{{ route('shop.side_v2') }}">Electronics</a></span>
-
-                                            <span class="w-r__price">$125.00
-
-                                                <span class="w-r__discount">$160.00</span></span>
-                                        </div>
-                                    </div>
-                                    <div class="w-r__wrap-2">
-
-                                        <a class="w-r__link btn--e-brand-b-2" data-modal="modal"
-                                            data-modal-id="#add-to-cart">ADD TO CART</a>
-
-                                        <a class="w-r__link btn--e-transparent-platinum-b-2"
-                                            href="{{ route('products.detail') }}">VIEW</a>
-
-                                        <a class="w-r__link btn--e-transparent-platinum-b-2" href="#">REMOVE</a>
-                                    </div>
+                            @if (count($wishlistItems) === 0)
+                                <div class="text-center u-s-p-y-60">
+                                    <h4>Wishlist is empty</h4>
                                 </div>
-                            </div>
-                            <!--====== End - Wishlist Product ======-->
+                            @else
+                                @foreach ($wishlistItems as $item)
+                                    <div class="w-r u-s-m-b-30">
+                                        <div class="w-r__container">
+                                            <div class="w-r__wrap-1">
+                                                <div class="w-r__img-wrap">
+                                                    <img class="u-img-fluid"
+                                                        src="{{ config('services.product.image_url') }}/{{ $item['primary_image'] }}">
+                                                </div>
 
+                                                <div class="w-r__info">
+                                                    <span class="w-r__name">
+                                                        <a href="{{ route('products.detail', $item['id']) }}">
+                                                            {{ $item['name'] }}
+                                                        </a>
+                                                    </span>
 
-                            <!--====== Wishlist Product ======-->
-                            <div class="w-r u-s-m-b-30">
-                                <div class="w-r__container">
-                                    <div class="w-r__wrap-1">
-                                        <div class="w-r__img-wrap">
+                                                    <span class="w-r__category">
+                                                        Category ID: {{ $item['category_id'] }}
+                                                    </span>
 
-                                            <img class="u-img-fluid" src="images/product/women/product8.jpg" alt="">
-                                        </div>
-                                        <div class="w-r__info">
+                                                    <span class="w-r__price">
+                                                        {{ number_format((float) $item['price']) }}đ
+                                                    </span>
+                                                </div>
+                                            </div>
 
-                                            <span class="w-r__name">
+                                            <div class="w-r__wrap-2">
+                                                <a class="w-r__link btn--e-brand-b-2 add-to-cart"
+                                                    data-product-id="{{ $item['id'] }}">
+                                                    ADD TO CART
+                                                </a>
 
-                                                <a href="{{ route('products.detail') }}">New Dress D Nice Elegant</a></span>
+                                                <a class="w-r__link btn--e-transparent-platinum-b-2"
+                                                    href="{{ route('products.detail', $item['id']) }}">
+                                                    VIEW
+                                                </a>
 
-                                            <span class="w-r__category">
-
-                                                <a href="{{ route('shop.side_v2') }}">Women Clothing</a></span>
-
-                                            <span class="w-r__price">$125.00
-
-                                                <span class="w-r__discount">$160.00</span></span>
-                                        </div>
-                                    </div>
-                                    <div class="w-r__wrap-2">
-
-                                        <a class="w-r__link btn--e-brand-b-2" data-modal="modal"
-                                            data-modal-id="#add-to-cart">ADD TO CART</a>
-
-                                        <a class="w-r__link btn--e-transparent-platinum-b-2"
-                                            href="{{ route('products.detail') }}">VIEW</a>
-
-                                        <a class="w-r__link btn--e-transparent-platinum-b-2" href="#">REMOVE</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--====== End - Wishlist Product ======-->
-
-
-                            <!--====== Wishlist Product ======-->
-                            <div class="w-r u-s-m-b-30">
-                                <div class="w-r__container">
-                                    <div class="w-r__wrap-1">
-                                        <div class="w-r__img-wrap">
-
-                                            <img class="u-img-fluid" src="images/product/men/product8.jpg" alt="">
-                                        </div>
-                                        <div class="w-r__info">
-
-                                            <span class="w-r__name">
-
-                                                <a href="{{ route('products.detail') }}">New Fashion D Nice Elegant</a></span>
-
-                                            <span class="w-r__category">
-
-                                                <a href="{{ route('shop.side_v2') }}">Men Clothing</a></span>
-
-                                            <span class="w-r__price">$125.00
-
-                                                <span class="w-r__discount">$160.00</span></span>
+                                                <a class="w-r__link btn--e-transparent-platinum-b-2 remove-wishlist"
+                                                    data-product-id="{{ $item['id'] }}">
+                                                    REMOVE
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="w-r__wrap-2">
-
-                                        <a class="w-r__link btn--e-brand-b-2" data-modal="modal"
-                                            data-modal-id="#add-to-cart">ADD TO CART</a>
-
-                                        <a class="w-r__link btn--e-transparent-platinum-b-2"
-                                            href="{{ route('products.detail') }}">VIEW</a>
-
-                                        <a class="w-r__link btn--e-transparent-platinum-b-2" href="#">REMOVE</a>
-                                    </div>
-                                </div>
-                            </div>
+                                @endforeach
+                            @endif
                             <!--====== End - Wishlist Product ======-->
                         </div>
                         <div class="col-lg-12">
@@ -182,12 +125,12 @@
 
                                         <span>CONTINUE SHOPPING</span></a>
                                 </div>
-                                <div class="route-box__g">
-
-                                    <a class="route-box__link" href="{{ route('wishlist') }}"><i class="fas fa-trash"></i>
-
-                                        <span>CLEAR WISHLIST</span></a>
-                                </div>
+                                <button type="button"
+        class="route-box__link clear-wishlist"
+        style="background:none;border:none">
+    <i class="fas fa-trash"></i>
+    <span>CLEAR WISHLIST</span>
+</button>
                             </div>
                         </div>
                     </div>
@@ -211,18 +154,6 @@
 
                                     <span>Item is added successfully!</span>
                                 </div>
-                                <div class="success__img-wrap">
-
-                                    <img class="u-img-fluid" src="images/product/electronic/product1.jpg" alt="">
-                                </div>
-                                <div class="success__info-wrap">
-
-                                    <span class="success__name">Beats Bomb Wireless Headphone</span>
-
-                                    <span class="success__quantity">Quantity: 1</span>
-
-                                    <span class="success__price">$170.00</span>
-                                </div>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-12">
@@ -234,7 +165,8 @@
                                     <a class="s-option__link btn--e-white-brand-shadow" data-dismiss="modal">CONTINUE
                                         SHOPPING</a>
 
-                                    <a class="s-option__link btn--e-white-brand-shadow" href="{{ route('cart') }}">VIEW CART</a>
+                                    <a class="s-option__link btn--e-white-brand-shadow" href="{{ route('cart') }}">VIEW
+                                        CART</a>
 
                                     <a class="s-option__link btn--e-brand-shadow" href="{{ route('checkout') }}">PROCEED TO
                                         CHECKOUT</a>
@@ -248,3 +180,99 @@
     </div>
 @endsection
 {{-- 4. Kết thúc phần nội dung --}}
+@push('scripts')
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    function getCookie(name) {
+        const match = document.cookie.match(new RegExp("(^| )" + name + "=([^;]+)"));
+        return match ? match[2] : null;
+    }
+
+    const token = getCookie("auth_token");
+
+    document.querySelectorAll(".remove-wishlist").forEach(btn => {
+        btn.addEventListener("click", async function (e) {
+            e.preventDefault(); // 🔥 QUAN TRỌNG
+
+            if (!token) {
+                window.location.href = "/signin";
+                return;
+            }
+
+            const productId = this.dataset.productId;
+
+            try {
+                const res = await fetch(`http://127.0.0.1:8005/api/wishlist/${productId}`, {
+                    method: "DELETE",
+                    headers: {
+                        "Authorization": "Bearer " + token
+                    }
+                });
+
+                if (!res.ok) {
+                    alert("Không thể xoá sản phẩm khỏi wishlist!");
+                    return;
+                }
+
+                // ✅ Xoá UI ngay, không reload
+                const item = this.closest(".w-r");
+                if (item) item.remove();
+
+                // Nếu hết sản phẩm → reload để hiện "Wishlist is empty"
+                if (document.querySelectorAll(".w-r").length === 0) {
+                    location.reload();
+                }
+
+            } catch (err) {
+                console.error("Remove wishlist error:", err);
+                alert("Có lỗi xảy ra, thử lại sau!");
+            }
+        });
+    });
+
+});
+</script>
+@endpush
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    function getCookie(name) {
+        const match = document.cookie.match(new RegExp("(^| )" + name + "=([^;]+)"));
+        return match ? match[2] : null;
+    }
+
+    const token = getCookie("auth_token");
+    const btn = document.querySelector(".clear-wishlist");
+
+    if (!btn) return;
+
+    btn.addEventListener("click", async function (e) {
+        e.preventDefault();
+
+        if (!token) {
+            window.location.href = "/signin";
+            return;
+        }
+
+        if (!confirm("Bạn có chắc muốn xoá toàn bộ wishlist?")) return;
+
+        const res = await fetch("http://127.0.0.1:8005/api/wishlist", {
+            method: "DELETE",
+            headers: {
+                "Authorization": "Bearer " + token
+            }
+        });
+
+        if (!res.ok) {
+            console.error("Clear wishlist failed:", res.status);
+            alert("Không thể xoá wishlist!");
+            return;
+        }
+
+        location.reload();
+    });
+});
+</script>
+

@@ -33,7 +33,7 @@ class AuthProxyController extends Controller
             return back()->with('error', $data['message']);
         }
 
-        // Cookie HttpOnly chuẩn
+        //Cookie HttpOnly chuẩn
         $cookie = cookie(
             'auth_token',
             $data['token'],
@@ -45,6 +45,20 @@ class AuthProxyController extends Controller
             false,
             'Lax'
         );
+
+        // $cookie = cookie(
+        //     name: 'auth_token',
+        //     value: $data['token'],
+        //     minutes: 60,
+        //     path: '/',
+        //     domain: null,   // BẮT BUỘC, nếu không chrome block
+        //     secure: false,         // vì bạn dùng http, không phải https
+        //     httpOnly: true,
+        //     raw: false,
+        //     sameSite: 'Lax'       // QUAN TRỌNG NHẤT
+        // );
+
+
 
         return redirect()->route('dashboard')->withCookie($cookie);
     }

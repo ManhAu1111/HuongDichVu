@@ -103,7 +103,7 @@
 
                 let fullname = fname + " " + lname;
 
-                let res = await fetch("http://127.0.0.1:8001/register", {
+                let res = await fetch("http://127.0.0.1:8001/auth/register", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
@@ -112,7 +112,8 @@
                         fullname,
                         email,
                         password
-                    })
+                    }),
+                    credentials: "include"
                 });
 
                 let data = await res.json();

@@ -16,9 +16,11 @@ class AuthController
         $this->db = (new Database())->connect();
     }
 
+    // =========================
+    // REGISTER (with verify email)
+    // =========================
     public function register($fullname, $email, $password)
     {
-        // Check email tồn tại
         $query = $this->db->prepare("SELECT id FROM users WHERE email = ?");
         $query->execute([$email]);
 
@@ -26,23 +28,25 @@ class AuthController
             return ["ok" => false, "message" => "Email đã tồn tại"];
         }
 
-        // Tạo hash + token verify
         $hash = password_hash($password, PASSWORD_BCRYPT);
+
         $verifyToken = bin2hex(random_bytes(32));
 
-        // Insert user
         $stmt = $this->db->prepare("
-            INSERT INTO users(fullname, email, password, verify_token, is_verified)
-            VALUES(?,?,?,?,0)
+            INSERT INTO users(fullname, email, password, verify_token, role)
+            VALUES (?, ?, ?, ?, 'customer')
         ");
+
         $stmt->execute([$fullname, $email, $hash, $verifyToken]);
 
-        // Gửi email xác thực
-        MailHelper::sendVerifyEmail($email, $fullname, $verifyToken);
+        MailHelper::sendVerifyEmail($email, $verifyToken);
 
         return ["ok" => true, "message" => "Đăng ký thành công! Hãy kiểm tra email để xác thực."];
     }
 
+    // =========================
+    // LOGIN (check verify + token)
+    // =========================
     public function login($email, $password)
     {
         $query = $this->db->prepare("SELECT * FROM users WHERE email = ?");
@@ -57,18 +61,30 @@ class AuthController
             return ["ok" => false, "message" => "Email chưa được xác thực"];
         }
 
-        // Tạo JWT
         $token = JWTHandler::encode([
             "sub" => $user["id"],
             "email" => $user["email"],
+            "role" => $user["role"],
+            "fullname" => $user["fullname"], //Hiển thị tên của user cho greeting
             "iat" => time(),
-            "exp" => time() + (int) $_ENV["JWT_EXPIRES_IN"]
+            "exp" => time() + 3600
         ]);
 
-        return ["ok" => true, "token" => $token];
+        return [
+            "ok" => true,
+            "token" => $token,
+            "user" => [
+                "id" => $user["id"],
+                "fullname" => $user["fullname"],
+                "email" => $user["email"],
+                "role" => $user["role"],
+            ]
+        ];
     }
 
-    // -------- VERIFY EMAIL --------
+    // =========================
+    // VERIFY EMAIL
+    // =========================
     public function verify($token)
     {
         $query = $this->db->prepare("SELECT id FROM users WHERE verify_token = ?");
@@ -77,15 +93,29 @@ class AuthController
         $user = $query->fetch(PDO::FETCH_ASSOC);
 
         if (!$user) {
-            return ["ok" => false, "message" => "Token không hợp lệ hoặc đã hết hạn"];
+            return ["ok" => false, "message" => "Token không hợp lệ"];
         }
 
-        // Update trạng thái verified
         $update = $this->db->prepare("
-            UPDATE users SET is_verified = 1, verify_token = NULL WHERE id = ?
+            UPDATE users 
+            SET is_verified = 1, verify_token = NULL 
+            WHERE id = ?
         ");
         $update->execute([$user["id"]]);
 
         return ["ok" => true, "message" => "Email xác thực thành công!"];
+    }
+
+    // =========================
+    // /me (get user from token)
+    // =========================
+    public function me($token)
+    {
+        try {
+            $data = JWTHandler::decode($token);
+            return ["ok" => true, "data" => (array)$data];
+        } catch (\Exception $e) {
+            return ["ok" => false, "message" => "Token expired or invalid"];
+        }
     }
 }

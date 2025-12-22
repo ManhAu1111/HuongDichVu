@@ -8,217 +8,195 @@
 
 {{-- 3. Bắt đầu phần nội dung (sẽ thay thế @yield('content')) --}}
 @section('content')
-    <div class="app-content">
+<div class="app-content">
 
-        <!--====== Section 1 ======-->
-        <div class="u-s-p-y-60">
+    <!--====== Section 1 ======-->
+    <div class="u-s-p-y-60">
 
-            <!--====== Section Content ======-->
-            <div class="section__content">
+        <!--====== Section Content ======-->
+        <div class="section__content">
+            <div class="container">
+                <div class="breadcrumb">
+                    <div class="breadcrumb__wrap">
+                        <ul class="breadcrumb__list">
+                            <li class="has-separator">
+
+                                <a href="{{ route('shop.index') }}">Home</a>
+                            </li>
+                            <li class="is-marked">
+
+                                <a href="{{ route('dash.EditProfile') }}">My Account</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--====== End - Section 1 ======-->
+
+
+    <!--====== Section 2 ======-->
+    <div class="u-s-p-b-60">
+
+        <!--====== Section Content ======-->
+        <div class="section__content">
+            <div class="dash">
                 <div class="container">
-                    <div class="breadcrumb">
-                        <div class="breadcrumb__wrap">
-                            <ul class="breadcrumb__list">
-                                <li class="has-separator">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-12">
 
-                                    <a href="{{ route('shop.index') }}">Home</a>
-                                </li>
-                                <li class="is-marked">
+                            <!--====== Dashboard Features ======-->
+                            <div class="dash__box dash__box--bg-white dash__box--shadow u-s-m-b-30">
+                                <div class="dash__pad-1">
 
-                                    <a href="{{ route('dash.EditProfile') }}">My Account</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--====== End - Section 1 ======-->
-
-
-        <!--====== Section 2 ======-->
-        <div class="u-s-p-b-60">
-
-            <!--====== Section Content ======-->
-            <div class="section__content">
-                <div class="dash">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-3 col-md-12">
-
-                                <!--====== Dashboard Features ======-->
-                                <div class="dash__box dash__box--bg-white dash__box--shadow u-s-m-b-30">
-                                    <div class="dash__pad-1">
-
-                                        <span class="dash__text u-s-m-b-16">Hello, John Doe</span>
-                                        <ul class="dash__f-list">
-                                            <li>
-
-                                                <a class="dash-active" href="{{ route('dashboard') }}">Manage My Account</a>
-                                            </li>
-                                            <li>
-
-                                                <a href="{{ route('dash.my_profile') }}">My Profile</a>
-                                            </li>
-                                            <li>
-
-                                                <a href="{{ route('dash.address_book') }}">Address Book</a>
-                                            </li>
-                                            <li>
-
-                                                <a href="{{ route('dash.track_order') }}">Track Order</a>
-                                            </li>
-                                            <li>
-
-                                                <a href="{{ route('dash.my_order') }}">My Orders</a>
-                                            </li>
-                                            <li>
-
-                                                <a href="{{ route('dash.payment_option') }}">My Payment Options</a>
-                                            </li>
-                                            <li>
-
-                                                <a href="{{ route('dash.cancellation') }}">My Returns & Cancellations</a>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                    <span id="user-greeting" class="dash__text u-s-m-b-16">Xin chào...</span>
+                                    <ul class="dash__f-list">
+                                        <li>
+                                            <a class="dash-active" href="{{ route('dashboard') }}">Quản lý tài khoản</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('dash.my_profile') }}">Hồ sơ cá nhân</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('dash.my_order') }}">Đơn hàng của tôi</a>
+                                        </li>
+                                    </ul>
                                 </div>
-                                <div class="dash__box dash__box--bg-white dash__box--shadow dash__box--w">
-                                    <div class="dash__pad-1">
-                                        <ul class="dash__w-list">
-                                            <li>
-                                                <div class="dash__w-wrap">
-
-                                                    <span class="dash__w-icon dash__w-icon-style-1"><i
-                                                            class="fas fa-cart-arrow-down"></i></span>
-
-                                                    <span class="dash__w-text">4</span>
-
-                                                    <span class="dash__w-name">Orders Placed</span>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="dash__w-wrap">
-
-                                                    <span class="dash__w-icon dash__w-icon-style-2"><i
-                                                            class="fas fa-times"></i></span>
-
-                                                    <span class="dash__w-text">0</span>
-
-                                                    <span class="dash__w-name">Cancel Orders</span>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="dash__w-wrap">
-
-                                                    <span class="dash__w-icon dash__w-icon-style-3"><i
-                                                            class="far fa-heart"></i></span>
-
-                                                    <span class="dash__w-text">0</span>
-
-                                                    <span class="dash__w-name">Wishlist</span>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <!--====== End - Dashboard Features ======-->
                             </div>
-                            <div class="col-lg-9 col-md-12">
-                                <div class="dash__box dash__box--shadow dash__box--radius dash__box--bg-white">
-                                    <div class="dash__pad-2">
-                                        <h1 class="dash__h1 u-s-m-b-14">Edit Profile</h1>
 
-                                        <span class="dash__text u-s-m-b-30">Looks like you haven't update your
-                                            profile</span>
-                                        <div class="dash__link dash__link--secondary u-s-m-b-30">
-
-                                            <a data-modal="modal" data-modal-id="#dash-newsletter">Subscribe Newsletter</a>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <form class="dash-edit-p">
-                                                    <div class="gl-inline">
-                                                        <div class="u-s-m-b-30">
-
-                                                            <label class="gl-label" for="reg-fname">FIRST NAME *</label>
-
-                                                            <input class="input-text input-text--primary-style" type="text"
-                                                                id="reg-fname" placeholder="John">
-                                                        </div>
-                                                        <div class="u-s-m-b-30">
-
-                                                            <label class="gl-label" for="reg-lname">LAST NAME *</label>
-
-                                                            <input class="input-text input-text--primary-style" type="text"
-                                                                id="reg-lname" placeholder="Doe">
-                                                        </div>
-                                                    </div>
-                                                    <div class="gl-inline">
-                                                        <div class="u-s-m-b-30">
-
-                                                            <!--====== Date of Birth Select-Box ======-->
-
-                                                            <span class="gl-label">BIRTHDAY</span>
-                                                            <div class="gl-dob"><select
-                                                                    class="select-box select-box--primary-style">
-                                                                    <option selected>Month</option>
-                                                                    <option value="male">January</option>
-                                                                    <option value="male">February</option>
-                                                                    <option value="male">March</option>
-                                                                    <option value="male">April</option>
-                                                                </select><select
-                                                                    class="select-box select-box--primary-style">
-                                                                    <option selected>Day</option>
-                                                                    <option value="01">01</option>
-                                                                    <option value="02">02</option>
-                                                                    <option value="03">03</option>
-                                                                    <option value="04">04</option>
-                                                                </select><select
-                                                                    class="select-box select-box--primary-style">
-                                                                    <option selected>Year</option>
-                                                                    <option value="1991">1991</option>
-                                                                    <option value="1992">1992</option>
-                                                                    <option value="1993">1993</option>
-                                                                    <option value="1994">1994</option>
-                                                                </select></div>
-                                                            <!--====== End - Date of Birth Select-Box ======-->
-                                                        </div>
-                                                        <div class="u-s-m-b-30">
-
-                                                            <label class="gl-label" for="gender">GENDER</label><select
-                                                                class="select-box select-box--primary-style u-w-100"
-                                                                id="gender">
-                                                                <option selected>Select</option>
-                                                                <option value="male">Male</option>
-                                                                <option value="male">Female</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="gl-inline">
-                                                        <div class="u-s-m-b-30">
-                                                            <h2 class="dash__h2 u-s-m-b-8">E-mail</h2>
-
-                                                            <span class="dash__text">johndoe@domain.com</span>
-                                                            <div class="dash__link dash__link--secondary">
-
-                                                                <a href="#">Change</a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="u-s-m-b-30">
-                                                            <h2 class="dash__h2 u-s-m-b-8">Phone</h2>
-
-                                                            <span class="dash__text">Please enter your mobile</span>
-                                                            <div class="dash__link dash__link--secondary">
-
-                                                                <a href="#">Add</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <button class="btn btn--e-brand-b-2" type="submit">SAVE</button>
-                                                </form>
+                            <div class="dash__box dash__box--bg-white dash__box--shadow dash__box--w">
+                                <div class="dash__pad-1">
+                                    <ul class="dash__w-list">
+                                        <li>
+                                            <div class="dash__w-wrap">
+                                                <span class="dash__w-icon dash__w-icon-style-1">
+                                                    <i class="fas fa-cart-arrow-down"></i>
+                                                </span>
+                                                <span class="dash__w-text" id="count-placed">0</span>
+                                                <span class="dash__w-name">Đơn đã đặt</span>
                                             </div>
+                                        </li>
+
+                                        <li>
+                                            <div class="dash__w-wrap">
+                                                <span class="dash__w-icon dash__w-icon-style-2">
+                                                    <i class="fas fa-times"></i>
+                                                </span>
+                                                <span class="dash__w-text" id="count-cancelled">0</span>
+                                                <span class="dash__w-name">Đơn đã hủy</span>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <div class="dash__w-wrap">
+                                                <span class="dash__w-icon dash__w-icon-style-3">
+                                                    <i class="far fa-heart"></i>
+                                                </span>
+                                                <span class="dash__w-text">0</span>
+                                                <span class="dash__w-name">Danh sách yêu thích</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!--====== End - Dashboard Features ======-->
+                        </div>
+
+                        <div class="col-lg-9 col-md-12">
+                            <div class="dash__box dash__box--shadow dash__box--radius dash__box--bg-white">
+                                <div class="dash__pad-2">
+                                    <h1 class="dash__h1 u-s-m-b-14">Edit Profile</h1>
+
+                                    <span class="dash__text u-s-m-b-30">Looks like you haven't update your
+                                        profile</span>
+                                    <div class="dash__link dash__link--secondary u-s-m-b-30">
+
+                                        <a data-modal="modal" data-modal-id="#dash-newsletter">Subscribe Newsletter</a>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <form class="dash-edit-p">
+                                                <div class="gl-inline">
+                                                    <div class="u-s-m-b-30">
+
+                                                        <label class="gl-label" for="reg-fname">FIRST NAME *</label>
+
+                                                        <input class="input-text input-text--primary-style" type="text"
+                                                            id="reg-fname" placeholder="John">
+                                                    </div>
+                                                    <div class="u-s-m-b-30">
+
+                                                        <label class="gl-label" for="reg-lname">LAST NAME *</label>
+
+                                                        <input class="input-text input-text--primary-style" type="text"
+                                                            id="reg-lname" placeholder="Doe">
+                                                    </div>
+                                                </div>
+                                                <div class="gl-inline">
+                                                    <div class="u-s-m-b-30">
+
+                                                        <!--====== Date of Birth Select-Box ======-->
+
+                                                        <span class="gl-label">BIRTHDAY</span>
+                                                        <div class="gl-dob"><select
+                                                                class="select-box select-box--primary-style">
+                                                                <option selected>Month</option>
+                                                                <option value="male">January</option>
+                                                                <option value="male">February</option>
+                                                                <option value="male">March</option>
+                                                                <option value="male">April</option>
+                                                            </select><select
+                                                                class="select-box select-box--primary-style">
+                                                                <option selected>Day</option>
+                                                                <option value="01">01</option>
+                                                                <option value="02">02</option>
+                                                                <option value="03">03</option>
+                                                                <option value="04">04</option>
+                                                            </select><select
+                                                                class="select-box select-box--primary-style">
+                                                                <option selected>Year</option>
+                                                                <option value="1991">1991</option>
+                                                                <option value="1992">1992</option>
+                                                                <option value="1993">1993</option>
+                                                                <option value="1994">1994</option>
+                                                            </select></div>
+                                                        <!--====== End - Date of Birth Select-Box ======-->
+                                                    </div>
+                                                    <div class="u-s-m-b-30">
+
+                                                        <label class="gl-label" for="gender">GENDER</label><select
+                                                            class="select-box select-box--primary-style u-w-100"
+                                                            id="gender">
+                                                            <option selected>Select</option>
+                                                            <option value="male">Male</option>
+                                                            <option value="male">Female</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="gl-inline">
+                                                    <div class="u-s-m-b-30">
+                                                        <h2 class="dash__h2 u-s-m-b-8">E-mail</h2>
+
+                                                        <span class="dash__text">johndoe@domain.com</span>
+                                                        <div class="dash__link dash__link--secondary">
+
+                                                            <a href="#">Change</a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="u-s-m-b-30">
+                                                        <h2 class="dash__h2 u-s-m-b-8">Phone</h2>
+
+                                                        <span class="dash__text">Please enter your mobile</span>
+                                                        <div class="dash__link dash__link--secondary">
+
+                                                            <a href="#">Add</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <button class="btn btn--e-brand-b-2" type="submit">SAVE</button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -227,36 +205,117 @@
                     </div>
                 </div>
             </div>
-            <!--====== End - Section Content ======-->
         </div>
-        <!--====== End - Section 2 ======-->
+        <!--====== End - Section Content ======-->
     </div>
+    <!--====== End - Section 2 ======-->
+</div>
 
 
 
-    <!--====== Unsubscribe or Subscribe Newsletter ======-->
-    <div class="modal fade" id="dash-newsletter">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content modal--shadow">
-                <div class="modal-body">
-                    <form class="d-modal__form">
-                        <div class="u-s-m-b-15">
-                            <h1 class="gl-modal-h1">Newsletter Subscription</h1>
+<!--====== Unsubscribe or Subscribe Newsletter ======-->
+<div class="modal fade" id="dash-newsletter">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content modal--shadow">
+            <div class="modal-body">
+                <form class="d-modal__form">
+                    <div class="u-s-m-b-15">
+                        <h1 class="gl-modal-h1">Newsletter Subscription</h1>
 
-                            <span class="gl-modal-text">I have read and understood</span>
+                        <span class="gl-modal-text">I have read and understood</span>
 
-                            <a class="d_modal__link" href="{{ route('dash.EditProfile') }}">Ludus Privacy Policy</a>
-                        </div>
-                        <div class="gl-modal-btn-group">
+                        <a class="d_modal__link" href="{{ route('dash.EditProfile') }}">Ludus Privacy Policy</a>
+                    </div>
+                    <div class="gl-modal-btn-group">
 
-                            <button class="btn btn--e-brand-b-2" type="submit">SUBSCRIBE</button>
+                        <button class="btn btn--e-brand-b-2" type="submit">SUBSCRIBE</button>
 
-                            <button class="btn btn--e-grey-b-2" type="button" data-dismiss="modal">CANCEL</button>
-                        </div>
-                    </form>
-                </div>
+                        <button class="btn btn--e-grey-b-2" type="button" data-dismiss="modal">CANCEL</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", async function() {
+
+        // ===============================
+        // LẤY TOKEN TỪ COOKIE
+        // ===============================
+        function getCookie(name) {
+            const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+            return match ? match[2] : null;
+        }
+
+        const token = getCookie("auth_token");
+
+        // ===============================
+        // XỬ LÝ HIỂN THỊ TÊN NGƯỜI DÙNG
+        // ===============================
+        const greeting = document.getElementById("user-greeting");
+
+        if (!token) {
+            greeting.innerHTML = "Hello, Guest";
+        } else {
+            try {
+                const res = await fetch("http://127.0.0.1:8001/me", {
+                    method: "GET",
+                    headers: {
+                        "Authorization": "Bearer " + token
+                    }
+                });
+
+                const data = await res.json();
+
+                if (data.ok && data.data.fullname) {
+                    greeting.innerHTML = `Hello, ${data.data.fullname}`;
+                } else {
+                    greeting.innerHTML = "Hello, User";
+                }
+            } catch (err) {
+                greeting.innerHTML = "Hello, User";
+            }
+        }
+
+        // ===============================
+        // LẤY USER ID TỪ JWT
+        // ===============================
+        function getUserIdFromJWT() {
+            if (!token) return null;
+            try {
+                const payload = JSON.parse(atob(token.split(".")[1]));
+                return payload.sub;
+            } catch {
+                return null;
+            }
+        }
+
+        const USER_ID = getUserIdFromJWT();
+        const API_ORDERS = "http://127.0.0.1:8002/api/orders";
+
+        async function loadOrderCounts() {
+            const res = await fetch(`${API_ORDERS}?user_id=${USER_ID}`);
+            const orders = await res.json();
+
+            // Đơn đã đặt = tất cả đơn TRỪ trạng thái cancelled/draft/pending_payment
+            const placed = orders.filter(o => ["processing", "delivering", "completed", "paid",
+                "pending_payment"
+            ].includes(o
+                .status)).length;
+
+            // Đơn đã hủy
+            const cancelled = orders.filter(o => o.status === "cancelled").length;
+
+            // Inject vào DOM
+            document.getElementById("count-placed").innerText = placed;
+            document.getElementById("count-cancelled").innerText = cancelled;
+        }
+
+
+        loadOrderCounts();
+    });
+</script>
 @endsection
 {{-- 4. Kết thúc phần nội dung --}}

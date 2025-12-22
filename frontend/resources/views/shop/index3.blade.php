@@ -1918,7 +1918,11 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content modal--shadow">
 
+<<<<<<< HEAD
+                <button class="btn new-l__dismiss fas fa-times" type="button" data-dismiss="modal"></button>
+=======
                 <button class="btn dismiss-button fas fa-times" type="button" data-bs-dismiss="modal"></button>
+>>>>>>> 690ae5fe94ec1111b08c0761137277878808417a
                 <div class="modal-body">
                     <div class="row u-s-m-x-0">
                         <div class="col-lg-6 new-l__col-1 u-s-p-x-0">
