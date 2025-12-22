@@ -381,3 +381,4 @@ class ProductController
         return ['ok' => true];
     }
 }
+

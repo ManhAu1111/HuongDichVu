@@ -1,17 +1,25 @@
 <?php
-// Hiện lỗi PHP
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
+// ===============================
+// CORS CONFIG (FIXED)
+// ===============================
 header("Content-Type: application/json");
+
+// CHỈ ĐỊNH RÕ ORIGIN (KHÔNG DÙNG *)
 header("Access-Control-Allow-Origin: http://127.0.0.1:8000");
-header("Access-Control-Allow-Credentials: true");
+
+// BẮT BUỘC cho Authorization
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
+
+// CÁC METHOD ĐƯỢC PHÉP
 header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
 
-// Preflight CORS
-if ($_SERVER["REQUEST_METHOD"] === "OPTIONS") {
+// Cho phép browser gửi cookie / token
+header("Access-Control-Allow-Credentials: true");
+
+// ===============================
+// PRE-FLIGHT REQUEST
+// ===============================
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     http_response_code(200);
     exit;
 }
@@ -26,6 +34,9 @@ $dotenv->load();
 use App\Controllers\ProductController;
 use App\Controllers\CategoryController;
 use App\Controllers\ProductImageController;
+use App\Controllers\WishlistController;
+use App\Helpers\AuthHelper;
+use App\Controllers\ReviewController;
 
 // Khởi tạo Controller
 $product = new ProductController();
@@ -33,9 +44,11 @@ $category = new CategoryController();
 $image = new ProductImageController();
 $controller = new ProductController();
 
+
 $uri = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
 $method = $_SERVER["REQUEST_METHOD"];
 
+$wishlist = new WishlistController();
 // -------------------------
 // PRODUCT ROUTES
 // -------------------------
@@ -149,29 +162,44 @@ if ($uri === "/products/filter" && $method === "GET") {
     exit;
 }
 
-// GET /products/{id}/primary-image
-if (preg_match("#^/products/(\d+)/primary-image$#", $uri, $matches) && $method === "GET") {
-    echo json_encode($image->getPrimaryImage((int)$matches[1]));
+
+// -------------------------
+// WISHLIST ROUTES
+// -------------------------
+
+$wishlist = new WishlistController();
+
+// GET /wishlist
+if ($uri === "/wishlist" && $method === "GET") {
+    $userId = AuthHelper::getUserIdFromToken();
+    $wishlist->index($userId);
     exit;
 }
 
-// GET /categories/{id}
-// if (preg_match("#^/categories/(\d+)$#", $uri, $matches) && $method === "GET") {
-//     echo json_encode($category->getCategoryById((int)$matches[1]));
-//     exit;
-// }
+// POST /wishlist/{productId}
+// DELETE /wishlist/{productId}
+if (preg_match("#^/wishlist/(\d+)$#", $uri, $matches)) {
+    $userId = AuthHelper::getUserIdFromToken();
+    $productId = (int)$matches[1];
 
-// POST /products/decrease-stock
-if ($method === 'POST' && $uri === '/api/products/decrease-stock') {
-    $data = json_decode(file_get_contents('php://input'), true);
-    echo json_encode($product->decreaseStock($data['items']));
-    exit;
+    if ($method === "POST") {
+        $wishlist->store($userId, $productId);
+        exit;
+    }
+
+    if ($method === "DELETE") {
+        $wishlist->destroy($userId, $productId);
+        exit;
+    }
 }
 
-// HOÀN HÀNG
-if ($method === 'POST' && $uri === '/api/products/restore-stock') {
-    $data = json_decode(file_get_contents('php://input'), true);
-    echo json_encode($product->restoreStock($data['items']));
+// -------------------------
+// REVIEW ROUTES
+// -------------------------
+
+// GET reviews
+if (preg_match('#^/products/(\d+)/reviews$#', $uri, $m) && $method === 'GET') {
+    echo json_encode($review->index((int)$m[1]));
     exit;
 }
 
@@ -180,6 +208,7 @@ if (preg_match("#^/products/(\d+)/rating$#", $uri, $matches) && $method === "PUT
     $data = json_decode(file_get_contents('php://input'), true);
     echo json_encode(
         $product->updateRating((int)$matches[1], $data)
+
     );
     exit;
 }

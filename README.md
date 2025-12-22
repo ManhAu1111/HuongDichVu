@@ -33,7 +33,6 @@ Bootstrap / TailwindCSS
 
 khởi chạy dự án
 ## 🚀 Khởi chạy dự án
-
 | Service           | Lệnh chạy                                                         |
 |------------------|------------------------------------------------------------------|
 | **Frontend**      | `php artisan serve --host=127.0.0.1 --port=8000`                 |
