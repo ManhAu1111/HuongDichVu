@@ -25,7 +25,7 @@
                             </li>
                             <li class="is-marked">
 
-                                <a href="{{ route('dashboard') }}">Tài Khoản Của Tôi</a>
+                                <a href="{{ route('dashboard') }}">Đơn Hàng Của Tôi</a>
                             </li>
                         </ul>
                     </div>
@@ -55,9 +55,9 @@
                                         <li>
                                             <a class="dash-active" href="{{ route('dashboard') }}">Quản lý tài khoản</a>
                                         </li>
-                                        <li>
+                                        <!-- <li>
                                             <a href="{{ route('dash.my_profile') }}">Hồ sơ cá nhân</a>
-                                        </li>
+                                        </li> -->
                                         <li>
                                             <a href="{{ route('dash.my_order') }}">Đơn hàng của tôi</a>
                                         </li>
