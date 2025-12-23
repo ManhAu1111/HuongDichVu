@@ -27,7 +27,7 @@
 
 
                     <input class="input-text input-text--border-radius input-text--style-1" type="text" id="main-search"
-                        name="search" value="{{ request('search') }}" placeholder="Search">
+                        name="search" value="{{ request('search') }}" placeholder="Tìm kiếm">
 
                     <button class="btn btn--icon fas fa-search main-search-button" type="submit"></button>
                 </form>
@@ -42,11 +42,11 @@
                     <!--====== Menu ======-->
                     <div class="ah-lg-mode">
 
-                        <span class="ah-close">✕ Close</span>
+                        <span class="ah-close">✕ Đóng</span>
 
                         <!--====== List ======-->
                         <ul class="ah-list ah-list--design1 ah-list--link-color-secondary">
-                            <li class="has-dropdown" data-tooltip="tooltip" data-placement="left" title="Account">
+                            <li class="has-dropdown" data-tooltip="tooltip" data-placement="left" title="Tài khoản">
 
                                 <a><i class="far fa-user-circle"></i></a>
 
@@ -58,25 +58,25 @@
 
                                         <a href="{{ route('dashboard') }}"><i class="fas fa-user-circle u-s-m-r-6"></i>
 
-                                            <span>Account</span></a>
+                                            <span>Tài khoản</span></a>
                                     </li>
                                     <li>
 
                                         <a href="{{ route('register') }}"><i class="fas fa-user-plus u-s-m-r-6"></i>
 
-                                            <span>Signup</span></a>
+                                            <span>Đăng ký</span></a>
                                     </li>
                                     <li>
 
                                         <a href="{{ route('login') }}"><i class="fas fa-lock u-s-m-r-6"></i>
 
-                                            <span>Signin</span></a>
+                                            <span>Đăng nhập</span></a>
                                     </li>
                                     <li>
                                         <a href="#"
                                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                             <i class="fas fa-lock-open u-s-m-r-6"></i>
-                                            <span>Signout</span>
+                                            <span>Đăng xuất</span>
                                         </a>
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST"
@@ -88,68 +88,7 @@
                                 </ul>
                                 <!--====== End - Dropdown ======-->
                             </li>
-                            <li class="has-dropdown" data-tooltip="tooltip" data-placement="left" title="Settings">
-
-                                <a><i class="fas fa-user-cog"></i></a>
-
-                                <!--====== Dropdown ======-->
-
-                                <span class="js-menu-toggle"></span>
-                                <ul style="width:120px">
-                                    <li class="has-dropdown has-dropdown--ul-right-100">
-
-                                        <a>Language<i class="fas fa-angle-down u-s-m-l-6"></i></a>
-
-                                        <!--====== Dropdown ======-->
-
-                                        <span class="js-menu-toggle"></span>
-                                        <ul style="width:120px">
-                                            <li>
-
-                                                <a class="u-c-brand">ENGLISH</a>
-                                            </li>
-                                            <li>
-
-                                                <a>ARABIC</a>
-                                            </li>
-                                            <li>
-
-                                                <a>FRANCAIS</a>
-                                            </li>
-                                            <li>
-
-                                                <a>ESPANOL</a>
-                                            </li>
-                                        </ul>
-                                        <!--====== End - Dropdown ======-->
-                                    </li>
-                                    <li class="has-dropdown has-dropdown--ul-right-100">
-
-                                        <a>Currency<i class="fas fa-angle-down u-s-m-l-6"></i></a>
-
-                                        <!--====== Dropdown ======-->
-
-                                        <span class="js-menu-toggle"></span>
-                                        <ul style="width:225px">
-                                            <li>
-
-                                                <a class="u-c-brand">$ - US DOLLAR</a>
-                                            </li>
-                                            <li>
-
-                                                <a>£ - BRITISH POUND STERLING</a>
-                                            </li>
-                                            <li>
-
-                                                <a>€ - EURO</a>
-                                            </li>
-                                        </ul>
-                                        <!--====== End - Dropdown ======-->
-                                    </li>
-                                </ul>
-                                <!--====== End - Dropdown ======-->
-                            </li>
-                            <li data-tooltip="tooltip" data-placement="left" title="Contact">
+                            <li data-tooltip="tooltip" data-placement="left" title="Liên hệ">
 
                                 <a href="tel:+0900901904"><i class="fas fa-phone-volume"></i></a>
                             </li>
@@ -185,7 +124,7 @@
                     <!--====== Menu ======-->
                     <div class="ah-lg-mode">
 
-                        <span class="ah-close">✕ Close</span>
+                        <span class="ah-close">✕ Đóng</span>
 
                         <!--====== List ======-->
                         <ul class="ah-list">
@@ -205,7 +144,7 @@
                                                     <a href="{{ route('shop.side_v2') }}"><i
                                                             class="fas fa-tv u-s-m-r-6"></i>
 
-                                                        <span>furniture</span></a>
+                                                        <span>nội thất</span></a>
 
                                                     <span class="js-menu-toggle js-toggle-mark"></span>
                                                 </li>
@@ -214,7 +153,7 @@
                                                     <a href="{{ route('shop.side_v2') }}"><i
                                                             class="fas fa-female u-s-m-r-6"></i>
 
-                                                        <span>modern</span></a>
+                                                        <span>hiện đại</span></a>
 
                                                     <span class="js-menu-toggle"></span>
                                                 </li>
@@ -223,7 +162,7 @@
                                                     <a href="{{ route('shop.side_v2') }}"><i
                                                             class="fas fa-male u-s-m-r-6"></i>
 
-                                                        <span>classic</span></a>
+                                                        <span>cổ điển</span></a>
 
                                                     <span class="js-menu-toggle"></span>
                                                 </li>
@@ -239,23 +178,23 @@
                                                     <ul>
                                                         <li class="mega-list-title">
 
-                                                            <a href="{{ route('shop.side_v2') }}">chair</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Ghế</a>
                                                         </li>
                                                         <li>
 
-                                                            <a href="{{ route('shop.side_v2') }}">Lounge chair</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Ghế thư giãn</a>
                                                         </li>
                                                         <li>
 
-                                                            <a href="{{ route('shop.side_v2') }}">Office chair</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Ghế văn phòng</a>
                                                         </li>
                                                         <li>
 
-                                                            <a href="{{ route('shop.side_v2') }}">Gaming chair</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Ghế chơi game</a>
                                                         </li>
                                                         <li>
 
-                                                            <a href="{{ route('shop.side_v2') }}">Rocking chair</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Ghế bập bênh</a>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -263,23 +202,23 @@
                                                     <ul>
                                                         <li class="mega-list-title">
 
-                                                            <a href="{{ route('shop.side_v2') }}">table</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Bàn</a>
                                                         </li>
                                                         <li>
 
-                                                            <a href="{{ route('shop.side_v2') }}">Coffee table</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Bàn trà</a>
                                                         </li>
                                                         <li>
 
-                                                            <a href="{{ route('shop.side_v2') }}">Office desk</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Bàn làm việc</a>
                                                         </li>
                                                         <li>
 
-                                                            <a href="{{ route('shop.side_v2') }}">Nightstand</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Bàn đầu giường</a>
                                                         </li>
                                                         <li>
 
-                                                            <a href="{{ route('shop.side_v2') }}">Dining table</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Bàn ăn</a>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -287,24 +226,23 @@
                                                     <ul>
                                                         <li class="mega-list-title">
 
-                                                            <a href="{{ route('shop.side_v2') }}">cabinet</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Tủ</a>
                                                         </li>
                                                         <li>
 
-                                                            <a href="{{ route('shop.side_v2') }}">Wardrobe</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Tủ quần áo</a>
                                                         </li>
                                                         <li>
 
-                                                            <a href="{{ route('shop.side_v2') }}">Shoe cabinet</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Tủ giày</a>
                                                         </li>
                                                         <li>
 
-                                                            <a href="{{ route('shop.side_v2') }}">Bookshelf
-                                                                cabinet</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Tủ sách</a>
                                                         </li>
                                                         <li>
 
-                                                            <a href="{{ route('shop.side_v2') }}">Display cabinet</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Tủ trưng bày</a>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -312,19 +250,19 @@
                                                     <ul>
                                                         <li class="mega-list-title">
 
-                                                            <a href="{{ route('shop.side_v2') }}">shelves</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Kệ</a>
                                                         </li>
                                                         <li>
 
-                                                            <a href="{{ route('shop.side_v2') }}">Wall shelves</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Kệ treo tường</a>
                                                         </li>
                                                         <li>
 
-                                                            <a href="{{ route('shop.side_v2') }}">Floating shelves</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Kệ nổi</a>
                                                         </li>
                                                         <li>
 
-                                                            <a href="{{ route('shop.side_v2') }}">Corner shelves</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Kệ góc</a>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -338,19 +276,19 @@
                                                     <ul>
                                                         <li class="mega-list-title">
 
-                                                            <a href="{{ route('shop.side_v2') }}">bed</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Giường</a>
                                                         </li>
                                                         <li>
 
-                                                            <a href="{{ route('shop.side_v2') }}">folding bed</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Giường gấp</a>
                                                         </li>
                                                         <li>
 
-                                                            <a href="{{ route('shop.side_v2') }}">single bed</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Giường đơn</a>
                                                         </li>
                                                         <li>
 
-                                                            <a href="{{ route('shop.side_v2') }}">double bed</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Giường đôi</a>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -396,26 +334,25 @@
                                                     <ul>
                                                         <li class="mega-list-title">
 
-                                                            <a href="{{ route('shop.side_v2') }}">chair</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Ghế</a>
                                                         </li>
                                                         <li>
 
-                                                            <a href="{{ route('shop.side_v2') }}">Modern dining
-                                                                chair</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Ghế ăn hiện đại</a>
                                                         </li>
                                                         <li>
 
-                                                            <a href="{{ route('shop.side_v2') }}">Minimalist chair</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Ghế tối giản</a>
                                                         </li>
                                                         <li>
 
-                                                            <a href="{{ route('shop.side_v2') }}">Contemporary
-                                                                armchair</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Ghế bành phong cách
+                                                                đương đại</a>
                                                         </li>
                                                         <li>
 
-                                                            <a href="{{ route('shop.side_v2') }}">Sleek office
-                                                                chair</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Ghế văn phòng kiểu
+                                                                dáng tinh gọn</a>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -423,25 +360,24 @@
                                                     <ul>
                                                         <li class="mega-list-title">
 
-                                                            <a href="{{ route('shop.side_v2') }}">table</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Bàn</a>
                                                         </li>
                                                         <li>
 
-                                                            <a href="{{ route('shop.side_v2') }}">Modern coffee
-                                                                table</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Bàn trà hiện đại</a>
                                                         </li>
                                                         <li>
 
-                                                            <a href="{{ route('shop.side_v2') }}">Minimalist desk</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Bàn làm việc tối
+                                                                giản</a>
                                                         </li>
                                                         <li>
 
-                                                            <a href="{{ route('shop.side_v2') }}">Modern dining
-                                                                table</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Bàn ăn hiện đại</a>
                                                         </li>
                                                         <li>
 
-                                                            <a href="{{ route('shop.side_v2') }}">Glass side table</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Bàn góc bằng kính</a>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -449,26 +385,25 @@
                                                     <ul>
                                                         <li class="mega-list-title">
 
-                                                            <a href="{{ route('shop.side_v2') }}">cabinet</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Tủ</a>
                                                         </li>
                                                         <li>
 
-                                                            <a href="{{ route('shop.side_v2') }}">Modern wardrobe</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Tủ quần áo hiện
+                                                                đại</a>
                                                         </li>
                                                         <li>
 
-                                                            <a href="{{ route('shop.side_v2') }}">Sliding door
-                                                                cabinet</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Tủ cửa lùa</a>
                                                         </li>
                                                         <li>
 
-                                                            <a href="{{ route('shop.side_v2') }}">Modern TV
-                                                                cabinet</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Tủ TV hiện đại</a>
                                                         </li>
                                                         <li>
 
-                                                            <a href="{{ route('shop.side_v2') }}">Handle-less kitchen
-                                                                cabinet</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Tủ bếp không tay
+                                                                nắm</a>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -476,27 +411,24 @@
                                                     <ul>
                                                         <li class="mega-list-title">
 
-                                                            <a href="{{ route('shop.side_v2') }}">shelves</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Kệ</a>
                                                         </li>
                                                         <li>
 
-                                                            <a href="{{ route('shop.side_v2') }}">Floating wall
-                                                                shelves</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Kệ treo tường dạng
+                                                                nổi</a>
                                                         </li>
                                                         <li>
 
-                                                            <a href="{{ route('shop.side_v2') }}">Geometric
-                                                                shelves</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Kệ hình học</a>
                                                         </li>
                                                         <li>
 
-                                                            <a href="{{ route('shop.side_v2') }}">Metal-frame
-                                                                shelves</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Kệ khung kim loại</a>
                                                         </li>
                                                         <li>
 
-                                                            <a href="{{ route('shop.side_v2') }}">Modern corner
-                                                                shelf</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Kệ góc hiện đại</a>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -510,23 +442,25 @@
                                                     <ul>
                                                         <li class="mega-list-title">
 
-                                                            <a href="{{ route('shop.side_v2') }}">bed</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Giường</a>
                                                         </li>
                                                         <li>
 
-                                                            <a href="{{ route('shop.side_v2') }}">Platform bed</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Giường bệt</a>
                                                         </li>
                                                         <li>
 
-                                                            <a href="{{ route('shop.side_v2') }}">Upholstered bed</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Giường bọc nệm</a>
                                                         </li>
                                                         <li>
 
-                                                            <a href="{{ route('shop.side_v2') }}">Modern queen bed</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Giường queen size hiện
+                                                                đại</a>
                                                         </li>
                                                         <li>
 
-                                                            <a href="{{ route('shop.side_v2') }}">Storage bed</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Giường có ngăn chứa
+                                                                đồ</a>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -607,27 +541,26 @@
                                                     <ul>
                                                         <li class="mega-list-title">
 
-                                                            <a href="{{ route('shop.side_v2') }}">chair</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Ghế</a>
                                                         </li>
                                                         <li>
 
-                                                            <a href="{{ route('shop.side_v2') }}">Classic carved
-                                                                armchair</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Ghế bành chạm khắc cổ
+                                                                điển</a>
                                                         </li>
                                                         <li>
 
-                                                            <a href="{{ route('shop.side_v2') }}">Vintage lounge
-                                                                chair</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Ghế thư giãn phong
+                                                                cách vintage</a>
                                                         </li>
                                                         <li>
 
-                                                            <a href="{{ route('shop.side_v2') }}">Antique dining
-                                                                chair</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Ghế ăn cổ</a>
                                                         </li>
                                                         <li>
 
-                                                            <a href="{{ route('shop.side_v2') }}">Victorian accent
-                                                                chair</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Ghế trang trí phong
+                                                                cách Victorian</a>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -635,27 +568,24 @@
                                                     <ul>
                                                         <li class="mega-list-title">
 
-                                                            <a href="{{ route('shop.side_v2') }}">table</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Bàn</a>
                                                         </li>
                                                         <li>
 
-                                                            <a href="{{ route('shop.side_v2') }}">Classic carved
-                                                                dining table</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Bàn ăn chạm khắc cổ
+                                                                điển</a>
                                                         </li>
                                                         <li>
 
-                                                            <a href="{{ route('shop.side_v2') }}">Antique coffee
-                                                                table</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Bàn trà cổ</a>
                                                         </li>
                                                         <li>
 
-                                                            <a href="{{ route('shop.side_v2') }}">Vintage tea
-                                                                table</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Bàn trà vintage</a>
                                                         </li>
                                                         <li>
 
-                                                            <a href="{{ route('shop.side_v2') }}">Classic wooden
-                                                                desk</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Bàn gỗ cổ điển</a>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -663,25 +593,24 @@
                                                     <ul>
                                                         <li class="mega-list-title">
 
-                                                            <a href="{{ route('shop.side_v2') }}">cabinet</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Tủ</a>
                                                         </li>
                                                         <li>
 
-                                                            <a href="{{ route('shop.side_v2') }}">Classic wardrobe</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Tủ quần áo cổ điển</a>
                                                         </li>
                                                         <li>
 
-                                                            <a href="{{ route('shop.side_v2') }}">Antique display
-                                                                cabinet</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Tủ trưng bày cổ</a>
                                                         </li>
                                                         <li>
 
-                                                            <a href="{{ route('shop.side_v2') }}">Vintage book
-                                                                cabinet</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Tủ sách phong cách
+                                                                vintage</a>
                                                         </li>
                                                         <li>
 
-                                                            <a href="{{ route('shop.side_v2') }}">Carved sideboard</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Tủ phụ chạm khắc</a>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -689,27 +618,24 @@
                                                     <ul>
                                                         <li class="mega-list-title">
 
-                                                            <a href="{{ route('shop.side_v2') }}">shelves</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Kệ</a>
                                                         </li>
                                                         <li>
 
-                                                            <a href="{{ route('shop.side_v2') }}">Classic wooden
-                                                                shelves</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Kệ gỗ cổ điển</a>
                                                         </li>
                                                         <li>
 
-                                                            <a href="{{ route('shop.side_v2') }}">Carved wall
-                                                                shelf</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Kệ treo tường chạm
+                                                                khắc</a>
                                                         </li>
                                                         <li>
 
-                                                            <a href="{{ route('shop.side_v2') }}">Vintage corner
-                                                                shelf</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Kệ góc vintage</a>
                                                         </li>
                                                         <li>
 
-                                                            <a href="{{ route('shop.side_v2') }}">Decorative
-                                                                bookshelf</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Kệ sách trang trí</a>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -723,27 +649,26 @@
                                                     <ul>
                                                         <li class="mega-list-title">
 
-                                                            <a href="{{ route('shop.side_v2') }}">bed</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Giường</a>
                                                         </li>
                                                         <li>
 
-                                                            <a href="{{ route('shop.side_v2') }}">Classic carved
-                                                                bed</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Giường chạm khắc cổ
+                                                                điển</a>
                                                         </li>
                                                         <li>
 
-                                                            <a href="{{ route('shop.side_v2') }}">Vintage queen
-                                                                bed</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Giường queen phong
+                                                                cách vintage</a>
                                                         </li>
                                                         <li>
 
-                                                            <a href="{{ route('shop.side_v2') }}">Royal-style bed
-                                                                frame</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Khung giường phong
+                                                                cách hoàng gia</a>
                                                         </li>
                                                         <li>
 
-                                                            <a href="{{ route('shop.side_v2') }}">Antique wooden
-                                                                bed</a>
+                                                            <a href="{{ route('shop.side_v2') }}">Giường gỗ cổ</a>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -797,17 +722,17 @@
                     <!--====== Menu ======-->
                     <div class="ah-lg-mode">
 
-                        <span class="ah-close">✕ Close</span>
+                        <span class="ah-close">✕ Đóng</span>
 
                         <!--====== List ======-->
                         <ul class="ah-list ah-list--design2 ah-list--link-color-secondary">
                             <li>
 
-                                <a href="{{ route('shop.side_v2') }}">NEW ARRIVALS</a>
+                                <a href="{{ route('shop.side_v2') }}">HÀNG MỚI</a>
                             </li>
                             <li class="has-dropdown">
 
-                                <a>PAGES<i class="fas fa-angle-down u-s-m-l-6"></i></a>
+                                <a>TRANG<i class="fas fa-angle-down u-s-m-l-6"></i></a>
 
                                 <!--====== Dropdown ======-->
 
@@ -815,38 +740,38 @@
                                 <ul style="width:170px">
                                     <li>
 
-                                        <a href="{{ route('cart') }}">Cart</a>
+                                        <a href="{{ route('cart') }}">Giỏ hàng</a>
                                     </li>
                                     <li>
 
-                                        <a href="{{ route('wishlist') }}">Wishlist</a>
+                                        <a href="{{ route('wishlist') }}">Danh sách yêu thích</a>
                                     </li>
                                     <li>
 
-                                        <a href="{{ route('checkout') }}">Checkout</a>
+                                        <a href="{{ route('checkout') }}">Thanh toán</a>
                                     </li>
                                     <li>
 
-                                        <a href="{{ route('faq') }}">FAQ</a>
+                                        <a href="{{ route('faq') }}">Câu hỏi thường gặp</a>
                                     </li>
                                     <li>
 
-                                        <a href="{{ route('about') }}">About us</a>
+                                        <a href="{{ route('about') }}">Giới thiệu về chúng tôi</a>
                                     </li>
                                     <li>
 
-                                        <a href="{{ route('contact') }}">Contact</a>
+                                        <a href="{{ route('contact') }}">Liên hệ</a>
                                     </li>
-                                    <li>
+                                    <!-- <li>
 
                                         <a href="{{ route('404') }}">404</a>
-                                    </li>
+                                    </li> -->
                                 </ul>
                                 <!--====== End - Dropdown ======-->
                             </li>
                             <li class="has-dropdown">
 
-                                <a>BLOG<i class="fas fa-angle-down u-s-m-l-6"></i></a>
+                                <a>BÀI VIẾT<i class="fas fa-angle-down u-s-m-l-6"></i></a>
 
                                 <!--====== Dropdown ======-->
 
@@ -854,11 +779,11 @@
                                 <ul style="width:200px">
                                     <li>
 
-                                        <a href="{{ route('blog.SidebarNone') }}">Blog Sidebar None</a>
+                                        <a href="{{ route('blog.SidebarNone') }}">Tổng quan</a>
                                     </li>
                                     <li>
 
-                                        <a href="{{ route('blog.detail') }}">Blog Details</a>
+                                        <a href="{{ route('blog.detail') }}">Chi tiết</a>
                                     </li>
                                 </ul>
                                 <!--====== End - Dropdown ======-->

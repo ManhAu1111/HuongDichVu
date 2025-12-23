@@ -22,11 +22,11 @@
                         <ul class="breadcrumb__list">
                             <li class="has-separator">
 
-                                <a href="{{ route('shop.index') }}">Home</a>
+                                <a href="{{ route('shop.index') }}">Trang chủ</a>
                             </li>
                             <li class="is-marked">
 
-                                <a href="{{ route('dashboard') }}">My Account</a>
+                                <a href="{{ route('dashboard') }}">Đơn hàng của tôi</a>
                             </li>
                         </ul>
                     </div>
@@ -54,11 +54,11 @@
                                     <span id="user-greeting" class="dash__text u-s-m-b-16">Xin chào...</span>
                                     <ul class="dash__f-list">
                                         <li>
-                                            <a class="dash-active" href="{{ route('dashboard') }}">Quản lý tài khoản</a>
+                                            <a class="dash-active" href="{{ route('dashboard') }}">Quản lý đơn hàng</a>
                                         </li>
-                                        <li>
+                                        <!-- <li>
                                             <a href="{{ route('dash.my_profile') }}">Hồ sơ cá nhân</a>
-                                        </li>
+                                        </li> -->
                                         <li>
                                             <a href="{{ route('dash.my_order') }}">Đơn hàng của tôi</a>
                                         </li>
@@ -106,7 +106,7 @@
 
                         <div class="col-lg-9 col-md-12">
                             <div class="dash__box dash__box--shadow dash__box--radius dash__box--bg-white u-s-m-b-30">
-                                <div class="dash__pad-2">
+                                <!-- <div class="dash__pad-2">
                                     <h1 class="dash__h1 u-s-m-b-14">Quản lý tài khoản</h1>
 
                                     <span class="dash__text u-s-m-b-30">
@@ -137,7 +137,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
 
                             </div>
                             <div class="dash__box dash__box--shadow dash__box--bg-white dash__box--radius">

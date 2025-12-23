@@ -13,10 +13,10 @@
                     <div class="breadcrumb__wrap">
                         <ul class="breadcrumb__list">
                             <li class="has-separator">
-                                <a href="{{ route('shop.index') }}">Home</a>
+                                <a href="{{ route('shop.index') }}">Trang chủ</a>
                             </li>
                             <li class="is-marked">
-                                <a href="{{ route('dash.my_order') }}">My Orders</a>
+                                <a href="{{ route('dash.my_order') }}">Đơn hàng của tôi</a>
                             </li>
                         </ul>
                     </div>
@@ -42,11 +42,11 @@
                                     <span id="user-greeting" class="dash__text u-s-m-b-16">Xin chào...</span>
                                     <ul class="dash__f-list">
                                         <li>
-                                            <a class="dash-active" href="{{ route('dashboard') }}">Quản lý tài khoản</a>
+                                            <a class="dash-active" href="{{ route('dashboard') }}">Quản lý đơn hàng</a>
                                         </li>
-                                        <li>
+                                        <!-- <li>
                                             <a href="{{ route('dash.my_profile') }}">Hồ sơ cá nhân</a>
-                                        </li>
+                                        </li> -->
                                         <li>
                                             <a href="{{ route('dash.my_order') }}">Đơn hàng của tôi</a>
                                         </li>
@@ -101,15 +101,17 @@
                                     <h1 class="dash__h1 u-s-m-b-14">Đơn hàng của tôi</h1>
                                     <span class="dash__text u-s-m-b-30">Danh sách tất cả đơn hàng của bạn</span>
 
-                                    <!-- LIST WRAPPER -->
-                                    <div id="orders-list" class="m-order__list">
-                                        <!-- JS sẽ render toàn bộ danh sách vào đây -->
-                                        <div>Đang tải đơn hàng...</div>
+                                    <!-- SCROLL WRAPPER -->
+                                    <div class="dash__table-wrap gl-scroll orders-scroll">
+                                        <div id="orders-list" class="m-order__list">
+                                            <div>Đang tải đơn hàng...</div>
+                                        </div>
                                     </div>
 
                                 </div>
                             </div>
                         </div>
+
 
                     </div>
                 </div>

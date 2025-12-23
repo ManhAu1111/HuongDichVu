@@ -15,7 +15,11 @@ use App\Http\Controllers\WishlistController;
 |--------------------------------------------------------------------------
 */
 
-Route::view('/detail', 'blog.detail')->name('blog.detail');
+// Detail bài viết
+Route::view('/blog/detail', 'blog.detail')->name('blog.detail');
+Route::view('/blog/detail-2', 'blog.detail2')->name('blog.detail2');
+
+// Danh sách blog
 Route::view('/blogRightSidebar', 'blog.blogRightSidebar')->name('blog.RightSidebar');
 Route::view('/blogLeftSidebar', 'blog.blogLeftSidebar')->name('blog.LeftSidebar');
 Route::view('/blogSidebarNone', 'blog.blogSidebarNone')->name('blog.SidebarNone');

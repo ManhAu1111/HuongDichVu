@@ -8,113 +8,97 @@
 
 {{-- 3. Bắt đầu phần nội dung (sẽ thay thế @yield('content')) --}}
 @section('content')
-    <!--====== App Content ======-->
-    <div class="app-content">
+<!--====== App Content ======-->
+<div class="app-content">
 
-        <!--====== Section 1 ======-->
-        <div class="u-s-p-y-90">
+    <!--====== Section 1 ======-->
+    <div class="u-s-p-y-90">
 
-            <!--====== Detail Post ======-->
-            <div class="detail-post">
-                <div class="bp-detail">
-                    <div class="bp-detail__thumbnail">
+        <!--====== Detail Post ======-->
+        <div class="detail-post">
+            <div class="bp-detail">
+                <div class="bp-detail__thumbnail">
 
-                        <!--====== Image Code ======-->
-                        <div class="aspect aspect--bg-grey aspect--1366-768">
+                    <!--====== Image Code ======-->
+                    <a class="aspect aspect--bg-grey aspect--1366-768 u-d-block" href="{{ route('blog.detail') }}">
 
-                            <img class="aspect__img" src="images/blog/post-12.jpg" alt=""></div>
-                        <!--====== End - Image Code ======-->
-                    </div>
-                    <div class="bp-detail__info-wrap">
-                        <div class="bp-detail__stat">
-
-                            <span class="bp-detail__stat-wrap">
-
-                                <span class="bp-detail__publish-date">
-
-                                    <a href="{{ route('blog.RightSidebar') }}">
-
-                                        <span>25 March 2018</span></a></span></span>
-
-                            <span class="bp-detail__stat-wrap">
-
-                                <span class="bp-detail__author">
-
-                                    <a href="{{ route('blog.RightSidebar') }}">Dayle</a></span></span>
-
-                            <span class="bp-detail__stat-wrap">
-
-                                <span class="bp-detail__category">
-
-                                    <a href="{{ route('blog.RightSidebar') }}">Learning</a>
-
-                                    <a href="{{ route('blog.RightSidebar') }}">News</a>
-
-                                    <a href="{{ route('blog.RightSidebar') }}">Health</a></span></span></div>
+                        <img class="aspect__img" src="{{ asset('images/blog/post-1.jpg') }}" alt=""></a>
+                    <!--====== End - Image Code ======-->
+                </div>
+                <div class="bp-detail__info-wrap">
+                    <div class="bp-detail__stat">
 
                         <span class="bp-detail__h1">
 
-                            <a href="{{ route('blog.detail') }}">Wait till its open</a></span>
+                            <a href="{{ route('blog.detail') }}">Cuộc sống là một chuyến phiêu lưu phi thường</a></span>
                         <div class="blog-t-w">
 
-                            <a class="gl-tag btn--e-transparent-hover-brand-b-2" href="{{ route('blog.RightSidebar') }}">Travel</a>
+                            <a class="gl-tag btn--e-transparent-hover-brand-b-2"
+                                href="{{ route('blog.SidebarNone') }}">Du lịch</a>
 
-                            <a class="gl-tag btn--e-transparent-hover-brand-b-2" href="{{ route('blog.RightSidebar') }}">Culture</a>
+                            <a class="gl-tag btn--e-transparent-hover-brand-b-2"
+                                href="{{ route('blog.SidebarNone') }}">Văn hóa</a>
 
-                            <a class="gl-tag btn--e-transparent-hover-brand-b-2" href="{{ route('blog.RightSidebar') }}">Place</a></div>
-                        <p class="bp-detail__p">Lorem Ipsum is simply dummy text of the <em>printing</em> and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown
+                            <a class="gl-tag btn--e-transparent-hover-brand-b-2"
+                                href="{{ route('blog.SidebarNone') }}">Địa điểm</a>
+                            <p class="bp-detail__p">Không gian phòng ngủ trong hình gợi lên cảm giác yên bình và ấm áp,
+                                nơi con người có thể tạm gác lại những lo toan của cuộc sống bên ngoài để tìm về sự thư
+                                thái sâu lắng. Ánh đèn vàng dịu chạy dọc khung giường như một dải sáng dẫn lối, tạo nên
+                                bầu không khí nhẹ nhàng nhưng đầy tính thẩm mỹ. Mọi chi tiết trong căn phòng — từ chất
+                                liệu gỗ mộc mạc, tông màu nâu ấm cho đến cách bài trí tối giản — đều toát lên sự tinh tế
+                                và sang trọng.</p>
+                            <blockquote class="bp-detail__q"><i class="fas fa-quote-left"></i>
 
-                            <a href="#">printer </a>took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                        <p class="bp-detail__p">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using <del>Lorem Ipsum</del> is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
-                        <blockquote class="bp-detail__q"><i class="fas fa-quote-left"></i>
+                                <span class="bp-detail__q-title">Địa điểm thoải mái nhất trên thế giới chính là CHIẾC
+                                    GIƯỜNG của bạn</span><cite class="bp-detail__q-citation">— BÙI KIM ĐẠT</cite>
+                            </blockquote>
+                            <p class="bp-detail__p">Đây không chỉ là nơi để nghỉ ngơi, mà còn là góc nhỏ giúp mỗi người
+                                cảm nhận rõ ràng hơn giá trị của việc sống chậm, trân trọng những khoảnh khắc bình yên
+                                giữa nhịp sống hiện đại. Một không gian như vậy khiến ta nhận ra rằng đôi khi niềm hạnh
+                                phúc lại đến từ những điều đơn giản nhất: một chiếc giường êm, một căn phòng ấm, và một
+                                buổi tối yên tĩnh để tâm hồn được thả lỏng.</p>
+                            <div class="post-center-wrap">
+                                <ul class="bp-detail__social-list">
+                                    <li>
 
-                            <span class="bp-detail__q-title">It’s Easier to Fool People Than to Convince Them That They Have Been Fooled.</span><cite class="bp-detail__q-citation">— MARK TWAIN</cite></blockquote>
-                        <p class="bp-detail__p">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
-                        <div class="post-center-wrap">
-                            <ul class="bp-detail__social-list">
-                                <li>
+                                        <a class="s-fb--color" href="#"><i class="fab fa-facebook-f"></i></a>
+                                    </li>
+                                    <li>
 
-                                    <a class="s-fb--color" href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li>
+                                        <a class="s-tw--color" href="#"><i class="fab fa-twitter"></i></a>
+                                    </li>
+                                    <li>
 
-                                    <a class="s-tw--color" href="#"><i class="fab fa-twitter"></i></a></li>
-                                <li>
+                                        <a class="s-insta--color" href="#"><i class="fab fa-instagram"></i></a>
+                                    </li>
+                                    <li>
 
-                                    <a class="s-insta--color" href="#"><i class="fab fa-instagram"></i></a></li>
-                                <li>
+                                        <a class="s-wa--color" href="#"><i class="fab fa-whatsapp"></i></a>
+                                    </li>
+                                    <li>
 
-                                    <a class="s-wa--color" href="#"><i class="fab fa-whatsapp"></i></a></li>
-                                <li>
-
-                                    <a class="s-gplus--color" href="#"><i class="fab fa-google-plus-g"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="gl-l-r bp-detail__postnp">
-                            <div>
-
-                                <a href="{{ route('blog.detail') }}">Previous Post</a></div>
-                            <div>
-
-                                <a href="{{ route('blog.detail') }}">Next Post</a></div>
+                                        <a class="s-gplus--color" href="#"><i class="fab fa-google-plus-g"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!--====== End - Detail Post ======-->
-        <div class="u-s-p-b-60">
-            <div class="d-meta">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="d-meta__comment-arena">
+            <!--====== End - Detail Post ======-->
+            <div class="u-s-p-b-60">
+                <div class="d-meta">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <!-- <div class="d-meta__comment-arena">
 
-                                <span class="d-meta__text u-s-m-b-36">6 thoughts on "Wait till is open"</span>
+                                <span class="d-meta__text u-s-m-b-36">6 bình luận về "Cuộc sống là chuyến phiêu lưu phi thường"</span>
                                 <div class="d-meta__comments u-s-m-b-30">
                                     <ol>
                                         <li>
 
-                                            <!--====== Comment ======-->
+                                            
                                             <div class="d-meta__p-comment">
                                                 <div class="p-comment__wrap1">
                                                     <div class="aspect aspect--square p-comment__img-wrap">
@@ -123,23 +107,22 @@
                                                 </div>
                                                 <div class="p-comment__wrap2">
 
-                                                    <span class="p-comment__author">Dayle</span>
+                                                    <span class="p-comment__author">Hoàng Anh</span>
 
                                                     <span class="p-comment__timestamp">
 
                                                         <a href="#">
 
-                                                            <span>25 March 2015 at 3:55pm</span></a></span>
-                                                    <p class="p-comment__paragraph">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                                            <span>25 - 03 - 2015 at 3:55pm</span></a></span>
+                                                    <p class="p-comment__paragraph">Giường siêu êm luôn mọi người ơi.</p>
 
-                                                    <a class="p-comment__reply" href="#">Reply</a>
+                                                    <a class="p-comment__reply" href="#">Trả lời</a>
                                                 </div>
                                             </div>
-                                            <!--====== End - Comment ======-->
+                                            
                                             <ol class="comment-children">
                                                 <li>
-
-                                                    <!--====== Comment ======-->
+                                                    
                                                     <div class="d-meta__p-comment">
                                                         <div class="p-comment__wrap1">
                                                             <div class="aspect aspect--square p-comment__img-wrap">
@@ -148,23 +131,25 @@
                                                         </div>
                                                         <div class="p-comment__wrap2">
 
-                                                            <span class="p-comment__author">Dayle</span>
+                                                            <span class="p-comment__author">Trương Thành Nam</span>
 
                                                             <span class="p-comment__timestamp">
 
                                                                 <a href="#">
 
-                                                                    <span>25 March 2015 at 3:55pm</span></a></span>
-                                                            <p class="p-comment__paragraph">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                                                    <span>27 - 05 - 2015 at 3:55pm</span></a></span>
+                                                            <p class="p-comment__paragraph">Giường này nằm mà muốn ngủ đông luôn á shop.</p>
 
-                                                            <a class="p-comment__reply" href="#">Reply</a>
+                                                            <a class="p-comment__reply" href="#">Trả lời</a>
                                                         </div>
                                                     </div>
-                                                    <!--====== End - Comment ======-->
-                                                    <ol class="comment-children">
+                                                    
+                                                </li>
+                                            </ol>
+                                            <ol class="comment-children">
                                                         <li>
 
-                                                            <!--====== Comment ======-->
+                                                            
                                                             <div class="d-meta__p-comment">
                                                                 <div class="p-comment__wrap1">
                                                                     <div class="aspect aspect--square p-comment__img-wrap">
@@ -173,23 +158,26 @@
                                                                 </div>
                                                                 <div class="p-comment__wrap2">
 
-                                                                    <span class="p-comment__author">Dayle</span>
+                                                                    <span class="p-comment__author">Xuân Mạnh</span>
 
                                                                     <span class="p-comment__timestamp">
 
                                                                         <a href="#">
 
-                                                                            <span>25 March 2015 at 3:55pm</span></a></span>
-                                                                    <p class="p-comment__paragraph">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                                                            <span>25 - 09 - 2015 at 3:55pm</span></a></span>
+                                                                    <p class="p-comment__paragraph">Chiếc giường 10 điểm không có nhưng.</p>
 
-                                                                    <a class="p-comment__reply" href="#">Reply</a>
+                                                                    <a class="p-comment__reply" href="#">Trả lời</a>
                                                                 </div>
                                                             </div>
-                                                            <!--====== End - Comment ======-->
-                                                            <ol class="comment-children">
+                                                            
+                                                            
+                                                        </li>
+                                                    </ol>
+                                                    <ol class="comment-children">
                                                                 <li>
 
-                                                                    <!--====== Comment ======-->
+                                                                    
                                                                     <div class="d-meta__p-comment">
                                                                         <div class="p-comment__wrap1">
                                                                             <div class="aspect aspect--square p-comment__img-wrap">
@@ -198,93 +186,37 @@
                                                                         </div>
                                                                         <div class="p-comment__wrap2">
 
-                                                                            <span class="p-comment__author">Dayle</span>
+                                                                            <span class="p-comment__author">Khải Bùi</span>
 
                                                                             <span class="p-comment__timestamp">
 
                                                                                 <a href="#">
 
-                                                                                    <span>25 March 2015 at 3:55pm</span></a></span>
-                                                                            <p class="p-comment__paragraph">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                                                                    <span>10 - 06 - 2015 at 3:55pm</span></a></span>
+                                                                            <p class="p-comment__paragraph">Mơ đẹp nhé các tình yêu.</p>
 
-                                                                            <a class="p-comment__reply" href="#">Reply</a>
+                                                                            <a class="p-comment__reply" href="#">Trả lời</a>
                                                                         </div>
                                                                     </div>
-                                                                    <!--====== End - Comment ======-->
-                                                                    <ol class="comment-children">
-                                                                        <li>
-
-                                                                            <!--====== Comment ======-->
-                                                                            <div class="d-meta__p-comment">
-                                                                                <div class="p-comment__wrap1">
-                                                                                    <div class="aspect aspect--square p-comment__img-wrap">
-
-                                                                                        <img src="images/blog/avatar-5.jpg" alt=""></div>
-                                                                                </div>
-                                                                                <div class="p-comment__wrap2">
-
-                                                                                    <span class="p-comment__author">Dayle</span>
-
-                                                                                    <span class="p-comment__timestamp">
-
-                                                                                        <a href="#">
-
-                                                                                            <span>25 March 2015 at 3:55pm</span></a></span>
-                                                                                    <p class="p-comment__paragraph">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-
-                                                                                    <a class="p-comment__reply" href="#">Reply</a>
-                                                                                </div>
-                                                                            </div>
-                                                                            <!--====== End - Comment ======-->
-                                                                        </li>
-                                                                        <li>
-
-                                                                            <!--====== Comment ======-->
-                                                                            <div class="d-meta__p-comment">
-                                                                                <div class="p-comment__wrap1">
-                                                                                    <div class="aspect aspect--square p-comment__img-wrap">
-
-                                                                                        <img src="images/blog/avatar.jpg" alt=""></div>
-                                                                                </div>
-                                                                                <div class="p-comment__wrap2">
-
-                                                                                    <span class="p-comment__author">Dayle</span>
-
-                                                                                    <span class="p-comment__timestamp">
-
-                                                                                        <a href="#">
-
-                                                                                            <span>25 March 2015 at 3:55pm</span></a></span>
-                                                                                    <p class="p-comment__paragraph">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-
-                                                                                    <a class="p-comment__reply" href="#">Reply</a>
-                                                                                </div>
-                                                                            </div>
-                                                                            <!--====== End - Comment ======-->
-                                                                        </li>
-                                                                    </ol>
+                                                                    
                                                                 </li>
                                                             </ol>
-                                                        </li>
-                                                    </ol>
-                                                </li>
-                                            </ol>
                                         </li>
                                     </ol>
                                 </div>
 
-                                <span class="d-meta__text-2 u-s-m-b-6">Join the Conversation</span>
+                                <span class="d-meta__text-2 u-s-m-b-6">Tham gia thảo luận</span>
 
-                                <span class="d-meta__text-3 u-s-m-b-16">Your email address will not be published. Required fields are marked *</span>
+                                <span class="d-meta__text-3 u-s-m-b-16">Địa chỉ email của bạn sẽ không được công khai. Các trường bắt buộc được đánh dấu *</span>
                                 <form class="respond__form">
                                     <div class="respond__group">
                                         <div class="u-s-m-b-15">
 
-                                            <label class="gl-label" for="comment">COMMENT *</label><textarea class="text-area text-area--primary-style" id="comment"></textarea></div>
+                                            <label class="gl-label" for="comment">BÌNH LUẬN *</label><textarea class="text-area text-area--primary-style" id="comment"></textarea></div>
                                         <div>
                                             <p class="u-s-m-b-30">
 
-                                                <label class="gl-label" for="responder-name">NAME *</label>
+                                                <label class="gl-label" for="responder-name">TÊN *</label>
 
                                                 <input class="input-text input-text--primary-style" type="text" id="responder-name"></p>
                                             <p class="u-s-m-b-30">
@@ -296,17 +228,19 @@
                                     </div>
                                     <div>
 
-                                        <button class="btn btn--e-brand-shadow" type="submit">POST COMMENT</button></div>
+                                        <button class="btn btn--e-brand-shadow" type="submit">GỬI BÌNH LUẬN</button></div>
                                 </form>
+                            </div> -->
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <!--====== End - Section 1 ======-->
         </div>
-        <!--====== End - Section 1 ======-->
     </div>
-    <!--====== End - App Content ======-->
-    <!--====== End - Main App ======-->
+</div>
+<!--====== End - App Content ======-->
+<!--====== End - Main App ======-->
 @endsection
 {{-- 4. Kết thúc phần nội dung --}}

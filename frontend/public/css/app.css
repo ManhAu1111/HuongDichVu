@@ -4746,7 +4746,7 @@ input::-ms-clear {
 }
 
 .dash__table-wrap {
-  height: 300px;
+  height: 550px;
   overflow: auto;
 }
 
@@ -8832,4 +8832,3 @@ input::-ms-clear {
   object-position: center;
   display: block;
 }
-
