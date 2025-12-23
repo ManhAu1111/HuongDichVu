@@ -1,65 +1,469 @@
-{{-- resources/views/admin/products/index.blade.php --}}
 @extends('admin.layouts.admin_app')
+
+
 
 @section('admin_title', 'Quản Lý Sản Phẩm')
 
+
+
 @section('admin_content')
 
-<div class="dash__box dash__box--shadow dash__box--radius dash__box--bg-white u-s-m-b-30">
-    <div class="dash__pad-2">
-        <h1 class="dash__h1 u-s-m-b-14 u-c-secondary">Danh Sách Sản Phẩm</h1>
 
-        <div class="u-s-m-b-30 d-flex justify-content-between align-items-center">
-            <a href="{{ route('admin.products.create') }}" class="btn btn--e-brand-b-2">
-                <i class="fas fa-plus u-s-m-r-6"></i> Thêm Sản Phẩm
-            </a>
 
-            <form class="main-form" method="GET" style="width: 50%;">
-                <label for="admin-product-search"></label>
-                <input class="input-text input-text--border-radius input-text--style-1"
-                       type="text" id="admin-product-search" name="search"
-                       value="{{ request('search') }}" placeholder="Tìm kiếm theo tên...">
-                <button class="btn btn--icon fas fa-search main-search-button" type="submit"></button>
-            </form>
+    <div class="dash__box dash__box--shadow dash__box--radius dash__box--bg-white u-s-m-b-30">
+
+        <div class="dash__pad-2">
+
+            <h1 class="dash__h1 u-s-m-b-14 u-c-secondary">Danh Sách Sản Phẩm</h1>
+
+
+
+            {{-- THANH BỘ LỌC (FILTER BAR) --}}
+
+            <div class="filter-container u-s-m-b-30">
+
+                <div class="row-filter">
+
+                    <div class="filter-item">
+
+                        <label class="gl-label">TÌM TÊN</label>
+
+                        <input class="input-text input-text--primary-style" type="text" id="filter-search"
+                            placeholder="Nhập tên...">
+
+                    </div>
+
+                    <div class="filter-item">
+
+                        <label class="gl-label">DANH MỤC</label>
+
+                        <select class="select-box select-box--primary-style" id="filter-category">
+
+                            <option value="">Tất cả danh mục</option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="filter-item">
+
+                        <label class="gl-label">GIÁ TỪ</label>
+
+                        <input class="input-text input-text--primary-style" type="number" id="filter-price-min"
+                            placeholder="Min">
+
+                    </div>
+
+                    <div class="filter-item">
+
+                        <label class="gl-label">ĐẾN</label>
+
+                        <input class="input-text input-text--primary-style" type="number" id="filter-price-max"
+                            placeholder="Max">
+
+                    </div>
+
+                    <div class="filter-item d-flex align-items-end">
+
+                        <button class="btn btn--e-brand-b-2" id="btn-apply-filter">LỌC</button>
+
+                        <button class="btn btn--e-transparent-brand-b-2 u-s-m-l-10" id="btn-reset-filter">RESET</button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="u-s-m-b-30 d-flex justify-content-between align-items-center">
+
+                <a href="#" id="create-product-btn" class="btn btn--e-brand-b-2">
+
+                    <i class="fas fa-plus u-s-m-r-6"></i> Thêm Sản Phẩm
+
+                </a>
+
+                <h2 class="dash__h2" id="product-count-text">Đang tải...</h2>
+
+            </div>
+
+
+
+            {{-- BẢNG DỮ LIỆU --}}
+
+            <div id="product-list-wrapper">
+
+                <div class="dash__table-wrap gl-scroll">
+
+                    <table class="dash__table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>ID</th>
+
+                                <th>Ảnh</th>
+
+                                <th>Tên Sản Phẩm</th>
+
+                                <th>Giá</th>
+
+                                <th>Kho hàng</th>
+
+                                <th>Danh mục</th>
+
+                                <th>Hành động</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="product-list-body"></tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+
+            {{-- PHÂN TRANG (PAGINATION) --}}
+
+            <div class="u-s-p-y-60 d-flex justify-content-center">
+
+                <ul class="shop-p__pagination" id="pagination-controls">
+
+                </ul>
+
+            </div>
+
         </div>
 
-        <h2 class="dash__h2 u-s-p-xy-20">25 Sản Phẩm Tìm Thấy</h2>
-        <div class="dash__table-wrap gl-scroll">
-            <table class="dash__table">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Ảnh</th>
-                        <th>Tên Sản Phẩm</th>
-                        <th>Giá</th>
-                        <th>Kho hàng</th>
-                        <th>Trạng thái</th>
-                        <th>Hành động</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>
-                            <div class="dash__table-img-wrap">
-                                <img class="u-img-fluid" src="{{ asset('images/product/electronic/product3.jpg') }}" alt="">
-                            </div>
-                        </td>
-                        <td>Yellow Wireless Headphone</td>
-                        <td>$125.00</td>
-                        <td>50</td>
-                        <td><span class="gl-label u-c-brand">Active</span></td>
-                        <td>
-                            <div class="dash__link dash__link--brand">
-                                <a href="{{ route('admin.products.edit', 1) }}">SỬA</a> |
-                                <a href="#" onclick="confirm('Xác nhận xóa sản phẩm này?')">XÓA</a>
-                            </div>
-                        </td>
-                    </tr>
-                    {{-- Thêm các dòng sản phẩm khác tại đây --}}
-                </tbody>
-            </table>
-        </div>
     </div>
-</div>
+
+
+
+    <style>
+        .row-filter {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 15px;
+
+            align-items: flex-end;
+
+            background: #f9f9f9;
+
+            padding: 15px;
+
+            border-radius: 5px;
+
+        }
+
+
+
+        .filter-item {
+
+            flex: 1;
+
+            min-width: 150px;
+
+        }
+
+
+
+        .modal-overlay {
+
+            position: fixed;
+
+            top: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            background: rgba(0, 0, 0, 0.7);
+
+            z-index: 1000;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+        }
+
+
+
+        .modal-content {
+
+            background: #fff;
+
+            padding: 20px;
+
+            width: 95%;
+
+            max-width: 800px;
+
+            border-radius: 8px;
+
+            max-height: 90vh;
+
+            overflow-y: auto;
+
+        }
+
+
+
+        .form-grid-layout {
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 20px;
+
+        }
+
+
+
+        .form-grid-full-span {
+
+            grid-column: 1 / -1;
+
+        }
+
+
+
+        .shop-p__pagination li {
+
+            cursor: pointer;
+
+            user-select: none;
+
+            margin: 0 5px;
+
+            padding: 5px 12px;
+
+            border: 1px solid #eee;
+
+        }
+
+
+
+        .shop-p__pagination li.is-active {
+
+            background-color: #ff4500;
+
+            color: #fff;
+
+            border-color: #ff4500;
+
+        }
+
+
+
+        .shop-p__pagination li:hover:not(.is-active) {
+
+            background-color: #f5f5f5;
+
+        }
+    </style>
+
+
+
+    @include('admin.products.partials.modal_product')
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"></script>
+    <script>
+        const ADMIN_API = 'http://127.0.0.1:8007/api/admin';
+        const PRODUCT_IMG_BASE = 'http://127.0.0.1:8000';
+
+        let categoryMap = {};
+        let allProducts = [];
+        let filteredProducts = [];
+        let currentPage = 1;
+        const itemsPerPage = 10;
+
+        // --- LOGIC MEDIA MỚI ---
+        window.previewMedia = function (input, type, index) {
+            const file = input.files[0];
+            if (!file) return;
+            const zone = type === 'img' ? document.getElementById(`zone-img-${index}`) : document.getElementById('zone-model');
+            const preview = type === 'img' ? document.getElementById(`prev-img-${index}`) : document.getElementById('prev-model');
+
+            if (type === 'img') {
+                const reader = new FileReader();
+                reader.onload = e => { preview.src = e.target.result; preview.style.display = 'block'; zone.classList.add('has-file'); };
+                reader.readAsDataURL(file);
+            } else {
+                preview.src = URL.createObjectURL(file); preview.style.display = 'block'; zone.classList.add('has-file');
+            }
+        }
+
+        window.clearMedia = function (event, type, index) {
+            event.stopPropagation();
+            const input = type === 'img' ? document.getElementById(`file-img-${index}`) : document.getElementById('file-model');
+            const zone = type === 'img' ? document.getElementById(`zone-img-${index}`) : document.getElementById('zone-model');
+            const preview = type === 'img' ? document.getElementById(`prev-img-${index}`) : document.getElementById('prev-model');
+            input.value = ""; preview.src = ""; preview.style.display = 'none'; zone.classList.remove('has-file');
+        }
+
+        // --- CÁC HÀM CƠ BẢN ---
+        document.addEventListener('DOMContentLoaded', async () => {
+            await loadCategories();
+            await fetchData();
+
+            document.getElementById('create-product-btn').onclick = (e) => { e.preventDefault(); resetForm('THÊM MỚI'); showForm(); };
+            document.getElementById('submit-form-btn-modal').onclick = handleFormSubmit;
+            document.getElementById('btn-apply-filter').onclick = applyFilters;
+            document.getElementById('btn-reset-filter').onclick = () => {
+                document.getElementById('filter-search').value = ''; document.getElementById('filter-category').value = '';
+                document.getElementById('filter-price-min').value = ''; document.getElementById('filter-price-max').value = '';
+                applyFilters();
+            };
+        });
+
+        async function loadCategories() {
+            try {
+                const res = await fetch(`${ADMIN_API}/categories`);
+                const cats = await res.json();
+                const selectModal = document.getElementById('product-category');
+                const selectFilter = document.getElementById('filter-category');
+                cats.forEach(c => {
+                    categoryMap[c.id] = c.name;
+                    const opt = `<option value="${c.id}">${c.name}</option>`;
+                    selectModal.innerHTML += opt; selectFilter.innerHTML += opt;
+                });
+            } catch (err) { console.error(err); }
+        }
+
+        async function fetchData() {
+            try {
+                const res = await fetch(`${ADMIN_API}/products`);
+                allProducts = await res.json();
+                applyFilters();
+            } catch (err) { console.error(err); }
+        }
+
+        function applyFilters() {
+            const searchText = document.getElementById('filter-search').value.toLowerCase();
+            const categoryId = document.getElementById('filter-category').value;
+            const minPrice = parseFloat(document.getElementById('filter-price-min').value) || 0;
+            const maxPrice = parseFloat(document.getElementById('filter-price-max').value) || Infinity;
+            filteredProducts = allProducts.filter(p => {
+                return p.name.toLowerCase().includes(searchText) && (categoryId === "" || p.category_id == categoryId) && (p.price >= minPrice && p.price <= maxPrice);
+            });
+            currentPage = 1; renderTable();
+        }
+
+        function renderTable() {
+            const tbody = document.getElementById('product-list-body');
+            document.getElementById('product-count-text').innerText = `${filteredProducts.length} Sản phẩm`;
+            const start = (currentPage - 1) * itemsPerPage;
+            const paginatedItems = filteredProducts.slice(start, start + itemsPerPage);
+            tbody.innerHTML = '';
+            paginatedItems.forEach(p => {
+                let path = p.primary_image ? p.primary_image.replace(/\\/g, '/') : '';
+                if (path.startsWith('/')) path = path.substring(1);
+                const imgUrl = path ? `${PRODUCT_IMG_BASE}/${path}` : '{{ asset("images/no-image.png") }}';
+                tbody.innerHTML += `<tr><td>${p.id}</td><td><div class="dash__table-img-wrap"><img class="u-img-fluid" src="${imgUrl}" onerror="this.src='{{ asset('images/no-image.png') }}'"></div></td>
+                <td>${p.name}</td><td>${new Intl.NumberFormat('vi-VN').format(p.price)}đ</td><td>${p.quantity}</td>
+                <td><span class="gl-label u-c-secondary">${categoryMap[p.category_id] || p.category_id}</span></td>
+                <td><div class="dash__link dash__link--brand"><a href="#" onclick="editProduct(${p.id})">SỬA</a> | <a href="#" onclick="deleteProduct(${p.id})">XÓA</a></div></td></tr>`;
+            });
+            renderPagination();
+        }
+
+        function renderPagination() {
+            const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+            const container = document.getElementById('pagination-controls'); container.innerHTML = '';
+            if (totalPages <= 1) return;
+            for (let i = 1; i <= totalPages; i++) {
+                const li = document.createElement('li'); li.innerText = i;
+                if (i === currentPage) li.className = 'is-active';
+                li.onclick = () => { currentPage = i; renderTable(); window.scrollTo(0, 0); };
+                container.appendChild(li);
+            }
+        }
+
+        window.resetForm = function (title, method = 'POST', id = null) {
+            const form = document.getElementById('product-form');
+            form.reset(); form.dataset.id = id;
+            document.getElementById('form-title').innerText = title;
+            document.getElementById('form-method').value = method;
+            document.querySelectorAll('.upload-zone').forEach(zone => {
+                zone.classList.remove('has-file');
+                const img = zone.querySelector('img'); if (img) { img.src = ""; img.style.display = 'none'; }
+                const model = zone.querySelector('model-viewer'); if (model) { model.src = ""; model.style.display = 'none'; }
+            });
+        }
+
+        async function handleFormSubmit() {
+            const isEdit = document.getElementById('form-method').value === 'PUT';
+            const mainImgZone = document.getElementById('zone-img-0');
+            const modelZone = document.getElementById('zone-model');
+
+            if (!mainImgZone.classList.contains('has-file') || !modelZone.classList.contains('has-file')) {
+                alert("Bắt buộc phải có Ảnh Chính và Model 3D!"); return;
+            }
+
+            const formData = new FormData(document.getElementById('product-form'));
+            const id = document.getElementById('product-form').dataset.id;
+            let url = isEdit ? `${ADMIN_API}/products/${id}` : `${ADMIN_API}/products`;
+            if (isEdit) formData.append('_method', 'PUT');
+
+            try {
+                const res = await fetch(url, { method: 'POST', body: formData });
+                if (res.ok) { alert('Thành công!'); hideForm(); fetchData(); }
+                else alert('Lỗi khi lưu dữ liệu');
+            } catch (err) { console.error(err); }
+        }
+
+        window.editProduct = async function (id) {
+            try {
+                const res = await fetch(`${ADMIN_API}/products/${id}`);
+                const p = await res.json();
+                resetForm(`CHỈNH SỬA: ${p.name}`, 'PUT', id);
+                document.getElementById('product-name').value = p.name;
+                document.getElementById('product-price').value = p.price;
+                document.getElementById('product-stock').value = p.quantity;
+                document.getElementById('product-category').value = p.category_id;
+                document.getElementById('product-description').value = p.description;
+
+                if (p.primary_image) {
+                    const zone = document.getElementById('zone-img-0');
+                    const prev = document.getElementById('prev-img-0');
+                    prev.src = `${PRODUCT_IMG_BASE}/${p.primary_image.replace(/\\/g, '/')}`;
+                    prev.style.display = 'block'; zone.classList.add('has-file');
+                }
+                if (p.model_url) {
+                    const zone = document.getElementById('zone-model');
+                    const prev = document.getElementById('prev-model');
+                    prev.src = `${PRODUCT_IMG_BASE}/${p.model_url.replace(/\\/g, '/')}`;
+                    prev.style.display = 'block'; zone.classList.add('has-file');
+                }
+                showForm();
+            } catch (err) { alert('Lỗi tải dữ liệu'); }
+        }
+
+        window.deleteProduct = async function (id) {
+            if (!confirm('Xác nhận xóa?')) return;
+            try {
+                const res = await fetch(`${ADMIN_API}/products/${id}`, { method: 'DELETE' });
+                if (res.ok) fetchData();
+            } catch (err) { console.error(err); }
+        }
+
+        window.showForm = () => document.getElementById('product-form-container').style.display = 'block';
+        window.hideForm = () => document.getElementById('product-form-container').style.display = 'none';
+    </script>
 @endsection

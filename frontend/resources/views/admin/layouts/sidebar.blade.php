@@ -20,6 +20,12 @@
                 </a>
             </li>
             <li>
+                <a class="{{ Route::is('admin.categories.*') ? 'dash-active' : '' }}"
+                    href="{{ route('admin.categories.index') }}">
+                    <i class="fas fa-list-alt u-s-m-r-6"></i> Danh Mục Sản Phẩm
+                </a>
+            </li>
+            <li>
                 <a class="{{ Route::is('admin.orders.*') ? 'dash-active' : '' }}"
                    href="{{ route('admin.orders.index') }}">
                    <i class="fas fa-shopping-bag u-s-m-r-6"></i> Đơn Hàng

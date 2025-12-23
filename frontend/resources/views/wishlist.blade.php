@@ -95,10 +95,6 @@
                                             </div>
 
                                             <div class="w-r__wrap-2">
-                                                <a class="w-r__link btn--e-brand-b-2 add-to-cart"
-                                                    data-product-id="{{ $item['id'] }}">
-                                                    ADD TO CART
-                                                </a>
 
                                                 <a class="w-r__link btn--e-transparent-platinum-b-2"
                                                     href="{{ route('products.detail', $item['id']) }}">
