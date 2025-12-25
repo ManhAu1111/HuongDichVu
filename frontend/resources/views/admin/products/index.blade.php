@@ -1,287 +1,132 @@
 @extends('admin.layouts.admin_app')
-
-
-
 @section('admin_title', 'Quản Lý Sản Phẩm')
-
-
-
 @section('admin_content')
-
-
-
     <div class="dash__box dash__box--shadow dash__box--radius dash__box--bg-white u-s-m-b-30">
-
         <div class="dash__pad-2">
-
             <h1 class="dash__h1 u-s-m-b-14 u-c-secondary">Danh Sách Sản Phẩm</h1>
-
-
-
             {{-- THANH BỘ LỌC (FILTER BAR) --}}
-
             <div class="filter-container u-s-m-b-30">
-
                 <div class="row-filter">
-
                     <div class="filter-item">
-
                         <label class="gl-label">TÌM TÊN</label>
-
                         <input class="input-text input-text--primary-style" type="text" id="filter-search"
                             placeholder="Nhập tên...">
-
                     </div>
-
                     <div class="filter-item">
-
                         <label class="gl-label">DANH MỤC</label>
-
                         <select class="select-box select-box--primary-style" id="filter-category">
-
                             <option value="">Tất cả danh mục</option>
-
                         </select>
-
                     </div>
-
                     <div class="filter-item">
-
                         <label class="gl-label">GIÁ TỪ</label>
-
                         <input class="input-text input-text--primary-style" type="number" id="filter-price-min"
                             placeholder="Min">
-
                     </div>
-
                     <div class="filter-item">
-
                         <label class="gl-label">ĐẾN</label>
-
                         <input class="input-text input-text--primary-style" type="number" id="filter-price-max"
                             placeholder="Max">
-
                     </div>
-
                     <div class="filter-item d-flex align-items-end">
-
                         <button class="btn btn--e-brand-b-2" id="btn-apply-filter">LỌC</button>
-
                         <button class="btn btn--e-transparent-brand-b-2 u-s-m-l-10" id="btn-reset-filter">RESET</button>
-
                     </div>
-
                 </div>
-
             </div>
-
-
-
             <div class="u-s-m-b-30 d-flex justify-content-between align-items-center">
-
                 <a href="#" id="create-product-btn" class="btn btn--e-brand-b-2">
-
                     <i class="fas fa-plus u-s-m-r-6"></i> Thêm Sản Phẩm
-
                 </a>
-
                 <h2 class="dash__h2" id="product-count-text">Đang tải...</h2>
-
             </div>
-
-
-
             {{-- BẢNG DỮ LIỆU --}}
-
             <div id="product-list-wrapper">
-
                 <div class="dash__table-wrap gl-scroll">
-
                     <table class="dash__table">
-
                         <thead>
-
                             <tr>
-
                                 <th>ID</th>
-
                                 <th>Ảnh</th>
-
                                 <th>Tên Sản Phẩm</th>
-
                                 <th>Giá</th>
-
                                 <th>Kho hàng</th>
-
                                 <th>Danh mục</th>
-
                                 <th>Hành động</th>
-
                             </tr>
-
                         </thead>
-
                         <tbody id="product-list-body"></tbody>
-
                     </table>
-
                 </div>
-
             </div>
-
-
-
             {{-- PHÂN TRANG (PAGINATION) --}}
-
             <div class="u-s-p-y-60 d-flex justify-content-center">
-
                 <ul class="shop-p__pagination" id="pagination-controls">
-
                 </ul>
-
             </div>
-
         </div>
-
     </div>
-
-
 
     <style>
         .row-filter {
-
             display: flex;
-
             flex-wrap: wrap;
-
             gap: 15px;
-
             align-items: flex-end;
-
             background: #f9f9f9;
-
             padding: 15px;
-
             border-radius: 5px;
-
         }
-
-
 
         .filter-item {
-
             flex: 1;
-
             min-width: 150px;
-
         }
-
-
 
         .modal-overlay {
-
             position: fixed;
-
             top: 0;
-
             left: 0;
-
             width: 100%;
-
             height: 100%;
-
             background: rgba(0, 0, 0, 0.7);
-
             z-index: 1000;
-
             display: flex;
-
             justify-content: center;
-
             align-items: center;
-
         }
-
-
 
         .modal-content {
-
             background: #fff;
-
             padding: 20px;
-
             width: 95%;
-
             max-width: 800px;
-
             border-radius: 8px;
-
             max-height: 90vh;
-
             overflow-y: auto;
-
         }
-
-
-
-        .form-grid-layout {
-
-            display: grid;
-
-            grid-template-columns: 1fr 1fr;
-
-            gap: 20px;
-
-        }
-
-
-
-        .form-grid-full-span {
-
-            grid-column: 1 / -1;
-
-        }
-
-
 
         .shop-p__pagination li {
-
             cursor: pointer;
-
             user-select: none;
-
             margin: 0 5px;
-
             padding: 5px 12px;
-
             border: 1px solid #eee;
-
         }
-
-
 
         .shop-p__pagination li.is-active {
-
             background-color: #ff4500;
-
             color: #fff;
-
             border-color: #ff4500;
-
         }
 
-
-
         .shop-p__pagination li:hover:not(.is-active) {
-
             background-color: #f5f5f5;
-
         }
     </style>
 
-
-
     @include('admin.products.partials.modal_product')
+
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"></script>
     <script>
         const ADMIN_API = 'http://127.0.0.1:8007/api/admin';
@@ -293,7 +138,6 @@
         let currentPage = 1;
         const itemsPerPage = 10;
 
-        // --- LOGIC MEDIA MỚI ---
         window.previewMedia = function (input, type, index) {
             const file = input.files[0];
             if (!file) return;
@@ -317,11 +161,9 @@
             input.value = ""; preview.src = ""; preview.style.display = 'none'; zone.classList.remove('has-file');
         }
 
-        // --- CÁC HÀM CƠ BẢN ---
         document.addEventListener('DOMContentLoaded', async () => {
             await loadCategories();
             await fetchData();
-
             document.getElementById('create-product-btn').onclick = (e) => { e.preventDefault(); resetForm('THÊM MỚI'); showForm(); };
             document.getElementById('submit-form-btn-modal').onclick = handleFormSubmit;
             document.getElementById('btn-apply-filter').onclick = applyFilters;
@@ -376,9 +218,9 @@
                 if (path.startsWith('/')) path = path.substring(1);
                 const imgUrl = path ? `${PRODUCT_IMG_BASE}/${path}` : '{{ asset("images/no-image.png") }}';
                 tbody.innerHTML += `<tr><td>${p.id}</td><td><div class="dash__table-img-wrap"><img class="u-img-fluid" src="${imgUrl}" onerror="this.src='{{ asset('images/no-image.png') }}'"></div></td>
-                <td>${p.name}</td><td>${new Intl.NumberFormat('vi-VN').format(p.price)}đ</td><td>${p.quantity}</td>
-                <td><span class="gl-label u-c-secondary">${categoryMap[p.category_id] || p.category_id}</span></td>
-                <td><div class="dash__link dash__link--brand"><a href="#" onclick="editProduct(${p.id})">SỬA</a> | <a href="#" onclick="deleteProduct(${p.id})">XÓA</a></div></td></tr>`;
+                                                                                                    <td>${p.name}</td><td>${new Intl.NumberFormat('vi-VN').format(p.price)}đ</td><td>${p.quantity}</td>
+                                                                                                    <td><span class="gl-label u-c-secondary">${categoryMap[p.category_id] || p.category_id}</span></td>
+                                                                                                    <td><div class="dash__link dash__link--brand"><a href="#" onclick="editProduct(${p.id})">SỬA</a> | <a href="#" onclick="deleteProduct(${p.id})">XÓA</a></div></td></tr>`;
             });
             renderPagination();
         }
@@ -407,25 +249,146 @@
             });
         }
 
+        // --- LOGIC XỬ LÝ SUBMIT MỚI (4 BƯỚC) ---
+        // --- LOGIC XỬ LÝ SUBMIT MỚI (4 BƯỚC + CHỐNG SPAM) ---
         async function handleFormSubmit() {
+            const submitBtn = document.getElementById('submit-form-btn-modal');
+            const form = document.getElementById('product-form');
             const isEdit = document.getElementById('form-method').value === 'PUT';
             const mainImgZone = document.getElementById('zone-img-0');
-            const modelZone = document.getElementById('zone-model');
 
-            if (!mainImgZone.classList.contains('has-file') || !modelZone.classList.contains('has-file')) {
-                alert("Bắt buộc phải có Ảnh Chính và Model 3D!"); return;
+            // 1. KIỂM TRA TRẠNG THÁI ĐANG CHẠY (排他制御 - Kiểm soát loại trừ)
+            if (submitBtn.disabled) return;
+
+            if (!mainImgZone.classList.contains('has-file')) {
+                alert("Bắt buộc phải có Ảnh Chính!");
+                return;
             }
 
-            const formData = new FormData(document.getElementById('product-form'));
-            const id = document.getElementById('product-form').dataset.id;
-            let url = isEdit ? `${ADMIN_API}/products/${id}` : `${ADMIN_API}/products`;
-            if (isEdit) formData.append('_method', 'PUT');
+            // 2. VÔ HIỆU HÓA NÚT BẤM VÀ ĐỔI TRẠNG THÁI GIAO DIỆN
+            submitBtn.disabled = true;
+            const originalText = submitBtn.innerText;
+            submitBtn.innerText = 'ĐANG XỬ LÝ...';
 
             try {
-                const res = await fetch(url, { method: 'POST', body: formData });
-                if (res.ok) { alert('Thành công!'); hideForm(); fetchData(); }
-                else alert('Lỗi khi lưu dữ liệu');
-            } catch (err) { console.error(err); }
+                if (!isEdit) { // THÊM MỚI
+                    // BƯỚC 1: TẠO SP CƠ BẢN LẤY ID
+                    const basicData = {
+                        name: document.getElementById('product-name').value,
+                        price: document.getElementById('product-price').value,
+                        quantity: document.getElementById('product-stock').value,
+                        category_id: document.getElementById('product-category').value,
+                        description: document.getElementById('product-description').value
+                    };
+
+                    const res = await fetch(`${ADMIN_API}/products`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                        body: JSON.stringify(basicData)
+                    });
+
+                    const result = await res.json();
+                    if (!result.ok) throw new Error(result.error || 'Lỗi tạo SP');
+                    const newId = result.id;
+
+                    // 3. ĐÓNG MODAL NGAY SAU KHI CÓ ID (Để admin không bấm tiếp được)
+                    // Quá trình upload file vẫn sẽ chạy ngầm cho đến khi xong
+                    hideForm();
+
+                    // BƯỚC 2: UPLOAD FILE VẬT LÝ LÊN FRONTEND
+                    const mediaData = new FormData();
+                    mediaData.append('product_id', newId);
+
+                    const modelFile = document.getElementById('file-model').files[0];
+                    if (modelFile) mediaData.append('model_file', modelFile);
+
+                    for (let i = 0; i < 4; i++) {
+                        const imgFile = document.getElementById(`file-img-${i}`).files[0];
+                        if (imgFile) mediaData.append('images[]', imgFile);
+                    }
+
+                    const uploadRes = await fetch('/admin/local-upload-media', {
+                        method: 'POST',
+                        body: mediaData,
+                        headers: { 'X-CSRF-TOKEN': '{{ csrf_token() }}' }
+                    });
+
+                    if (!uploadRes.ok) throw new Error('Lỗi upload file vật lý');
+                    const paths = await uploadRes.json();
+
+                    // BƯỚC 3: CẬP NHẬT MODEL URL VÀO DB
+                    if (paths.model) {
+                        await fetch(`${ADMIN_API}/products/${newId}/model`, {
+                            method: 'PUT',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ model_url: paths.model })
+                        });
+                    }
+
+                    // BƯỚC 4: LƯU DANH SÁCH ẢNH VÀO DB
+                    if (paths.images && paths.images.length > 0) {
+                        console.log("Bước 4: Bắt đầu lưu danh sách ảnh vào DB...");
+
+                        // Sử dụng for...of để đảm bảo các yêu cầu được thực hiện tuần tự và chính xác
+                        for (const [index, img] of paths.images.entries()) {
+                            try {
+                                const resImg = await fetch(`${ADMIN_API}/product_images`, {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                        'Accept': 'application/json'
+                                    },
+                                    body: JSON.stringify({
+                                        product_id: newId,
+                                        image_url: img.url,
+                                        is_primary: img.is_primary,
+                                        display_order: index + 1 // Thứ tự hiển thị
+                                    })
+                                });
+
+                                if (resImg.ok) {
+                                    console.log(`Đã lưu ảnh thứ ${index + 1} thành công.`);
+                                } else {
+                                    console.error(`Lỗi khi lưu ảnh thứ ${index + 1}`);
+                                }
+                            } catch (error) {
+                                console.error("Lỗi kết nối khi lưu ảnh:", error);
+                            }
+                        }
+                        console.log("Bước 4 hoàn tất.");
+                    }
+
+                    alert('Thêm sản phẩm thành công!');
+                    fetchData(); // Tải lại danh sách
+
+                } else { // CHỈNH SỬA
+                    const id = form.dataset.id;
+                    const formData = new FormData(form);
+                    formData.append('_method', 'PUT');
+                    const res = await fetch(`${ADMIN_API}/products/${id}`, {
+                        method: 'POST',
+                        body: formData,
+                        headers: { 'X-CSRF-TOKEN': '{{ csrf_token() }}' }
+                    });
+                    if (res.ok) {
+                        alert('Cập nhật thành công!');
+                        hideForm();
+                        fetchData();
+                    }
+                }
+            } catch (err) {
+                console.error("Lỗi hệ thống:", err);
+                alert('Đã xảy ra lỗi: ' + err.message);
+                // Nếu lỗi ở Bước 1, cho hiện lại Form để sửa
+                if (!document.getElementById('product-form-container').style.display ||
+                    document.getElementById('product-form-container').style.display === 'none') {
+                    showForm();
+                }
+            } finally {
+                // 4. KHÔI PHỤC TRẠNG THÁI NÚT BẤM (Dù thành công hay thất bại)
+                submitBtn.disabled = false;
+                submitBtn.innerText = originalText;
+            }
         }
 
         window.editProduct = async function (id) {
@@ -439,20 +402,30 @@
                 document.getElementById('product-category').value = p.category_id;
                 document.getElementById('product-description').value = p.description;
 
-                if (p.primary_image) {
-                    const zone = document.getElementById('zone-img-0');
-                    const prev = document.getElementById('prev-img-0');
-                    prev.src = `${PRODUCT_IMG_BASE}/${p.primary_image.replace(/\\/g, '/')}`;
-                    prev.style.display = 'block'; zone.classList.add('has-file');
+                const imgRes = await fetch(`${ADMIN_API}/product_images/${id}`);
+                const productImages = await imgRes.json();
+                if (Array.isArray(productImages)) {
+                    productImages.forEach((img, index) => {
+                        if (index < 4 && img && img.image_url) {
+                            const zone = document.getElementById(`zone-img-${index}`);
+                            const prev = document.getElementById(`prev-img-${index}`);
+                            let path = img.image_url.replace(/\\/g, '/');
+                            if (path.startsWith('/')) path = path.substring(1);
+                            prev.src = `${PRODUCT_IMG_BASE}/${path}`;
+                            prev.style.display = 'block'; zone.classList.add('has-file');
+                        }
+                    });
                 }
                 if (p.model_url) {
                     const zone = document.getElementById('zone-model');
                     const prev = document.getElementById('prev-model');
-                    prev.src = `${PRODUCT_IMG_BASE}/${p.model_url.replace(/\\/g, '/')}`;
+                    let modelPath = p.model_url.replace(/\\/g, '/');
+                    if (modelPath.startsWith('/')) modelPath = modelPath.substring(1);
+                    prev.src = `${PRODUCT_IMG_BASE}/${modelPath}`;
                     prev.style.display = 'block'; zone.classList.add('has-file');
                 }
                 showForm();
-            } catch (err) { alert('Lỗi tải dữ liệu'); }
+            } catch (err) { console.error(err); alert('Lỗi tải dữ liệu sản phẩm'); }
         }
 
         window.deleteProduct = async function (id) {

@@ -54,8 +54,10 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        // Chuyển tiếp toàn bộ dữ liệu từ FE sang product-service
-        $response = Http::post("{$this->productService}/products", $request->all());
+        // Gọi sang Product Service cổng 8003
+        $response = Http::post("http://127.0.0.1:8003/products", $request->all());
+
+        // Trả về đúng dữ liệu chứa ID mà Product Service vừa tạo
         return response()->json($response->json(), $response->status());
     }
 
@@ -76,6 +78,37 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $response = Http::delete("{$this->productService}/products/{$id}");
+        return response()->json($response->json(), $response->status());
+    }
+
+    /**
+     * 7. Lấy danh sách ảnh của sản phẩm từ product-service
+     */
+    public function getProductImages($id)
+    {
+        try {
+            // Gọi sang product-service cổng 8003
+            $response = Http::get("{$this->productService}/product_images/{$id}");
+            return response()->json($response->json(), $response->status());
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Cannot connect to Product Service'], 503);
+        }
+    }
+
+    // chuyển tiếp yêu cầu thêm ảnh sản phẩm đến product-service
+    public function storeProductImage(Request $request)
+    {
+        // Chuyển tiếp dữ liệu sang Product Service cổng 8003
+        $response = Http::post("{$this->productService}/product_images", $request->all());
+        return response()->json($response->json(), $response->status());
+    }
+
+    // chuyển tiếp yêu cầu cập nhật đường dẫn model đến product-service
+    public function updateModelPath(Request $request, $id)
+    {
+        $response = Http::put("{$this->productService}/products/{$id}/model", [
+            'model_url' => $request->model_url
+        ]);
         return response()->json($response->json(), $response->status());
     }
 }

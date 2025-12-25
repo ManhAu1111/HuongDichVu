@@ -7,6 +7,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartPageController;
 use Illuminate\Support\Facades\Http;
 use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\Admin\ProductAdminController;
 
 
 /*
@@ -151,13 +152,14 @@ Route::get('/wishlist', [WishlistController::class, 'index'])
 */
 
 Route::prefix('admin')->name('admin.')->middleware('auth.admin')->group(function () {
+    Route::post('/local-upload-media', [ProductAdminController::class, 'handleLocalUpload'])->name('admin.local.upload');
     // 1. ADMIN DASHBOARD
     Route::view('/', 'admin.dashboard.index')->name('dashboard');
 
 // 2. QUẢN LÝ SẢN PHẨM
     Route::prefix('products')->name('products.')->group(function () {
 
-        // GET /admin/products -> admin.products.index (Danh sách)
+        // GET /admin/products -> admin.products.index (Danh sách) 
         Route::view('/', 'admin.products.index')->name('index');
 
         // POST /admin/products -> admin.products.store (Xử lý Thêm mới)
