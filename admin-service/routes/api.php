@@ -10,4 +10,7 @@ Route::prefix('admin')->group(function () {
     Route::post('/products', [ProductController::class, 'store']);
     Route::put('/products/{id}', [ProductController::class, 'update']);
     Route::delete('/products/{id}', [ProductController::class, 'destroy']);
+    Route::get('/product_images/{id}', [ProductController::class, 'getProductImages']);
+    Route::put('/products/{id}/model', [ProductController::class, 'updateModelPath']);
+    Route::post('/product_images', [ProductController::class, 'storeProductImage']);
 });

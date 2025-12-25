@@ -7,6 +7,7 @@ use PDO;
 use PDOException;
 
 
+
 class ProductController
 {
 
@@ -54,19 +55,43 @@ class ProductController
 
     public function createProduct($data)
     {
-        $sql = "INSERT INTO products (name, price, image, description, category_id)
-                VALUES (?, ?, ?, ?, ?)";
+        try {
+            // Thêm trường model_url và các trường đánh giá với giá trị mặc định là 0
+            $sql = "INSERT INTO products (name, price, description, category_id, quantity, model_url, avg_rating, total_reviews, created_at, updated_at) 
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW())";
 
+            $stmt = $this->db->prepare($sql);
+
+            $stmt->execute([
+                $data['name'],
+                $data['price'],
+                $data['description'],
+                $data['category_id'],
+                $data['quantity'],
+                $data['model_url'] ?? null, // Model URL có thể trống lúc khởi tạo
+                0, // avg_rating mặc định là 0
+                0  // total_reviews mặc định là 0
+            ]);
+
+            // Trả về ID vừa tạo để Frontend có thể dùng làm tên thư mục lưu file
+            return [
+                "ok" => true,
+                "id" => $this->db->lastInsertId(),
+                "message" => "Sản phẩm đã được tạo thành công"
+            ];
+        } catch (PDOException $e) {
+            return [
+                "ok" => false,
+                "error" => $e->getMessage()
+            ];
+        }
+    }
+
+    public function updateModelUrl($id, $modelUrl)
+    {
+        $sql = "UPDATE products SET model_url = ? WHERE id = ?";
         $stmt = $this->db->prepare($sql);
-        $stmt->execute([
-            $data['name'],
-            $data['price'],
-            $data['image'],
-            $data['description'],
-            $data['category_id']
-        ]);
-
-        return ["ok" => true, "message" => "Product created"];
+        return $stmt->execute([$modelUrl, $id]);
     }
 
     public function updateProduct($id, $data)
