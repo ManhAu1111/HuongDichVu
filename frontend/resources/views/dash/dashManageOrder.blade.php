@@ -229,6 +229,40 @@
                                             }
                                         </style>
 
+                                        <!-- Hủy đơn hàng -->
+                                        <div id="cancel-order-wrapper" style="margin-top:15px; display:none;">
+                                            <button id="btn-cancel-order" class="btn btn--e-danger">
+                                                Hủy đơn hàng
+                                            </button>
+                                        </div>
+
+                                        <style>
+                                            /* ===== Cancel Order Button ===== */
+                                            #cancel-order-wrapper {
+                                                margin-top: 15px;
+                                            }
+
+                                            #btn-cancel-order {
+                                                background-color: #FF4500;
+                                                /* nền cam */
+                                                color: #ffffff;
+                                                /* chữ trắng */
+                                                border: 2px solid #FF4500;
+                                                /* khung cam */
+                                                padding: 10px 20px;
+                                                border-radius: 4px;
+                                                font-size: 14px;
+                                                font-weight: 600;
+                                                cursor: pointer;
+                                                transition: color 0.2s ease, background-color 0.2s ease;
+                                            }
+
+                                            /* Hover: chữ đen */
+                                            #btn-cancel-order:hover {
+                                                color: #000000;
+                                                /* chữ đen */
+                                            }
+                                        </style>
 
                                         <div class="manage-o__timeline">
                                             <div class="timeline-track">
@@ -379,6 +413,14 @@
 
 <!-- Chi tiết đơn hàng JS -->
 <script>
+    // ===== GLOBAL SHARED VARIABLES =====
+    let orderPublicId = null;
+    let token = null;
+
+    let renderPage = null;
+    let loadOrderCounts = null;
+</script>
+<script>
     document.addEventListener("DOMContentLoaded", async function() {
 
         // ===============================
@@ -389,7 +431,7 @@
             return match ? match[2] : null;
         }
 
-        const token = getCookie("auth_token");
+        token = getCookie("auth_token");
 
         // ===============================
         // XỬ LÝ HIỂN THỊ TÊN NGƯỜI DÙNG
@@ -437,11 +479,13 @@
         // ================================
         // LẤY PUBLIC_ID TỪ URL
         // ================================
-        const orderPublicId = window.location.pathname.split("/").pop();
+        orderPublicId = window.location.pathname.split("/").pop();
 
         const API_ORDERS = "http://127.0.0.1:8002/api/orders";
         const API_ORDER_ITEMS = "http://127.0.0.1:8002/api/order-items";
         const API_PRODUCT = "http://127.0.0.1:8003/products";
+        const CANCELLABLE_STATUS = ["pending_payment", "paid", "processing"];
+
 
         const fmtMoney = v => new Intl.NumberFormat("vi-VN").format(v) + " đ";
 
@@ -516,24 +560,40 @@
         // SET TIMELINE STATUS
         // ================================
         function setTimelineStatus(status) {
-            const map = {
-                "pending_payment": 1,
-                "paid": 1,
-                "processing": 1,
-                "delivering": 2,
-                "completed": 3
+
+            // CASE: ĐƠN ĐÃ HỦY → RESET TIMELINE
+            if (status === "cancelled") {
+                for (let i = 1; i <= 3; i++) {
+                    const node = document.getElementById(`step-${i}`);
+                    node.classList.remove("completed", "active");
+                }
+                return;
+            }
+
+            // MAP STATUS → STEP
+            const statusStepMap = {
+                pending_payment: 1,
+                paid: 1,
+                processing: 1,
+                delivering: 2,
+                completed: 3
             };
 
-            const step = map[status] ?? 1;
+            const step = statusStepMap[status] ?? 1;
 
+            // APPLY CLASS
             for (let i = 1; i <= 3; i++) {
                 const node = document.getElementById(`step-${i}`);
                 node.classList.remove("completed", "active");
 
-                if (i < step) node.classList.add("completed");
-                if (i === step) node.classList.add("active");
+                if (i < step) {
+                    node.classList.add("completed");
+                } else if (i === step) {
+                    node.classList.add("active");
+                }
             }
         }
+
 
 
         // ================================
@@ -586,7 +646,7 @@
             }
         }
 
-        async function loadOrderCounts() {
+        loadOrderCounts = async function() {
             const res = await fetch(`${API_ORDERS}?user_id=${USER_ID}`);
             const orders = await res.json();
 
@@ -608,10 +668,23 @@
         // ================================
         // RENDER PAGE
         // ================================
-        async function renderPage() {
+        renderPage = async function() {
 
             const order = await loadOrder();
+            if (!order || order.error) {
+                alert("Không tìm thấy đơn hàng");
+                return;
+            }
             const items = await loadOrderItems(order.id);
+
+            // ===== HIỂN THỊ / ẨN NÚT HỦY =====
+            const cancelWrapper = document.getElementById("cancel-order-wrapper");
+
+            if (["pending_payment", "paid", "processing"].includes(order.status)) {
+                cancelWrapper.style.display = "block";
+            } else {
+                cancelWrapper.style.display = "none";
+            }
 
             setTimelineStatus(order.status);
 
@@ -700,6 +773,44 @@
         renderPage();
         loadOrderCounts()
 
+    });
+</script>
+
+<script>
+    document.addEventListener("click", async function(e) {
+
+        if (e.target.id !== "btn-cancel-order") return;
+
+        if (!confirm("Bạn có chắc muốn hủy đơn hàng?")) return;
+
+        try {
+            const res = await fetch(
+                `http://127.0.0.1:8002/api/orders/${orderPublicId}/cancel`, {
+                    method: "POST",
+                    headers: {
+                        "Authorization": "Bearer " + token,
+                        "Content-Type": "application/json"
+                    }
+                }
+            );
+
+            const data = await res.json();
+
+            if (!res.ok || !data.ok) {
+                alert(data.message || "Không thể hủy đơn");
+                return;
+            }
+
+            alert("Hủy đơn hàng thành công");
+
+            // reload UI
+            await renderPage();
+            await loadOrderCounts();
+
+        } catch (err) {
+            console.error(err);
+            alert("Lỗi khi hủy đơn hàng");
+        }
     });
 </script>
 
