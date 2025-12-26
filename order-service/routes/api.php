@@ -6,16 +6,28 @@ use App\Http\Controllers\CartController;
 
 Route::post('/checkout', [OrderController::class, 'checkout']);
 Route::post('/calculate-shipping', [OrderController::class, 'calculateShipping']);
-// Payment routes (momo payment)
+
+// Payment routes (MoMo / payment callback)
 Route::post('/update-payment-status', [OrderController::class, 'updatePaymentStatus']);
-// paid order (momo)
 Route::post('/orders/create-paid', [OrderController::class, 'createPaidOrder']);
-// dashboard (detail order)
+
+// =========================
+// ORDER ACTIONS (USER)
+// =========================
+Route::post('/orders/{public_id}/cancel', [OrderController::class, 'cancelOrder']);
+
+// =========================
+// ORDER QUERY (DASHBOARD)
+// =========================
 Route::get('/orders', [OrderController::class, 'getOrdersByUser']);
 Route::get('/order-items', [OrderController::class, 'getByOrder']);
 Route::get('/orders/{public_id}', [OrderController::class, 'getOrderByPublicId']);
+
 Route::post('/checkout-from-cart', [OrderController::class, 'checkoutFromCart']);
-// Cart routes
+
+// =========================
+// CART
+// =========================
 Route::post('/cart/add', [CartController::class, 'add']);
 Route::get('/cart', [CartController::class, 'list']);
 Route::put('/cart/update', [CartController::class, 'update']);

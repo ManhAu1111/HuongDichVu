@@ -1,181 +1,181 @@
 <div id="product-form-container" style="display: none;">
     <style>
-    .modal-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.7);
-        z-index: 1000;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 20px;
-    }
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
 
-    .modal-content {
-        background-color: #fff;
-        padding: 30px;
-        border-radius: 16px;
-        width: 1400px;
-        max-width: 95%;
-        height: 90vh;
-        display: flex;
-        flex-direction: column;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    }
+        .modal-content {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 16px;
+            width: 1400px;
+            max-width: 95%;
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
 
-    .modal-header {
-        margin-bottom: 20px;
-        flex-shrink: 0;
-    }
+        .modal-header {
+            margin-bottom: 20px;
+            flex-shrink: 0;
+        }
 
-    .modal-body-scroll {
-        flex-grow: 1;
-        overflow-y: auto;
-        overflow-x: hidden;
-        padding-right: 10px;
-    }
+        .modal-body-scroll {
+            flex-grow: 1;
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding-right: 10px;
+        }
 
-    .modal-body-layout {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 50px;
-        min-height: 100%;
-    }
+        .modal-body-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            min-height: 100%;
+        }
 
-    .info-section {
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-    }
+        .info-section {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
 
-    .info-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-        margin-bottom: 20px;
-    }
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
 
-    .gl-label {
-        font-size: 15px;
-        font-weight: 600;
-        margin-bottom: 8px;
-        display: block;
-        color: #333;
-    }
+        .gl-label {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: block;
+            color: #333;
+        }
 
-    .input-text--primary-style,
-    .select-box--primary-style {
-        height: 50px !important;
-        font-size: 16px !important;
-        width: 100%;
-    }
+        .input-text--primary-style,
+        .select-box--primary-style {
+            height: 50px !important;
+            font-size: 16px !important;
+            width: 100%;
+        }
 
-    .description-container {
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 25px;
-        min-height: 250px;
-    }
+        .description-container {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 25px;
+            min-height: 250px;
+        }
 
-    .text-area--primary-style {
-        flex-grow: 1;
-        width: 100%;
-        resize: none !important;
-        font-size: 16px !important;
-        padding: 15px;
-        border-radius: 8px;
-        border: 1px solid #ddd;
-    }
+        .text-area--primary-style {
+            flex-grow: 1;
+            width: 100%;
+            resize: none !important;
+            font-size: 16px !important;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
 
-    .modal-footer-left {
-        display: flex;
-        justify-content: flex-start;
-        gap: 15px;
-        padding-top: 20px;
-        flex-shrink: 0;
-    }
+        .modal-footer-left {
+            display: flex;
+            justify-content: flex-start;
+            gap: 15px;
+            padding-top: 20px;
+            flex-shrink: 0;
+        }
 
-    .upload-section {
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-    }
+        .upload-section {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
 
-    .image-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 15px;
-        margin-bottom: 20px;
-    }
+        .image-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
 
-    .upload-zone {
-        position: relative;
-        border: 2px dashed #ccc;
-        border-radius: 10px;
-        height: 150px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: #f9f9f9;
-        cursor: pointer;
-        overflow: hidden;
-    }
+        .upload-zone {
+            position: relative;
+            border: 2px dashed #ccc;
+            border-radius: 10px;
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f9f9f9;
+            cursor: pointer;
+            overflow: hidden;
+        }
 
-    .upload-zone img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        position: absolute;
-        top: 0;
-        left: 0;
-    }
+        .upload-zone img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
 
-    .main-img-label {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        background: #ff4500;
-        color: white;
-        font-size: 11px;
-        text-align: center;
-        padding: 4px 0;
-        font-weight: bold;
-        z-index: 15;
-    }
+        .main-img-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #ff4500;
+            color: white;
+            font-size: 11px;
+            text-align: center;
+            padding: 4px 0;
+            font-weight: bold;
+            z-index: 15;
+        }
 
-    .model-zone {
-        flex-grow: 1;
-        width: 100%;
-        position: relative;
-        min-height: 300px;
-        border-radius: 10px;
-        overflow: hidden;
-    }
+        .model-zone {
+            flex-grow: 1;
+            width: 100%;
+            position: relative;
+            min-height: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
 
-    .remove-btn {
-        position: absolute;
-        top: 8px;
-        right: 8px;
-        background: rgba(255, 0, 0, 0.8);
-        color: white;
-        border: none;
-        border-radius: 50%;
-        width: 25px;
-        height: 25px;
-        cursor: pointer;
-        display: none;
-        z-index: 20;
-        font-weight: bold;
-    }
+        .remove-btn {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: rgba(255, 0, 0, 0.8);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+            display: none;
+            z-index: 20;
+            font-weight: bold;
+        }
 
-    .upload-zone.has-file .remove-btn {
-        display: block;
-    }
+        .upload-zone.has-file .remove-btn {
+            display: block;
+        }
     </style>
 
     <div class="modal-overlay">
@@ -206,12 +206,12 @@
                                 <div>
                                     <label class="gl-label">GIÁ (VND) *</label>
                                     <input class="input-text input-text--primary-style" type="number" id="product-price"
-                                        name="price" required>
+                                        min="10000" name="price" required>
                                 </div>
                                 <div>
                                     <label class="gl-label">KHO HÀNG *</label>
                                     <input class="input-text input-text--primary-style" type="number" id="product-stock"
-                                        name="quantity" required>
+                                        min="0" name="quantity" required>
                                 </div>
                             </div>
 
