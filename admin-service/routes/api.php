@@ -13,4 +13,5 @@ Route::prefix('admin')->group(function () {
     Route::get('/product_images/{id}', [ProductController::class, 'getProductImages']);
     Route::put('/products/{id}/model', [ProductController::class, 'updateModelPath']);
     Route::post('/product_images', [ProductController::class, 'storeProductImage']);
+    Route::post('/categories', [ProductController::class, 'storeCategory']);
 });

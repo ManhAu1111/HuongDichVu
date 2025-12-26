@@ -156,7 +156,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth.admin')->group(function
     // 1. ADMIN DASHBOARD
     Route::view('/', 'admin.dashboard.index')->name('dashboard');
 
-    // 2. QUẢN LÝ SẢN PHẨM
+// 2. QUẢN LÝ SẢN PHẨM
     Route::prefix('products')->name('products.')->group(function () {
 
         // GET /admin/products -> admin.products.index (Danh sách) 

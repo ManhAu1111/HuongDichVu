@@ -62,10 +62,10 @@ $wishlistItems = $wishlistItems ?? [];
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12">
-
                         @if (count($wishlistItems) === 0)
                         <div class="text-center u-s-p-y-60">
                             <h4>Danh sách yêu thích đang trống</h4>
+
                         </div>
                         @else
                         @foreach ($wishlistItems as $item)

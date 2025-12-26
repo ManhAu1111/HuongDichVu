@@ -47,15 +47,6 @@ if ($uri === "/product_images" && $method === "POST") {
     exit;
 }
 
-// PUT /products/{id}/model  cập nhật đường dẫn model 3d 
-if (preg_match("#^/products/(\d+)/model$#", $uri, $matches) && $method === "PUT") {
-    $data = json_decode(file_get_contents("php://input"), true);
-    $productId = (int)$matches[1];
-    $modelUrl = $data['model_url'] ?? null;
-
-    echo json_encode($product->updateModelUrl($productId, $modelUrl));
-    exit;
-}
 
 // GET /products → list
 if ($uri === "/products" && $method === "GET") {
@@ -90,8 +81,16 @@ if ($uri === "/products" && $method === "POST") {
 
 // PUT /products/{id}
 if (preg_match("#^/products/(\d+)$#", $uri, $matches) && $method === "PUT") {
+    $id = (int)$matches[1];
     $data = json_decode(file_get_contents("php://input"), true);
-    echo json_encode($product->updateProduct((int)$matches[1], $data));
+
+    if (!$data) {
+        echo json_encode(["ok" => false, "message" => "Dữ liệu JSON không hợp lệ"]);
+        exit;
+    }
+
+    // Nếu trong dữ liệu gửi lên có 'model_url', bạn có thể viết thêm logic update riêng hoặc gộp vào
+    echo json_encode($product->updateProduct($id, $data));
     exit;
 }
 
