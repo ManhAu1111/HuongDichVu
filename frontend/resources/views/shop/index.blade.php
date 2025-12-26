@@ -20,18 +20,18 @@
                         <div class="col-12">
                             <div class="slider-content slider-content--animation">
 
-                                <span class="content-span-1 u-c-secondary">Latest Update Stock</span>
+                                <span class="content-span-1 u-c-secondary">Cập nhật hàng mới nhất</span>
 
-                                <span class="content-span-2 u-c-secondary">30% Off On Electronics</span>
+                                <span class="content-span-2 u-c-secondary">Giảm giá 30% cho sản phẩm nội thất</span>
 
-                                <span class="content-span-3 u-c-secondary">Find electronics on best prices, Also
-                                    Discover most selling products of electronics</span>
+                                <span class="content-span-3 u-c-secondary">Tìm các sản phẩm nội thất với giá tốt nhất và
+                                    khám phá những sản phẩm bán chạy</span>
 
-                                <span class="content-span-4 u-c-secondary">Starting At
+                                <span class="content-span-4 u-c-secondary">Giá chỉ từ
 
-                                    <span class="u-c-brand">$1050.00</span></span>
+                                    <span class="u-c-brand">1.000.000đ</span></span>
 
-                                <a class="shop-now-link btn--e-brand" href="{{ route('shop.side_v2') }}">SHOP NOW</a>
+                                <a class="shop-now-link btn--e-brand" href="{{ route('shop.side_v2') }}">MUA NGAY</a>
                             </div>
                         </div>
                     </div>
@@ -42,20 +42,30 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="slider-content slider-content--animation">
+                                <span class="content-span-1 u-c-white">
+                                    Khám phá các thương hiệu hàng đầu
+                                </span>
 
-                                <span class="content-span-1 u-c-white">Find Top Brands</span>
+                                <span class="content-span-2 u-c-white">
+                                    Giảm giá 10% cho sản phẩm nội thất
+                                </span>
 
-                                <span class="content-span-2 u-c-white">10% Off On Electronics</span>
+                                <span class="content-span-3 u-c-white">
+                                    Tìm các sản phẩm nội thất với mức giá tốt nhất, đồng thời khám phá những sản phẩm
+                                    bán
+                                    chạy nhất
+                                </span>
 
-                                <span class="content-span-3 u-c-white">Find electronics on best prices, Also Discover
-                                    most selling products of electronics</span>
+                                <span class="content-span-4 u-c-white">
+                                    Giá chỉ từ
+                                    <span class="u-c-brand">1.500.000đ</span>
+                                </span>
 
-                                <span class="content-span-4 u-c-white">Starting At
-
-                                    <span class="u-c-brand">$380.00</span></span>
-
-                                <a class="shop-now-link btn--e-brand" href="{{ route('shop.side_v2') }}">SHOP NOW</a>
+                                <a class="shop-now-link btn--e-brand" href="{{ route('shop.side_v2') }}">
+                                    MUA NGAY
+                                </a>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -65,19 +75,28 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="slider-content slider-content--animation">
+                                <span class="content-span-1 u-c-white">
+                                    Khám phá các thương hiệu hàng đầu
+                                </span>
 
-                                <span class="content-span-1 u-c-secondary">Find Top Brands</span>
+                                <span class="content-span-2 u-c-white">
+                                    Giảm giá 10% cho sản phẩm nội thất
+                                </span>
 
-                                <span class="content-span-2 u-c-secondary">10% Off On Electronics</span>
+                                <span class="content-span-3 u-c-white">
+                                    Tìm các sản phẩm nội thất với mức giá tốt nhất, đồng thời khám phá những sản phẩm
+                                    bán
+                                    chạy nhất
+                                </span>
 
-                                <span class="content-span-3 u-c-secondary">Find electronics on best prices, Also
-                                    Discover most selling products of electronics</span>
+                                <span class="content-span-4 u-c-white">
+                                    Giá chỉ từ
+                                    <span class="u-c-brand">1.500.000đ</span>
+                                </span>
 
-                                <span class="content-span-4 u-c-secondary">Starting At
-
-                                    <span class="u-c-brand">$550.00</span></span>
-
-                                <a class="shop-now-link btn--e-brand" href="{{ route('shop.side_v2') }}">SHOP NOW</a>
+                                <a class="shop-now-link btn--e-brand" href="{{ route('shop.side_v2') }}">
+                                    MUA NGAY
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -97,9 +116,9 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="section__text-wrap">
-                            <h1 class="section__heading u-c-secondary u-s-m-b-12">SHOP BY DEALS</h1>
+                            <h1 class="section__heading u-c-secondary u-s-m-b-12">MUA SẮM THEO ƯU ĐÃI</h1>
 
-                            <span class="section__span u-c-silver">BROWSE FAVOURITE DEALS</span>
+                            <span class="section__span u-c-silver">KHÁM PHÁ CÁC ƯU ĐÃI YÊU THÍCH</span>
                         </div>
                     </div>
                 </div>
@@ -166,9 +185,9 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="section__text-wrap">
-                            <h1 class="section__heading u-c-secondary u-s-m-b-12">TOP TRENDING</h1>
+                            <h1 class="section__heading u-c-secondary u-s-m-b-12">SẢN PHẨM NỘI BẬT</h1>
 
-                            <span class="section__span u-c-silver">CHOOSE CATEGORY</span>
+                            <span class="section__span u-c-silver">CHỌN DANH MỤC</span>
                         </div>
                     </div>
                 </div>
@@ -305,12 +324,11 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="section__text-wrap">
-                                <h1 class="section__heading u-c-secondary u-s-m-b-12">DEAL OF THE DAY</h1>
+                                <h1 class="section__heading u-c-secondary u-s-m-b-12">ƯU ĐÃI TRONG NGÀY</h1>
 
-                                <span class="section__span u-c-silver">BUY DEAL OF THE DAY, HURRY UP! THESE NEW PRODUCTS
-                                    WILL EXPIRE SOON.</span>
+                                <span class="section__span u-c-silver">MUA ƯU ĐÃI TRONG NGÀY, NHANH TAY LÊN! CÁC SẢN PHẨM MỚI NÀY SẮP HẾT HẠN.</span>
 
-                                <span class="section__span u-c-silver">ADD THESE ON YOUR CART.</span>
+                                <span class="section__span u-c-silver">THÊM NGAY VÀO GIỎ HÀNG CỦA BẠN.</span>
                             </div>
                         </div>
                     </div>
@@ -431,9 +449,9 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section__text-wrap">
-                        <h1 class="section__heading u-c-secondary u-s-m-b-12">NEW ARRIVALS</h1>
+                        <h1 class="section__heading u-c-secondary u-s-m-b-12">HÀNG MỚI VỀ</h1>
 
-                        <span class="section__span u-c-silver">GET UP FOR NEW ARRIVALS</span>
+                        <span class="section__span u-c-silver">CẬP NHẬT CÁC SẢN PHẨM MỚI NHẤT</span>
                     </div>
                 </div>
             </div>
@@ -504,27 +522,26 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="banner-bg__countdown">
-                        <div class="countdown countdown--style-banner" data-countdown="2020/05/01"></div>
+                        <div class="countdown countdown--style-banner" data-countdown="2026/01/01"></div>
                     </div>
                     <div class="banner-bg__wrap">
                         <div class="banner-bg__text-1">
 
-                            <span class="u-c-white">Global</span>
+                            <span class="u-c-white">Ưu Đãi</span>
 
-                            <span class="u-c-secondary">Offers</span>
+                            <span class="u-c-secondary">Toàn Cầu</span>
                         </div>
                         <div class="banner-bg__text-2">
 
-                            <span class="u-c-secondary">Official Launch</span>
+                            <span class="u-c-secondary">Ra mắt chính thức</span>
 
-                            <span class="u-c-white">Don't Miss!</span>
+                            <span class="u-c-white">Đừng bỏ lỡ!</span>
                         </div>
 
-                        <span class="banner-bg__text-block banner-bg__text-3 u-c-secondary">Enjoy Free Shipping
-                            when you buy 2 items and above!</span>
+                        <span class="banner-bg__text-block banner-bg__text-3 u-c-secondary">Miễn phí vận chuyển khi địa
+                            chỉ ở khu vực miền Bắc!</span>
 
-                        <a class="banner-bg__shop-now btn--e-secondary" href="{{ route('shop.side_v2') }}">Shop
-                            Now</a>
+                        <a class="banner-bg__shop-now btn--e-secondary" href="{{ route('shop.side_v2') }}">MUA NGAY</a>
                     </div>
                 </div>
             </div>
@@ -544,9 +561,9 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section__text-wrap">
-                        <h1 class="section__heading u-c-secondary u-s-m-b-12">FEATURED PRODUCTS</h1>
+                        <h1 class="section__heading u-c-secondary u-s-m-b-12">SẢN PHẨM NỔI BẬT</h1>
 
-                        <span class="section__span u-c-silver">FIND NEW FEATURED PRODUCTS</span>
+                        <span class="section__span u-c-silver">KHÁM PHÁ CÁC SẢN PHẨM NỔI BẬT HƠN</span>
                     </div>
                 </div>
             </div>
@@ -987,10 +1004,10 @@
                         <div class="service__icon"><i class="fas fa-truck"></i></div>
                         <div class="service__info-wrap">
 
-                            <span class="service__info-text-1">Free Shipping</span>
+                            <span class="service__info-text-1 ">MIỄN PHÍ VẬN CHUYỂN</span>
 
-                            <span class="service__info-text-2">Free shipping on all US order or order above
-                                $200</span>
+                            <span class="service__info-text-2">Miễn phí vận chuyển cho tất cả đơn hàng tại khu vực miền
+                                Bắc</span>
                         </div>
                     </div>
                 </div>
@@ -999,10 +1016,10 @@
                         <div class="service__icon"><i class="fas fa-redo"></i></div>
                         <div class="service__info-wrap">
 
-                            <span class="service__info-text-1">Shop with Confidence</span>
+                            <span class="service__info-text-1">MUA SẮM AN TOÀN</span>
 
-                            <span class="service__info-text-2">Our Protection covers your purchase from click to
-                                delivery</span>
+                            <span class="service__info-text-2">Chính sách bảo vệ đơn hàng từ lúc đặt mua đến khi giao
+                                hàng</span>
                         </div>
                     </div>
                 </div>
@@ -1011,10 +1028,10 @@
                         <div class="service__icon"><i class="fas fa-headphones-alt"></i></div>
                         <div class="service__info-wrap">
 
-                            <span class="service__info-text-1">24/7 Help Center</span>
+                            <span class="service__info-text-1">HỖ TRỢ 24/7 </span>
 
-                            <span class="service__info-text-2">Round-the-clock assistance for a smooth shopping
-                                experience</span>
+                            <span class="service__info-text-2">Hỗ trợ liên tục 24/7 để mang lại trải nghiệm mua sắm mượt
+                                mà</span>
                         </div>
                     </div>
                 </div>
@@ -1035,9 +1052,9 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section__text-wrap">
-                        <h1 class="section__heading u-c-secondary u-s-m-b-12">LATEST FROM BLOG</h1>
+                        <h1 class="section__heading u-c-secondary u-s-m-b-12">BÀI VIẾT MỚI NHẤT</h1>
 
-                        <span class="section__span u-c-silver">START YOU DAY WITH FRESH AND LATEST NEWS</span>
+                        <span class="section__span u-c-silver">BẮT ĐẦU NGÀY MỚI VỚI NHỮNG TIN TỨC MỚI NHẤT</span>
                     </div>
                 </div>
             </div>
@@ -1063,7 +1080,7 @@
                             <!--====== End - Image Code ======-->
                         </div>
                         <div class="bp-mini__content">
-                            <div class="bp-mini__stat">
+                            <!-- <div class="bp-mini__stat">
 
                                 <span class="bp-mini__stat-wrap">
 
@@ -1088,15 +1105,8 @@
                                         <a href="{{ route('blog.detail') }}"><i class="far fa-comments u-s-m-r-4"></i>
 
                                             <span>8</span></a></span></span>
-                            </div>
-                            <div class="bp-mini__category">
+                            </div> -->
 
-                                <a>Learning</a>
-
-                                <a>News</a>
-
-                                <a>Health</a>
-                            </div>
 
                             <span class="bp-mini__h1">
 
@@ -1106,11 +1116,11 @@
                                 industry.</p>
                             <div class="blog-t-w">
 
-                                <a class="gl-tag btn--e-transparent-hover-brand-b-2">Travel</a>
+                                <a class="gl-tag btn--e-transparent-hover-brand-b-2">Nội Thất</a>
 
-                                <a class="gl-tag btn--e-transparent-hover-brand-b-2">Culture</a>
+                                <a class="gl-tag btn--e-transparent-hover-brand-b-2">Sang Trọng </a>
 
-                                <a class="gl-tag btn--e-transparent-hover-brand-b-2">Place</a>
+                                <a class="gl-tag btn--e-transparent-hover-brand-b-2">Quý Phái</a>
                             </div>
                         </div>
                     </div>
@@ -1179,71 +1189,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 u-s-m-b-30">
-                    <div class="bp-mini bp-mini--img u-h-100">
-                        <div class="bp-mini__thumbnail">
 
-                            <!--====== Image Code ======-->
-
-                            <a class="aspect aspect--bg-grey aspect--1366-768 u-d-block"
-                                href="{{ route('blog.detail') }}">
-
-                                <img class="aspect__img" src="images/blog/post-5.jpg" alt=""></a>
-                            <!--====== End - Image Code ======-->
-                        </div>
-                        <div class="bp-mini__content">
-                            <div class="bp-mini__stat">
-
-                                <span class="bp-mini__stat-wrap">
-
-                                    <span class="bp-mini__publish-date">
-
-                                        <a>
-
-                                            <span>25 February 2018</span></a></span></span>
-
-                                <span class="bp-mini__stat-wrap">
-
-                                    <span class="bp-mini__preposition">By</span>
-
-                                    <span class="bp-mini__author">
-
-                                        <a href="#">Dayle</a></span></span>
-
-                                <span class="bp-mini__stat">
-
-                                    <span class="bp-mini__comment">
-
-                                        <a href="{{ route('blog.detail') }}"><i class="far fa-comments u-s-m-r-4"></i>
-
-                                            <span>8</span></a></span></span>
-                            </div>
-                            <div class="bp-mini__category">
-
-                                <a>Learning</a>
-
-                                <a>News</a>
-
-                                <a>Health</a>
-                            </div>
-
-                            <span class="bp-mini__h1">
-
-                                <a href="{{ route('blog.detail') }}">Tell me difference between smoke and
-                                    vape</a></span>
-                            <p class="bp-mini__p">Lorem Ipsum is simply dummy text of the printing and typesetting
-                                industry.</p>
-                            <div class="blog-t-w">
-
-                                <a class="gl-tag btn--e-transparent-hover-brand-b-2">Travel</a>
-
-                                <a class="gl-tag btn--e-transparent-hover-brand-b-2">Culture</a>
-
-                                <a class="gl-tag btn--e-transparent-hover-brand-b-2">Place</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -1694,7 +1640,7 @@
 
 
 <!--====== Newsletter Subscribe Modal ======-->
-<div class="modal fade new-l" id="newsletter-modal">
+<!-- <div class="modal fade new-l" id="newsletter-modal">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content modal--shadow">
 
@@ -1741,7 +1687,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <!--====== End - Newsletter Subscribe Modal ======-->
 <!--====== End - Modal Section ======-->
 

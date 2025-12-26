@@ -28,7 +28,7 @@ class OrderController extends Controller
             'user_id'        => $request->user_id,
             'public_id'      => uniqid('order_'),
             'total_price'    => $total,
-            'shipping_fee'   => $shippingFee,      // >>>>> LƯU PHÍ SHIP <<<<<<
+            'shipping_fee'   => $shippingFee,
             'status'         => 'pending_payment',
             'payment_method' => $request->payment_method,
 

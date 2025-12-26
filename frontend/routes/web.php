@@ -7,6 +7,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartPageController;
 use Illuminate\Support\Facades\Http;
 use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\Admin\ProductAdminController;
 
 
 /*
@@ -150,22 +151,40 @@ Route::get('/wishlist', [WishlistController::class, 'index'])
 |--------------------------------------------------------------------------
 */
 
-Route::prefix('admin')->name('admin.')->group(function () {
+Route::prefix('admin')->name('admin.')->middleware('auth.admin')->group(function () {
+    Route::post('/local-upload-media', [ProductAdminController::class, 'handleLocalUpload'])->name('admin.local.upload');
     // 1. ADMIN DASHBOARD
     Route::view('/', 'admin.dashboard.index')->name('dashboard');
 
     // 2. QUẢN LÝ SẢN PHẨM
     Route::prefix('products')->name('products.')->group(function () {
-        // GET /admin/products -> admin.products.index (Danh sách)
+
+        // GET /admin/products -> admin.products.index (Danh sách) 
         Route::view('/', 'admin.products.index')->name('index');
 
-        // GET /admin/products/create -> admin.products.create (Form thêm)
-        Route::view('/create', 'admin.products.create_edit')->name('create');
+        // POST /admin/products -> admin.products.store (Xử lý Thêm mới)
+        Route::post('/', 'App\Http\Controllers\Admin\ProductController@store')->name('store');
 
-        // GET /admin/products/1/edit -> admin.products.edit (Form sửa)
+        // PUT/PATCH /admin/products/{product} -> admin.products.update (Xử lý Cập nhật)
+        // Lưu ý: Cần truyền ID sản phẩm vào route update
+        Route::match(['put', 'patch'], '/{product}', 'App\Http\Controllers\Admin\ProductController@update')->name('update');
+
+        // [ROUTE MỚI] GET /admin/products/{product}/get-data -> admin.products.getData (Lấy dữ liệu sản phẩm qua AJAX)
+        Route::get('/{product}/get-data', 'App\Http\Controllers\Admin\ProductController@getData')->name('getData');
+    });
+
+    // 2.5. QUẢN LÝ DANH MỤC SẢN PHẨM
+    Route::prefix('categories')->name('categories.')->group(function () {
+        // GET /admin/categories -> admin.categories.index (Danh sách)
+        Route::view('/', 'admin.categories.index')->name('index');
+
+        // GET /admin/categories/create -> admin.categories.create (Form thêm)
+        Route::view('/create', 'admin.categories.create_edit')->name('create');
+
+        // GET /admin/categories/1/edit -> admin.categories.edit (Form sửa)
         // Dùng một route GET đơn giản để mô phỏng trang sửa
         Route::get('/{id}/edit', function ($id) {
-            return view('admin.products.create_edit', ['id' => $id]);
+            return view('admin.categories.create_edit', ['id' => $id]);
         })->name('edit');
     });
 
