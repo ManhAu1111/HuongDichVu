@@ -67,5 +67,6 @@ class Kernel extends HttpKernel
         
         'auth.token' => \App\Http\Middleware\AuthTokenMiddleware::class,
         'guest.token' => \App\Http\Middleware\RedirectIfAuthenticatedToken::class,
+        'auth.admin' => \App\Http\Middleware\AdminAuthMiddleware::class,
     ];
 }

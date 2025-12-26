@@ -106,7 +106,7 @@
 
                         <div class="col-lg-9 col-md-12">
                             <div class="dash__box dash__box--shadow dash__box--radius dash__box--bg-white u-s-m-b-30">
-                                <!-- <div class="dash__pad-2">
+                                {{-- <div class="dash__pad-2">
                                     <h1 class="dash__h1 u-s-m-b-14">Quản lý tài khoản</h1>
 
                                     <span class="dash__text u-s-m-b-30">
@@ -137,7 +137,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div> -->
+                                </div> --}}
 
                             </div>
                             <div class="dash__box dash__box--shadow dash__box--bg-white dash__box--radius">

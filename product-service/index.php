@@ -45,13 +45,17 @@ if ($uri === "/product_images" && $method === "POST") {
     $data = json_decode(file_get_contents("php://input"), true);
     echo json_encode($image->storeImage($data));
     exit;
+ namusan
 }
+main
 
 // PUT /products/{id}/model  cập nhật đường dẫn model 3d 
 if (preg_match("#^/products/(\d+)/model$#", $uri, $matches) && $method === "PUT") {
     $data = json_decode(file_get_contents("php://input"), true);
     $productId = (int)$matches[1];
     $modelUrl = $data['model_url'] ?? null;
+ namusan
+
 
     echo json_encode($product->updateModelUrl($productId, $modelUrl));
     exit;
