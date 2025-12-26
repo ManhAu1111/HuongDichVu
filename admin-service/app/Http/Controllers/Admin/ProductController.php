@@ -104,11 +104,11 @@ class ProductController extends Controller
     }
 
     // chuyển tiếp yêu cầu cập nhật đường dẫn model đến product-service
-    public function updateModelPath(Request $request, $id)
-    {
-        $response = Http::put("{$this->productService}/products/{$id}/model", [
-            'model_url' => $request->model_url
-        ]);
-        return response()->json($response->json(), $response->status());
-    }
+    // public function updateModelPath(Request $request, $id)
+    // {
+    //     $response = Http::put("{$this->productService}/products/{$id}/model", [
+    //         'model_url' => $request->model_url
+    //     ]);
+    //     return response()->json($response->json(), $response->status());
+    // }
 }

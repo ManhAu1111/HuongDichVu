@@ -218,9 +218,9 @@
                 if (path.startsWith('/')) path = path.substring(1);
                 const imgUrl = path ? `${PRODUCT_IMG_BASE}/${path}` : '{{ asset("images/no-image.png") }}';
                 tbody.innerHTML += `<tr><td>${p.id}</td><td><div class="dash__table-img-wrap"><img class="u-img-fluid" src="${imgUrl}" onerror="this.src='{{ asset('images/no-image.png') }}'"></div></td>
-                                                                                                    <td>${p.name}</td><td>${new Intl.NumberFormat('vi-VN').format(p.price)}đ</td><td>${p.quantity}</td>
-                                                                                                    <td><span class="gl-label u-c-secondary">${categoryMap[p.category_id] || p.category_id}</span></td>
-                                                                                                    <td><div class="dash__link dash__link--brand"><a href="#" onclick="editProduct(${p.id})">SỬA</a> | <a href="#" onclick="deleteProduct(${p.id})">XÓA</a></div></td></tr>`;
+                                                                                                                <td>${p.name}</td><td>${new Intl.NumberFormat('vi-VN').format(p.price)}đ</td><td>${p.quantity}</td>
+                                                                                                                <td><span class="gl-label u-c-secondary">${categoryMap[p.category_id] || p.category_id}</span></td>
+                                                                                                                <td><div class="dash__link dash__link--brand"><a href="#" onclick="editProduct(${p.id})">SỬA</a> | <a href="#" onclick="deleteProduct(${p.id})">XÓA</a></div></td></tr>`;
             });
             renderPagination();
         }
@@ -256,8 +256,19 @@
             const form = document.getElementById('product-form');
             const isEdit = document.getElementById('form-method').value === 'PUT';
             const mainImgZone = document.getElementById('zone-img-0');
+            const price = parseFloat(document.getElementById('product-price').value);
+            const stock = parseInt(document.getElementById('product-stock').value);
 
-            // 1. KIỂM TRA TRẠNG THÁI ĐANG CHẠY (排他制御 - Kiểm soát loại trừ)
+            if (price < 10000) {
+                alert("Giá sản phẩm phải ít nhất là 10.000đ!");
+                return;
+            }
+
+            if (stock < 0) {
+                alert("Số lượng kho hàng không được phép âm!");
+                return;
+            }
+
             if (submitBtn.disabled) return;
 
             if (!mainImgZone.classList.contains('has-file')) {
@@ -265,14 +276,14 @@
                 return;
             }
 
-            // 2. VÔ HIỆU HÓA NÚT BẤM VÀ ĐỔI TRẠNG THÁI GIAO DIỆN
             submitBtn.disabled = true;
             const originalText = submitBtn.innerText;
             submitBtn.innerText = 'ĐANG XỬ LÝ...';
 
             try {
-                if (!isEdit) { // THÊM MỚI
-                    // BƯỚC 1: TẠO SP CƠ BẢN LẤY ID
+                if (!isEdit) {
+                    // --- LUỒNG THÊM MỚI (Giữ nguyên 4 bước của bạn) ---
+                    // Bước 1: Tạo SP cơ bản
                     const basicData = {
                         name: document.getElementById('product-name').value,
                         price: document.getElementById('product-price').value,
@@ -286,22 +297,17 @@
                         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
                         body: JSON.stringify(basicData)
                     });
-
                     const result = await res.json();
                     if (!result.ok) throw new Error(result.error || 'Lỗi tạo SP');
                     const newId = result.id;
 
-                    // 3. ĐÓNG MODAL NGAY SAU KHI CÓ ID (Để admin không bấm tiếp được)
-                    // Quá trình upload file vẫn sẽ chạy ngầm cho đến khi xong
                     hideForm();
 
-                    // BƯỚC 2: UPLOAD FILE VẬT LÝ LÊN FRONTEND
+                    // Bước 2: Upload file vật lý (Frontend xử lý)
                     const mediaData = new FormData();
                     mediaData.append('product_id', newId);
-
                     const modelFile = document.getElementById('file-model').files[0];
                     if (modelFile) mediaData.append('model_file', modelFile);
-
                     for (let i = 0; i < 4; i++) {
                         const imgFile = document.getElementById(`file-img-${i}`).files[0];
                         if (imgFile) mediaData.append('images[]', imgFile);
@@ -312,80 +318,92 @@
                         body: mediaData,
                         headers: { 'X-CSRF-TOKEN': '{{ csrf_token() }}' }
                     });
-
                     if (!uploadRes.ok) throw new Error('Lỗi upload file vật lý');
                     const paths = await uploadRes.json();
 
-                    // BƯỚC 3: CẬP NHẬT MODEL URL VÀO DB
+                    // Bước 3: Cập nhật model_url vào DB (Sử dụng API chung products/{id})
                     if (paths.model) {
-                        await fetch(`${ADMIN_API}/products/${newId}/model`, {
+                        await fetch(`${ADMIN_API}/products/${newId}`, {
                             method: 'PUT',
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify({ model_url: paths.model })
                         });
                     }
 
-                    // BƯỚC 4: LƯU DANH SÁCH ẢNH VÀO DB
+                    // Bước 4: Lưu danh sách ảnh vào DB
                     if (paths.images && paths.images.length > 0) {
-                        console.log("Bước 4: Bắt đầu lưu danh sách ảnh vào DB...");
-
-                        // Sử dụng for...of để đảm bảo các yêu cầu được thực hiện tuần tự và chính xác
                         for (const [index, img] of paths.images.entries()) {
-                            try {
-                                const resImg = await fetch(`${ADMIN_API}/product_images`, {
-                                    method: 'POST',
-                                    headers: {
-                                        'Content-Type': 'application/json',
-                                        'Accept': 'application/json'
-                                    },
-                                    body: JSON.stringify({
-                                        product_id: newId,
-                                        image_url: img.url,
-                                        is_primary: img.is_primary,
-                                        display_order: index + 1 // Thứ tự hiển thị
-                                    })
-                                });
-
-                                if (resImg.ok) {
-                                    console.log(`Đã lưu ảnh thứ ${index + 1} thành công.`);
-                                } else {
-                                    console.error(`Lỗi khi lưu ảnh thứ ${index + 1}`);
-                                }
-                            } catch (error) {
-                                console.error("Lỗi kết nối khi lưu ảnh:", error);
-                            }
+                            await fetch(`${ADMIN_API}/product_images`, {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({
+                                    product_id: newId,
+                                    image_url: img.url,
+                                    is_primary: img.is_primary,
+                                    display_order: index + 1
+                                })
+                            });
                         }
-                        console.log("Bước 4 hoàn tất.");
                     }
-
                     alert('Thêm sản phẩm thành công!');
-                    fetchData(); // Tải lại danh sách
 
-                } else { // CHỈNH SỬA
+                } else {
+                    // --- LUỒNG CHỈNH SỬA (ĐÃ TỐI ƯU) ---
                     const id = form.dataset.id;
-                    const formData = new FormData(form);
-                    formData.append('_method', 'PUT');
+
+                    // 1. Xử lý File vật lý trước để lấy path mới (nếu có thay đổi)
+                    const mediaData = new FormData();
+                    mediaData.append('product_id', id);
+                    const modelFile = document.getElementById('file-model').files[0];
+                    if (modelFile) mediaData.append('model_file', modelFile);
+                    // (Thêm logic xử lý ảnh nếu bạn muốn cập nhật ảnh vật lý tại đây)
+
+                    let newModelPath = null;
+                    if (modelFile) {
+                        const uploadRes = await fetch('/admin/local-upload-media', {
+                            method: 'POST',
+                            body: mediaData,
+                            headers: { 'X-CSRF-TOKEN': '{{ csrf_token() }}' }
+                        });
+                        const paths = await uploadRes.json();
+                        newModelPath = paths.model;
+                    }
+
+                    // 2. Gộp tất cả dữ liệu vào 1 lần gọi PUT duy nhất
+                    const updateData = {
+                        name: document.getElementById('product-name').value,
+                        price: document.getElementById('product-price').value,
+                        quantity: document.getElementById('product-stock').value,
+                        category_id: document.getElementById('product-category').value,
+                        description: document.getElementById('product-description').value
+                    };
+
+                    // Nếu có path model mới từ bước upload, đưa vào body luôn
+                    if (newModelPath) {
+                        updateData.model_url = newModelPath;
+                    }
+
                     const res = await fetch(`${ADMIN_API}/products/${id}`, {
-                        method: 'POST',
-                        body: formData,
-                        headers: { 'X-CSRF-TOKEN': '{{ csrf_token() }}' }
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        body: JSON.stringify(updateData)
                     });
+
                     if (res.ok) {
-                        alert('Cập nhật thành công!');
+                        alert('Cập nhật sản phẩm thành công!');
                         hideForm();
-                        fetchData();
+                    } else {
+                        throw new Error('Lỗi khi cập nhật dữ liệu lên Server');
                     }
                 }
+                fetchData();
             } catch (err) {
-                console.error("Lỗi hệ thống:", err);
+                console.error("Lỗi:", err);
                 alert('Đã xảy ra lỗi: ' + err.message);
-                // Nếu lỗi ở Bước 1, cho hiện lại Form để sửa
-                if (!document.getElementById('product-form-container').style.display ||
-                    document.getElementById('product-form-container').style.display === 'none') {
-                    showForm();
-                }
             } finally {
-                // 4. KHÔI PHỤC TRẠNG THÁI NÚT BẤM (Dù thành công hay thất bại)
                 submitBtn.disabled = false;
                 submitBtn.innerText = originalText;
             }

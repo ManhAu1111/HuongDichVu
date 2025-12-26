@@ -87,30 +87,44 @@ class ProductController
         }
     }
 
-    public function updateModelUrl($id, $modelUrl)
-    {
-        $sql = "UPDATE products SET model_url = ? WHERE id = ?";
-        $stmt = $this->db->prepare($sql);
-        return $stmt->execute([$modelUrl, $id]);
-    }
+    // public function updateModelUrl($id, $modelUrl)
+    // {
+    //     $sql = "UPDATE products SET model_url = ? WHERE id = ?";
+    //     $stmt = $this->db->prepare($sql);
+    //     return $stmt->execute([$modelUrl, $id]);
+    // }
 
     public function updateProduct($id, $data)
     {
-        $sql = "UPDATE products 
-                SET name=?, price=?, image=?, description=?, category_id=?
-                WHERE id=?";
-        $stmt = $this->db->prepare($sql);
+        try {
+            $fields = [];
+            $params = [];
 
-        $stmt->execute([
-            $data['name'],
-            $data['price'],
-            $data['image'],
-            $data['description'],
-            $data['category_id'],
-            $id
-        ]);
+            // Kiểm tra từng trường, nếu có trong $data thì mới đưa vào câu UPDATE
+            $allowedFields = ['name', 'price', 'description', 'category_id', 'quantity', 'model_url'];
 
-        return ["ok" => true, "message" => "Product updated"];
+            foreach ($allowedFields as $field) {
+                if (array_key_exists($field, $data)) {
+                    $fields[] = "$field = ?";
+                    $params[] = $data[$field];
+                }
+            }
+
+            if (empty($fields)) {
+                return ["ok" => false, "message" => "Không có dữ liệu để cập nhật"];
+            }
+
+            // Thêm ID vào cuối mảng params cho mệnh đề WHERE
+            $params[] = $id;
+            $sql = "UPDATE products SET " . implode(', ', $fields) . ", updated_at = CURRENT_TIMESTAMP WHERE id = ?";
+
+            $stmt = $this->db->prepare($sql);
+            $result = $stmt->execute($params);
+
+            return ["ok" => true, "message" => "Cập nhật thành công"];
+        } catch (PDOException $e) {
+            return ["ok" => false, "message" => "Lỗi: " . $e->getMessage()];
+        }
     }
 
     public function deleteProduct($id)

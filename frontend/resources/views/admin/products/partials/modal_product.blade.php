@@ -206,12 +206,12 @@
                                 <div>
                                     <label class="gl-label">GIÁ (VND) *</label>
                                     <input class="input-text input-text--primary-style" type="number" id="product-price"
-                                        name="price" required>
+                                        min="10000" name="price" required>
                                 </div>
                                 <div>
                                     <label class="gl-label">KHO HÀNG *</label>
                                     <input class="input-text input-text--primary-style" type="number" id="product-stock"
-                                        name="quantity" required>
+                                        min="0" name="quantity" required>
                                 </div>
                             </div>
 
