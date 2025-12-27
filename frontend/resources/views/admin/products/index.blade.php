@@ -127,8 +127,16 @@
 
     @include('admin.products.partials.modal_product')
 
-    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"></script>
+    {{--
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"></script> --}}
     <script>
+        if (!window.customElements.get('model-viewer')) {
+            const script = document.createElement('script');
+            script.type = 'module';
+            script.src = 'https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js';
+            document.head.appendChild(script);
+        }
+
         const ADMIN_API = 'http://127.0.0.1:8007/api/admin';
         const PRODUCT_IMG_BASE = 'http://127.0.0.1:8000';
 
@@ -218,9 +226,9 @@
                 if (path.startsWith('/')) path = path.substring(1);
                 const imgUrl = path ? `${PRODUCT_IMG_BASE}/${path}` : '{{ asset("images/no-image.png") }}';
                 tbody.innerHTML += `<tr><td>${p.id}</td><td><div class="dash__table-img-wrap"><img class="u-img-fluid" src="${imgUrl}" onerror="this.src='{{ asset('images/no-image.png') }}'"></div></td>
-                                                                                                                <td>${p.name}</td><td>${new Intl.NumberFormat('vi-VN').format(p.price)}đ</td><td>${p.quantity}</td>
-                                                                                                                <td><span class="gl-label u-c-secondary">${categoryMap[p.category_id] || p.category_id}</span></td>
-                                                                                                                <td><div class="dash__link dash__link--brand"><a href="#" onclick="editProduct(${p.id})">SỬA</a> | <a href="#" onclick="deleteProduct(${p.id})">XÓA</a></div></td></tr>`;
+                                                                                                                                                                            <td>${p.name}</td><td>${new Intl.NumberFormat('vi-VN').format(p.price)}đ</td><td>${p.quantity}</td>
+                                                                                                                                                                            <td><span class="gl-label u-c-secondary">${categoryMap[p.category_id] || p.category_id}</span></td>
+                                                                                                                                                                            <td><div class="dash__link dash__link--brand"><a href="#" onclick="editProduct(${p.id})">SỬA</a> | <a href="#" onclick="deleteProduct(${p.id})">XÓA</a></div></td></tr>`;
             });
             renderPagination();
         }
@@ -249,163 +257,177 @@
             });
         }
 
-        // --- LOGIC XỬ LÝ SUBMIT MỚI (4 BƯỚC) ---
-        // --- LOGIC XỬ LÝ SUBMIT MỚI (4 BƯỚC + CHỐNG SPAM) ---
+        // --- HÀM ĐIỀU PHỐI CHÍNH ---
         async function handleFormSubmit() {
             const submitBtn = document.getElementById('submit-form-btn-modal');
-            const form = document.getElementById('product-form');
-            const isEdit = document.getElementById('form-method').value === 'PUT';
-            const mainImgZone = document.getElementById('zone-img-0');
-            const price = parseFloat(document.getElementById('product-price').value);
-            const stock = parseInt(document.getElementById('product-stock').value);
-
-            if (price < 10000) {
-                alert("Giá sản phẩm phải ít nhất là 10.000đ!");
-                return;
-            }
-
-            if (stock < 0) {
-                alert("Số lượng kho hàng không được phép âm!");
-                return;
-            }
-
             if (submitBtn.disabled) return;
 
-            if (!mainImgZone.classList.contains('has-file')) {
-                alert("Bắt buộc phải có Ảnh Chính!");
-                return;
-            }
+            const productData = getProductFormData();
+            if (!validateProductData(productData)) return;
 
-            submitBtn.disabled = true;
-            const originalText = submitBtn.innerText;
-            submitBtn.innerText = 'ĐANG XỬ LÝ...';
+            toggleSubmitState(true);
 
             try {
+                const isEdit = document.getElementById('form-method').value === 'PUT';
+                const form = document.getElementById('product-form');
+                let productId = isEdit ? form.dataset.id : null;
+
+                // BƯỚC 1: Nếu thêm mới, tạo SP cơ bản để lấy ID
                 if (!isEdit) {
-                    // --- LUỒNG THÊM MỚI (Giữ nguyên 4 bước của bạn) ---
-                    // Bước 1: Tạo SP cơ bản
-                    const basicData = {
-                        name: document.getElementById('product-name').value,
-                        price: document.getElementById('product-price').value,
-                        quantity: document.getElementById('product-stock').value,
-                        category_id: document.getElementById('product-category').value,
-                        description: document.getElementById('product-description').value
-                    };
-
-                    const res = await fetch(`${ADMIN_API}/products`, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                        body: JSON.stringify(basicData)
-                    });
-                    const result = await res.json();
-                    if (!result.ok) throw new Error(result.error || 'Lỗi tạo SP');
-                    const newId = result.id;
-
+                    productId = await createBaseProduct(productData);
+                    // Sau khi có ID, đóng form sớm để tránh nhấn nhiều lần (chống spam)
                     hideForm();
+                }
 
-                    // Bước 2: Upload file vật lý (Frontend xử lý)
-                    const mediaData = new FormData();
-                    mediaData.append('product_id', newId);
-                    const modelFile = document.getElementById('file-model').files[0];
-                    if (modelFile) mediaData.append('model_file', modelFile);
-                    for (let i = 0; i < 4; i++) {
-                        const imgFile = document.getElementById(`file-img-${i}`).files[0];
-                        if (imgFile) mediaData.append('images[]', imgFile);
-                    }
+                // BƯỚC 2: Upload file vật lý (Ghi đè/Xóa file trên ổ đĩa FE)
+                const uploadPaths = await uploadMediaFiles(productId);
 
-                    const uploadRes = await fetch('/admin/local-upload-media', {
-                        method: 'POST',
-                        body: mediaData,
-                        headers: { 'X-CSRF-TOKEN': '{{ csrf_token() }}' }
-                    });
-                    if (!uploadRes.ok) throw new Error('Lỗi upload file vật lý');
-                    const paths = await uploadRes.json();
+                // BƯỚC 3: Đồng bộ Database (Dùng chung logic cho cả Thêm/Sửa)
+                await syncProductDatabase(productId, productData, uploadPaths, isEdit);
 
-                    // Bước 3: Cập nhật model_url vào DB (Sử dụng API chung products/{id})
-                    if (paths.model) {
-                        await fetch(`${ADMIN_API}/products/${newId}`, {
-                            method: 'PUT',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({ model_url: paths.model })
-                        });
-                    }
+                alert(isEdit ? 'Cập nhật thành công!' : 'Thêm mới thành công!');
+                if (isEdit) hideForm();
+                fetchData();
 
-                    // Bước 4: Lưu danh sách ảnh vào DB
-                    if (paths.images && paths.images.length > 0) {
-                        for (const [index, img] of paths.images.entries()) {
-                            await fetch(`${ADMIN_API}/product_images`, {
-                                method: 'POST',
-                                headers: { 'Content-Type': 'application/json' },
-                                body: JSON.stringify({
-                                    product_id: newId,
-                                    image_url: img.url,
-                                    is_primary: img.is_primary,
-                                    display_order: index + 1
-                                })
-                            });
-                        }
-                    }
-                    alert('Thêm sản phẩm thành công!');
+            } catch (err) {
+                console.error("Quy trình thất bại:", err);
+                alert('Lỗi: ' + err.message);
+                showForm();
+            } finally {
+                toggleSubmitState(false);
+            }
+        }
 
+        // --- CÁC HÀM HỖ TRỢ ĐÃ TÁCH NHỎ ---
+
+        function getProductFormData() {
+            return {
+                name: document.getElementById('product-name').value,
+                price: parseFloat(document.getElementById('product-price').value),
+                quantity: parseInt(document.getElementById('product-stock').value),
+                category_id: document.getElementById('product-category').value,
+                description: document.getElementById('product-description').value
+            };
+        }
+
+        function validateProductData(data) {
+            if (data.price < 10000) { alert("Giá từ 10.000đ!"); return false; }
+            if (!document.getElementById('zone-img-0').classList.contains('has-file')) {
+                alert("Bắt buộc phải có ảnh chính!"); return false;
+            }
+            return true;
+        }
+
+        function toggleSubmitState(isLoading) {
+            const btn = document.getElementById('submit-form-btn-modal');
+            btn.disabled = isLoading;
+            btn.innerText = isLoading ? 'ĐANG XỬ LÝ...' : 'LƯU THÔNG TIN';
+        }
+
+        async function createBaseProduct(data) {
+            const res = await fetch(`${ADMIN_API}/products`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+            const result = await res.json();
+            if (!result.ok) throw new Error(result.error);
+            return result.id;
+        }
+
+        async function syncProductDatabase(id, data, paths, isEdit) {
+            // A. Cập nhật bảng products chính (Tên, giá, mô tả, model_url)
+            const productBody = { ...data };
+            if (paths.model) productBody.model_url = paths.model;
+
+            const resProd = await fetch(`${ADMIN_API}/products/${id}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(productBody)
+            });
+            if (!resProd.ok) throw new Error("Không thể cập nhật bảng products.");
+
+            // B. Đồng bộ 4 ô ảnh (Xử lý Xóa/Ghi đè/Thêm mới)
+            for (let i = 0; i < 4; i++) {
+                const zone = document.getElementById(`zone-img-${i}`);
+                const displayOrder = i + 1;
+
+                if (!zone.classList.contains('has-file')) {
+                    // Ô TRỐNG: Xóa bản ghi trong DB (nếu có)
+                    await fetch(`${ADMIN_API}/product_images/${id}/${displayOrder}`, { method: 'DELETE' });
                 } else {
-                    // --- LUỒNG CHỈNH SỬA (ĐÃ TỐI ƯU) ---
-                    const id = form.dataset.id;
-
-                    // 1. Xử lý File vật lý trước để lấy path mới (nếu có thay đổi)
-                    const mediaData = new FormData();
-                    mediaData.append('product_id', id);
-                    const modelFile = document.getElementById('file-model').files[0];
-                    if (modelFile) mediaData.append('model_file', modelFile);
-                    // (Thêm logic xử lý ảnh nếu bạn muốn cập nhật ảnh vật lý tại đây)
-
-                    let newModelPath = null;
-                    if (modelFile) {
-                        const uploadRes = await fetch('/admin/local-upload-media', {
+                    // CÓ ẢNH: Kiểm tra xem có phải ảnh mới vừa upload lên không
+                    const newImg = paths.images.find(img => img.index == i);
+                    if (newImg) {
+                        // Ghi đè hoặc Tạo mới bằng UPSERT
+                        await fetch(`${ADMIN_API}/product_images/upsert`, {
                             method: 'POST',
-                            body: mediaData,
-                            headers: { 'X-CSRF-TOKEN': '{{ csrf_token() }}' }
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                product_id: id,
+                                image_url: newImg.url,
+                                display_order: displayOrder,
+                                is_primary: (i === 0 ? 1 : 0)
+                            })
                         });
-                        const paths = await uploadRes.json();
-                        newModelPath = paths.model;
-                    }
-
-                    // 2. Gộp tất cả dữ liệu vào 1 lần gọi PUT duy nhất
-                    const updateData = {
-                        name: document.getElementById('product-name').value,
-                        price: document.getElementById('product-price').value,
-                        quantity: document.getElementById('product-stock').value,
-                        category_id: document.getElementById('product-category').value,
-                        description: document.getElementById('product-description').value
-                    };
-
-                    // Nếu có path model mới từ bước upload, đưa vào body luôn
-                    if (newModelPath) {
-                        updateData.model_url = newModelPath;
-                    }
-
-                    const res = await fetch(`${ADMIN_API}/products/${id}`, {
-                        method: 'PUT',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Accept': 'application/json'
-                        },
-                        body: JSON.stringify(updateData)
-                    });
-
-                    if (res.ok) {
-                        alert('Cập nhật sản phẩm thành công!');
-                        hideForm();
-                    } else {
-                        throw new Error('Lỗi khi cập nhật dữ liệu lên Server');
                     }
                 }
-                fetchData();
-            } catch (err) {
-                console.error("Lỗi:", err);
-                alert('Đã xảy ra lỗi: ' + err.message);
-            } finally {
-                submitBtn.disabled = false;
-                submitBtn.innerText = originalText;
+            }
+        }
+
+        // --- HÀM THU THẬP FILE (DÙNG CHUNG CHO TẠO MỚI VÀ CHỈNH SỬA) ---
+        async function uploadMediaFiles(productId) {
+            const mediaData = new FormData();
+            mediaData.append('product_id', productId);
+            const modelFile = document.getElementById('file-model').files[0];
+            if (modelFile) mediaData.append('model_file', modelFile);
+
+            for (let i = 0; i < 4; i++) {
+                const input = document.getElementById(`file-img-${i}`);
+                if (input.files[0]) {
+                    mediaData.append('images[]', input.files[0]);
+                    mediaData.append('image_indices[]', i);
+                }
+            }
+            const res = await fetch('/admin/local-upload-media', {
+                method: 'POST',
+                body: mediaData,
+                headers: { 'X-CSRF-TOKEN': '{{ csrf_token() }}' }
+            });
+            return await res.json();
+        }
+
+        async function updateProductDatabase(id, data, paths, isEdit) {
+            // Cập nhật thông tin chính (bao gồm model_url nếu có)
+            const body = { ...data };
+            if (paths.model) body.model_url = paths.model;
+
+            await fetch(`${ADMIN_API}/products/${id}`, {
+                method: isEdit ? 'PUT' : 'PUT', // Dùng PUT để cập nhật model_url cho SP mới tạo
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(body)
+            });
+
+            // Cập nhật từng ảnh (Upsert hoặc Delete nếu trống)
+            for (let i = 0; i < 4; i++) {
+                const zone = document.getElementById(`zone-img-${i}`);
+                if (!zone.classList.contains('has-file')) {
+                    await fetch(`${ADMIN_API}/product_images/${id}/${i + 1}`, { method: 'DELETE' });
+                } else {
+                    const newImg = paths.images.find(img => img.index === i);
+                    if (newImg) {
+                        await fetch(`${ADMIN_API}/product_images/upsert`, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                product_id: id,
+                                image_url: newImg.url,
+                                display_order: i + 1,
+                                is_primary: (i === 0 ? 1 : 0)
+                            })
+                        });
+                    }
+                }
             }
         }
 
@@ -414,36 +436,45 @@
                 const res = await fetch(`${ADMIN_API}/products/${id}`);
                 const p = await res.json();
                 resetForm(`CHỈNH SỬA: ${p.name}`, 'PUT', id);
+
                 document.getElementById('product-name').value = p.name;
                 document.getElementById('product-price').value = p.price;
                 document.getElementById('product-stock').value = p.quantity;
                 document.getElementById('product-category').value = p.category_id;
                 document.getElementById('product-description').value = p.description;
 
+                // Load ảnh hiện có
                 const imgRes = await fetch(`${ADMIN_API}/product_images/${id}`);
-                const productImages = await imgRes.json();
-                if (Array.isArray(productImages)) {
-                    productImages.forEach((img, index) => {
-                        if (index < 4 && img && img.image_url) {
-                            const zone = document.getElementById(`zone-img-${index}`);
-                            const prev = document.getElementById(`prev-img-${index}`);
+                const images = await imgRes.json();
+                if (Array.isArray(images)) {
+                    images.forEach(img => {
+                        const idx = img.display_order - 1;
+                        const zone = document.getElementById(`zone-img-${idx}`);
+                        const prev = document.getElementById(`prev-img-${idx}`);
+                        if (zone && prev) {
                             let path = img.image_url.replace(/\\/g, '/');
-                            if (path.startsWith('/')) path = path.substring(1);
                             prev.src = `${PRODUCT_IMG_BASE}/${path}`;
-                            prev.style.display = 'block'; zone.classList.add('has-file');
+                            prev.style.display = 'block';
+                            zone.classList.add('has-file');
                         }
                     });
                 }
+
+                // Load model hiện có
+                const mv = document.getElementById('prev-model');
+                const mz = document.getElementById('zone-model');
                 if (p.model_url) {
-                    const zone = document.getElementById('zone-model');
-                    const prev = document.getElementById('prev-model');
-                    let modelPath = p.model_url.replace(/\\/g, '/');
-                    if (modelPath.startsWith('/')) modelPath = modelPath.substring(1);
-                    prev.src = `${PRODUCT_IMG_BASE}/${modelPath}`;
-                    prev.style.display = 'block'; zone.classList.add('has-file');
+                    mv.src = `${PRODUCT_IMG_BASE}/${p.model_url.replace(/\\/g, '/')}`;
+                    mv.style.display = 'block';
+                    mz.classList.add('has-file');
+                } else {
+                    mv.src = "";
+                    mv.style.display = 'none';
+                    mz.classList.remove('has-file');
                 }
+
                 showForm();
-            } catch (err) { console.error(err); alert('Lỗi tải dữ liệu sản phẩm'); }
+            } catch (err) { alert('Lỗi tải dữ liệu'); }
         }
 
         window.deleteProduct = async function (id) {

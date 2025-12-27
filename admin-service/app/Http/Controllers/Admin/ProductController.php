@@ -103,12 +103,15 @@ class ProductController extends Controller
         return response()->json($response->json(), $response->status());
     }
 
-    // chuyển tiếp yêu cầu cập nhật đường dẫn model đến product-service
-    // public function updateModelPath(Request $request, $id)
-    // {
-    //     $response = Http::put("{$this->productService}/products/{$id}/model", [
-    //         'model_url' => $request->model_url
-    //     ]);
-    //     return response()->json($response->json(), $response->status());
-    // }
+    public function upsertProductImage(Request $request)
+    {
+        $response = Http::post("{$this->productService}/product_images/upsert", $request->all());
+        return response()->json($response->json(), $response->status());
+    }
+
+    public function deleteProductImageByOrder($productId, $displayOrder)
+    {
+        $response = Http::delete("{$this->productService}/product_images/{$productId}/{$displayOrder}");
+        return response()->json($response->json(), $response->status());
+    }
 }
