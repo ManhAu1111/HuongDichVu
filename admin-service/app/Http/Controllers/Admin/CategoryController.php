@@ -23,4 +23,11 @@ class CategoryController extends Controller
             return response()->json(['error' => 'Cannot connect to Product Service: ' . $e->getMessage()], 503);
         }
     }
+
+    public function getCategories()
+    {
+        // Đã sửa lỗi cú pháp và đảm bảo gọi đúng endpoint /categories
+        $response = Http::get("{$this->productService}/categories");
+        return response()->json($response->json(), $response->status());
+    } 
 }

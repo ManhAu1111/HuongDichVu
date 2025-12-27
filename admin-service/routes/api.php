@@ -14,4 +14,6 @@ Route::prefix('admin')->group(function () {
     Route::put('/products/{id}/model', [ProductController::class, 'updateModelPath']);
     Route::post('/product_images', [ProductController::class, 'storeProductImage']);
     Route::post('/categories', [ProductController::class, 'storeCategory']);
+    Route::post('/product_images/upsert', [ProductController::class, 'upsertProductImage']);
+    Route::delete('/product_images/{productId}/{displayOrder}', [ProductController::class, 'deleteProductImageByOrder']);
 });

@@ -200,6 +200,20 @@ if (preg_match("#^/products/(\d+)/rating$#", $uri, $matches) && $method === "PUT
     exit;
 }
 
+// POST /product_images/upsert
+if ($uri === "/product_images/upsert" && $method === "POST") {
+    $data = json_decode(file_get_contents("php://input"), true);
+    echo json_encode($image->upsertImage($data));
+    exit;
+}
+
+// DELETE /product_images/{product_id}/{display_order}
+if (preg_match("#^/product_images/(\d+)/(\d+)$#", $uri, $matches) && $method === "DELETE") {
+    $res = $image->deleteImageByOrder((int)$matches[1], (int)$matches[2]);
+    echo json_encode($res ?: ["ok" => true]); // Đảm bảo không bao giờ trống
+    exit;
+}
+
 
 // Mặc định
 echo json_encode(["status" => "Product service running"]);

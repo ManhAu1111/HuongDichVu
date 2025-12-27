@@ -266,7 +266,7 @@
                     <button class="btn btn--e-brand-b-2" type="button" id="submit-form-btn-modal"
                         style="height: 45px; padding: 0 30px;">LƯU THÔNG TIN</button>
                     <button class="btn btn--e-dark-outline" type="button" onclick="hideForm()"
-                        style="height: 45px; padding: 0 30px;">HỦY BỎ</button>
+                        style="height: 45px; padding: 0 30px;">QUAY LẠI</button>
                 </div>
             </form>
         </div>
