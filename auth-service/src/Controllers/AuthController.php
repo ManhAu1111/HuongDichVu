@@ -61,6 +61,13 @@ class AuthController
             return ["ok" => false, "message" => "Email chưa được xác thực"];
         }
 
+        if ($user["role"] === "block") {
+            return [
+                "ok" => false,
+                "message" => "Tài khoản đã bị khóa. Vui lòng liên hệ quản trị viên."
+            ];
+        }
+
         $token = JWTHandler::encode([
             "sub" => $user["id"],
             "email" => $user["email"],
@@ -81,6 +88,29 @@ class AuthController
             ]
         ];
     }
+
+    // =========================
+    // ADMIN - BLOCK USER
+    // =========================
+    public function blockUser($id)
+    {
+        $stmt = $this->db->prepare("
+        UPDATE users SET role = 'block' WHERE id = ?
+    ");
+        $stmt->execute([$id]);
+    }
+
+    // =========================
+    // ADMIN - UNBLOCK USER
+    // =========================
+    public function unblockUser($id)
+    {
+        $stmt = $this->db->prepare("
+        UPDATE users SET role = 'customer' WHERE id = ?
+    ");
+        $stmt->execute([$id]);
+    }
+
 
     // =========================
     // VERIFY EMAIL
@@ -117,5 +147,38 @@ class AuthController
         } catch (\Exception $e) {
             return ["ok" => false, "message" => "Token expired or invalid"];
         }
+    }
+
+    // =========================
+    // ADMIN - GET ALL USERS
+    // =========================
+    public function getAllUsers()
+    {
+        $stmt = $this->db->query("
+        SELECT 
+            id,
+            fullname,
+            email,
+            role,
+            created_at,
+            is_verified
+        FROM users
+        ORDER BY created_at DESC
+    ");
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    // =========================
+    // ADMIN - UPDATE USER
+    // =========================
+    public function updateUser($id, $fullname, $role)
+    {
+        $stmt = $this->db->prepare("
+        UPDATE users 
+        SET fullname = ?, role = ?
+        WHERE id = ?
+    ");
+        $stmt->execute([$fullname, $role, $id]);
     }
 }

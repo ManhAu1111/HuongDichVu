@@ -114,7 +114,6 @@ if (isset($routes[$uri])) {
         try {
             $data = \App\Helpers\JWTHandler::decode($token);
             echo json_encode(["ok" => true, "data" => (array) $data], JSON_UNESCAPED_UNICODE);
-
         } catch (Exception $e) {
             echo json_encode([
                 "ok"      => false,
@@ -152,6 +151,115 @@ if ($uri === "/verify" && $method === "GET") {
     exit;
 }
 
+// ===============================================
+// ADMIN - GET ALL USERS
+// URL: /admin/users
+// ===============================================
+if ($uri === "/admin/users" && $method === "GET") {
+
+    $headers = getallheaders();
+
+    if (!isset($headers["Authorization"])) {
+        http_response_code(401);
+        echo json_encode(["ok" => false, "message" => "Missing token"]);
+        exit;
+    }
+
+    $token = str_replace("Bearer ", "", $headers["Authorization"]);
+
+    try {
+        $payload = \App\Helpers\JWTHandler::decode($token);
+
+        if (($payload->role ?? '') !== 'admin') {
+            http_response_code(403);
+            echo json_encode(["ok" => false, "message" => "Forbidden"]);
+            exit;
+        }
+
+        $users = $auth->getAllUsers();
+        echo json_encode(["ok" => true, "data" => $users], JSON_UNESCAPED_UNICODE);
+        exit;
+    } catch (Exception $e) {
+        http_response_code(401);
+        echo json_encode(["ok" => false, "message" => "Invalid token"]);
+        exit;
+    }
+}
+
+// khóa user
+if (preg_match('#^/admin/users/(\d+)/block$#', $uri, $matches) && $method === 'PUT') {
+
+    $headers = getallheaders();
+    $token = str_replace("Bearer ", "", $headers["Authorization"] ?? "");
+
+    $payload = \App\Helpers\JWTHandler::decode($token);
+
+    if (($payload->role ?? '') !== 'admin') {
+        http_response_code(403);
+        echo json_encode(["ok" => false, "message" => "Forbidden"]);
+        exit;
+    }
+
+    $auth->blockUser((int)$matches[1]);
+    echo json_encode(["ok" => true]);
+    exit;
+}
+
+// mở khóa user
+if (preg_match('#^/admin/users/(\d+)/unblock$#', $uri, $matches) && $method === 'PUT') {
+
+    $headers = getallheaders();
+    $token = str_replace("Bearer ", "", $headers["Authorization"] ?? "");
+
+    $payload = \App\Helpers\JWTHandler::decode($token);
+
+    if (($payload->role ?? '') !== 'admin') {
+        http_response_code(403);
+        echo json_encode(["ok" => false, "message" => "Forbidden"]);
+        exit;
+    }
+
+    $auth->unblockUser((int)$matches[1]);
+    echo json_encode(["ok" => true]);
+    exit;
+}
+
+// ===============================
+// ADMIN - UPDATE USER
+// PUT /admin/users/{id}
+// ===============================
+if (preg_match('#^/admin/users/(\d+)$#', $uri, $matches) && $method === 'PUT') {
+
+    $headers = getallheaders();
+    if (!isset($headers['Authorization'])) {
+        http_response_code(401);
+        echo json_encode(["ok" => false, "message" => "Missing token"]);
+        exit;
+    }
+
+    $token = str_replace("Bearer ", "", $headers["Authorization"]);
+    $payload = \App\Helpers\JWTHandler::decode($token);
+
+    if (($payload->role ?? '') !== 'admin') {
+        http_response_code(403);
+        echo json_encode(["ok" => false, "message" => "Forbidden"]);
+        exit;
+    }
+
+    $data = json_decode(file_get_contents("php://input"), true);
+
+    $auth->updateUser(
+        (int)$matches[1],
+        $data['fullname'] ?? '',
+        $data['role'] ?? 'customer'
+    );
+
+    echo json_encode(["ok" => true]);
+    exit;
+}
+
+
+
 
 // ===============================================
 // DEFAULT RESPONSE
@@ -161,4 +269,3 @@ echo json_encode([
     "endpoint" => $uri,
     "method"   => $method,
 ], JSON_UNESCAPED_UNICODE);
-

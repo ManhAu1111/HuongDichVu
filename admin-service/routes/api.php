@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\UserController;
 
 Route::prefix('admin')->group(function () {
     Route::get('/products', [ProductController::class, 'index']);
