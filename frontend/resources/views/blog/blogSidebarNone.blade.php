@@ -24,14 +24,14 @@
                                 <a class="aspect aspect--bg-grey aspect--1366-768 u-d-block"
                                     href="{{ route('blog.detail') }}">
 
-                                    <img class="aspect__img" src="images/blog/post-1.jpg" alt=""></a>
+                                    <img class="aspect__img" src="images/blog/giuong1.jpg" alt=""></a>
                                 <!--====== End - Image Code ======-->
                             </div>
                             <div class="bp__info-wrap">
 
                                 <span class="bp__h1">
 
-                                    <a href="{{ route('blog.detail') }}">Giướng lớn thoải mái, rộng rãi</a></span>
+                                    <a href="{{ route('blog.detail') }}">Giường lớn thoải mái, rộng rãi</a></span>
 
                                 <span class="bp__h2">Bài đăng có kèm hình ảnh</span>
                                 <div class="blog-t-w">
@@ -91,7 +91,7 @@
 
                                             <a href="{{ route('blog.detail2') }}">
 
-                                                <img class="u-img-fluid" src="images/blog/post-2.jpg" alt=""></a>
+                                                <img class="u-img-fluid" src="images/blog/giuong2.jpg" alt=""></a>
                                         </div>
                                         <div>
 

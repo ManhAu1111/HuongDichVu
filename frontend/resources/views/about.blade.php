@@ -95,7 +95,7 @@
                             <div class="team-member__wrap">
                                 <div class="aspect aspect--bg-grey-fb aspect--square">
 
-                                    <img class="aspect__img team-member__img" src="images/about/member-1.jpg" alt="">
+                                    <img class="aspect__img team-member__img" src="images/about/nam.jpg" alt="">
                                 </div>
 
                             </div>
@@ -113,7 +113,7 @@
                             <div class="team-member__wrap">
                                 <div class="aspect aspect--bg-grey-fb aspect--square">
 
-                                    <img class="aspect__img team-member__img" src="images/about/member-2.jpg" alt="">
+                                    <img class="aspect__img team-member__img" src="images/about/dat.jpg" alt="">
                                 </div>
 
                             </div>
@@ -131,7 +131,7 @@
                             <div class="team-member__wrap">
                                 <div class="aspect aspect--bg-grey-fb aspect--square">
 
-                                    <img class="aspect__img team-member__img" src="images/about/member-3.jpg" alt="">
+                                    <img class="aspect__img team-member__img" src="images/about/khai.jpg" alt="">
                                 </div>
                             </div>
                             <div class="team-member__info">
@@ -148,7 +148,7 @@
                             <div class="team-member__wrap">
                                 <div class="aspect aspect--bg-grey-fb aspect--square">
 
-                                    <img class="aspect__img team-member__img" src="images/about/member-4.jpg" alt="">
+                                    <img class="aspect__img team-member__img" src="images/about/manh.jpg" alt="">
                                 </div>
 
                             </div>
@@ -166,7 +166,7 @@
                             <div class="team-member__wrap">
                                 <div class="aspect aspect--bg-grey-fb aspect--square">
 
-                                    <img class="aspect__img team-member__img" src="images/about/member-5.jpg" alt="">
+                                    <img class="aspect__img team-member__img" src="images/about/anh.jpg" alt="">
                                 </div>
 
                             </div>
