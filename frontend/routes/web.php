@@ -156,10 +156,10 @@ Route::prefix('admin')->name('admin.')->middleware('auth.admin')->group(function
     // 1. ADMIN DASHBOARD
     Route::view('/', 'admin.dashboard.index')->name('dashboard');
 
-// 2. QUẢN LÝ SẢN PHẨM
+    // 2. QUẢN LÝ SẢN PHẨM
     Route::prefix('products')->name('products.')->group(function () {
 
-        // GET /admin/products -> admin.products.index (Danh sách) 
+        // GET /admin/products -> admin.products.index (Danh sách)
         Route::view('/', 'admin.products.index')->name('index');
 
         // POST /admin/products -> admin.products.store (Xử lý Thêm mới)
@@ -190,14 +190,19 @@ Route::prefix('admin')->name('admin.')->middleware('auth.admin')->group(function
 
     // 3. QUẢN LÝ ĐƠN HÀNG
     Route::prefix('orders')->name('orders.')->group(function () {
-        // GET /admin/orders -> admin.orders.index (Danh sách)
-        Route::view('/', 'admin.orders.index')->name('index');
 
-        // GET /admin/orders/1 -> admin.orders.detail (Chi tiết)
-        Route::get('/{id}', function ($id) {
-            return view('admin.orders.detail', ['id' => $id]);
+        // Danh sách đơn hàng: GET /admin/orders
+        Route::get('/', function () {
+            return view('admin.orders.index');
+        })->name('index');
+
+        // Chi tiết đơn hàng: GET /admin/orders/{public_id}
+        Route::get('/{public_id}', function ($public_id) {
+            return view('admin.orders.detail', ['public_id' => $public_id]);
         })->name('detail');
     });
+
+
 
     // 4. QUẢN LÝ NGƯỜI DÙNG
     Route::prefix('users')->name('users.')->group(function () {
