@@ -502,7 +502,6 @@ class OrderController extends Controller
     public function updateOrderStatus(Request $request, $publicId)
     {
         $request->validate(['status' => 'required|string']);
-
         $order = Order::where('public_id', $publicId)->first();
         if (!$order) return response()->json(['error' => 'Order not found'], 404);
 

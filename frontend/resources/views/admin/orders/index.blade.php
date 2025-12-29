@@ -22,7 +22,7 @@
                         <select class="select-box select-box--primary-style" id="filter-status">
                             <option value="">Tất cả trạng thái</option>
                             <option value="pending_payment">Chờ thanh toán</option>
-                            <option value="paid">Đang xử lý</option>
+                            <option value="paid">Đã thanh toán</option>
                             <option value="delivering">Đang giao hàng</option>
                             <option value="completed">Hoàn thành</option>
                             <option value="cancelled">Đã hủy</option>
