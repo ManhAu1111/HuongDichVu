@@ -459,4 +459,71 @@ class OrderController extends Controller
 
         return response()->json($order);
     }
+
+    // ============================================
+    // ADMIN: Lấy tất cả đơn hàng với filter và tìm kiếm
+    public function getAllOrdersForAdmin(Request $request)
+    {
+        $query = Order::query();
+
+        // 1. Tìm theo tên khách hàng (receiver_name)
+        if ($request->filled('customer_name')) {
+            $query->where('receiver_name', 'like', '%' . $request->customer_name . '%');
+        }
+
+        // 2. Lọc theo trạng thái
+        if ($request->filled('status')) {
+            $query->where('status', $request->status);
+        }
+
+        // 3. Lọc theo khoảng ngày (Dựa vào created_at)
+        if ($request->filled('date_start')) {
+            $query->whereDate('created_at', '>=', $request->date_start);
+        }
+        if ($request->filled('date_end')) {
+            $query->whereDate('created_at', '<=', $request->date_end);
+        }
+
+        // Lọc theo giá trị tối thiểu
+        if ($request->filled('price_min')) {
+            $query->where('total_price', '>=', $request->price_min);
+        }
+
+        // Lọc theo giá trị tối đa (MỚI)
+        if ($request->filled('price_max')) {
+            $query->where('total_price', '<=', $request->price_max);
+        }
+
+        $orders = $query->orderBy('created_at', 'desc')->get();
+        return response()->json($orders);
+    }
+
+    // Admin cập nhật trạng thái đơn hàng
+    public function updateOrderStatus(Request $request, $publicId)
+    {
+        $request->validate(['status' => 'required|string']);
+
+        $order = Order::where('public_id', $publicId)->first();
+        if (!$order) return response()->json(['error' => 'Order not found'], 404);
+
+        $oldStatus = $order->status;
+        $newStatus = $request->status;
+
+        DB::beginTransaction();
+        try {
+            $order->status = $newStatus;
+            $order->save();
+
+            // Logic xử lý kho khi Admin hủy đơn (Giao không thành công/Bom hàng)
+            if ($newStatus === 'cancelled' && $oldStatus !== 'cancelled') {
+                $this->restoreProductStock($order->id);
+            }
+
+            DB::commit();
+            return response()->json(['ok' => true, 'message' => 'Status updated']);
+        } catch (\Throwable $e) {
+            DB::rollBack();
+            return response()->json(['error' => 'Internal server error'], 500);
+        }
+    }
 }

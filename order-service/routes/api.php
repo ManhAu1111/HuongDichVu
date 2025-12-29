@@ -33,3 +33,9 @@ Route::get('/cart', [CartController::class, 'list']);
 Route::put('/cart/update', [CartController::class, 'update']);
 Route::delete('/cart/{id}', [CartController::class, 'delete']);
 Route::post('/cart/clear-all', [CartController::class, 'clear']);
+
+// =========================
+// ADMIN ORDER ACTIONS
+// =========================
+Route::get('/admin/orders', [OrderController::class, 'getAllOrdersForAdmin']);
+Route::put('/admin/orders/{public_id}/status', [OrderController::class, 'updateOrderStatus']);

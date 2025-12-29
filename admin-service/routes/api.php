@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\OrderAdminController;
 use App\Http\Controllers\Admin\UserController;
 
 Route::prefix('admin')->group(function () {
@@ -17,4 +18,7 @@ Route::prefix('admin')->group(function () {
     Route::post('/categories', [ProductController::class, 'storeCategory']);
     Route::post('/product_images/upsert', [ProductController::class, 'upsertProductImage']);
     Route::delete('/product_images/{productId}/{displayOrder}', [ProductController::class, 'deleteProductImageByOrder']);
+    Route::get('/orders', [OrderAdminController::class, 'index']);
+    Route::get('/orders/{public_id}', [OrderAdminController::class, 'show']);
+    Route::put('/orders/{public_id}/status', [OrderAdminController::class, 'updateStatus']);
 });
