@@ -538,10 +538,12 @@
                             <span class="u-c-white">Đừng bỏ lỡ!</span>
                         </div>
 
-                        <span class="banner-bg__text-block banner-bg__text-3 u-c-secondary">Miễn phí vận chuyển khi địa
+                        <span class="banner-bg__text-block banner-bg__text-3 u-c-secondary">Miễn phí vận chuyển khi
+                            địa
                             chỉ ở khu vực miền Bắc!</span>
 
-                        <a class="banner-bg__shop-now btn--e-secondary" href="{{ route('shop.side_v2') }}">MUA NGAY</a>
+                        <a class="banner-bg__shop-now btn--e-secondary" href="{{ route('shop.side_v2') }}">MUA
+                            NGAY</a>
                     </div>
                 </div>
             </div>
@@ -1006,7 +1008,8 @@
 
                             <span class="service__info-text-1 ">MIỄN PHÍ VẬN CHUYỂN</span>
 
-                            <span class="service__info-text-2">Miễn phí vận chuyển cho tất cả đơn hàng tại khu vực miền
+                            <span class="service__info-text-2">Miễn phí vận chuyển cho tất cả đơn hàng tại khu vực
+                                miền
                                 Bắc</span>
                         </div>
                     </div>
@@ -1018,7 +1021,8 @@
 
                             <span class="service__info-text-1">MUA SẮM AN TOÀN</span>
 
-                            <span class="service__info-text-2">Chính sách bảo vệ đơn hàng từ lúc đặt mua đến khi giao
+                            <span class="service__info-text-2">Chính sách bảo vệ đơn hàng từ lúc đặt mua đến khi
+                                giao
                                 hàng</span>
                         </div>
                     </div>
@@ -1030,7 +1034,8 @@
 
                             <span class="service__info-text-1">HỖ TRỢ 24/7 </span>
 
-                            <span class="service__info-text-2">Hỗ trợ liên tục 24/7 để mang lại trải nghiệm mua sắm mượt
+                            <span class="service__info-text-2">Hỗ trợ liên tục 24/7 để mang lại trải nghiệm mua sắm
+                                mượt
                                 mà</span>
                         </div>
                     </div>
@@ -1067,7 +1072,7 @@
     <div class="section__content">
         <div class="container">
             <div class="row">
-                <div class="col-lg-4 col-md-6 u-s-m-b-30">
+                <div class="col-lg-6 col-md-6 u-s-m-b-30">
                     <div class="bp-mini bp-mini--img u-h-100">
                         <div class="bp-mini__thumbnail">
 
@@ -1076,7 +1081,7 @@
                             <a class="aspect aspect--bg-grey aspect--1366-768 u-d-block"
                                 href="{{ route('blog.detail') }}">
 
-                                <img class="aspect__img" src="images/blog/post-2.jpg" alt=""></a>
+                                <img class="aspect__img" src="images/blog/giuong1.jpg   " alt=""></a>
                             <!--====== End - Image Code ======-->
                         </div>
                         <div class="bp-mini__content">
@@ -1110,22 +1115,21 @@
 
                             <span class="bp-mini__h1">
 
-                                <a href="{{ route('blog.detail') }}">Life is an extraordinary
-                                    Adventure</a></span>
-                            <p class="bp-mini__p">Lorem Ipsum is simply dummy text of the printing and typesetting
-                                industry.</p>
+                                <a href="{{ route('blog.detail') }}">Giường lớn rộng rãi, thoải mái</a></span>
+                            <p class="bp-mini__p">Giường ngủ thông minh với thiết kế sang trọng, rộng rãi giúp thoải
+                                mái, dễ chìm vào giấc ngủ</p>
                             <div class="blog-t-w">
 
-                                <a class="gl-tag btn--e-transparent-hover-brand-b-2">Nội Thất</a>
+                                <a class="gl-tag btn--e-transparent-hover-brand-b-2">Đơn Giản</a>
 
-                                <a class="gl-tag btn--e-transparent-hover-brand-b-2">Sang Trọng </a>
+                                <a class="gl-tag btn--e-transparent-hover-brand-b-2">Rộng</a>
 
-                                <a class="gl-tag btn--e-transparent-hover-brand-b-2">Quý Phái</a>
+                                <a class="gl-tag btn--e-transparent-hover-brand-b-2">Thoải Mái</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 u-s-m-b-30">
+                <div class="col-lg-6 col-md-6 u-s-m-b-30">
                     <div class="bp-mini bp-mini--img u-h-100">
                         <div class="bp-mini__thumbnail">
 
@@ -1134,11 +1138,11 @@
                             <a class="aspect aspect--bg-grey aspect--1366-768 u-d-block"
                                 href="{{ route('blog.detail') }}">
 
-                                <img class="aspect__img" src="images/blog/post-12.jpg" alt=""></a>
+                                <img class="aspect__img" src="images/blog/giuong2.jpg" alt=""></a>
                             <!--====== End - Image Code ======-->
                         </div>
                         <div class="bp-mini__content">
-                            <div class="bp-mini__stat">
+                            <!-- <div class="bp-mini__stat">
 
                                 <span class="bp-mini__stat-wrap">
 
@@ -1163,28 +1167,31 @@
                                         <a href="{{ route('blog.detail') }}"><i class="far fa-comments u-s-m-r-4"></i>
 
                                             <span>8</span></a></span></span>
-                            </div>
-                            <div class="bp-mini__category">
+                            </div> -->
+                            <!-- <div class="bp-mini__category">
 
-                                <a>Learning</a>
+                                <a>Sáng Tạo</a>
 
-                                <a>News</a>
+                                <a>Nghệ Thuật</a>
 
-                                <a>Health</a>
-                            </div>
+                                <a>Thiết Kế</a>
+                            </div> -->
 
                             <span class="bp-mini__h1">
 
-                                <a href="{{ route('blog.detail') }}">Wait till its open</a></span>
-                            <p class="bp-mini__p">Lorem Ipsum is simply dummy text of the printing and typesetting
-                                industry.</p>
+                                <a href="{{ route('blog.detail') }}">Chiếc giường với thiết kế bắt mắt mang phong
+                                    cách
+                                    sang trọng, quý phái</a></span>
+                            <p class="bp-mini__p">Đồ trang trí nội thất trong nhà mang phong cách sang trọng, lịch
+                                sự
+                                nhưng không kém phần tối giản.</p>
                             <div class="blog-t-w">
 
-                                <a class="gl-tag btn--e-transparent-hover-brand-b-2">Travel</a>
+                                <a class="gl-tag btn--e-transparent-hover-brand-b-2">Sáng Tạo</a>
 
-                                <a class="gl-tag btn--e-transparent-hover-brand-b-2">Culture</a>
+                                <a class="gl-tag btn--e-transparent-hover-brand-b-2">Nghệ Thuật</a>
 
-                                <a class="gl-tag btn--e-transparent-hover-brand-b-2">Place</a>
+                                <a class="gl-tag btn--e-transparent-hover-brand-b-2">Thiết Kế</a>
                             </div>
                         </div>
                     </div>
@@ -1199,173 +1206,153 @@
 
 
 <!--====== Section 11 ======-->
-<div class="u-s-p-b-90 u-s-m-b-30">
+<!-- <div class="u-s-p-b-90 u-s-m-b-30">
 
-    <!--====== Section Intro ======-->
-    <div class="section__intro u-s-m-b-46">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section__text-wrap">
-                        <h1 class="section__heading u-c-secondary u-s-m-b-12">CLIENTS FEEDBACK</h1>
+        <div class="section__intro u-s-m-b-46">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section__text-wrap">
+                            <h1 class="section__heading u-c-secondary u-s-m-b-12">CLIENTS FEEDBACK</h1>
 
-                        <span class="section__span u-c-silver">WHAT OUR CLIENTS SAY</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--====== End - Section Intro ======-->
-
-
-    <!--====== Section Content ======-->
-    <div class="section__content">
-        <div class="container">
-
-            <!--====== Testimonial Slider ======-->
-            <div class="slider-fouc">
-                <div class="owl-carousel" id="testimonial-slider">
-                    <div class="testimonial">
-                        <div class="testimonial__img-wrap">
-
-                            <img class="testimonial__img" src="images/about/test-1.jpg" alt="">
-                        </div>
-                        <div class="testimonial__content-wrap">
-
-                            <span class="testimonial__double-quote"><i class="fas fa-quote-right"></i></span>
-                            <blockquote class="testimonial__block-quote">
-                                <p>"Far far away, behind the word mountains, far from the countries Vokalia and
-                                    Consonantia, there live the blind texts. Separated they live in Bookmarksgrove
-                                    right at the coast of the Semantics, a large language ocean."</p>
-                            </blockquote>
-
-                            <span class="testimonial__author">John D. / DVNTR Inc.</span>
-                        </div>
-                    </div>
-                    <div class="testimonial">
-                        <div class="testimonial__img-wrap">
-
-                            <img class="testimonial__img" src="images/about/test-2.jpg" alt="">
-                        </div>
-                        <div class="testimonial__content-wrap">
-
-                            <span class="testimonial__double-quote"><i class="fas fa-quote-right"></i></span>
-                            <blockquote class="testimonial__block-quote">
-                                <p>"Far far away, behind the word mountains, far from the countries Vokalia and
-                                    Consonantia, there live the blind texts. Separated they live in Bookmarksgrove
-                                    right at the coast of the Semantics, a large language ocean."</p>
-                            </blockquote>
-
-                            <span class="testimonial__author">John D. / DVNTR Inc.</span>
-                        </div>
-                    </div>
-                    <div class="testimonial">
-                        <div class="testimonial__img-wrap">
-
-                            <img class="testimonial__img" src="images/about/test-3.jpg" alt="">
-                        </div>
-                        <div class="testimonial__content-wrap">
-
-                            <span class="testimonial__double-quote"><i class="fas fa-quote-right"></i></span>
-                            <blockquote class="testimonial__block-quote">
-                                <p>"Far far away, behind the word mountains, far from the countries Vokalia and
-                                    Consonantia, there live the blind texts. Separated they live in Bookmarksgrove
-                                    right at the coast of the Semantics, a large language ocean."</p>
-                            </blockquote>
-
-                            <span class="testimonial__author">John D. / DVNTR Inc.</span>
-                        </div>
-                    </div>
-                    <div class="testimonial">
-                        <div class="testimonial__img-wrap">
-
-                            <img class="testimonial__img" src="images/about/test-4.jpg" alt="">
-                        </div>
-                        <div class="testimonial__content-wrap">
-
-                            <span class="testimonial__double-quote"><i class="fas fa-quote-right"></i></span>
-                            <blockquote class="testimonial__block-quote">
-                                <p>"Far far away, behind the word mountains, far from the countries Vokalia and
-                                    Consonantia, there live the blind texts. Separated they live in Bookmarksgrove
-                                    right at the coast of the Semantics, a large language ocean."</p>
-                            </blockquote>
-
-                            <span class="testimonial__author">John D. / DVNTR Inc.</span>
+                            <span class="section__span u-c-silver">WHAT OUR CLIENTS SAY</span>
                         </div>
                     </div>
                 </div>
             </div>
-            <!--====== End - Testimonial Slider ======-->
         </div>
-    </div>
-    <!--====== End - Section Content ======-->
-</div>
+
+        <div class="section__content">
+            <div class="container">
+
+                <div class="slider-fouc">
+                    <div class="owl-carousel" id="testimonial-slider">
+                        <div class="testimonial">
+                            <div class="testimonial__img-wrap">
+
+                                <img class="testimonial__img" src="images/about/test-1.jpg" alt="">
+                            </div>
+                            <div class="testimonial__content-wrap">
+
+                                <span class="testimonial__double-quote"><i class="fas fa-quote-right"></i></span>
+                                <blockquote class="testimonial__block-quote">
+                                    <p>"Far far away, behind the word mountains, far from the countries Vokalia and
+                                        Consonantia, there live the blind texts. Separated they live in Bookmarksgrove
+                                        right at the coast of the Semantics, a large language ocean."</p>
+                                </blockquote>
+
+                                <span class="testimonial__author">John D. / DVNTR Inc.</span>
+                            </div>
+                        </div>
+                        <div class="testimonial">
+                            <div class="testimonial__img-wrap">
+
+                                <img class="testimonial__img" src="images/about/test-2.jpg" alt="">
+                            </div>
+                            <div class="testimonial__content-wrap">
+
+                                <span class="testimonial__double-quote"><i class="fas fa-quote-right"></i></span>
+                                <blockquote class="testimonial__block-quote">
+                                    <p>"Far far away, behind the word mountains, far from the countries Vokalia and
+                                        Consonantia, there live the blind texts. Separated they live in Bookmarksgrove
+                                        right at the coast of the Semantics, a large language ocean."</p>
+                                </blockquote>
+
+                                <span class="testimonial__author">John D. / DVNTR Inc.</span>
+                            </div>
+                        </div>
+                        <div class="testimonial">
+                            <div class="testimonial__img-wrap">
+
+                                <img class="testimonial__img" src="images/about/test-3.jpg" alt="">
+                            </div>
+                            <div class="testimonial__content-wrap">
+
+                                <span class="testimonial__double-quote"><i class="fas fa-quote-right"></i></span>
+                                <blockquote class="testimonial__block-quote">
+                                    <p>"Far far away, behind the word mountains, far from the countries Vokalia and
+                                        Consonantia, there live the blind texts. Separated they live in Bookmarksgrove
+                                        right at the coast of the Semantics, a large language ocean."</p>
+                                </blockquote>
+
+                                <span class="testimonial__author">John D. / DVNTR Inc.</span>
+                            </div>
+                        </div>
+                        <div class="testimonial">
+                            <div class="testimonial__img-wrap">
+
+                                <img class="testimonial__img" src="images/about/test-4.jpg" alt="">
+                            </div>
+                            <div class="testimonial__content-wrap">
+
+                                <span class="testimonial__double-quote"><i class="fas fa-quote-right"></i></span>
+                                <blockquote class="testimonial__block-quote">
+                                    <p>"Far far away, behind the word mountains, far from the countries Vokalia and
+                                        Consonantia, there live the blind texts. Separated they live in Bookmarksgrove
+                                        right at the coast of the Semantics, a large language ocean."</p>
+                                </blockquote>
+
+                                <span class="testimonial__author">John D. / DVNTR Inc.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
 <!--====== End - Section 11 ======-->
 
 
 <!--====== Section 12 ======-->
-<div class="u-s-p-b-60">
+<!-- <div class="u-s-p-b-60">
 
-    <!--====== Section Content ======-->
-    <div class="section__content">
-        <div class="container">
+        <div class="section__content">
+            <div class="container">
 
-            <!--====== Brand Slider ======-->
-            <div class="slider-fouc">
-                <div class="owl-carousel" id="brand-slider" data-item="5">
-                    <div class="brand-slide">
+                <div class="slider-fouc">
+                    <div class="owl-carousel" id="brand-slider" data-item="5">
+                        <div class="brand-slide">
 
-                        <a href="{{ route('shop.side_v2') }}">
+                            <a href="{{ route('shop.side_v2') }}">
 
-                            <img src="images/brand/b1.png" alt=""></a>
-                    </div>
-                    <div class="brand-slide">
+                                <img src="images/brand/b1.png" alt=""></a>
+                        </div>
+                        <div class="brand-slide">
 
-                        <a href="{{ route('shop.side_v2') }}">
+                            <a href="{{ route('shop.side_v2') }}">
 
-                            <img src="images/brand/b2.png" alt=""></a>
-                    </div>
-                    <div class="brand-slide">
+                                <img src="images/brand/b2.png" alt=""></a>
+                        </div>
+                        <div class="brand-slide">
 
-                        <a href="{{ route('shop.side_v2') }}">
+                            <a href="{{ route('shop.side_v2') }}">
 
-                            <img src="images/brand/b3.png" alt=""></a>
-                    </div>
-                    <div class="brand-slide">
+                                <img src="images/brand/b3.png" alt=""></a>
+                        </div>
+                        <div class="brand-slide">
 
-                        <a href="{{ route('shop.side_v2') }}">
+                            <a href="{{ route('shop.side_v2') }}">
 
-                            <img src="images/brand/b4.png" alt=""></a>
-                    </div>
-                    <div class="brand-slide">
+                                <img src="images/brand/b4.png" alt=""></a>
+                        </div>
+                        <div class="brand-slide">
 
-                        <a href="{{ route('shop.side_v2') }}">
+                            <a href="{{ route('shop.side_v2') }}">
 
-                            <img src="images/brand/b5.png" alt=""></a>
-                    </div>
-                    <div class="brand-slide">
+                                <img src="images/brand/b5.png" alt=""></a>
+                        </div>
+                        <div class="brand-slide">
 
-                        <a href="{{ route('shop.side_v2') }}">
+                            <a href="{{ route('shop.side_v2') }}">
 
-                            <img src="images/brand/b6.png" alt=""></a>
+                                <img src="images/brand/b6.png" alt=""></a>
+                        </div>
                     </div>
                 </div>
             </div>
-            <!--====== End - Brand Slider ======-->
         </div>
-    </div>
-    <!--====== End - Section Content ======-->
-</div>
-<!--====== End - Section 12 ======-->
-</div>
-<!--====== End - App Content ======-->
+    </div> -->
 
-
-
-<!--====== Modal Section ======-->
-
-
-<!--====== Quick Look Modal ======-->
 <div class="modal fade" id="quick-look">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content modal--shadow">
@@ -1375,7 +1362,6 @@
                 <div class="row">
                     <div class="col-lg-5">
 
-                        <!--====== Product Breadcrumb ======-->
                         <div class="pd-breadcrumb u-s-m-b-30">
                             <ul class="pd-breadcrumb__list">
                                 <li class="has-separator">
@@ -1396,10 +1382,8 @@
                                 </li>
                             </ul>
                         </div>
-                        <!--====== End - Product Breadcrumb ======-->
 
 
-                        <!--====== Product Detail ======-->
                         <div class="pd u-s-m-b-30">
                             <div class="pd-wrap">
                                 <div id="js-product-detail-modal">
@@ -1483,9 +1467,12 @@
                             </div>
                             <div class="u-s-m-b-15">
 
-                                <span class="pd-detail__preview-desc">Lorem Ipsum is simply dummy text of the printing
-                                    and typesetting industry. Lorem Ipsum has been the industry's standard dummy text
-                                    ever since the 1500s, when an unknown printer took a galley of type and scrambled it
+                                <span class="pd-detail__preview-desc">Lorem Ipsum is simply dummy text of the
+                                    printing
+                                    and typesetting industry. Lorem Ipsum has been the industry's standard dummy
+                                    text
+                                    ever since the 1500s, when an unknown printer took a galley of type and
+                                    scrambled it
                                     to make a type specimen book.</span>
                             </div>
                             <div class="u-s-m-b-15">

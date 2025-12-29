@@ -9,7 +9,7 @@
             <div class="bp-detail">
                 <div class="bp-detail__thumbnail">
                     <a class="aspect aspect--bg-grey aspect--1366-768 u-d-block" href="#">
-                        <img class="aspect__img" src="{{ asset('images/blog/post-2.jpg') }}" alt="">
+                        <img class="aspect__img" src="{{ asset('images/blog/giuong2.jpg') }}" alt="">
                     </a>
                 </div>
 

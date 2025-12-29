@@ -8,6 +8,8 @@ use App\Http\Controllers\CartPageController;
 use Illuminate\Support\Facades\Http;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\Admin\ProductAdminController;
+use App\Http\Controllers\Admin\UserController;
+
 
 
 /*
@@ -206,9 +208,26 @@ Route::prefix('admin')->name('admin.')->middleware('auth.admin')->group(function
 
     // 4. QUẢN LÝ NGƯỜI DÙNG
     Route::prefix('users')->name('users.')->group(function () {
-        // GET /admin/users -> admin.users.index (Danh sách)
-        Route::view('/', 'admin.users.index')->name('index');
+
+        // GET /admin/users
+        Route::get('/', [UserController::class, 'index'])->name('index');
+
+        // PUT /admin/users/{id}/block
+        Route::put('/{id}/block', [UserController::class, 'block'])
+            ->name('block');
+
+        // PUT /admin/users/{id}/unblock
+        Route::put('/{id}/unblock', [UserController::class, 'unblock'])
+            ->name('unblock');
+        // GET /admin/users/{id}/edit
+        // Route::get('/{id}/edit', [UserController::class, 'edit'])
+        //     ->name('edit');
+
+        // PUT /admin/users/{id}
+        // Route::put('/{id}/update-name', [UserController::class, 'updateName'])
+        //     ->name('updateName');
     });
+
 
     // 5. CÀI ĐẶT HỆ THỐNG
     Route::view('/settings', 'admin.settings.index')->name('settings');
