@@ -115,20 +115,20 @@
         function renderOrderTable(orders) {
             const tbody = document.getElementById('order-list-body');
             tbody.innerHTML = orders.map(o => `
-                    <tr>
-                        <td><strong>${o.public_id}</strong></td>
-                        <td>${o.receiver_name}<br><small>${o.receiver_phone}</small></td>
-                        <td>${new Date(o.created_at).toLocaleDateString('vi-VN')}</td>
-                        <td>${new Intl.NumberFormat('vi-VN').format(o.total_price)}đ</td>
-                        <td><span class="manage-o__badge badge--${o.status}">${translateStatus(o.status)}</span></td>
-                        <td>${o.payment_method.toUpperCase()}</td>
-                        <td>
-                            <div class="dash__link dash__link--brand">
-                                <a href="/admin/orders/${o.public_id}">CHI TIẾT</a>
-                            </div>
-                        </td>
-                    </tr>
-                `).join('');
+                        <tr>
+                            <td><strong>${o.public_id}</strong></td>
+                            <td>${o.receiver_name}<br><small>${o.receiver_phone}</small></td>
+                            <td>${new Date(o.created_at).toLocaleDateString('vi-VN')}</td>
+                            <td>${new Intl.NumberFormat('vi-VN').format(o.total_price)}đ</td>
+                            <td><span class="manage-o__badge badge--${o.status}">${translateStatus(o.status)}</span></td>
+                            <td>${o.payment_method.toUpperCase()}</td>
+                            <td>
+                                <div class="dash__link dash__link--brand">
+                                    <a href="/admin/orders/${o.public_id}">CHI TIẾT</a>
+                                </div>
+                            </td>
+                        </tr>
+                    `).join('');
         }
 
         function translateStatus(s) {
@@ -149,4 +149,52 @@
         document.getElementById('btn-apply-filter').onclick = loadOrders;
         document.addEventListener('DOMContentLoaded', loadOrders);
     </script>
+
+    <style>
+        /* 1. Giảm kích thước chữ và padding cho bảng */
+        .dash__table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            /* Giảm font-size tổng thể */
+        }
+
+        .dash__table th,
+        .dash__table td {
+            padding: 10px 8px !important;
+            /* Thu hẹp khoảng cách giữa các cột */
+            white-space: nowrap;
+            /* Ngăn chữ bị xuống dòng làm tăng chiều cao hàng */
+            vertical-align: middle;
+        }
+
+        /* 2. Ưu tiên cột khách hàng có thể xuống dòng vì tên thường dài */
+        .dash__table td:nth-child(2) {
+            white-space: normal;
+            min-width: 150px;
+            line-height: 1.2;
+        }
+
+        /* 3. Tùy chỉnh Badge trạng thái nhỏ gọn */
+        .manage-o__badge {
+            font-size: 11px;
+            padding: 3px 8px;
+            border-radius: 12px;
+            display: inline-block;
+        }
+
+        /* 4. Mở rộng vùng chứa nếu nằm trong container hẹp */
+        .dash__table-wrap {
+            overflow-x: auto;
+            /* Cho phép cuộn ngang mượt mà trên mobile */
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* 5. Định dạng lại cột "Hành động" cho gọn */
+        .dash__link--brand a {
+            font-weight: 600;
+            font-size: 12px;
+            text-decoration: underline;
+        }
+    </style>
 @endsection
