@@ -125,7 +125,7 @@ class OrderController extends Controller
 
             CartItem::where('user_id', $request->user_id)->delete();
 
-            $this->decreaseProductStock($order->id);
+            // $this->decreaseProductStock($order->id);
 
             DB::commit();
 
@@ -202,6 +202,8 @@ class OrderController extends Controller
              *    - paid
              * Nhưng CHỈ trừ nếu trước đó chưa từng ở 2 trạng thái này
              */
+
+            /*
             $shouldDecrease =
                 in_array($newStatus, ['pending_payment', 'paid']) &&
                 !in_array($oldStatus, ['pending_payment', 'paid']);
@@ -209,6 +211,7 @@ class OrderController extends Controller
             if ($shouldDecrease) {
                 $this->decreaseProductStock($order->id);
             }
+            */
 
             /**
              * 2) KHÔNG hoàn kho ở đây
@@ -391,9 +394,9 @@ class OrderController extends Controller
             $order->save();
 
             // Hoàn kho (chỉ 1 lần)
-            if ($oldStatus !== 'cancelled') {
-                $this->restoreProductStock($order->id);
-            }
+            // if ($oldStatus !== 'cancelled') {
+            //     $this->restoreProductStock($order->id);
+            // }
 
             Log::info("Order {$order->public_id} cancelled");
 
@@ -514,9 +517,9 @@ class OrderController extends Controller
             $order->save();
 
             // Logic xử lý kho khi Admin hủy đơn (Giao không thành công/Bom hàng)
-            if ($newStatus === 'cancelled' && $oldStatus !== 'cancelled') {
-                $this->restoreProductStock($order->id);
-            }
+            // if ($newStatus === 'cancelled' && $oldStatus !== 'cancelled') {
+            //     $this->restoreProductStock($order->id);
+            // }
 
             DB::commit();
             return response()->json(['ok' => true, 'message' => 'Status updated']);

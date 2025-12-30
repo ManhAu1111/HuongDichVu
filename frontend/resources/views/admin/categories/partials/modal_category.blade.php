@@ -14,28 +14,27 @@
     <div class="cat-modal-overlay">
         <div class="cat-modal-content">
             <h1 class="dash__h1 u-s-m-b-20" id="category-form-title">THÊM DANH MỤC</h1>
-            
+
             <form id="category-form">
                 <input type="hidden" id="category-id">
                 <input type="hidden" id="category-method" value="POST">
-                
+
                 <div class="u-s-m-b-20">
                     <label class="gl-label" for="category-name">TÊN DANH MỤC *</label>
-                    <input class="input-text input-text--primary-style" type="text" 
+                    <input class="input-text input-text--primary-style" type="text"
                            id="category-name" oninput="generateSlug(this.value)" placeholder="Nhập tên danh mục..." required>
                 </div>
 
                 <div class="u-s-m-b-20">
-                    <label class="gl-label" for="category-slug">SLUG (URL) *</label>
-                    <input class="input-text input-text--primary-style" type="text" 
+                    <label class="gl-label" for="category-slug">SLUG</label>
+                    <input class="input-text input-text--primary-style" type="text"
                            id="category-slug" placeholder="Ví dụ: do-noi-that" required>
-                    <small style="color: #666; display: block; margin-top: 5px;">Tự động tạo từ tên, bạn có thể sửa lại.</small>
                 </div>
 
                 <div class="d-flex justify-content-end">
-                    <button class="btn btn--e-brand-b-2 u-s-m-r-10" type="button" 
+                    <button class="btn btn--e-brand-b-2 u-s-m-r-10" type="button"
                             onclick="handleCategorySubmit()">LƯU LẠI</button>
-                    <button class="btn btn--e-dark-outline" type="button" 
+                    <button class="btn btn--e-dark-outline" type="button"
                             onclick="hideCategoryModal()">HỦY</button>
                 </div>
             </form>

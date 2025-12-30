@@ -209,7 +209,7 @@
                 html += `<button onclick="updateOrderStatus('cancelled')" class="btn btn--e-dark-outline u-s-m-l-10">HỦY ĐƠN</button>`;
             } else if (status === 'delivering') {
                 html += `<button onclick="updateOrderStatus('completed')" class="btn btn--e-brand-b-2">XÁC NHẬN ĐÃ GIAO</button>`;
-                html += `<button onclick="updateOrderStatus('cancelled')" class="btn btn--e-dark-outline u-s-m-l-10">GIAO THẤT BẠI (HỦY)</button>`;
+                html += `<button onclick="updateOrderStatus('cancelled')" class="btn btn--e-dark-outline u-s-m-l-10">Khách tư chối nhận hàng</button>`;
             }
 
             container.innerHTML = html || '<span class="u-c-silver">Đơn hàng đã kết thúc, không thể thao tác thêm.</span>';
