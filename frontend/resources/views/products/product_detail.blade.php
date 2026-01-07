@@ -20,7 +20,7 @@
                     <div class="pd-breadcrumb u-s-m-b-30">
                         <ul class="pd-breadcrumb__list">
                             <li class="has-separator">
-                                <a href="{{ route('shop.index') }}">Home</a>
+                                <a href="{{ route('shop.index') }}">Trang Chủ</a>
                             </li>
 
                             <li class="has-separator">
@@ -205,22 +205,23 @@
 
                 <div class="u-s-m-b-15">
 
-                    <span class="pd-detail__label u-s-m-b-8">Product Policy:</span>
+                    <span class="pd-detail__label u-s-m-b-8">Chính sách sản phẩm:</span>
                     <ul class="pd-detail__policy-list">
-                        <li><i class="fas fa-check-circle u-s-m-r-8"></i>
-
-                            <span>Buyer Protection.</span>
+                        <li>
+                            <i class="fas fa-check-circle u-s-m-r-8"></i>
+                            <span>Bảo vệ quyền lợi người mua.</span>
                         </li>
-                        <li><i class="fas fa-check-circle u-s-m-r-8"></i>
-
-                            <span>Full Refund if you don't receive your order.</span>
+                        <li>
+                            <i class="fas fa-check-circle u-s-m-r-8"></i>
+                            <span>Hoàn tiền đầy đủ nếu không nhận được đơn hàng.</span>
                         </li>
-                        <li><i class="fas fa-check-circle u-s-m-r-8"></i>
-
-                            <span>Returns accepted if product not as described.</span>
+                        <li>
+                            <i class="fas fa-check-circle u-s-m-r-8"></i>
+                            <span>Chấp nhận đổi trả nếu sản phẩm không đúng với mô tả.</span>
                         </li>
                     </ul>
                 </div>
+
             </div>
             <!--====== End - Product Right Side Details ======-->
         </div>
@@ -238,15 +239,15 @@
                         <ul class="nav pd-tab__list">
                             <li class="nav-item">
 
-                                <a class="nav-link active" data-toggle="tab" href="#pd-desc">DESCRIPTION</a>
+                                <a class="nav-link active" data-toggle="tab" href="#pd-desc">MÔ TẢ</a>
                             </li>
-                            <li class="nav-item">
+                            <!-- <li class="nav-item">
 
                                 <a class="nav-link" data-toggle="tab" href="#pd-tag">TAGS</a>
-                            </li>
+                            </li> -->
                             <li class="nav-item">
 
-                                <a class="nav-link" id="view-review" data-toggle="tab" href="#pd-rev">REVIEWS
+                                <a class="nav-link" id="view-review" data-toggle="tab" href="#pd-rev">ĐÁNH GIÁ
 
                                 </a>
                             </li>
@@ -258,14 +259,7 @@
                         <div class="tab-pane fade show active" id="pd-desc">
                             <div class="pd-tab__desc">
                                 <div class="u-s-m-b-15">
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                        Lorem Ipsum has been the industry's standard dummy text ever since the
-                                        1500s, when an unknown printer took a galley of type and scrambled it to
-                                        make a type specimen book. It has survived not only five centuries, but also
-                                        the leap into electronic typesetting, remaining essentially unchanged. It
-                                        was popularised in the 1960s with the release of Letraset sheets containing
-                                        Lorem Ipsum passages, and more recently with desktop publishing software
-                                        like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                                    <span class="pd-detail__preview-desc">{{ $product['description'] }}</span>
                                 </div>
                                 <div class="u-s-m-b-30"><iframe src="https://www.youtube.com/embed/qKqSBm07KZk"
                                         allowfullscreen></iframe></div>
@@ -273,64 +267,17 @@
                                     <ul>
                                         <li><i class="fas fa-check u-s-m-r-8"></i>
 
-                                            <span>Buyer Protection.</span>
+                                            <span>Bảo vệ quyền lợi người mua.</span>
                                         </li>
                                         <li><i class="fas fa-check u-s-m-r-8"></i>
 
-                                            <span>Full Refund if you don't receive your order.</span>
+                                            <span>Hoàn tiền đầy đủ nếu không nhận được đơn hàng.</span>
                                         </li>
                                         <li><i class="fas fa-check u-s-m-r-8"></i>
 
-                                            <span>Returns accepted if product not as described.</span>
+                                            <span>Chấp nhận đổi trả nếu sản phẩm không đúng với mô tả.</span>
                                         </li>
                                     </ul>
-                                </div>
-                                <div class="u-s-m-b-15">
-                                    <h4>PRODUCT INFORMATION</h4>
-                                </div>
-                                <div class="u-s-m-b-15">
-                                    <div class="pd-table gl-scroll">
-                                        <table>
-                                            <tbody>
-                                                <tr>
-                                                    <td>Main Material</td>
-                                                    <td>Cotton</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Color</td>
-                                                    <td>Green, Blue, Red</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Sleeves</td>
-                                                    <td>Long Sleeve</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Top Fit</td>
-                                                    <td>Regular</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Print</td>
-                                                    <td>Not Printed</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Neck</td>
-                                                    <td>Round Neck</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Pieces Count</td>
-                                                    <td>1 Piece</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Occasion</td>
-                                                    <td>Casual</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Shipping Weight (kg)</td>
-                                                    <td>0.5</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -364,17 +311,17 @@
                                     <div class="pd-tab__rev-score">
                                         <div class="u-s-m-b-8">
                                             <!-- Tổng review + rating -->
-                                            <h2 id="review-summary">Loading reviews...</h2>
+                                            <h2 id="review-summary">Đang tải đánh giá...</h2>
                                         </div>
 
                                         <!-- Sao trung bình -->
                                         <div id="review-average-stars" class="gl-rating-style-2 u-s-m-b-8"></div>
 
                                         <div class="u-s-m-b-8">
-                                            <h4>We want to hear from you!</h4>
+                                            <h4>Chúng tôi rất muốn nghe ý kiến của bạn!</h4>
                                         </div>
 
-                                        <span class="gl-text">Tell us what you think about this item</span>
+                                        <span class="gl-text">Hãy chia sẻ cảm nhận của bạn về sản phẩm này</span>
                                     </div>
                                 </div>
 
@@ -383,14 +330,14 @@
                                         <div class="rev-f1__group">
                                             <div class="u-s-m-b-15">
                                                 <!-- Tên sản phẩm -->
-                                                <h2 id="review-product-title">Reviews</h2>
+                                                <h2 id="review-product-title">Đánh giá</h2>
                                             </div>
 
                                             <div class="u-s-m-b-15">
                                                 <label for="sort-review"></label>
                                                 <select class="select-box select-box--primary-style" id="sort-review">
-                                                    <option value="best" selected>Sort by: Best Rating</option>
-                                                    <option value="newest">Sort by: Newest</option>
+                                                    <option value="best" selected>Sắp xếp: Đánh giá cao nhất</option>
+                                                    <option value="newest">Sắp xếp: Mới nhất</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -405,10 +352,10 @@
                                 <div class="u-s-m-b-30">
                                     <form class="pd-tab__rev-f2">
                                         <input type="hidden" id="product-id" value="{{ $product['id'] }}">
-                                        <h2 class="u-s-m-b-15">Add a Review</h2>
+                                        <h2 class="u-s-m-b-15">Thêm đánh giá</h2>
 
-                                        <span class="gl-text u-s-m-b-15">Your email address will not be published.
-                                            Required fields are marked *</span>
+                                        <span class="gl-text u-s-m-b-15">Email của bạn sẽ không bị công khai.
+                                            Các trường bắt buộc được đánh dấu *</span>
                                         <div class="u-s-m-b-30">
                                             <div class="rev-f2__table-wrap gl-scroll">
                                                 <table class="rev-f2__table">
@@ -608,7 +555,7 @@
                                         <div class="rev-f2__group">
                                             <div class="u-s-m-b-15">
 
-                                                <label class="gl-label" for="reviewer-text">YOUR REVIEW
+                                                <label class="gl-label" for="reviewer-text">ĐÁNH GIÁ CỦA BẠN
                                                     *</label>
                                                 <textarea class="text-area text-area--primary-style"
                                                     id="reviewer-text"></textarea>
@@ -616,7 +563,7 @@
                                             <div>
                                                 <p class="u-s-m-b-30">
 
-                                                    <label class="gl-label" for="reviewer-name">NAME *</label>
+                                                    <label class="gl-label" for="reviewer-name">TÊN *</label>
 
                                                     <input class="input-text input-text--primary-style" type="text"
                                                         id="reviewer-name">
@@ -632,7 +579,7 @@
                                         </div>
                                         <div>
 
-                                            <button class="btn btn--e-brand-shadow" type="submit">SUBMIT</button>
+                                            <button class="btn btn--e-brand-shadow" type="submit">GỬI ĐÁNH GIÁ</button>
                                         </div>
                                     </form>
                                 </div>
@@ -654,9 +601,9 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section__text-wrap">
-                        <h1 class="section__heading u-c-secondary u-s-m-b-12">CUSTOMER ALSO VIEWED</h1>
+                        <h1 class="section__heading u-c-secondary u-s-m-b-12">KHÁCH HÀNG CŨNG XEM</h1>
 
-                        <span class="section__span u-c-grey">PRODUCTS THAT CUSTOMER VIEWED</span>
+                        <span class="section__span u-c-grey">SẢN PHẨM MÀ KHÁCH HÀNG ĐÃ XEM</span>
                     </div>
                 </div>
             </div>
@@ -1042,7 +989,7 @@
         }
 
         function updateHeader(data) {
-            summaryEl.innerText = `${data.total} Reviews - ${data.average_rating} (Overall)`;
+            summaryEl.innerText = `${data.total} Đánh giá - ${data.average_rating} (Sao)`;
             starsEl.innerHTML = renderStars(data.average_rating);
 
             const productNameEl = document.querySelector('.pd-detail__name');

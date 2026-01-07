@@ -37,7 +37,7 @@
                    <i class="fas fa-users u-s-m-r-6"></i> Người Dùng
                 </a>
             </li>
-            <li class="u-s-m-t-10">
+            {{-- <li class="u-s-m-t-10">
                 <span class="dash__text u-s-m-b-8">HỆ THỐNG</span>
             </li>
             <li>
@@ -51,11 +51,10 @@
                     onclick="event.preventDefault(); document.getElementById('admin-logout-form').submit();">
                     <i class="fas fa-sign-out-alt u-s-m-r-6"></i> Đăng Xuất
                 </a>
-                {{-- Giả định có form logout riêng cho Admin --}}
                 <form id="admin-logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
                     @csrf
                 </form>
-            </li>
+            </li> --}}
         </ul>
     </div>
 </div>

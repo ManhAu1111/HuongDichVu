@@ -1,78 +1,220 @@
-{{-- resources/views/admin/orders/detail.blade.php --}}
 @extends('admin.layouts.admin_app')
-
-@section('admin_title', 'Chi Tiết Đơn Hàng #3054231326')
-
 @section('admin_content')
+    {{-- Tăng chiều ngang bằng cách dùng col-lg-12 --}}
+    <div class="col-lg-12 col-md-12">
+        <h1 class="dash__h1 u-s-m-b-30">Quản lý Đơn hàng: <span id="order-id-title"></span></h1>
 
-<div class="dash__box dash__box--shadow dash__box--radius dash__box--bg-white u-s-m-b-30">
-    <div class="dash__pad-2">
-        <h1 class="dash__h1 u-s-m-b-14 u-c-secondary">Đơn Hàng #3054231326</h1>
-        <span class="dash__text u-s-m-b-30">Ngày đặt: 01/12/2025 | Tình trạng: <span class="gl-label u-c-brand">Chờ xác nhận</span></span>
+        {{-- HÀNH ĐỘNG CỦA ADMIN --}}
+        <div class="dash__box dash__box--shadow dash__box--radius dash__box--bg-white u-s-m-b-30">
+            <div class="dash__pad-2">
+                <h2 class="dash__h2 u-s-m-b-15">HÀNH ĐỘNG QUẢN TRỊ</h2>
+                <div id="admin-actions" class="d-flex gap-10">
+                    {{-- Nút sẽ hiện dựa trên trạng thái hiện tại --}}
+                </div>
+            </div>
+        </div>
 
+        {{-- THÔNG TIN ĐƠN TỔNG QUÁT --}}
+        <div class="dash__box dash__box--shadow dash__box--radius dash__box--bg-white u-s-m-b-30">
+            <div class="dash__pad-2">
+                <div class="dash-l-r">
+                    <div>
+                        <div class="manage-o__text-2 u-c-secondary">Mã đơn: <span id="order-code">Đang tải...</span></div>
+                        <div class="manage-o__text u-c-silver">Ngày đặt: <span id="order-date">...</span></div>
+                    </div>
+                    <div>
+                        <div class="manage-o__text-2 u-c-silver">Tổng cộng:
+                            <span class="manage-o__text-2 u-c-secondary" id="order-total">0 đ</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{-- DANH SÁCH SẢN PHẨM --}}
+        <div class="dash__box dash__box--shadow dash__box--radius dash__box--bg-white u-s-m-b-30">
+            <div class="dash__pad-2">
+                <div class="manage-o">
+                    <div class="dash-l-r u-s-m-b-30">
+                        <div class="manage-o__text u-c-secondary">Trạng thái: <strong id="order-status-text">...</strong></div>
+                        <div class="manage-o__icon">
+                            <i class="fas fa-truck u-s-m-r-5"></i>
+                            <span class="manage-o__text">Giao hàng tiêu chuẩn</span>
+                        </div>
+                    </div>
+
+                    {{-- ĐÃ LOẠI BỎ PHẦN TIMELINE TRACK TẠI ĐÂY --}}
+
+                    <div id="order-items-list" class="u-s-m-t-30">
+                        {{-- Render bằng JS --}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{-- THÔNG TIN CHI TIẾT --}}
         <div class="row">
-            {{-- Cột 1: Thông tin Khách hàng & Vận chuyển --}}
-            <div class="col-lg-6 u-s-m-b-30">
-                <div class="dash__box dash__box--bg-grey dash__box--shadow-2 u-h-100">
+            <div class="col-lg-6">
+                <div class="dash__box dash__box--bg-white dash__box--shadow u-h-100">
                     <div class="dash__pad-3">
-                        <h2 class="dash__h2 u-s-m-b-8">THÔNG TIN KHÁCH HÀNG</h2>
-                        <span class="dash__text">John Doe</span>
-                        <span class="dash__text">johndoe@domain.com</span>
-                        <span class="dash__text">(+0) 900901904</span>
-
-                        <h2 class="dash__h2 u-s-m-t-20 u-s-m-b-8">ĐỊA CHỈ GIAO HÀNG</h2>
-                        <span class="dash__text">4247 Ashford Drive Virginia - VA-20006 - USA</span>
+                        <h2 class="dash__h2 u-s-m-b-16">Thông tin nhận hàng</h2>
+                        <div class="info-row">
+                            <div class="info-label">Người nhận:</div>
+                            <div class="info-value" id="receiver-name">...</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label">Số điện thoại:</div>
+                            <div class="info-value" id="receiver-phone">...</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label">Địa chỉ:</div>
+                            <div class="info-value" id="receiver-address">...</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label">Email:</div>
+                            <div class="info-value" id="receiver-email">...</div>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            {{-- Cột 2: Tóm tắt Đơn hàng & Thanh toán --}}
-            <div class="col-lg-6 u-s-m-b-30">
-                <div class="dash__box dash__box--bg-grey dash__box--shadow-2 u-h-100">
+            <div class="col-lg-6">
+                <div class="dash__box dash__box--bg-white dash__box--shadow u-h-100">
                     <div class="dash__pad-3">
-                        <h2 class="dash__h2 u-s-m-b-8">TÓM TẮT THANH TOÁN</h2>
-                        <table class="f-cart__table">
-                            <tbody>
-                                <tr><td>Tổng phụ</td><td>$125.00</td></tr>
-                                <tr><td>Phí vận chuyển</td><td>$4.00</td></tr>
-                                <tr><td>Tổng cộng</td><td>$129.00</td></tr>
-                            </tbody>
-                        </table>
-                        <h2 class="dash__h2 u-s-m-t-20 u-s-m-b-8">PHƯƠNG THỨC</h2>
-                        <span class="dash__text">Thanh toán khi nhận hàng (COD)</span>
+                        <h2 class="dash__h2 u-s-m-b-16">Tổng kết đơn hàng</h2>
+                        <div class="summary-row">
+                            <div class="summary-label">Tạm tính:</div>
+                            <div class="summary-value" id="sum-subtotal">0 đ</div>
+                        </div>
+                        <div class="summary-row">
+                            <div class="summary-label">Phí vận chuyển:</div>
+                            <div class="summary-value" id="sum-shipping">0 đ</div>
+                        </div>
+                        <div class="summary-row" style="border-top: 1px solid #eee; padding-top: 10px; margin-top: 10px;">
+                            <div class="summary-label"><strong>Tổng cộng:</strong></div>
+                            <div class="summary-value" id="sum-total"><strong class="u-c-secondary">0 đ</strong></div>
+                        </div>
+                        <div class="u-s-m-t-15">
+                            <span class="gl-label" id="payment-method-text">...</span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        {{-- Bảng Sản phẩm trong đơn hàng --}}
-        <h2 class="dash__h2 u-s-m-t-30 u-s-p-xy-20">SẢN PHẨM ĐÃ ĐẶT</h2>
-        <div class="dash__table-wrap gl-scroll">
-            <table class="dash__table">
-                <thead>
-                    <tr>
-                        <th>Sản phẩm</th>
-                        <th>Giá</th>
-                        <th>Số lượng</th>
-                        <th>Thành tiền</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Yellow Wireless Headphone</td>
-                        <td>$125.00</td>
-                        <td>1</td>
-                        <td>$125.00</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        {{-- Hành động --}}
-        <div class="u-s-m-t-30">
-            <button class="btn btn--e-brand-b-2" type="button"><i class="fas fa-check u-s-m-r-6"></i> XÁC NHẬN ĐƠN HÀNG</button>
-            <button class="btn btn--e-grey-b-2" type="button"><i class="fas fa-times u-s-m-r-6"></i> HỦY ĐƠN HÀNG</button>
         </div>
     </div>
-</div>
+
+    <script>
+        const publicId = "{{ $public_id }}";
+        const ADMIN_API = 'http://127.0.0.1:8007/api/admin';
+        const PRODUCT_SERVICE = 'http://127.0.0.1:8003';
+        const PRODUCT_IMG_BASE = 'http://127.0.0.1:8000';
+
+        function fmtMoney(v) {
+            return new Intl.NumberFormat("vi-VN").format(v) + " đ";
+        }
+
+        async function loadOrderDetail() {
+            try {
+                const res = await fetch(`${ADMIN_API}/orders/${publicId}`);
+                const data = await res.json();
+                const { order, items } = data;
+
+                document.getElementById('order-code').innerText = "#" + order.public_id;
+                document.getElementById('order-date').innerText = new Date(order.created_at).toLocaleString("vi-VN");
+                document.getElementById('order-total').innerText = fmtMoney(order.total_price);
+                document.getElementById('order-id-title').innerText = order.public_id;
+
+                const statusMap = {
+                    pending_payment: "Chờ thanh toán",
+                    paid: "Đang xử lý (Đã thanh toán)",
+                    delivering: "Đang giao hàng",
+                    completed: "Hoàn thành",
+                    cancelled: "Đã hủy"
+                };
+                document.getElementById('order-status-text').innerText = statusMap[order.status] || order.status;
+
+                renderAdminActions(order.status);
+
+                document.getElementById('receiver-name').innerText = order.receiver_name;
+                document.getElementById('receiver-phone').innerText = order.receiver_phone;
+                document.getElementById('receiver-email').innerText = order.receiver_email || 'N/A';
+                document.getElementById('receiver-address').innerText = `${order.street_address}, ${order.district_name}`;
+
+                let subtotal = items.reduce((sum, item) => sum + Number(item.subtotal), 0);
+                document.getElementById('sum-subtotal').innerText = fmtMoney(subtotal);
+                document.getElementById('sum-shipping').innerText = fmtMoney(order.shipping_fee || 0);
+                document.getElementById('sum-total').innerText = fmtMoney(order.total_price);
+                document.getElementById('payment-method-text').innerText = order.payment_method === 'cod' ? 'Thanh toán COD' : 'Thanh toán MoMo';
+
+                await renderOrderItems(items);
+
+            } catch (err) {
+                console.error("Lỗi tải chi tiết đơn hàng:", err);
+            }
+        }
+
+        async function renderOrderItems(items) {
+            const container = document.getElementById('order-items-list');
+            container.innerHTML = "";
+
+            for (const item of items) {
+                const imgRes = await fetch(`${PRODUCT_SERVICE}/products/${item.product_id}/primary-image`);
+                const imgData = await imgRes.json();
+
+                let imgSrc = "/images/default.jpg";
+                if (imgData && imgData.image_url) {
+                    let path = imgData.image_url.replace(/\\/g, '/');
+                    if (path.startsWith('/')) path = path.substring(1);
+                    imgSrc = `${PRODUCT_IMG_BASE}/${path}`;
+                }
+
+                container.innerHTML += `
+                    <div class="manage-o__description u-s-m-b-20" style="padding-bottom: 15px; border-bottom: 1px dashed #eee;">
+                        <div class="description__container">
+                            <div class="description__img-wrap">
+                                <img class="u-img-fluid" src="${imgSrc}" onerror="this.src='/images/default.jpg'" alt="">
+                            </div>
+                            <div class="description-title" style="font-weight: 600;">${item.product_name}</div>
+                        </div>
+                        <div class="description__info-wrap">
+                            <div><span class="manage-o__text-2 u-c-silver">Số lượng: <span class="u-c-secondary">${item.quantity}</span></span></div>
+                            <div><span class="manage-o__text-2 u-c-silver">Đơn giá: <span class="u-c-secondary">${fmtMoney(item.price)}</span></span></div>
+                            <div><span class="manage-o__text-2 u-c-silver">Tổng: <span class="u-c-secondary">${fmtMoney(item.subtotal)}</span></span></div>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        async function updateOrderStatus(newStatus) {
+            if (!confirm(`Xác nhận chuyển trạng thái sang: ${newStatus}?`)) return;
+
+            const res = await fetch(`${ADMIN_API}/orders/${publicId}/status`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ status: newStatus })
+            });
+
+            if (res.ok) {
+                alert("Cập nhật trạng thái thành công!");
+                location.reload();
+            }
+        }
+
+        function renderAdminActions(status) {
+            const container = document.getElementById('admin-actions');
+            let html = '';
+
+            if (status === 'pending_payment' || status === 'paid') {
+                html += `<button onclick="updateOrderStatus('delivering')" class="btn btn--e-brand-b-2">DUYỆT & GIAO HÀNG</button>`;
+                html += `<button onclick="updateOrderStatus('cancelled')" class="btn btn--e-dark-outline u-s-m-l-10">HỦY ĐƠN</button>`;
+            } else if (status === 'delivering') {
+                html += `<button onclick="updateOrderStatus('completed')" class="btn btn--e-brand-b-2">XÁC NHẬN ĐÃ GIAO</button>`;
+                html += `<button onclick="updateOrderStatus('cancelled')" class="btn btn--e-dark-outline u-s-m-l-10">Khách tư chối nhận hàng</button>`;
+            }
+
+            container.innerHTML = html || '<span class="u-c-silver">Đơn hàng đã kết thúc, không thể thao tác thêm.</span>';
+        }
+
+        document.addEventListener("DOMContentLoaded", loadOrderDetail);
+    </script>
 @endsection

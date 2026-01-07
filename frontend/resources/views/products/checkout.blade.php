@@ -562,14 +562,12 @@
                     })
                 });
 
-                // Check lỗi validate từ backend
                 if (await handleValidationResponse(res)) return;
 
                 const data = await res.json();
 
                 alert("Đặt hàng COD thành công. Mã đơn: " + data.order_id);
 
-                // Reload dropdown cart
                 if (typeof loadMiniCart === "function") await loadMiniCart();
 
                 window.location.href = "/cart";

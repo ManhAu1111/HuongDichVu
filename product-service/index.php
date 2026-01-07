@@ -40,6 +40,14 @@ $method = $_SERVER["REQUEST_METHOD"];
 // PRODUCT ROUTES
 // -------------------------
 
+// POST /product_images → create lưu đường dẫn ảnh vào DB
+if ($uri === "/product_images" && $method === "POST") {
+    $data = json_decode(file_get_contents("php://input"), true);
+    echo json_encode($image->storeImage($data));
+    exit;
+}
+
+
 // GET /products → list
 if ($uri === "/products" && $method === "GET") {
     echo json_encode($product->getAllProducts());
@@ -73,8 +81,16 @@ if ($uri === "/products" && $method === "POST") {
 
 // PUT /products/{id}
 if (preg_match("#^/products/(\d+)$#", $uri, $matches) && $method === "PUT") {
+    $id = (int)$matches[1];
     $data = json_decode(file_get_contents("php://input"), true);
-    echo json_encode($product->updateProduct((int)$matches[1], $data));
+
+    if (!$data) {
+        echo json_encode(["ok" => false, "message" => "Dữ liệu JSON không hợp lệ"]);
+        exit;
+    }
+
+    // Nếu trong dữ liệu gửi lên có 'model_url', bạn có thể viết thêm logic update riêng hoặc gộp vào
+    echo json_encode($product->updateProduct($id, $data));
     exit;
 }
 
@@ -92,6 +108,27 @@ if (preg_match("#^/products/(\d+)$#", $uri, $matches) && $method === "DELETE") {
 // GET /categories
 if ($uri === "/categories" && $method === "GET") {
     echo json_encode($category->getAllCategories());
+    exit;
+}
+
+// POST /categories (THÊM MỚI)
+if ($uri === "/categories" && $method === "POST") {
+    $data = json_decode(file_get_contents("php://input"), true);
+    echo json_encode($category->createCategory($data));
+    exit;
+}
+
+// PUT /categories/{id} (SỬA)
+if (preg_match("#^/categories/(\d+)$#", $uri, $matches) && $method === "PUT") {
+    $id = (int)$matches[1];
+    $data = json_decode(file_get_contents("php://input"), true);
+    echo json_encode($category->updateCategory($id, $data));
+    exit;
+}
+
+// DELETE /categories/{id} (XÓA)
+if (preg_match("#^/categories/(\d+)$#", $uri, $matches) && $method === "DELETE") {
+    echo json_encode($category->deleteCategory((int)$matches[1]));
     exit;
 }
 
@@ -181,6 +218,20 @@ if (preg_match("#^/products/(\d+)/rating$#", $uri, $matches) && $method === "PUT
     echo json_encode(
         $product->updateRating((int)$matches[1], $data)
     );
+    exit;
+}
+
+// POST /product_images/upsert
+if ($uri === "/product_images/upsert" && $method === "POST") {
+    $data = json_decode(file_get_contents("php://input"), true);
+    echo json_encode($image->upsertImage($data));
+    exit;
+}
+
+// DELETE /product_images/{product_id}/{display_order}
+if (preg_match("#^/product_images/(\d+)/(\d+)$#", $uri, $matches) && $method === "DELETE") {
+    $res = $image->deleteImageByOrder((int)$matches[1], (int)$matches[2]);
+    echo json_encode($res ?: ["ok" => true]); // Đảm bảo không bao giờ trống
     exit;
 }
 

@@ -28,7 +28,7 @@ class OrderController extends Controller
             'user_id'        => $request->user_id,
             'public_id'      => uniqid('order_'),
             'total_price'    => $total,
-            'shipping_fee'   => $shippingFee,      // >>>>> LƯU PHÍ SHIP <<<<<<
+            'shipping_fee'   => $shippingFee,
             'status'         => 'pending_payment',
             'payment_method' => $request->payment_method,
 
@@ -125,7 +125,7 @@ class OrderController extends Controller
 
             CartItem::where('user_id', $request->user_id)->delete();
 
-            $this->decreaseProductStock($order->id);
+            // $this->decreaseProductStock($order->id);
 
             DB::commit();
 
@@ -155,6 +155,22 @@ class OrderController extends Controller
 
     public function updatePaymentStatus(Request $request)
     {
+        // ========================
+        // VALIDATE INPUT
+        // ========================
+        if (!$request->order_id || !$request->status) {
+            return response()->json([
+                'error' => 'order_id and status are required'
+            ], 400);
+        }
+
+        // ❌ KHÔNG cho dùng API này để hủy đơn
+        if ($request->status === 'cancelled') {
+            return response()->json([
+                'error' => 'Use /orders/{public_id}/cancel to cancel order'
+            ], 400);
+        }
+
         $order = Order::where('public_id', $request->order_id)->first();
 
         if (!$order) {
@@ -164,33 +180,61 @@ class OrderController extends Controller
         $oldStatus = $order->status;
         $newStatus = $request->status;
 
-        $order->status = $newStatus;
-        $order->save();
+        // Nếu status không đổi thì thôi
+        if ($oldStatus === $newStatus) {
+            return response()->json([
+                'message' => 'Order status unchanged'
+            ]);
+        }
+
+        DB::beginTransaction();
+        try {
+            $order->status = $newStatus;
+            $order->save();
 
         // ========================
         // STOCK CONTROL LOGIC
         // ========================
 
-        // 1) Trừ hàng khi new = pending_payment hoặc paid
-        // nhưng chỉ trừ nếu old không phải pending_payment hoặc paid
-        $shouldDecrease =
-            in_array($newStatus, ['pending_payment', 'paid']) &&
-            !in_array($oldStatus, ['pending_payment', 'paid']);
+            /**
+             * 1) Trừ kho khi chuyển sang:
+             *    - pending_payment
+             *    - paid
+             * Nhưng CHỈ trừ nếu trước đó chưa từng ở 2 trạng thái này
+             */
 
-        if ($shouldDecrease) {
-            $this->decreaseProductStock($order->id);
+            /*
+            $shouldDecrease =
+                in_array($newStatus, ['pending_payment', 'paid']) &&
+                !in_array($oldStatus, ['pending_payment', 'paid']);
+
+            if ($shouldDecrease) {
+                $this->decreaseProductStock($order->id);
+            }
+            */
+
+            /**
+             * 2) KHÔNG hoàn kho ở đây
+             *    - Hoàn kho CHỈ được phép trong cancelOrder()
+             */
+
+            DB::commit();
+
+            return response()->json([
+                'message' => 'Order status updated',
+                'old_status' => $oldStatus,
+                'new_status' => $newStatus
+            ]);
+        } catch (\Throwable $e) {
+            DB::rollBack();
+
+            Log::error('updatePaymentStatus error: ' . $e->getMessage());
+
+            return response()->json([
+                'error' => 'Internal server error'
+            ], 500);
         }
-
-        // 2) Hoàn hàng khi new = cancelled
-        // và old != cancelled (tránh hoàn lại nhiều lần)
-        if ($newStatus === 'cancelled' && $oldStatus !== 'cancelled') {
-            $this->restoreProductStock($order->id);
-        }
-
-        return response()->json(['message' => 'Order status updated']);
     }
-
-
 
     public function checkoutFromCart(Request $request, ShippingFeeService $shippingFeeService)
     {
@@ -325,6 +369,55 @@ class OrderController extends Controller
         }
     }
 
+    // Hủy đơn hàng
+    public function cancelOrder(Request $request, $publicId)
+    {
+        $order = Order::where('public_id', $publicId)->first();
+
+        if (!$order) {
+            return response()->json(['ok' => false, 'message' => 'Order not found'], 404);
+        }
+
+        // Chỉ cho hủy khi chưa giao
+        if (in_array($order->status, ['delivering', 'completed', 'cancelled'])) {
+            return response()->json([
+                'ok' => false,
+                'message' => 'Không thể hủy đơn hàng khi đang giao hoặc đã hoàn thành'
+            ], 400);
+        }
+
+        $oldStatus = $order->status;
+
+        DB::beginTransaction();
+        try {
+            $order->status = 'cancelled';
+            $order->save();
+
+            // Hoàn kho (chỉ 1 lần)
+            // if ($oldStatus !== 'cancelled') {
+            //     $this->restoreProductStock($order->id);
+            // }
+
+            Log::info("Order {$order->public_id} cancelled");
+
+            DB::commit();
+
+            return response()->json([
+                'ok' => true,
+                'message' => 'Hủy đơn hàng thành công'
+            ]);
+        } catch (\Throwable $e) {
+            DB::rollBack();
+            Log::error('cancelOrder error: ' . $e->getMessage());
+
+            return response()->json([
+                'ok' => false,
+                'message' => 'Internal server error'
+            ], 500);
+        }
+    }
+
+
     // Lấy đơn hàng gần đây của user (dashboard)
     public function getOrdersByUser(Request $request)
     {
@@ -368,5 +461,71 @@ class OrderController extends Controller
         }
 
         return response()->json($order);
+    }
+
+    // ============================================
+    // ADMIN: Lấy tất cả đơn hàng với filter và tìm kiếm
+    public function getAllOrdersForAdmin(Request $request)
+    {
+        $query = Order::query();
+
+        // 1. Tìm theo tên khách hàng (receiver_name)
+        if ($request->filled('customer_name')) {
+            $query->where('receiver_name', 'like', '%' . $request->customer_name . '%');
+        }
+
+        // 2. Lọc theo trạng thái
+        if ($request->filled('status')) {
+            $query->where('status', $request->status);
+        }
+
+        // 3. Lọc theo khoảng ngày (Dựa vào created_at)
+        if ($request->filled('date_start')) {
+            $query->whereDate('created_at', '>=', $request->date_start);
+        }
+        if ($request->filled('date_end')) {
+            $query->whereDate('created_at', '<=', $request->date_end);
+        }
+
+        // Lọc theo giá trị tối thiểu
+        if ($request->filled('price_min')) {
+            $query->where('total_price', '>=', $request->price_min);
+        }
+
+        // Lọc theo giá trị tối đa (MỚI)
+        if ($request->filled('price_max')) {
+            $query->where('total_price', '<=', $request->price_max);
+        }
+
+        $orders = $query->orderBy('created_at', 'desc')->get();
+        return response()->json($orders);
+    }
+
+    // Admin cập nhật trạng thái đơn hàng
+    public function updateOrderStatus(Request $request, $publicId)
+    {
+        $request->validate(['status' => 'required|string']);
+        $order = Order::where('public_id', $publicId)->first();
+        if (!$order) return response()->json(['error' => 'Order not found'], 404);
+
+        $oldStatus = $order->status;
+        $newStatus = $request->status;
+
+        DB::beginTransaction();
+        try {
+            $order->status = $newStatus;
+            $order->save();
+
+            // Logic xử lý kho khi Admin hủy đơn (Giao không thành công/Bom hàng)
+            // if ($newStatus === 'cancelled' && $oldStatus !== 'cancelled') {
+            //     $this->restoreProductStock($order->id);
+            // }
+
+            DB::commit();
+            return response()->json(['ok' => true, 'message' => 'Status updated']);
+        } catch (\Throwable $e) {
+            DB::rollBack();
+            return response()->json(['error' => 'Internal server error'], 500);
+        }
     }
 }

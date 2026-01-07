@@ -22,7 +22,7 @@
                     <!--====== Image Code ======-->
                     <a class="aspect aspect--bg-grey aspect--1366-768 u-d-block" href="{{ route('blog.detail') }}">
 
-                        <img class="aspect__img" src="{{ asset('images/blog/post-1.jpg') }}" alt=""></a>
+                        <img class="aspect__img" src="{{ asset('images/blog/giuong1.jpg') }}" alt=""></a>
                     <!--====== End - Image Code ======-->
                 </div>
                 <div class="bp-detail__info-wrap">

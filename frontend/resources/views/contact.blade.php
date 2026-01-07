@@ -147,7 +147,7 @@
 
                                             <input
                                                 class="input-text input-text--border-radius input-text--primary-style"
-                                                type="text" id="c-subject" placeholder="Chủ đề (Required)" required>
+                                                type="text" id="c-subject" placeholder="Chủ đề (Bắt buộc)" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6 u-h-100">
@@ -155,7 +155,7 @@
 
                                             <label for="c-message"></label><textarea
                                                 class="text-area text-area--border-radius text-area--primary-style"
-                                                id="c-message" placeholder="Soạn tin nhắn (Required)"
+                                                id="c-message" placeholder="Soạn tin nhắn (Bắt buộc)"
                                                 required></textarea>
                                         </div>
                                     </div>

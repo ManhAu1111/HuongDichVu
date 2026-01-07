@@ -7,6 +7,9 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartPageController;
 use Illuminate\Support\Facades\Http;
 use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\Admin\ProductAdminController;
+use App\Http\Controllers\Admin\UserController;
+
 
 
 /*
@@ -151,10 +154,11 @@ Route::get('/wishlist', [WishlistController::class, 'index'])
 */
 
 Route::prefix('admin')->name('admin.')->middleware('auth.admin')->group(function () {
+    Route::post('/local-upload-media', [ProductAdminController::class, 'handleLocalUpload'])->name('admin.local.upload');
     // 1. ADMIN DASHBOARD
     Route::view('/', 'admin.dashboard.index')->name('dashboard');
 
-// 2. QUẢN LÝ SẢN PHẨM
+    // 2. QUẢN LÝ SẢN PHẨM
     Route::prefix('products')->name('products.')->group(function () {
 
         // GET /admin/products -> admin.products.index (Danh sách)
@@ -188,20 +192,42 @@ Route::prefix('admin')->name('admin.')->middleware('auth.admin')->group(function
 
     // 3. QUẢN LÝ ĐƠN HÀNG
     Route::prefix('orders')->name('orders.')->group(function () {
-        // GET /admin/orders -> admin.orders.index (Danh sách)
-        Route::view('/', 'admin.orders.index')->name('index');
 
-        // GET /admin/orders/1 -> admin.orders.detail (Chi tiết)
-        Route::get('/{id}', function ($id) {
-            return view('admin.orders.detail', ['id' => $id]);
+        // Danh sách đơn hàng: GET /admin/orders
+        Route::get('/', function () {
+            return view('admin.orders.index');
+        })->name('index');
+
+        // Chi tiết đơn hàng: GET /admin/orders/{public_id}
+        Route::get('/{public_id}', function ($public_id) {
+            return view('admin.orders.detail', ['public_id' => $public_id]);
         })->name('detail');
     });
 
+
+
     // 4. QUẢN LÝ NGƯỜI DÙNG
     Route::prefix('users')->name('users.')->group(function () {
-        // GET /admin/users -> admin.users.index (Danh sách)
-        Route::view('/', 'admin.users.index')->name('index');
+
+        // GET /admin/users
+        Route::get('/', [UserController::class, 'index'])->name('index');
+
+        // PUT /admin/users/{id}/block
+        Route::put('/{id}/block', [UserController::class, 'block'])
+            ->name('block');
+
+        // PUT /admin/users/{id}/unblock
+        Route::put('/{id}/unblock', [UserController::class, 'unblock'])
+            ->name('unblock');
+        // GET /admin/users/{id}/edit
+        // Route::get('/{id}/edit', [UserController::class, 'edit'])
+        //     ->name('edit');
+
+        // PUT /admin/users/{id}
+        // Route::put('/{id}/update-name', [UserController::class, 'updateName'])
+        //     ->name('updateName');
     });
+
 
     // 5. CÀI ĐẶT HỆ THỐNG
     Route::view('/settings', 'admin.settings.index')->name('settings');
