@@ -16,8 +16,7 @@
                 <div class="col-lg-4 col-md-6 u-s-m-b-30">
                     <div class="dash__box dash__box--bg-grey dash__box--shadow-2 u-h-100">
                         <div class="dash__pad-3">
-                            <div class="dash__w-wrap"
-                                style="display: flex; flex-direction: column;">
+                            <div class="dash__w-wrap" style="display: flex; flex-direction: column;">
                                 <span class="dash__w-icon dash__w-icon-style-1">
                                     <i class="fas fa-hand-holding-usd"></i>
                                 </span>
@@ -93,15 +92,7 @@
                             </tr>
                         </thead>
                         <tbody id="recent-orders-body">
-                            <tr>
-                                <td>#order_6950ef06</td>
-                                <td>Âu Mạnh</td>
-                                <td><span class="manage-o__badge badge--delivered">Đã giao</span></td>
-                                <td>1.485.825 đ</td>
-                                <td>
-                                    <div class="dash__link dash__link--brand"><a href="#">CHI TIẾT</a></div>
-                                </td>
-                            </tr>
+                            {{-- Sẽ được render bởi JavaScript --}}
                         </tbody>
                     </table>
                 </div>
@@ -175,21 +166,24 @@
             }
 
             lowStockContainer.innerHTML = lowStockProducts.map(p => `
-                        <div class="u-s-m-b-10 d-flex justify-content-between align-items-center" style="border-bottom: 1px solid #f1f1f1; padding-bottom: 5px;">
-                            <span style="font-size: 13px; color: #333; flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="${p.name}">
-                                ${p.name}
-                            </span>
-                            <strong class="u-c-brand" style="margin-left: 10px; min-width: 60px; text-align: right;">Còn ${p.quantity}</strong>
-                        </div>
-                    `).join('');
+                                        <div class="u-s-m-b-10 d-flex justify-content-between align-items-center" style="border-bottom: 1px solid #f1f1f1; padding-bottom: 5px;">
+                                            <span style="font-size: 13px; color: #333; flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="${p.name}">
+                                                ${p.name}
+                                            </span>
+                                            <strong class="u-c-brand" style="margin-left: 10px; min-width: 60px; text-align: right;">Còn ${p.quantity}</strong>
+                                        </div>
+                                    `).join('');
         }
         async function fetchOrdersData() {
             try {
                 const res = await fetch(`${ADMIN_API}/orders`);
                 allOrders = await res.json();
 
-                // SAU KHI TẢI DỮ LIỆU THẬT, CẬP NHẬT LUÔN SỐ ĐƠN CHỜ XỬ LÝ
+                // 1. Cập nhật số đơn chờ xử lý
                 updatePendingOrderCount();
+
+                // 2. HIỂN THỊ 5 ĐƠN HÀNG GẦN NHẤT
+                renderRecentOrders();
 
                 console.log("Dữ liệu đơn hàng đã tải:", allOrders.length);
             } catch (err) {
@@ -197,6 +191,49 @@
             }
         }
 
+        function renderRecentOrders() {
+            const tbody = document.getElementById('recent-orders-body');
+
+            // Sắp xếp đơn hàng theo ID hoặc Created_at giảm dần và lấy 5 đơn đầu tiên
+            const recentOrders = [...allOrders]
+                .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+                .slice(0, 5);
+
+            if (recentOrders.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" class="text-center">Chưa có đơn hàng nào.</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = recentOrders.map(order => `
+                    <tr>
+                        <td><strong>${order.public_id}</strong></td>
+                        <td>${order.receiver_name}</td>
+                        <td>
+                            <span class="manage-o__badge badge--${order.status}">
+                                ${translateStatus(order.status)}
+                            </span>
+                        </td>
+                        <td>${fmtVND(order.total_price)}</td>
+                        <td>
+                            <div class="dash__link dash__link--brand">
+                                <a href="/admin/orders/${order.public_id}">CHI TIẾT</a>
+                            </div>
+                        </td>
+                    </tr>
+                `).join('');
+        }
+
+        function translateStatus(status) {
+            const map = {
+                pending_payment: 'Chờ thanh toán',
+                paid: 'Đang xử lý',
+                delivering: 'Đang giao',
+                completed: 'Hoàn thành',
+                cancelled: 'Đã hủy',
+                rejected: 'Từ chối nhận'
+            };
+            return map[status] || status;
+        }
 
         function updatePendingOrderCount() {
             const pendingStatuses = ['pending_payment', 'paid'];
@@ -305,6 +342,36 @@
     </script>
 
     <style>
+        .badge--pending_payment {
+            background-color: rgba(255, 193, 7, 0.15);
+            color: #ffc107;
+        }
+
+        .badge--paid {
+            background-color: rgba(0, 123, 255, 0.15);
+            color: #007bff;
+        }
+
+        .badge--delivering {
+            background-color: rgba(23, 162, 184, 0.15);
+            color: #17a2b8;
+        }
+
+        .badge--completed {
+            background-color: rgba(40, 167, 69, 0.15);
+            color: #28a745;
+        }
+
+        .badge--cancelled {
+            background-color: rgba(220, 53, 69, 0.15);
+            color: #dc3545;
+        }
+
+        .badge--rejected {
+            background-color: rgba(108, 117, 125, 0.15);
+            color: #6c757d;
+        }
+
         /* Căn chỉnh lại icon trong widget */
         .dash__w-icon {
             display: flex;
