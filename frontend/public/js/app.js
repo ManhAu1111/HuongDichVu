@@ -729,6 +729,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
+window.addEventListener('load', function () {
+    document.querySelector('.filter__btn.js-checked')?.click();
+});
+
+
 
 
 

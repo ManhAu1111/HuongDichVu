@@ -45,3 +45,6 @@ khởi chạy dự án
 | **Review Service**  | `php -S 127.0.0.1:8006 -t public`                                |
 | **Admin Service**   | `php artisan serve --port=8007`                                  |
 
+chạy start-all.sh
+chmod +x start-all.sh
+./start-all.sh

@@ -1082,6 +1082,11 @@
 
             await loadReviews(sortSelect?.value || 'best');
             disableReviewForm('Cảm ơn bạn đã đánh giá sản phẩm này ❤️');
+
+            // Reload lại trang sau 0.5s (cho UX mượt)
+            setTimeout(() => {
+                location.reload();
+            }, 500);
         });
 
         /* ========= SORT ========= */
